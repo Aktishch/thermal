@@ -61,7 +61,7 @@
       <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
         <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: false}) %>
       </a>
-      <nav class="hidden lg:flex items-center justify-between gap-4 w-full max-w-[800px] ml-auto">
+      <nav class="items-center justify-between hidden w-full max-w-4xl gap-4 ml-auto lg:flex">
         <% _.forEach((nav.pages), (page) => { %>
         <a class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-waved="light" draggable="false" href="<%= page.link %>"><%= page.text %></a>
         <% }) %>
@@ -131,7 +131,7 @@
 
     <!-- Перетаскиваемое социальное меню -->
 
-    <nav class="fixed bottom-0 z-20 flex flex-col items-center justify-center w-48 h-48 rounded-full pointer-events-none select-none social touch-none" data-social data-draggable>
+    <nav class="fixed bottom-0 z-20 flex flex-col items-center justify-center rounded-full pointer-events-none select-none size-48 social touch-none" data-social data-draggable>
       <div class="absolute inset-0 overflow-hidden duration-300 ease-in-out rounded-full opacity-0 pointer-events-auto bg-primary bg-opacity-30 [&[data-social-round=hidden]]:scale-0 [&[data-social-round=hidden]]:-rotate-180" data-social-round="hidden">
         <% for (var i = 0; i < social.length; i++) { %>
         <a class="absolute rounded-full btn btn-second" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
@@ -139,7 +139,7 @@
         </a>
         <% } %>
       </div>
-      <button class="w-10 h-10 p-1 overflow-hidden rounded-full shadow-md pointer-events-auto btn btn-primary btn-contur before:content-auto before:block before:bg-current before:rounded-inherit before:w-full before:h-full" data-social-button data-waved="light" id="draggable"></button>
+      <button class="p-1 overflow-hidden rounded-full shadow-md pointer-events-auto size-10 btn btn-primary btn-contur before:content-auto before:block before:bg-current before:rounded-inherit before:size-full" data-social-button data-waved="light" id="draggable"></button>
     </nav>
 
     <!-- Переключатель темы -->
@@ -161,7 +161,7 @@
 
     <!-- В покупки -->
 
-    <div class="fixed z-20 top-2/4 left-0 md:left-auto right-0 md:right-10 bg-white dark:bg-black dark:text-white rounded-2xl -translate-y-1/2 shadow-md invisible opacity-0 w-full max-w-[320px] mx-auto p-5 duration-300 [&[data-shop=hidden]]:-translate-y-1/3" data-shop="hidden">
+    <div class="fixed z-20 top-2/4 left-0 md:left-auto right-0 md:right-10 bg-white dark:bg-black dark:text-white rounded-2xl -translate-y-1/2 shadow-md invisible opacity-0 w-full max-w-80 mx-auto p-5 duration-300 [&[data-shop=hidden]]:-translate-y-1/3" data-shop="hidden">
       <div class="flex items-center justify-between mb-4">
         <h4 class="mr-3 text-2xl font-semibold font-alt">Product in shop</h4>
         <button class="p-1 rounded btn btn-primary" data-shop-close data-waved="light">
@@ -169,7 +169,7 @@
         </button>
       </div>
       <div class="flex items-center mb-4">
-        <div class="pack pack-xl bg-grey rounded w-full max-w-[100px] mr-5">
+        <div class="w-full mr-5 rounded pack pack-xl bg-grey max-w-24">
           <%= loader %>
           <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image', data: 'data-shop-image'}) %>
         </div>

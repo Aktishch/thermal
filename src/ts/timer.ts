@@ -12,11 +12,11 @@ export default (): void => {
   const turn = timer.querySelector('*[data-timer-turn]') as HTMLButtonElement
   const icon = turn.querySelector('use') as SVGUseElement
   const reset = timer.querySelector('*[data-timer-reset]') as HTMLButtonElement
-  let active = false
-  let seconds = 0
-  let minutes = 0
-  let hours = 0
-  let steps = 0
+  let active: boolean = false
+  let seconds: number = 0
+  let minutes: number = 0
+  let hours: number = 0
+  let steps: number = 0
 
   const setTime = (): void => {
     if (active) {

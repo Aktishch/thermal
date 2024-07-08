@@ -19,7 +19,7 @@ export default (): void => {
           ? Number(listing.dataset.listing)
           : items.length
 
-      for (let i = 0; i < count; i++) {
+      for (let i: number = 0; i < count; i++) {
         const item = items[i] as HTMLDivElement
 
         if (item && item.classList.contains('hidden'))

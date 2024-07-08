@@ -1,26 +1,26 @@
 <% var icon = _.template(require('../components/icon.html').default) %>
 
 <dialog class="px-5 py-10 dialog dialog-xs dark:bg-black dark:text-white rounded-xl">
-  <form class="flex flex-col" data-form="action" action="primary.html">
+  <form class="flex flex-col gap-5" data-form="action" action="primary.html">
     <input type="hidden" value="Авторизация" name="theme">
-    <label class="mb-5 input-label" data-label="input">
-      <span class="mb-3 text-xl">Telephone</span>
-      <div class="input-wrapper">
+    <label data-label="input">
+      <h5 class="mb-3 text-xl font-medium leading-none">Telephone</h5>
+      <div class="relative">
         <input class="input input-gray input-md" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-        <span class="input-warning" data-warning>Пожалуйста, введите ваш номер!</span>
+        <span class="input-error" data-error>Пожалуйста, введите ваш номер!</span>
       </div>
     </label>
-    <label class="mb-5 input-label" data-label="input">
-      <span class="mb-3 text-xl">Password</span>
-      <div class="input-wrapper">
+    <label data-label="input">
+      <h5 class="mb-3 text-xl font-medium leading-none">Password</h5>
+      <div class="relative">
         <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="Your password here" autocomplete="new-password" name="password">
-        <span class="input-warning" data-warning>Пожалуйста, введите пароль!</span>
+        <span class="input-error" data-error>Пожалуйста, введите пароль!</span>
         <button class="input-icon input-icon-pointer input-icon-right" data-password="/" type="button">
           <%= icon({id: 'eye-visible', className: 'icon text-black text-xl pointer-events-none', data: false}) %>
         </button>
       </div>
     </label>
-    <button class="mb-5 btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Enter</button>
-    <div class="mx-auto text-lg cursor-pointer hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
+    <button class="btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Enter</button>
   </form>
+  <div class="mx-auto mt-5 text-lg cursor-pointer hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
 </dialog>

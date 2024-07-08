@@ -6,10 +6,10 @@ export default (): void => {
 
   if (!menu && !touchDevice()) return
 
-  const value = 100
+  const value: number = 100
   let initialX: number
   let currentX: number
-  let active = false
+  let active: boolean = false
 
   document.addEventListener('touchstart', ((event: TouchEvent): void => {
     initialX = event.touches[0].clientX

@@ -32,7 +32,7 @@ export default (): void => {
     lastTap = new Date().getTime()
   }
 
-  for (let i = 0; i < links.length; i++) {
+  for (let i: number = 0; i < links.length; i++) {
     const network = links[i] as HTMLAnchorElement
 
     network.style.top =

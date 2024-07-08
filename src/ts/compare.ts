@@ -17,7 +17,7 @@ export default (): void => {
     const change = compare.querySelector(
       '*[data-compare-change]'
     ) as HTMLDivElement
-    let active = false
+    let active: boolean = false
     let value: number
     let position: number
 
@@ -51,7 +51,7 @@ export default (): void => {
 
         case 'touchmove': {
           for (
-            let i = 0;
+            let i: number = 0;
             i < (event as TouchEvent).changedTouches.length;
             i++
           ) {

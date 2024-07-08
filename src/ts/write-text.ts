@@ -4,9 +4,7 @@ const writeText = (section: HTMLElement): void => {
   if (!record) return
 
   const recordText = String(record.dataset.record)
-  const recordSpeed: number = record.dataset.recordSpeed
-    ? Number(record.dataset.recordSpeed)
-    : 30
+  const recordSpeed: number = Number(record.dataset.recordSpeed) || 30
   const letters: string[] = [recordText].join('').split('')
 
   const interval = setInterval(

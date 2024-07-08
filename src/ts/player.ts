@@ -73,8 +73,8 @@ const setPlayer = ({
   const volume = player.querySelector(
     '*[data-player-volume]'
   ) as HTMLButtonElement
-  let active = false
-  let index = 0
+  let active: boolean = false
+  let index: number = 0
   let minutes: number
   let seconds: number
   let condition: {
@@ -208,7 +208,7 @@ const setPlayer = ({
 
         case 'touchmove': {
           for (
-            let i = 0;
+            let i: number = 0;
             i < (event as TouchEvent).changedTouches.length;
             i++
           ) {
@@ -397,7 +397,7 @@ const playOnlyOne = (event: Event): void => {
     'audio'
   ) as NodeListOf<HTMLAudioElement>
 
-  for (let i = 0; i < audios.length; i++) {
+  for (let i: number = 0; i < audios.length; i++) {
     const audio = audios[i] as HTMLAudioElement
 
     if (audio !== event.target) audio.pause()

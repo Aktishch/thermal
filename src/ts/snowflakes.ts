@@ -6,7 +6,7 @@ export default (): void => {
 
   if (!snow || touchDevice()) return
 
-  let flag = true
+  let flag: boolean = true
 
   const createSnowflake = (event: MouseEvent): void => {
     if (!flag) return

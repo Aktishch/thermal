@@ -20,7 +20,7 @@ const setDraggable = (id: string): void => {
 
   const body = document.body as HTMLBodyElement
   const coordinates: Coordinates = { top: 0, left: 0 }
-  let active = false
+  let active: boolean = false
   let currentY: number
   let currentX: number
   let initialY: number

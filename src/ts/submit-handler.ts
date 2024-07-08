@@ -26,7 +26,7 @@ const submitHandler = ({
       const submitBtn = form.querySelector(
         'button[type="submit"]'
       ) as HTMLButtonElement
-      let requestUrl = ''
+      let requestUrl: string
 
       for (const pair of formData.entries()) {
         searchParams.append(pair[0], String(pair[1]))
@@ -34,7 +34,7 @@ const submitHandler = ({
 
       if (form.hasAttribute('data-files')) {
         if (data !== null)
-          for (let i = 0; i < data.length; i++)
+          for (let i: number = 0; i < data.length; i++)
             formData.append('file[]', data[i])
       }
 

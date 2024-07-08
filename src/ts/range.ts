@@ -46,8 +46,8 @@ export default (): void => {
     const wrappers = range.querySelectorAll(
       '*[data-range-wrapper]'
     ) as NodeListOf<HTMLDivElement>
-    const first = 0
-    const last = 1
+    const first: number = 0
+    const last: number = 1
 
     switch (wrappers.length) {
       case 1: {

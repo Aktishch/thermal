@@ -19,16 +19,12 @@ export default (): void => {
     layers.forEach((layer: HTMLElement): void => {
       if (!layer) return
 
-      const speed: number = layer.dataset.parallaxSpeed
-        ? Number(layer.dataset.parallaxSpeed) / 100
-        : 0.05
-      const depth: number = layer.dataset.parallaxDepth
-        ? Number(layer.dataset.parallaxDepth)
-        : 1
-      let positionY = 0
-      let positionX = 0
-      let currentY = 0
-      let currentX = 0
+      const speed: number = Number(layer.dataset.parallaxSpeed) / 100 || 0.05
+      const depth: number = Number(layer.dataset.parallaxDepth) || 1
+      let positionY: number = 0
+      let positionX: number = 0
+      let currentY: number = 0
+      let currentX: number = 0
 
       const setParallaxPosition = (): void => {
         const initialY: number = currentY - positionY
@@ -70,24 +66,20 @@ export default (): void => {
     hovereds.forEach((hovered: HTMLElement): void => {
       if (!hovered) return
 
-      const perspective: number = hovered.dataset.parallaxHovered
-        ? Number(hovered.dataset.parallaxHovered)
-        : 600
+      const perspective: number = Number(hovered.dataset.parallaxHovered) || 600
       const items = hovered.querySelectorAll(
         '*[data-parallax-item]'
       ) as NodeListOf<HTMLElement>
-      const depth = 10
-      let positionY = 0
-      let positionX = 0
+      const depth: number = 10
+      let positionY: number = 0
+      let positionX: number = 0
 
       hovered.style.perspective = `${perspective}px`
 
       items.forEach((item: HTMLElement): void => {
         if (!item) return
 
-        const translateZ = item.dataset.parallaxItem
-          ? Number(item.dataset.parallaxItem)
-          : 100
+        const translateZ = Number(item.dataset.parallaxItem) || 100
 
         item.style.transform = `rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translateZ(${translateZ}px)`
       })

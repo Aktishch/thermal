@@ -6,7 +6,7 @@ export const checkQuizSlide = (slide: HTMLElement): void => {
       ...slide.querySelectorAll('select'),
       ...slide.querySelectorAll('textarea'),
     ]
-  let active = true
+  let active: boolean = true
 
   for (const index in inputs) {
     if (!Object.hasOwnProperty.call(inputs, index)) continue

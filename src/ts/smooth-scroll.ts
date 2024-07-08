@@ -15,11 +15,9 @@ export default (): void => {
   const wrappers = smoothScroll.querySelectorAll(
     '*[data-smooth-wrapper]'
   ) as NodeListOf<HTMLElement>
-  const speed: number = smoothScroll.dataset.smoothSpeed
-    ? Number(smoothScroll.dataset.smoothSpeed) / 100
-    : 0.02
+  const speed: number = Number(smoothScroll.dataset.smoothSpeed) / 100 || 0.02
   let smoothSpeed: number = speed
-  let offset = 0
+  let offset: number = 0
 
   const setBodyHeight = (): void => {
     const height: number = smoothScroll.getBoundingClientRect().height - 1
@@ -75,7 +73,7 @@ export default (): void => {
     stickys.forEach((sticky: HTMLElement): void => {
       if (!sticky) return
 
-      let stickyPosition = 0
+      let stickyPosition: number = 0
 
       const createSmothSticky = (): void => {
         if (
@@ -96,13 +94,9 @@ export default (): void => {
     layers.forEach((layer: HTMLElement): void => {
       if (!layer) return
 
-      const layerSpeed: number = layer.dataset.smoothSpeed
-        ? Number(layer.dataset.smoothSpeed) / 100
-        : 0.02
-      const layerDepth: number = layer.dataset.smoothDepth
-        ? Number(layer.dataset.smoothDepth)
-        : 1
-      let layerPosition = 0
+      const layerSpeed: number = Number(layer.dataset.smoothSpeed) / 100 || 0.02
+      const layerDepth: number = Number(layer.dataset.smoothDepth) || 1
+      let layerPosition: number = 0
 
       const createSmoothLayer = (): void => {
         if (

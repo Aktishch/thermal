@@ -21,7 +21,7 @@
   <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block mb-10 duration-1000 anim anim-up', data: 'data-anim="hidden"'}) %>
   <h1 class="mb-5 text-5xl font-bold leading-tight text-center duration-500 delay-200 font-alt lg:text-6xl md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Main block</h1>
   <div class="w-full duration-500 delay-300 anim anim-up" data-anim="hidden">
-    <a class="btn btn-primary btn-lg btn-fill btn-glow w-full max-w-48 mx-auto" data-waved="light" data-scroll="top" draggable="false" href="#content">Show more</a>
+    <a class="w-full mx-auto btn btn-primary btn-lg btn-fill btn-glow max-w-48" data-waved="light" data-scroll="top" draggable="false" href="#content">Show more</a>
   </div>
 </section>
 
@@ -81,7 +81,7 @@
     <% } %>
   </div>
   <div class="w-full duration-500 anim anim-up" data-anim="hidden">
-    <button class="btn btn-second btn-lg btn-fade sm:hidden max-w-48 w-full mt-5 mx-auto" data-listing-show data-waved="dark">Show more</button>
+    <button class="w-full mx-auto mt-5 btn btn-second btn-lg btn-fade sm:hidden max-w-48" data-listing-show data-waved="dark">Show more</button>
   </div>
 </section>
 
@@ -194,7 +194,7 @@
     <%= picture({src: 'img/pictures/circle-grey', format: 'png', className: 'absolute z-10 top-20 -left-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="auto" data-parallax-speed="4" data-parallax-depth="2"'}) %>
     <%= picture({src: 'img/pictures/circle-white', format: 'png', className: 'absolute z-10 -bottom-8 -right-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="opposite" data-parallax-speed="4" data-parallax-depth="2"'}) %>
     <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-10 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"'}) %>
-    <div class="relative flex flex-col items-center justify-between gap-0 mb-5 overflow-hidden duration-500 md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim="hidden">
+    <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim="hidden">
       <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category filtering-active md:p-0" data-filtering-category="filtering" data-filtering-value="text-style">Text-style</div>
       <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="form-validate">Form-validate</div>
       <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="switches">Switches</div>
@@ -217,59 +217,55 @@
         </p>
       </div>
       <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="form-validate">
-        <form class="flex flex-col w-full max-w-sm mx-auto" data-form="submit" data-files data-datepicker id="data-save">
+        <form class="flex flex-col w-full max-w-sm gap-5 mx-auto" data-form="submit" data-files data-datepicker id="data-save">
           <input type="hidden" value="Главная" name="theme">
-          <label class="mb-5 input-label" data-label="input">
-            <span class="mb-3 text-xl">Name</span>
-            <div class="input-wrapper">
+          <label data-label="input">
+            <h5 class="mb-3 text-xl font-medium leading-none">Name</h5>
+            <div class="relative">
               <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
-              <span class="input-warning" data-warning>Пожалуйста, введите ваше имя!</span>
+              <span class="input-error" data-error>Пожалуйста, введите ваше имя!</span>
             </div>
           </label>
-          <label class="mb-5 input-label" data-label="input">
-            <span class="mb-3 text-xl">Telephone</span>
-            <div class="input-wrapper">
+          <label data-label="input">
+            <h5 class="mb-3 text-xl font-medium leading-none">Telephone</h5>
+            <div class="relative">
               <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-              <span class="input-warning" data-warning>Пожалуйста, введите ваш номер!</span>
+              <span class="input-error" data-error>Пожалуйста, введите ваш номер!</span>
             </div>
           </label>
-          <label class="mb-5 input-label" data-label="input">
-            <span class="mb-3 text-xl">Email</span>
-            <div class="input-wrapper">
+          <label data-label="input">
+            <h5 class="mb-3 text-xl font-medium leading-none">Email</h5>
+            <div class="relative">
               <input class="input input-gray input-lg" data-input="email" type="text" placeholder="_@_._" name="email">
-              <span class="input-warning" data-warning>Пожалуйста, введите корректный адрес!</span>
+              <span class="input-error" data-error>Пожалуйста, введите корректный адрес!</span>
             </div>
           </label>
-          <div class="mb-5">
-            <span class="mb-3 text-xl">Date</span>
+          <div>
+            <h5 class="mb-3 text-xl font-medium leading-none">Date</h5>
             <div class="flex items-center justify-between">
-              <label class="input-label flex-grow" data-label="input">
-                <div class="input-wrapper">
-                  <input class="input input-gray input-lg rounded-r-none" data-input="min" data-position="top left" type="text" name="check-in">
-                  <span class="input-warning" data-warning>Укажите дату!</span>
+              <div class="relative flex-grow" data-label="input">
+                <input class="rounded-r-none input input-gray input-lg" data-input="min" data-position="top left" type="text" name="check-in">
+                <span class="input-error" data-error>Укажите дату!</span>
+              </div>
+              <div class="relative flex-grow" data-label="input">
+                <input class="rounded-l-none input input-gray input-lg" data-input="max" type="text" name="check-out">
+                <div class="input-icon input-icon-right">
+                  <%= icon({id: 'calendar', className: 'icon text-xl', data: false}) %>
                 </div>
-              </label>
-              <label class="input-label flex-grow" data-label="input">
-                <div class="input-wrapper">
-                  <input class="input input-gray input-lg rounded-l-none" data-input="max" type="text" name="check-out">
-                  <div class="input-icon input-icon-right">
-                    <%= icon({id: 'calendar', className: 'icon text-xl', data: false}) %>
-                  </div>
-                  <span class="input-warning" data-warning>Укажите дату!</span>
-                </div>
-              </label>
+                <span class="input-error" data-error>Укажите дату!</span>
+              </div>
             </div>
           </div>
-          <label class="mb-5 input-label" data-label="input">
-            <span class="mb-3 text-xl">Number</span>
-            <div class="input-wrapper">
+          <label data-label="input">
+            <h5 class="mb-3 text-xl font-medium leading-none">Number</h5>
+            <div class="relative">
               <input class="input input-gray input-lg" data-input="number" type="text" placeholder="12345" name="number">
-              <span class="input-warning" data-warning>Пожалуйста, введите число!</span>
+              <span class="input-error" data-error>Пожалуйста, введите число!</span>
             </div>
           </label>
-          <label class="mb-5 input-label" data-label="input">
-            <span class="mb-3 text-xl">Select</span>
-            <div class="input-wrapper">
+          <label data-label="input">
+            <h5 class="mb-3 text-xl font-medium leading-none">Select</h5>
+            <div class="relative">
               <select class="input input-gray input-lg" data-input="select" name="select">
                 <option value="empty" disabled hidden selected>Select</option>
                 <option value="1">1</option>
@@ -280,36 +276,34 @@
               <div class="input-icon input-icon-right">
                 <%= icon({id: 'arrow-bottom', className: 'icon text-12', data: false}) %>
               </div>
-              <span class="input-warning" data-warning>Пожалуйста, выберите вариант!</span>
+              <span class="input-error" data-error>Пожалуйста, выберите вариант!</span>
             </div>
           </label>
-          <label class="mb-5 input-label" data-label="input">
-            <span class="mb-3 text-xl">Reviews</span>
-            <div class="input-wrapper">
-              <textarea class="input input-gray input-lg h-[200px]" data-input="text" type="text" placeholder="Reviews" name="text"></textarea>
-              <span class="input-warning" data-warning>Пожалуйста, заполните это поле!</span>
+          <label data-label="input">
+            <h5 class="mb-3 text-xl font-medium leading-none">Reviews</h5>
+            <div class="relative">
+              <textarea class="h-48 input input-gray input-lg" data-input="text" type="text" placeholder="Reviews" name="text"></textarea>
+              <span class="input-error" data-error>Пожалуйста, заполните это поле!</span>
             </div>
           </label>
-          <div class="mb-5 input-wrapper" data-label="download">
+          <div class="relative" data-label="download">
             <label class="btn btn-second btn-lg btn-fade" data-waved="dark">
               <input class="hidden" data-input="file" type="file">
               <span data-files-text>Загрузить файлы</span>
             </label>
-            <span class="input-warning" data-warning>Пожалуйста, загрузите изображение!</span>
+            <span class="input-error" data-error>Пожалуйста, загрузите изображение!</span>
           </div>
           <ul class="flex flex-col gap-1 text-xs" data-files-listing></ul>
-          <label class="mb-5 form-input" data-label="input">
-            <div class="input-wrapper">
-              <div class="flex flex-row items-center">
-                <input class="mr-2 switch switch-checkbox" data-input="switch" type="checkbox" checked>
-                <span class="text-xl">Policy</span>
-              </div>
-              <span class="input-warning" data-warning>Пожалуйста, примите соглашение!</span>
-            </div>
-          </label>
-          <button class="mb-5 btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Submit</button>
-          <div class="mx-auto text-lg cursor-pointer hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
+          <div class="relative flex" data-label="input">
+            <label class="flex flex-row items-center cursor-pointer">
+              <input class="mr-2 switch switch-checkbox" data-input="switch" type="checkbox" checked>
+              <span class="text-xl">Policy</span>
+            </label>
+            <span class="input-error" data-error>Пожалуйста, примите соглашение!</span>
+          </div>
+          <button class="btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Submit</button>
         </form>
+        <div class="mx-auto mt-5 text-lg cursor-pointer hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
       </div>
       <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="switches">
         <div class="flex flex-col gap-6">
@@ -343,7 +337,7 @@
             <% } %>
           </div>
           <h4 class="text-2xl font-semibold">Range:</h4>
-          <div class="range w-full max-w-xs" data-range>
+          <div class="w-full max-w-xs range" data-range>
             <div class="flex items-center justify-between mb-4">
               <span class="text-base">Value</span>
               <output class="text-base opacity-60" data-range-output></output>
@@ -356,10 +350,10 @@
               </div>
             </div>
           </div>
-          <div class="range w-full max-w-xs" data-range>
+          <div class="w-full max-w-xs range" data-range>
             <div class="flex items-center justify-between mb-4">
-              <input class="text-center input input-gray input-lg w-16" data-range-output data-input="number" type="text" maxlength="3">
-              <input class="text-center input input-gray input-lg w-16" data-range-output data-input="number" type="text" maxlength="3">
+              <input class="w-16 text-center input input-gray input-lg" data-range-output data-input="number" type="text" maxlength="3">
+              <input class="w-16 text-center input input-gray input-lg" data-range-output data-input="number" type="text" maxlength="3">
             </div>
             <div class="relative text-white pointer-events-none">
               <div class="range-wrapper" data-range-wrapper>
@@ -379,7 +373,7 @@
       <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="file">
         <div class="w-full max-w-xs mx-auto" id="copy">
           <div class="flex items-center w-full gap-3 mb-5">
-            <div class="w-10 shrink-0 rounded-full cursor-pointer pack pack-xl bg-primary/40" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-avatar.html">
+            <div class="w-10 rounded-full cursor-pointer shrink-0 pack pack-xl bg-primary/40" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-avatar.html">
               <div class="absolute inset-0 flex items-center justify-center">
                 <%= icon({id: 'user', className: 'icon text-white text-sm', data: false}) %>
               </div>
@@ -389,19 +383,19 @@
           </div>
           <form class="mb-5" data-form="submit">
             <input type="hidden" value="Изображение" name="theme">
-            <div class="items-center justify-center input-label" data-label="download">
-              <div class="mb-5 input-wrapper">
-                <div class="w-full duration-200 pack pack-xl bg-second rounded-2xl" data-drag>
+            <div class="flex flex-col" data-label="download">
+              <div class="relative mb-5">
+                <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-drag>
                   <%= picture({src: '', format: '', className: 'image image-scale-down', data: 'data-file="image"'}) %>
                 </div>
-                <span class="input-warning" data-warning>Пожалуйста, загрузите изображение!</span>
+                <span class="input-error" data-error>Пожалуйста, загрузите изображение!</span>
               </div>
-              <div class="flex flex-wrap items-center justify-center w-full gap-4">
-                <label class="w-full btn btn-primary btn-lg btn-fill sm:w-auto" data-waved="light">
+              <div class="flex flex-wrap items-center justify-between gap-4">
+                <label class="flex-grow btn btn-primary btn-lg btn-fill" data-waved="light">
                   <input class="hidden" data-input="file" type="file" name="file[]">
                   Загрузить
                 </label>
-                <button class="w-full btn btn-primary btn-lg btn-contur sm:w-auto" data-waved="dark" type="submit">Отправить</button>
+                <button class="flex-grow btn btn-primary btn-lg btn-contur" data-waved="dark" type="submit">Отправить</button>
               </div>
             </div>
           </form>

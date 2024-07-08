@@ -11,11 +11,8 @@ const formatterValue = (value: string): string => {
   formatted = firstVal + ' '
 
   if (value.length > 1) formatted += '(' + value.substring(1, 4)
-
   if (value.length >= 5) formatted += ') ' + value.substring(4, 7)
-
   if (value.length >= 8) formatted += '-' + value.substring(7, 9)
-
   if (value.length >= 10) formatted += '-' + value.substring(9, 11)
 
   return formatted
@@ -30,7 +27,6 @@ const onInput = (event: InputEvent): '' | undefined => {
 
   if (input.value.length !== selection) {
     if (event.data) input.value = formatterValue(value)
-
     return
   }
 
@@ -67,7 +63,6 @@ const onPaste = (event: ClipboardEvent): void => {
 
   if (pasted && /\D/g.test(pasted.getData('Text'))) {
     input.value = value
-
     return
   }
 }

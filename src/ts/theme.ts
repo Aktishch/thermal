@@ -3,7 +3,7 @@ export default (): void => {
   const toggles = html.querySelectorAll(
     '*[data-theme="toggle"]'
   ) as NodeListOf<HTMLInputElement>
-  let theme = 'default'
+  let theme: string = 'default'
 
   const togglesChecked = (check: boolean): void => {
     toggles.forEach((toggle: HTMLInputElement): void => {

@@ -6,8 +6,8 @@ export default (): void => {
   if (!game) return
 
   const cells: HTMLButtonElement[] = []
-  let player = 'X'
-  let over = false
+  let player: string = 'X'
+  let over: boolean = false
 
   const checkWin = (player: string): boolean => {
     const combinations: number[][] = [
@@ -62,7 +62,7 @@ export default (): void => {
     }
   }
 
-  for (let i = 0; i < 9; i++) {
+  for (let i: number = 0; i < 9; i++) {
     const cell = document.createElement('button') as HTMLButtonElement
 
     cell.classList.add(

@@ -7,7 +7,7 @@ const choiceFile = (event: Event): void => {
   const download = form.querySelector(
     '*[data-label="download"]'
   ) as HTMLDivElement
-  const warning = download.querySelector('*[data-warning]') as HTMLSpanElement
+  const error = download.querySelector('*[data-error]') as HTMLSpanElement
   const image = download.querySelector(
     '*[data-file="image"]'
   ) as HTMLImageElement
@@ -20,13 +20,13 @@ const choiceFile = (event: Event): void => {
   file ? readFile.readAsDataURL(file) : (image.src = '')
 
   readFile.addEventListener('loadend', ((): void => {
-    if (!fileHandler({ input: input, warning: warning })) return
+    if (!fileHandler({ input: input, error: error })) return
 
     image.src = String(readFile.result)
 
     if (form.dataset.form === 'avatar') {
       const formData = new FormData(form) as FormData
-      const requestUrl = './ajax/submit-handler.php'
+      const requestUrl: string = './ajax/submit-handler.php'
       const avatar = document.querySelector(
         '*[data-avatar]'
       ) as HTMLImageElement

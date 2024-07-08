@@ -37,10 +37,10 @@
       </div>
     </div>
     <div class="mt-10 swiper-pagination md:hidden text-primary"></div>
-    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6" data-waved="light">
+    <button class="absolute hidden rounded-full size-12 swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6" data-waved="light">
       <%= icon({id: 'arrow-left', className: 'icon', data: false}) %>
     </button>
-    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-next btn btn-primary btn-fill md:flex md:-right-6" data-waved="light">
+    <button class="absolute hidden rounded-full size-12 swiper-button-next btn btn-primary btn-fill md:flex md:-right-6" data-waved="light">
       <%= icon({id: 'arrow-right', className: 'icon', data: false}) %>
     </button>
   </div>
@@ -86,26 +86,22 @@
     </div>
     <div class="inverted-after">
       <div class="flex items-center justify-between gap-4">
-        <form class="w-full form" data-form="action" action="primary.html">
-          <label class="form-label" data-label="input">
-            <div class="form-wrapper">
-              <div class="input-cover">
-                <input class="pl-10 input input-gray input-lg" data-input type="search" placeholder="Поиск..." list="search" name="search">
-              </div>
-              <span class="form-error" data-error>Пожалуйста, заполните это поле!</span>
-              <datalist id="search">
-                <option>Milk</option>
-                <option>Tomato</option>
-                <option>Meat</option>
-                <option>Potatoes</option>
-              </datalist>
-              <button class="form-icon form-icon-pointer form-icon-left opacity-30" type="submit">
-                <%= icon({id: 'search', className: 'icon text-black text-xl', data: false}) %>
-              </button>
-            </div>
-          </label>
+        <form class="w-full" data-form="action" action="primary.html">
+          <div class="relative" data-label="input">
+            <input class="pl-10 input input-gray input-lg" data-input type="search" placeholder="Поиск..." list="search" name="search">
+            <span class="input-error" data-error>Пожалуйста, заполните это поле!</span>
+            <datalist id="search">
+              <option>Milk</option>
+              <option>Tomato</option>
+              <option>Meat</option>
+              <option>Potatoes</option>
+            </datalist>
+            <button class="input-icon input-icon-pointer input-icon-left opacity-30" type="submit">
+              <%= icon({id: 'search', className: 'icon text-black text-xl', data: false}) %>
+            </button>
+          </div>
         </form>
-        <button class="btn btn-primary btn-lg btn-fill" data-inverted-toggle="before" data-waved="light">Close</button>
+        <button class="btn btn-primary btn-lg btn-fill shrink-0" data-inverted-toggle="before" data-waved="light">Close</button>
       </div>
     </div>
   </div>
@@ -135,12 +131,10 @@
                   <% } %>
                   <span class="text-xl font-semibold md:text-2xl" data-product-price><%= products[i].price %></span>
                 </div>
-                <div class="quantity" data-quantity>
-                  <button class="swiper-no-swiping quantity-btn btn btn-gray btn-fill" data-quantity-decrease data-waved="light">-</button>
-                  <div class="quantity-cover input-cover">
-                    <input class="quantity-input input dark:text-white" data-product-quantity data-input="number" type="text" value="1" maxlength="3" name="quantity">
-                  </div>
-                  <button class="swiper-no-swiping quantity-btn btn btn-gray btn-fill" data-quantity-increase data-waved="light">+</button>
+                <div class="quantity swiper-no-swiping" data-quantity>
+                  <button class="quantity-btn btn btn-gray btn-fill" data-quantity-decrease data-waved="light">-</button>
+                  <input class="quantity-input input" data-product-quantity data-input="number" type="text" value="1" maxlength="3" name="quantity">
+                  <button class="quantity-btn btn btn-gray btn-fill" data-quantity-increase data-waved="light">+</button>
                 </div>
               </div>
               <button class="swiper-no-swiping btn btn-primary btn-lg btn-fade" data-product-button data-waved="light">
@@ -154,10 +148,10 @@
       </div>
     </div>
     <div class="mt-10 swiper-pagination md:hidden text-primary"></div>
-    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6" data-waved="light">
+    <button class="absolute hidden rounded-full size-12 swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6" data-waved="light">
       <%= icon({id: 'arrow-left', className: 'icon', data: false}) %>
     </button>
-    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-next btn btn-primary btn-fill md:flex md:-right-6" data-waved="light">
+    <button class="absolute hidden rounded-full size-12 swiper-button-next btn btn-primary btn-fill md:flex md:-right-6" data-waved="light">
       <%= icon({id: 'arrow-right', className: 'icon', data: false}) %>
     </button>
   </div>
@@ -171,7 +165,7 @@
   </div>
   <div class="container flex gap-5 pt-0 overflow-x-auto md:gap-10 md:sticky md:top-40 scroll-smooth md:overflow-x-hidden" data-scrolling-horizontal data-smooth-sticky>
     <% for (var i = 0; i < 6; i++) { %>
-    <a class="pack pack-xs bg-grey dark:bg-dark rounded-3xl shadow-md w-full min-w-[320px] md:min-w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
+    <a class="pack pack-xs bg-grey dark:bg-dark rounded-3xl shadow-md shrink-0 w-80 md:w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
       <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-300', data: 'data-scrolling-image'}) %>
     </a>
@@ -183,7 +177,7 @@
 
 <section class="container quiz container-xs container-distance bg-grey dark:bg-dark">
   <div class="relative flex justify-between p-5 overflow-hidden duration-500 bg-white shadow-md dark:bg-black rounded-2xl md:p-10 anim anim-fade" data-anim="hidden">
-    <form class="form md:max-w-[270px] lg:max-w-[450px] w-full" data-form="params">
+    <form class="w-full md:max-w-72 lg:max-w-md" data-form="params">
       <div class="flex flex-col h-full quiz-slider group/quiz" data-quiz="stop">
         <div class="mx-0 swiper">
           <div class="swiper-wrapper">
@@ -207,23 +201,19 @@
               </div>
             </div>
             <div class="h-auto swiper-slide" data-quiz-slide>
-              <div class="flex flex-col h-full">
-                <label class="mb-5 form-label" data-label="input">
-                  <span class="mb-3 text-xl">Name</span>
-                  <div class="form-wrapper">
-                    <div class="input-cover">
-                      <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
-                    </div>
-                    <span class="form-error" data-error>Пожалуйста, введите ваше имя!</span>
+              <div class="flex flex-col h-full gap-5">
+                <label data-label="input">
+                  <h5 class="mb-3 text-xl font-medium leading-none">Name</h5>
+                  <div class="relative">
+                    <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
+                    <span class="input-error" data-error>Пожалуйста, введите ваше имя!</span>
                   </div>
                 </label>
-                <label class="mb-5 form-label" data-label="input">
-                  <span class="mb-3 text-xl">Telephone</span>
-                  <div class="form-wrapper">
-                    <div class="input-cover">
-                      <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-                    </div>
-                    <span class="form-error" data-error>Пожалуйста, введите ваш номер!</span>
+                <label data-label="input">
+                  <h5 class="mb-3 text-xl font-medium leading-none">Telephone</h5>
+                  <div class="relative">
+                    <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (" name="tel">
+                    <span class="input-error" data-error>Пожалуйста, введите ваш номер!</span>
                   </div>
                 </label>
                 <button class="w-full btn btn-primary btn-lg btn-fill" data-waved="light" type="submit">Submit</button>
@@ -249,7 +239,7 @@
         </div>
       </div>
     </form>
-    <div class="quiz-images hidden md:block w-full max-w-[330px] lg:max-w-[400px]">
+    <div class="hidden w-full quiz-images md:block max-w-80 lg:max-w-sm">
       <div class="swiper">
         <div class="swiper-wrapper">
           <% for (var i = 0; i < 3; i++) { %>
@@ -281,8 +271,8 @@
       </div>
     </div>
   </div>
-  <div class="relative z-10 flex flex-wrap justify-between gap-5 p-5 overflow-hidden bg-white shadow-md dark:bg-black rounded-2xl md:p-10">
-    <div class="w-full lg:max-w-[400px] xl:max-w-[450px]">
+  <div class="relative z-10 flex flex-wrap justify-between gap-5 p-5 overflow-hidden bg-white shadow-md xl:flex-nowrap dark:bg-black rounded-2xl md:p-10">
+    <div class="w-full lg:max-w-96 xl:max-w-md">
       <div class="relative mb-5 overflow-hidden description-slider bg-grey dark:bg-dark rounded-2xl md:mb-3">
         <div class="h-full swiper">
           <div class="h-full swiper-wrapper">
@@ -308,7 +298,7 @@
         </div>
       </div>
     </div>
-    <div class="description-info w-full lg:max-w-[400px] xl:max-w-[550px] h-auto">
+    <div class="w-full h-auto description-info lg:max-w-96 xl:max-w-xl">
       <div class="h-full swiper">
         <div class="swiper-wrapper">
           <% for (var i = 0; i < 6; i++) { %>
@@ -319,7 +309,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
               </p>
-              <button class="btn btn-primary btn-lg btn-fill w-full max-w-[200px] mt-auto" data-waved="light">Button</button>
+              <button class="w-full mt-auto btn btn-primary btn-lg btn-fill max-w-48" data-waved="light">Button</button>
             </div>
           </div>
           <% } %>

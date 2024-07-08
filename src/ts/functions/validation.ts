@@ -1,41 +1,41 @@
 import { fileHandler } from './file-handler'
 
 export const validation = (form: HTMLFormElement): boolean => {
-  const labels = form.querySelectorAll(
-    '*[data-label="input"]'
-  ) as NodeListOf<HTMLLabelElement>
+  const labels = form.querySelectorAll('*[data-label="input"]') as NodeListOf<
+    HTMLLabelElement | HTMLDivElement
+  >
   const download = form.querySelector(
     '*[data-label="download"]'
   ) as HTMLDivElement
-  let validate = true
+  let validate: boolean = true
 
   if (download) {
     const input = download.querySelector(
       '*[data-input="file"]'
     ) as HTMLInputElement
-    const warning = download.querySelector('*[data-warning]') as HTMLSpanElement
+    const error = download.querySelector('*[data-error]') as HTMLSpanElement
 
-    validate = fileHandler({ input: input, warning: warning })
+    validate = fileHandler({ input: input, error: error })
   }
 
-  labels.forEach((label: HTMLLabelElement): void => {
+  labels.forEach((label: HTMLLabelElement | HTMLDivElement): void => {
     if (!label) return
 
     const input = label.querySelector('*[data-input]') as HTMLInputElement
-    const warning = label.querySelector('*[data-warning]') as HTMLSpanElement
+    const error = label.querySelector('*[data-error]') as HTMLSpanElement
 
-    if (!input && !warning) return
+    if (!input && !error) return
 
     const inputError = (): void => {
       input.focus()
-      input.classList.add('input-error')
-      warning.classList.add('visible', 'opacity-100')
+      input.classList.add('input-warning')
+      error.classList.add('visible', 'opacity-100')
       validate = false
     }
 
     const maxLengthInputTel = (value: number): void => {
       if (input.value.length > 0 && input.value.length < value) {
-        warning.innerText = 'Введите корректный номер!'
+        error.innerText = 'Введите корректный номер!'
         inputError()
       }
     }
@@ -55,8 +55,8 @@ export const validation = (form: HTMLFormElement): boolean => {
       }
 
       case false: {
-        input.classList.remove('input-error')
-        warning.classList.remove('visible', 'opacity-100')
+        input.classList.remove('input-warning')
+        error.classList.remove('visible', 'opacity-100')
         break
       }
     }
@@ -80,7 +80,7 @@ export const validation = (form: HTMLFormElement): boolean => {
           }
 
           default: {
-            warning.innerText = 'Пожалуйста, введите ваш номер!'
+            error.innerText = 'Пожалуйста, введите ваш номер!'
             break
           }
         }
@@ -101,13 +101,13 @@ export const validation = (form: HTMLFormElement): boolean => {
       case 'text': {
         switch (input.value.length > 0 && input.value.length < 10) {
           case true: {
-            warning.innerText = 'Введите не менее 10 символов!'
+            error.innerText = 'Введите не менее 10 символов!'
             inputError()
             break
           }
 
           case false: {
-            warning.innerText = 'Пожалуйста, заполните это поле!'
+            error.innerText = 'Пожалуйста, заполните это поле!'
             break
           }
         }
@@ -125,8 +125,8 @@ export const validation = (form: HTMLFormElement): boolean => {
       'input',
       ((): void => {
         if (input.value.length > 0) {
-          input.classList.remove('input-error')
-          warning.classList.remove('visible', 'opacity-100')
+          input.classList.remove('input-warning')
+          error.classList.remove('visible', 'opacity-100')
         }
       }) as EventListener,
       { once: true }

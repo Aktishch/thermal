@@ -1,10 +1,7 @@
 import { dialog } from './fancybox'
 
 export default (): void => {
-  if (
-    !sessionStorage.getItem('warning') &&
-    sessionStorage.getItem('warning') !== 'positive'
-  )
+  if (sessionStorage.getItem('warning') !== 'positive')
     setTimeout(
       (): void => dialog.notClosing('./dialogs/dialog-warning.html'),
       2000

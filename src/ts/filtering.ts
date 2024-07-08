@@ -29,7 +29,8 @@ const filterHandler = ({
   cards: NodeListOf<HTMLDivElement>
   plug: HTMLDivElement
 }): void => {
-  let hidden = 0
+  let hidden: number = 0
+
   cards.forEach((card: HTMLDivElement): void => {
     const absence: boolean =
       String(card.dataset.filteringValue).split(' ').includes(name) === false

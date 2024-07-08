@@ -4,17 +4,17 @@
 %>
 
 <dialog class="px-5 py-10 dialog dialog-xs dark:bg-black dark:text-white rounded-xl">
-  <form class="form" data-form="avatar">
+  <form data-form="avatar">
     <input type="hidden" value="Аватарка" name="theme">
-    <div class="items-center justify-center form-label" data-label="download">
-      <div class="mb-5 form-wrapper">
+    <div data-label="download">
+      <div class="relative mb-5">
         <div class="w-1/2 mx-auto rounded-full pack pack-xl bg-primary">
           <div class="absolute inset-0 flex items-center justify-center">
             <%= icon({id: 'user', className: 'icon text-white dark:text-black text-7xl md:text-8xl', data: false}) %>
           </div>
           <%= picture({src: '', format: '', className: 'image', data: 'data-file="image"'}) %>
         </div>
-        <span class="form-error" data-error>Пожалуйста, загрузите изображение!</span>
+        <span class="input-error" data-error>Пожалуйста, загрузите изображение!</span>
       </div>
       <div class="flex flex-wrap items-center justify-between w-full gap-4">
         <label class="flex-grow btn btn-second btn-lg btn-fill" data-waved="dark">

@@ -63,13 +63,13 @@
 <section class="container flex flex-col items-center justify-center bg-white container-xs dark:bg-black">
   <h2 class="mb-5 text-4xl font-bold leading-tight text-center duration-500 font-alt lg:text-5xl md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Sorting</h2>
   <div class="w-full max-w-xl mx-auto filtering" data-filtering="sorting">
-    <div class="relative flex flex-col items-center justify-between gap-0 mb-5 overflow-hidden duration-500 md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim="hidden">
-      <div class="flex-grow w-full p-4 text-xl text-center cursor-pointer filtering__category filtering-active md:p-0" data-filtering-category="sorting" data-filtering-value="all">All</div>
-      <div class="flex-grow w-full p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="primary">Primary</div>
-      <div class="flex-grow w-full p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="second">Second</div>
-      <div class="flex-grow w-full p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="green">Green</div>
-      <div class="flex-grow w-full p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="mix">Mix</div>
-      <div class="flex-grow w-full p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="none">None</div>
+    <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim="hidden">
+      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category filtering-active md:p-0" data-filtering-category="sorting" data-filtering-value="all">All</div>
+      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="primary">Primary</div>
+      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="second">Second</div>
+      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="green">Green</div>
+      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="mix">Mix</div>
+      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="none">None</div>
       <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="sorting"></span>
     </div>
     <div class="grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-10">
@@ -114,11 +114,11 @@
 
 <section class="container flex flex-col items-center justify-center bg-white container-xs dark:bg-black">
   <h2 class="mb-5 text-4xl font-bold leading-tight text-center duration-500 font-alt lg:text-5xl md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Timer</h2>
-  <div class="flex flex-col items-center justify-center relative bg-primary rounded-full w-full max-w-[300px] h-[300px] mx-auto" data-timer>
-    <div class="flex flex-col items-center absolute top-0 left-0 right-0 text-second origin-bottom pointer-events-none w-0.5 h-1/2 mx-auto ease-in-out duration-100 after:content-auto after:block after:relative after:-top-2 after:bg-current after:rounded-full after:w-4 after:h-4" data-timer-stopwatch></div>
+  <div class="relative flex flex-col items-center justify-center mx-auto rounded-full bg-primary size-72" data-timer>
+    <div class="flex flex-col items-center absolute top-0 left-0 right-0 text-second origin-bottom pointer-events-none w-0.5 h-1/2 mx-auto ease-in-out duration-100 after:content-auto after:block after:relative after:-top-2 after:bg-current after:rounded-full after:size-4" data-timer-stopwatch></div>
     <time class="mb-5 text-2xl font-semibold text-center text-white" data-timer-units></time>
     <div class="flex items-center justify-center gap-4">
-      <button class="w-10 h-10 rounded-full btn btn-second btn-fade" data-timer-turn data-waved="dark">
+      <button class="rounded-full size-10 btn btn-second btn-fade shrink-0" data-timer-turn data-waved="dark">
         <%= icon({id: 'play', className: 'icon text-4xl', data: false}) %>
       </button>
       <button class="btn btn-second btn-sm btn-light" data-timer-reset data-waved="dark">Reset</button>
