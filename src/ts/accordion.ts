@@ -16,7 +16,7 @@ const setAccordion = (element: HTMLElement): void => {
       : 0
 
     content.style.height = `${content.scrollHeight}px`
-    content.style.transitionDuration = duration ? `${transition / 1000}s` : '0s'
+    content.style.transitionDuration = duration ? `${transition}ms` : '0s'
 
     switch (accordion.dataset.accordion) {
       case 'hidden': {

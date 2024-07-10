@@ -13,7 +13,7 @@ module.exports = plugin(
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
       },
     }
-    Object.entries(theme('animOccurrence')).map(([key, value]) => {
+    Object.entries(theme('animation')).map(([key, value]) => {
       anim = {
         ...anim,
         [`.anim-${key}:not([data-anim="show"])`]: {
@@ -36,7 +36,7 @@ module.exports = plugin(
   },
   {
     theme: {
-      animOccurrence: {
+      animation: {
         fade: 'none',
         increase: 'scale(0)',
         decrease: 'scale(1.3)',

@@ -6,7 +6,7 @@
   &-circle {
     background-color: var(--waved-color);
     transform       : translate(-50%, -50%) scale(0);
-    animation       : waved 1s ease forwards;
+    animation       : waved 1000ms ease forwards;
 
     @apply block absolute rounded-full size-10;
   }

@@ -14,7 +14,7 @@ export const media: Media = {
   md: 767.98,
   lg: 991.98,
   xl: 1365.98,
-  xxl: 2559.98,
+  xxl: 2499.98,
 }
 
 window.media = media

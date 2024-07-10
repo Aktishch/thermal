@@ -6,25 +6,25 @@
 
   var icon = _.template(require('./components/icon.html').default)
   var picture = _.template(require('./components/picture.html').default)
-  var loader = _.template(require('./components/loader.html').default)({icon: icon})
+  var loader = _.template(require('./components/loader.html').default)({icon})
   var preloader = require('./components/preloader.html').default
-  var header = _.template(require('./includes/header.html').default)
-  var heading = _.template(require('./includes/heading.html').default)
-  var player = _.template(require('./includes/player.html').default)
-  var footer = _.template(require('./includes/footer.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture})
+  var heading = _.template(require('./includes/heading.html').default)({data})
+  var player = _.template(require('./includes/player.html').default)({loader, icon, picture})
+  var footer = _.template(require('./includes/footer.html').default)({loader, picture})
 %>
 
-<%= header({data, loader, preloader, icon, picture}) %>
+<%= header %>
 
 <!-- Шапка страницы -->
 
-<%= heading({data}) %>
+<%= heading %>
 
 <!-- Галерея -->
 
 <section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" id="content">
-  <h2 class="mb-3 text-4xl font-bold leading-tight text-center duration-500 font-alt lg:text-5xl anim anim-up" data-anim="hidden" data-movement="blend">Slider-swiper</h2>
-  <h3 class="mb-5 text-base font-semibold leading-tight duration-500 md:text-lg md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Class template for slider</h3>
+  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim="hidden" data-movement="blend">Slider-swiper</h2>
+  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Class template for slider</h3>
   <div class="relative w-full gallery-slider">
     <div class="p-4 -m-4 swiper">
       <div class="swiper-wrapper">
@@ -79,7 +79,7 @@
 ] %>
 
 <section class="container flex flex-col items-center justify-center overflow-hidden container-distance bg-grey dark:bg-dark">
-  <h2 class="mb-5 text-4xl font-bold leading-tight text-center duration-500 font-alt lg:text-5xl md:md-10 anim anim-up" data-anim="hidden" data-movement="blend">Products</h2>
+  <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:md-10 anim anim-up" data-anim="hidden" data-movement="blend">Products</h2>
   <div class="w-full inverted mb-7" data-inverted="before">
     <div class="inverted-before">
       <button class="btn btn-primary btn-lg btn-fill" data-inverted-toggle="after" data-waved="light">Search</button>
@@ -110,7 +110,7 @@
       <div class="swiper-wrapper">
         <% for (var i = 0; i < products.length; i++) { %>
         <div class="h-auto swiper-slide">
-          <div class="h-full p-1 cursor-pointer product card card-active dark:bg-black" data-product>
+          <div class="h-full p-1 cursor-pointer product card card-hovered card-active dark:bg-black" data-product>
             <div class="pack pack-md bg-grey dark:bg-dark rounded-2xl">
               <%= loader %>
               <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"'}) %>
@@ -122,14 +122,14 @@
               </label>
             </div>
             <div class="p-2 card-content md:p-4">
-              <h4 class="mb-2 text-lg font-bold font-alt md:text-xl" data-product-name>Name <%= i %></h4>
-              <p class="mb-3 text-base cursor-pointer hover:underline underline-offset-4 opacity-70"><%= products[i].text %></p>
+              <h4 class="mb-2 font-bold text-lg/none font-alt md:text-xl/none" data-product-name>Name <%= i %></h4>
+              <p class="mb-3 cursor-pointer text-base/normal hover:underline underline-offset-4 opacity-70"><%= products[i].text %></p>
               <div class="flex flex-wrap items-end justify-between gap-4 mt-auto mb-5">
                 <div class="flex flex-col w-full md:w-auto">
                   <% if (products[i].oldPrice) { %>
-                  <span class="mb-2 text-sm line-through md:text-base opacity-60" data-product-oldprice><%= products[i].oldPrice %></span>
+                  <span class="mb-2 line-through text-sm/none md:text-base/none opacity-60" data-product-oldprice><%= products[i].oldPrice %></span>
                   <% } %>
-                  <span class="text-xl font-semibold md:text-2xl" data-product-price><%= products[i].price %></span>
+                  <span class="font-semibold text-xl/none md:text-2xl/none" data-product-price><%= products[i].price %></span>
                 </div>
                 <div class="quantity swiper-no-swiping" data-quantity>
                   <button class="quantity-btn btn btn-gray btn-fill" data-quantity-decrease data-waved="light">-</button>
@@ -161,7 +161,7 @@
 
 <section class="bg-white scrolling dark:bg-black" data-scrolling data-smooth-wrapper>
   <div class="container flex flex-col items-start pb-0 mb-5 md:md-10">
-    <h2 class="text-4xl font-bold leading-tight duration-500 font-alt lg:text-5xl anim anim-up" data-anim="hidden" data-movement="blend">Horizontal scroll</h2>
+    <h2 class="font-bold duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim="hidden" data-movement="blend">Horizontal scroll</h2>
   </div>
   <div class="container flex gap-5 pt-0 overflow-x-auto md:gap-10 md:sticky md:top-40 scroll-smooth md:overflow-x-hidden" data-scrolling-horizontal data-smooth-sticky>
     <% for (var i = 0; i < 6; i++) { %>
@@ -203,14 +203,14 @@
             <div class="h-auto swiper-slide" data-quiz-slide>
               <div class="flex flex-col h-full gap-5">
                 <label data-label="input">
-                  <h5 class="mb-3 text-xl font-medium leading-none">Name</h5>
+                  <h5 class="mb-3 font-medium text-xl/none">Name</h5>
                   <div class="relative">
                     <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
                     <span class="input-error" data-error>Пожалуйста, введите ваше имя!</span>
                   </div>
                 </label>
                 <label data-label="input">
-                  <h5 class="mb-3 text-xl font-medium leading-none">Telephone</h5>
+                  <h5 class="mb-3 font-medium text-xl/none">Telephone</h5>
                   <div class="relative">
                     <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (" name="tel">
                     <span class="input-error" data-error>Пожалуйста, введите ваш номер!</span>
@@ -304,8 +304,8 @@
           <% for (var i = 0; i < 6; i++) { %>
           <div class="h-auto swiper-slide">
             <div class="flex flex-col flex-grow h-full p-2">
-              <h4 class="mb-5 text-3xl font-semibold font-alt md:text-5xl">Slider slide</h4>
-              <p class="mb-5 text-base font-semibold leading-normal md:text-lg md:md-10">
+              <h4 class="mb-5 font-semibold text-3xl/tight font-alt md:text-5xl/tight">Slider slide</h4>
+              <p class="mb-5 font-semibold text-base/normal md:text-lg/normal md:md-10">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
               </p>
@@ -321,6 +321,6 @@
 
 <!-- Плеер -->
 
-<%= player({loader, icon, picture}) %>
+<%= player %>
 
-<%= footer({loader, picture}) %>
+<%= footer %>

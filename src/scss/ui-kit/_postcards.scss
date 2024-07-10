@@ -51,7 +51,7 @@
   &-particle {
     background-size    : 300% 300%;
     backface-visibility: hidden;
-    transition         : transform 0.3s, filter 1s;
+    transition         : transform 300ms, filter 1000ms;
     filter             : grayscale(0.9);
 
     &:nth-child(1) {

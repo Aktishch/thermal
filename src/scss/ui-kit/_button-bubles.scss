@@ -8,7 +8,7 @@
   }
 
   &::before {
-    animation: top-bubbles 0.6s ease-in-out infinite;
+    animation: top-bubbles 600ms ease-in-out infinite;
 
     @apply -top-3/4;
 
@@ -27,7 +27,7 @@
   }
 
   &::after {
-    animation: bottom-bubbles 0.6s ease-in-out infinite;
+    animation: bottom-bubbles 600ms ease-in-out infinite;
 
     @apply -bottom-3/4;
 

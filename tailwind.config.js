@@ -16,7 +16,7 @@ module.exports = {
       md: '767.98px',
       lg: '991.98px',
       xl: '1365.98px',
-      xxl: '2559.98px',
+      xxl: '2499.98px',
     },
     constants: {
       xs: 28,
@@ -93,6 +93,12 @@ module.exports = {
     extend: {
       content: {
         auto: '""',
+      },
+      fontSize: {
+        min: ['0.5rem', '0.625rem'],
+        xxs: ['0.625rem', '0.75rem'],
+        '1.5xl': ['1.375rem', '1.75rem'],
+        '2.5xl': ['1.75rem', '2.125rem'],
       },
       borderRadius: {
         inherit: 'inherit',

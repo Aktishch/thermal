@@ -10,18 +10,20 @@ module.exports = plugin(({ addComponents, theme }) => {
       flexDirection: 'column',
       position: 'relative',
       backgroundColor: theme('colors.white.DEFAULT'),
-      boxShadow: `8px 8px 4px ${formatColor({ mode: 'rgba', color: shadow, alpha: 0.2 })}`,
       borderRadius: theme('borderRadius.2xl'),
-      transition: 'box-shadow 200ms ease, transform 200ms ease',
+      transition: '200ms ease',
       overflow: 'hidden',
-      '&-active': {
-        '&:active': {
-          transform: 'translateY(0.25rem)',
-        },
+      '&-hovered': {
+        boxShadow: `8px 8px 4px ${formatColor({ mode: 'rgba', color: shadow, alpha: 0.2 })}`,
         '@media (hover)': {
           '&:hover': {
             boxShadow: `8px 8px 4px ${formatColor({ mode: 'rgba', color: shadow, alpha: 0.4 })}`,
           },
+        },
+      },
+      '&-active': {
+        '&:active': {
+          transform: 'translateY(0.25rem)',
         },
       },
       '&-content': {
