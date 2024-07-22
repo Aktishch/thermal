@@ -73,7 +73,7 @@
           <div class="absolute right-0 w-full bg-white rounded-lg shadow-md top-16 group-[[data-accordion=active]]/accordion:top-10" data-accordion-content>
             <div class="flex flex-col gap-4 p-4">
               <% _.forEach((nav.blocks), (block) => { %>
-              <a class="text-sm btn btn-gray hover:underline underline-offset-4" data-waved="dark" data-scroll="top" draggable="false" href="<%= block.id %>"><%= block.text %></a>
+              <a class="text-sm btn btn-gray hover:underline underline-offset-4" data-waved="dark" data-scroll draggable="false" href="<%= block.id %>"><%= block.text %></a>
               <% }) %>
             </div>
           </div>
@@ -111,7 +111,7 @@
             <div data-accordion-content>
               <div class="flex flex-col items-start gap-2 pl-5 mt-2">
                 <% _.forEach((nav.blocks), (block) => { %>
-                <a class="text-lg hover:underline underline-offset-4" data-scroll="top" draggable="false" href="<%= block.id %>"><%= block.text %></a>
+                <a class="text-lg hover:underline underline-offset-4" data-scroll draggable="false" href="<%= block.id %>"><%= block.text %></a>
                 <% }) %>
               </div>
             </div>

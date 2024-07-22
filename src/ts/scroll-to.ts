@@ -4,34 +4,23 @@ const scrollTo = (event: Event): void => {
   event.preventDefault()
 
   const link = event.target as HTMLAnchorElement
-  const id = String(link.getAttribute('href'))
+  const id: string = String(link.getAttribute('href'))
+
+  if (id[0] != '#' || id === '#') return
+
   const block = document.querySelector(id) as HTMLElement
 
-  switch (link.dataset.scroll) {
-    case 'top': {
-      const header = document.querySelector('*[data-header]') as HTMLElement
-      const offsetTop: number = header
-        ? block.getBoundingClientRect().top +
-          scrolledPage().top -
-          header.offsetHeight
-        : block.getBoundingClientRect().top + scrolledPage().top
+  if (block) {
+    const header = document.querySelector('*[data-header]') as HTMLElement
+    const offsetTop: number =
+      block.getBoundingClientRect().top +
+      scrolledPage().top -
+      (header ? header.offsetHeight : 0)
 
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth',
-      })
-
-      break
-    }
-
-    case 'center': {
-      block.scrollIntoView({
-        block: 'center',
-        behavior: 'smooth',
-      })
-
-      break
-    }
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth',
+    })
   }
 }
 

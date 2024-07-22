@@ -98,7 +98,9 @@ const setPlayer = ({
     compositions.forEach((composition: HTMLButtonElement): void => {
       if (!composition) return
 
-      const compositionIndex = Number(composition.dataset.playerComposition)
+      const compositionIndex: number = Number(
+        composition.dataset.playerComposition
+      )
       const compositionStatus = composition.querySelector(
         '*[data-player-status]'
       ) as SVGElement
@@ -229,7 +231,9 @@ const setPlayer = ({
     compositions.forEach((composition: HTMLButtonElement): void => {
       if (!composition) return
 
-      const compositionIndex = Number(composition.dataset.playerComposition)
+      const compositionIndex: number = Number(
+        composition.dataset.playerComposition
+      )
       const compositionLoading = composition.querySelector(
         '*[data-player-loading]'
       ) as SVGElement
@@ -331,7 +335,9 @@ const setPlayer = ({
   compositions.forEach((composition: HTMLButtonElement): void => {
     if (!composition) return
 
-    const compositionIndex = Number(composition.dataset.playerComposition)
+    const compositionIndex: number = Number(
+      composition.dataset.playerComposition
+    )
 
     composition.addEventListener('click', ((): void => {
       if (compositionIndex !== index) {

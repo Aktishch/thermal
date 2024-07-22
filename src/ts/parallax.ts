@@ -79,7 +79,7 @@ export default (): void => {
       items.forEach((item: HTMLElement): void => {
         if (!item) return
 
-        const translateZ = Number(item.dataset.parallaxItem) || 100
+        const translateZ: number = Number(item.dataset.parallaxItem) || 100
 
         item.style.transform = `rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translateZ(${translateZ}px)`
       })

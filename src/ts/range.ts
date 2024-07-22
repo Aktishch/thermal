@@ -9,7 +9,7 @@ const getPosition = ({
   progress: HTMLDivElement
   bubble: HTMLOutputElement
 }): void => {
-  const value = Number(input.value)
+  const value: number = Number(input.value)
   const min: number = input.min ? Number(input.min) : 0
   const max: number = input.max ? Number(input.max) : 100
   let step: number

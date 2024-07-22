@@ -2,12 +2,10 @@ import { Coordinates } from './functions/coordinates'
 import { scrolledPage } from './functions/scrolled-page'
 
 const setOffset = (element: HTMLElement): Coordinates => {
-  const coordinates: Coordinates = {
+  return {
     top: element.getBoundingClientRect().top + scrolledPage().top,
     left: element.getBoundingClientRect().left + scrolledPage().left,
-  }
-
-  return coordinates
+  } as Coordinates
 }
 
 export const animation = (): void => {

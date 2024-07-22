@@ -33,7 +33,7 @@ export default (): void => {
     if (distance < 0) removeTimeCounter()
   }
 
-  const interval = setInterval(getTimeCounter, 1000)
+  const interval = setInterval(getTimeCounter, 1000) as NodeJS.Timeout
 
   const removeTimeCounter = (): void => {
     clearInterval(interval)

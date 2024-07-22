@@ -6,7 +6,7 @@ const setOutNumber = (section: HTMLElement): void => {
   items.forEach((item: HTMLSpanElement): void => {
     if (!item) return
 
-    const number = Number(item.dataset.number)
+    const number: number = Number(item.dataset.number)
     const step: number = Number(item.dataset.numberStep) || 0.5
     const time: number = Number(item.dataset.numberTime) * 1000 || 1000
     const fixed: number = Number(item.dataset.numberFixed) || 0

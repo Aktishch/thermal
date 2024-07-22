@@ -1,6 +1,6 @@
 const canUseWebp = (): boolean => {
   const canvas = document.createElement('canvas') as HTMLCanvasElement
-  let result
+  let result: boolean
 
   canvas.getContext && canvas.getContext('2d')
     ? (result = canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0)

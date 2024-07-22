@@ -52,7 +52,7 @@ export default (): void => {
   filters.forEach((filter: HTMLDivElement): void => {
     if (!filter) return
 
-    const value = String(filter.dataset.filtering)
+    const value: string = String(filter.dataset.filtering)
     const hash: string = window.location.hash.substr(1)
     const categories = document.querySelectorAll(
       `*[data-filtering-category="${value}"]`
@@ -83,7 +83,7 @@ export default (): void => {
       category: HTMLButtonElement | HTMLDivElement
     ): void => {
       const active = currentCategory() as HTMLButtonElement | HTMLDivElement
-      const name = String(category.dataset.filteringValue)
+      const name: string = String(category.dataset.filteringValue)
 
       active.classList.remove('filtering-active')
       category.classList.add('filtering-active')

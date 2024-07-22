@@ -3,7 +3,7 @@ const quantityDecrease = (event: InputEvent): void => {
     '[data-quantity]'
   ) as HTMLDivElement
   const input = quantity.querySelector('*[data-input]') as HTMLInputElement
-  let value = Number(input.value)
+  let value: number = Number(input.value)
 
   --value
   input.value = String(value)
@@ -15,7 +15,7 @@ const quantityIncrease = (event: InputEvent): void => {
     '[data-quantity]'
   ) as HTMLDivElement
   const input = quantity.querySelector('*[data-input]') as HTMLInputElement
-  let value = Number(input.value)
+  let value: number = Number(input.value)
 
   ++value
   input.value = String(value)

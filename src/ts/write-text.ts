@@ -3,7 +3,7 @@ const writeText = (section: HTMLElement): void => {
 
   if (!record) return
 
-  const recordText = String(record.dataset.record)
+  const recordText: string = String(record.dataset.record)
   const recordSpeed: number = Number(record.dataset.recordSpeed) || 30
   const letters: string[] = [recordText].join('').split('')
 
