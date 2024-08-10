@@ -1,7 +1,7 @@
 .movement {
   &[data-movement="light"] {
     &::after {
-      background-image: radial-gradient(circle closest-side, theme("colors.white.DEFAULT"), transparent);
+      background-image: radial-gradient(circle closest-side, theme("colors.white.DEFAULT"), theme("colors.transparent"));
 
       @apply opacity-30;
     }

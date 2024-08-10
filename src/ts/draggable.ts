@@ -1,5 +1,4 @@
-import { Coordinates } from './functions/coordinates'
-import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
+import { Coordinates, scrollbarShow, scrollbarHidden } from './utils'
 
 const setTranslate = ({
   element,

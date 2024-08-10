@@ -65,12 +65,7 @@ export default (): void => {
         ) as HTMLOutputElement
 
         const changeRange = (): void => {
-          getPosition({
-            number: first,
-            input: input,
-            progress: progress,
-            bubble: bubble,
-          })
+          getPosition({ number: first, input, progress, bubble })
           output.value = input.value
         }
 

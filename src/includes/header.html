@@ -88,8 +88,8 @@
 
     <% var social = ['ok', 'yt', 'inst', 'tw', 'fb', 'vk'] %>
 
-    <div class="fixed inset-0 z-40 duration-100 menu group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
-      <div class="menu__content flex flex-col bg-black bg-opacity-90 overflow-auto backdrop-blur-sm w-full max-w-[375px] h-full duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
+    <div class="fixed inset-0 z-40 duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
+      <div class="shadow-screen flex flex-col bg-black bg-opacity-90 overflow-auto backdrop-blur-sm w-full max-w-[375px] h-full duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
         <div class="flex items-center justify-between gap-2 p-4 duration-500 delay-300 bg-black group-[[data-sidebar=close]]/menu:-translate-y-full">
           <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
             <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: false}) %>
@@ -131,7 +131,7 @@
 
     <!-- Перетаскиваемое социальное меню -->
 
-    <nav class="fixed bottom-0 z-20 flex flex-col items-center justify-center rounded-full pointer-events-none select-none size-48 social touch-none" data-social data-draggable>
+    <nav class="fixed bottom-2 -left-12 z-20 flex flex-col items-center justify-center rounded-full pointer-events-none select-none size-48 touch-none" data-social data-draggable>
       <div class="absolute inset-0 overflow-hidden duration-300 ease-in-out rounded-full opacity-0 pointer-events-auto bg-primary bg-opacity-30 [&[data-social-round=hidden]]:scale-0 [&[data-social-round=hidden]]:-rotate-180" data-social-round="hidden">
         <% for (var i = 0; i < social.length; i++) { %>
         <a class="absolute rounded-full btn btn-second" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
@@ -144,7 +144,7 @@
 
     <!-- Переключатель темы -->
 
-    <div class="fixed z-20 items-center justify-center hidden p-4 bg-white border border-solid shadow-md theme lg:flex bottom-2 dark:bg-black rounded-2xl border-gray dark:border-white w-max">
+    <div class="fixed z-20 items-center justify-center hidden p-4 bg-white border border-solid shadow-md lg:flex bottom-2 left-5 dark:bg-black rounded-2xl border-gray dark:border-white w-max">
       <span class="mr-2 text-sm">Темная тема</span>
       <input class="switch switch-toggle" data-theme="toggle" type="checkbox">
     </div>

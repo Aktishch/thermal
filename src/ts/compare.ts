@@ -1,4 +1,4 @@
-import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
+import { scrollbarShow, scrollbarHidden } from './utils'
 
 export default (): void => {
   const compares = document.querySelectorAll(

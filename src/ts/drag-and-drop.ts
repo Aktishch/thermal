@@ -1,4 +1,4 @@
-import { fileHandler } from './functions/file-handler'
+import { fileHandler } from './utils'
 
 export default (): void => {
   const dragEvents: string[] = ['dragenter', 'dragover', 'dragleave', 'drop']
@@ -49,7 +49,7 @@ export default (): void => {
             file ? readFile.readAsDataURL(file) : (image.src = '')
 
             readFile.addEventListener('loadend', ((): void => {
-              if (!fileHandler({ input: input, error: error })) return
+              if (!fileHandler({ input, error })) return
 
               image.src = String(readFile.result)
             }) as EventListener)

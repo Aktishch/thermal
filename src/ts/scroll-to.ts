@@ -1,4 +1,4 @@
-import { scrolledPage } from './functions/scrolled-page'
+import { scrolledPage } from './utils'
 
 const scrollTo = (event: Event): void => {
   event.preventDefault()

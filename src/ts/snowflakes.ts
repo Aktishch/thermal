@@ -1,5 +1,4 @@
-import { Coordinates } from './functions/coordinates'
-import { touchDevice } from './functions/touch-device'
+import { Coordinates, touchDevice } from './utils'
 
 export default (): void => {
   const snow = document.querySelector('*[data-snow]') as HTMLDivElement

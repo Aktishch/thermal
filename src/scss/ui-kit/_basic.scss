@@ -9,7 +9,7 @@
 }
 
 * {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: theme("colors.transparent");
 
   @apply m-0 p-0;
 
@@ -77,6 +77,10 @@ address {
 
 q {
   quotes: "\201c""\201E";
+}
+
+label {
+  @apply block;
 }
 
 a,

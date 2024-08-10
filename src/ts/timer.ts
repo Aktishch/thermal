@@ -1,4 +1,4 @@
-import { timeFormat } from './functions/time-format'
+import { timeFormat } from './utils'
 
 export default (): void => {
   const timer = document.querySelector('*[data-timer]') as HTMLDivElement

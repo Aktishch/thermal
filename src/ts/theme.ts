@@ -15,7 +15,6 @@ export default (): void => {
     switch (html.classList.contains('dark')) {
       case true: {
         theme = 'default'
-        localStorage.setItem('theme', theme)
         html.classList.remove('dark')
         togglesChecked(false)
         break
@@ -23,12 +22,13 @@ export default (): void => {
 
       case false: {
         theme = 'dark'
-        localStorage.setItem('theme', theme)
         html.classList.add('dark')
         togglesChecked(true)
         break
       }
     }
+
+    localStorage.setItem('theme', theme)
   }
 
   if (localStorage.getItem('theme')) {

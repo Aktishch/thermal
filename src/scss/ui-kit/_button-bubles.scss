@@ -14,14 +14,14 @@
 
     background: {
       position: 5% 90%, 10% 90%, 10% 90%, 10% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-      image   : radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, transparent 20%, var(--tw-btn-color) 20%, transparent 30%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, transparent 10%, var(--tw-btn-color) 15%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%);
+      image   : radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, theme("colors.transparent") 20%, var(--tw-btn-color) 20%, theme("colors.transparent") 30%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, theme("colors.transparent") 10%, var(--tw-btn-color) 15%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%);
       size: 10px 10px, 20px 20px, 15px 15px, 20px 20px, 18px 18px, 10px 10px, 15px 15px, 18px 18px;
     }
   }
@@ -34,13 +34,13 @@
     background: {
       position: 10% 0, 30% 10%, 55% 0, 70% 0, 85% 0, 70% 0, 70% 0;
       image   :
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, transparent 10%, var(--tw-btn-color) 15%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%),
-        radial-gradient(circle, var(--tw-btn-color) 20%, transparent 20%);
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, theme("colors.transparent") 10%, var(--tw-btn-color) 15%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%),
+        radial-gradient(circle, var(--tw-btn-color) 20%, theme("colors.transparent") 20%);
       size: 15px 15px, 20px 20px, 18px 18px, 20px 20px, 15px 15px, 20px 20px, 18px 18px;
     }
   }

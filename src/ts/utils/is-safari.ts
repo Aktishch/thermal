@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    safari: boolean
+    safari: any
   }
 }
 

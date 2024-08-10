@@ -15,7 +15,7 @@ export const fileHandler = ({
     !['image/jpeg', 'image/png', 'image/gif'].includes(files[0].type)
   ) {
     error.classList.add('visible', 'opacity-100')
-    error.innerText = 'Только изображения!'
+    error.innerText = 'Только изображения (jpg, png)!'
     return false
   } else if (files[0].size > 2 * Math.pow(1024, 2)) {
     error.classList.add('visible', 'opacity-100')

@@ -1,5 +1,4 @@
-import { Coordinates } from './functions/coordinates'
-import { touchDevice } from './functions/touch-device'
+import { Coordinates, touchDevice } from './utils'
 
 export default (): void => {
   const parallaxes = document.querySelectorAll(

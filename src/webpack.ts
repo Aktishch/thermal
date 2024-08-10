@@ -51,7 +51,6 @@ import timer from './ts/timer'
 import worldMap from './ts/world-map'
 import game from './ts/game'
 import preloader from './ts/preloader'
-
 import './scss/main.scss'
 
 const initialization = (): void => {

@@ -8,7 +8,7 @@ import {
   Thumbs,
   EffectCoverflow,
 } from 'swiper/modules'
-import { media } from './functions/media'
+import { media } from './utils'
 import { checkQuizSlide } from './quiz'
 
 declare global {

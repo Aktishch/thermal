@@ -1,5 +1,5 @@
+import { validation } from './utils'
 import { dialog } from './fancybox'
-import { validation } from './functions/validation'
 
 const submitHandler = ({
   event,
@@ -28,15 +28,12 @@ const submitHandler = ({
       ) as HTMLButtonElement
       let requestUrl: string
 
-      for (const pair of formData.entries()) {
+      for (const pair of formData.entries())
         searchParams.append(pair[0], String(pair[1]))
-      }
 
-      if (form.hasAttribute('data-files')) {
-        if (data !== null)
-          for (let i: number = 0; i < data.length; i++)
-            formData.append('file[]', data[i])
-      }
+      if (form.hasAttribute('data-files') && data !== null)
+        for (let i: number = 0; i < data.length; i++)
+          formData.append('file[]', data[i])
 
       const queryString: string = searchParams.toString()
 
@@ -97,6 +94,6 @@ const submitHandler = ({
 export default (data: File[]): void => {
   document.addEventListener('submit', ((event: Event): void => {
     if ((event.target as HTMLFormElement).hasAttribute('data-form'))
-      submitHandler({ event: event, data: data })
+      submitHandler({ event, data })
   }) as EventListener)
 }

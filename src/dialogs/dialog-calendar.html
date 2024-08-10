@@ -1,13 +1,17 @@
 <%
   var calendar = ['date-5-5', 'date-7-6', 'date-10-6']
   var icon = _.template(require('../components/icon.html').default)
+  var loader = _.template(require('../components/loader.html').default)({icon})
   var picture = _.template(require('../components/picture.html').default)
   var loader = _.template(require('../components/loader.html').default)({icon})
 %>
 
 <dialog class="px-5 py-10 dialog dialog-md dark:bg-black dark:text-white rounded-xl">
   <div class="flex flex-wrap items-center justify-between gap-5 filtering" data-filtering="calendar">
-    <div class="w-full md:w-auto" id="calendar"></div>
+    <div class="relative">
+      <%= loader %>
+      <div class="relative" id="calendar"></div>
+    </div>
     <div class="w-full md:w-1/2">
       <% for (var i = 0; i < calendar.length; i++) { %>
       <div class="w-full filtering__card pack pack-md bg-gray rounded-2xl" data-filtering-card="calendar" data-filtering-value="<%= calendar[i] %>">

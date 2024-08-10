@@ -93,7 +93,7 @@ export default (): void => {
         line.style.left = `${category.offsetLeft}px`
       }
 
-      filterHandler({ name: name, cards: cards, plug: plug })
+      filterHandler({ name, cards, plug })
     }
 
     currentCard(currentCategory())

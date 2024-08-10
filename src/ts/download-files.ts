@@ -1,4 +1,4 @@
-import { fileHandler } from './functions/file-handler'
+import { fileHandler } from './utils'
 
 export default (): File[] => {
   const data: File[] = []
@@ -27,7 +27,7 @@ export default (): File[] => {
 
       item.classList.add('flex', 'items-center', 'justify-between', 'gap-5')
 
-      if (fileHandler({ input: input, error: error })) {
+      if (fileHandler({ input, error })) {
         for (let i: number = 0; i < files.length; i++) {
           data.push(files[i])
           item.setAttribute('data-files-item', '')

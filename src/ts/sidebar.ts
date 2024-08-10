@@ -1,5 +1,4 @@
-import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
-import { media } from '../ts/functions/media'
+import { media, scrollbarShow, scrollbarHidden } from './utils'
 
 export const openSidebar = (sidebar: HTMLElement): void => {
   scrollbarHidden()

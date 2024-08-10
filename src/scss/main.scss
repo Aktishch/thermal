@@ -29,23 +29,6 @@
   @import "./ui-kit/range";
 }
 
-// Меню
-.menu {
-  &__content {
-    box-shadow: 0 0 0 100vw theme("colors.black.DEFAULT / 50%");
-  }
-}
-
-// Перетаскиваемое социальное меню
-.social {
-  left: calc(100vw - 150px);
-}
-
-// Переключатель темы
-.theme {
-  left: calc(100vw - 240px);
-}
-
 // Снежинка
 .snowflake {
   background-image: url("../img/pictures/snow.png");

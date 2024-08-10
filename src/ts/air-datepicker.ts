@@ -1,6 +1,6 @@
 import AirDatepicker from 'air-datepicker'
 import localeRu from 'air-datepicker/locale/ru'
-import { touchDevice } from './functions/touch-device'
+import { touchDevice } from './utils'
 import filtering from './filtering'
 
 const excludeDates: number[] = [
@@ -44,21 +44,19 @@ export const createCalendar = (): void => {
     }
   }
 
-  new window.AirDatepicker('#calendar', {
+  new window.AirDatepicker(calendar, {
     locale: localeRu,
+    onChangeViewDate: (): void => {
+      calendar.classList.add('opacity-20', 'pointer-events-none')
+
+      setTimeout((): void => {
+        filtering()
+        calendar.classList.remove('opacity-20', 'pointer-events-none')
+      }, 500)
+    },
     onRenderCell: renderCellHandler,
     selectedDates: [new Date()],
   }) as AirDatepicker<HTMLDivElement>
-
-  calendar.addEventListener('click', ((event: Event): void => {
-    if (
-      (event.target as HTMLElement).closest('.air-datepicker-cell') ||
-      (event.target as HTMLElement).closest('.air-datepicker-nav--action') ||
-      (event.target as HTMLElement).closest('.air-datepicker-nav--title')
-    ) {
-      if (calendar.querySelector('.filtering-active')) filtering()
-    }
-  }) as EventListener)
 }
 
 export default (): void => {

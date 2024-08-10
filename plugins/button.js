@@ -115,7 +115,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '&-light': {
         color: 'var(--tw-btn-color)',
         backgroundColor: 'var(--tw-btn-accent)',
-        border: '1px solid transparent',
+        border: `1px solid ${theme('colors.transparent')}`,
         '&:focus-visible': {
           backgroundColor: 'var(--tw-btn-accent)',
           borderColor: 'var(--tw-btn-color)',

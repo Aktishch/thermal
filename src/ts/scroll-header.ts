@@ -1,4 +1,4 @@
-import { scrolledPage } from './functions/scrolled-page'
+import { scrolledPage } from './utils'
 
 export default (): void => {
   const header = document.querySelector('*[data-header]') as HTMLElement

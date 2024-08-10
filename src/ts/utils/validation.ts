@@ -15,7 +15,7 @@ export const validation = (form: HTMLFormElement): boolean => {
     ) as HTMLInputElement
     const error = download.querySelector('*[data-error]') as HTMLSpanElement
 
-    validate = fileHandler({ input: input, error: error })
+    validate = fileHandler({ input, error })
   }
 
   labels.forEach((label: HTMLLabelElement | HTMLDivElement): void => {

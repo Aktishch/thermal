@@ -1,4 +1,4 @@
-import { touchDevice } from './functions/touch-device'
+import { touchDevice } from './utils'
 import { openSidebar, closeSidebar } from './sidebar'
 
 export default (): void => {

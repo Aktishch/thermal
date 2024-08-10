@@ -1,7 +1,5 @@
-import { isSafari } from './functions/is-safari'
-import { touchDevice } from './functions/touch-device'
-import { scrolledPage } from './functions/scrolled-page'
-import { animation } from './animation'
+import { isSafari, scrolledPage, touchDevice } from './utils'
+import { setAnimation } from './animation'
 
 export default (): void => {
   const smoothScroll = document.querySelector(
@@ -33,7 +31,7 @@ export default (): void => {
 
     smoothScroll.style.transform = translateY
     sessionStorage.setItem('translateY', translateY)
-    animation()
+    setAnimation()
     window.requestAnimationFrame(createSmoothScroll)
   }
 

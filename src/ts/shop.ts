@@ -1,4 +1,4 @@
-import { Coordinates } from './functions/coordinates'
+import { Coordinates } from './utils'
 
 export default (): void => {
   const shop = document.querySelector('*[data-shop]') as HTMLDivElement

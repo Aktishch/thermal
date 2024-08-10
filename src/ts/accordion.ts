@@ -1,5 +1,4 @@
-const setAccordion = (element: HTMLElement): void => {
-  const accordion = element as HTMLDivElement
+const createAccordion = (accordion: HTMLDivElement): void => {
   const toggle = accordion.querySelector('*[data-accordion-toggle]') as
     | HTMLDivElement
     | HTMLButtonElement
@@ -16,7 +15,7 @@ const setAccordion = (element: HTMLElement): void => {
       : 0
 
     content.style.height = `${content.scrollHeight}px`
-    content.style.transitionDuration = duration ? `${transition}ms` : '0s'
+    content.style.transitionDuration = duration ? `${transition}ms` : '0ms'
 
     switch (accordion.dataset.accordion) {
       case 'hidden': {
@@ -88,9 +87,8 @@ const setAccordion = (element: HTMLElement): void => {
       break
     }
 
-    default: {
+    default:
       return
-    }
   }
 }
 
@@ -100,6 +98,6 @@ export default (): void => {
   ) as NodeListOf<HTMLDivElement>
 
   accordions.forEach((accordion: HTMLDivElement): void => {
-    if (accordion) setAccordion(accordion)
+    if (accordion) createAccordion(accordion)
   })
 }

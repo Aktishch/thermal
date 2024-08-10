@@ -1,5 +1,4 @@
-import { Coordinates } from './functions/coordinates'
-import { touchDevice } from './functions/touch-device'
+import { Coordinates, touchDevice } from './utils'
 
 const setMovement = (event: MouseEvent): void => {
   const item = (event.target as HTMLElement).closest(

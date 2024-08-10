@@ -1,5 +1,4 @@
-import { scrolledPage } from './functions/scrolled-page'
-import { media } from './functions/media'
+import { media, scrolledPage } from './utils'
 
 const setScrollingHeight = (): void => {
   const scrollings = document.querySelectorAll(

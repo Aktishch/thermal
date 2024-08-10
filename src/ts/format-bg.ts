@@ -1,12 +1,9 @@
 const canUseWebp = (): boolean => {
   const canvas = document.createElement('canvas') as HTMLCanvasElement
-  let result: boolean
 
-  canvas.getContext && canvas.getContext('2d')
-    ? (result = canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0)
-    : (result = false)
-
-  return result
+  return canvas.getContext && canvas.getContext('2d')
+    ? canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0
+    : false
 }
 
 const createBackground = (data: string): void => {

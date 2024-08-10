@@ -20,7 +20,7 @@ const invertedToggle = ({
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    invertedToggle({ event: event, condition: 'after' })
-    invertedToggle({ event: event, condition: 'before' })
+    invertedToggle({ event, condition: 'after' })
+    invertedToggle({ event, condition: 'before' })
   }) as EventListener)
 }

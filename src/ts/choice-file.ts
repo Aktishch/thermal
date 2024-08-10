@@ -1,5 +1,5 @@
+import { fileHandler } from './utils'
 import { dialog } from './fancybox'
-import { fileHandler } from './functions/file-handler'
 
 const choiceFile = (event: Event): void => {
   const input = event.target as HTMLInputElement
@@ -20,7 +20,7 @@ const choiceFile = (event: Event): void => {
   file ? readFile.readAsDataURL(file) : (image.src = '')
 
   readFile.addEventListener('loadend', ((): void => {
-    if (!fileHandler({ input: input, error: error })) return
+    if (!fileHandler({ input, error })) return
 
     image.src = String(readFile.result)
 

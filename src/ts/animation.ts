@@ -1,5 +1,4 @@
-import { Coordinates } from './functions/coordinates'
-import { scrolledPage } from './functions/scrolled-page'
+import { Coordinates, scrolledPage } from './utils'
 
 const setOffset = (element: HTMLElement): Coordinates => {
   return {
@@ -8,7 +7,7 @@ const setOffset = (element: HTMLElement): Coordinates => {
   } as Coordinates
 }
 
-export const animation = (): void => {
+export const setAnimation = (): void => {
   const items = document.querySelectorAll(
     '*[data-anim]'
   ) as NodeListOf<HTMLElement>
@@ -32,6 +31,6 @@ export const animation = (): void => {
 }
 
 export default (): void => {
-  animation()
-  document.addEventListener('scroll', animation as EventListener)
+  setAnimation()
+  document.addEventListener('scroll', setAnimation as EventListener)
 }

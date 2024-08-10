@@ -14,10 +14,7 @@ export default (): void => {
       const items = listing.querySelectorAll(
         '*[data-listing-item]'
       ) as NodeListOf<HTMLDivElement>
-      const count: number =
-        listing.dataset.listing !== '' || undefined || null
-          ? Number(listing.dataset.listing)
-          : items.length
+      const count: number = Number(listing.dataset.listing) || items.length
 
       for (let i: number = 0; i < count; i++) {
         const item = items[i] as HTMLDivElement

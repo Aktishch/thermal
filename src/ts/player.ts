@@ -1,5 +1,4 @@
-import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
-import { timeFormat } from './functions/time-format'
+import { scrollbarShow, scrollbarHidden, timeFormat } from './utils'
 
 type Playlist = {
   artist: string
@@ -108,19 +107,13 @@ const setPlayer = ({
         'use'
       ) as SVGUseElement
 
-      if (audio.played) {
-        switch (compositionIndex === index) {
-          case true: {
-            compositionIcon.setAttribute('xlink:href', 'img/icons.svg#pause')
-            break
-          }
-
-          case false: {
-            compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
-            break
-          }
-        }
-      }
+      if (audio.played)
+        compositionIcon.setAttribute(
+          'xlink:href',
+          compositionIndex === index
+            ? 'img/icons.svg#pause'
+            : 'img/icons.svg#play'
+        )
 
       if (audio.paused)
         compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
