@@ -103,9 +103,6 @@ module.exports = {
       borderRadius: {
         inherit: 'inherit',
       },
-      boxShadow: {
-        screen: '0 0 0 100vw rgb(0 0 0 / 0.5)',
-      },
     },
   },
   plugins: [

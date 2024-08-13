@@ -29,15 +29,28 @@ Swiper.use([
 Swiper.defaults.touchStartPreventDefault = false
 window.Swiper = Swiper
 
-export default (): void => {
-  new window.Swiper('.gallery-slider .swiper', {
+const createGallerySlider = (): void => {
+  const slider = document.querySelector(
+    '*[data-slider="gallery"]'
+  ) as HTMLDivElement
+
+  if (!slider) return
+
+  const swiper = slider.querySelector('.swiper') as HTMLDivElement
+  const pagination = slider.querySelector(
+    '.swiper-pagination'
+  ) as HTMLDivElement
+  const prev = slider.querySelector('.swiper-button-prev') as HTMLButtonElement
+  const next = slider.querySelector('.swiper-button-next') as HTMLButtonElement
+
+  new window.Swiper(swiper, {
     pagination: {
-      el: '.gallery-slider .swiper-pagination',
+      el: pagination,
       clickable: true,
     },
     navigation: {
-      prevEl: '.gallery-slider .swiper-button-prev',
-      nextEl: '.gallery-slider .swiper-button-next',
+      prevEl: prev,
+      nextEl: next,
     },
     effect: 'coverflow',
     slidesPerView: 1.3,
@@ -59,15 +72,30 @@ export default (): void => {
       disableOnInteraction: false,
     },
   }) as Swiper
+}
 
-  new window.Swiper('.products-slider .swiper', {
+const createProductsSlider = (): void => {
+  const slider = document.querySelector(
+    '*[data-slider="products"]'
+  ) as HTMLDivElement
+
+  if (!slider) return
+
+  const swiper = slider.querySelector('.swiper') as HTMLDivElement
+  const pagination = slider.querySelector(
+    '.swiper-pagination'
+  ) as HTMLDivElement
+  const prev = slider.querySelector('.swiper-button-prev') as HTMLButtonElement
+  const next = slider.querySelector('.swiper-button-next') as HTMLButtonElement
+
+  new window.Swiper(swiper, {
     pagination: {
-      el: '.products-slider .swiper-pagination',
+      el: pagination,
       clickable: true,
     },
     navigation: {
-      prevEl: '.products-slider .swiper-button-prev',
-      nextEl: '.products-slider .swiper-button-next',
+      prevEl: prev,
+      nextEl: next,
     },
     slidesPerView: 1.3,
     slidesPerGroup: 1,
@@ -86,21 +114,25 @@ export default (): void => {
       },
     },
   }) as Swiper
+}
 
-  const quizImages = new window.Swiper('.quiz-images .swiper', {
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 20,
-    allowTouchMove: false,
-  }) as Swiper
+const createQuizSlider = (): void => {
+  const slider = document.querySelector(
+    '*[data-slider="quiz"]'
+  ) as HTMLDivElement
 
-  new window.Swiper('.quiz-slider .swiper', {
-    navigation: {
-      prevEl: '.quiz-slider .swiper-button-prev',
-      nextEl: '.quiz-slider .swiper-button-next',
-    },
+  if (!slider) return
+
+  const swiper = slider.querySelector('.swiper') as HTMLDivElement
+  const pagination = slider.querySelector(
+    '.swiper-pagination'
+  ) as HTMLDivElement
+  const prev = slider.querySelector('.swiper-button-prev') as HTMLButtonElement
+  const next = slider.querySelector('.swiper-button-next') as HTMLButtonElement
+
+  new window.Swiper(swiper, {
     pagination: {
-      el: '.quiz-slider .swiper-pagination',
+      el: pagination,
       type: 'custom',
       renderCustom: (
         swiper: Swiper,
@@ -110,6 +142,10 @@ export default (): void => {
         return String(total - current)
       },
     },
+    navigation: {
+      prevEl: prev,
+      nextEl: next,
+    },
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 30,
@@ -117,32 +153,31 @@ export default (): void => {
     watchSlidesProgress: true,
     on: {
       slideChange: (swiper: Swiper): void => {
-        quizImages.slideTo(swiper.activeIndex)
-        checkQuizSlide(swiper.visibleSlides[0])
+        const quiz = swiper.el.closest('[data-quiz]') as HTMLElement
+        const visibleSlide = swiper.visibleSlides[0] as HTMLDivElement
 
-        switch (
-          swiper.visibleSlides[0] === swiper.slides[swiper.slides.length - 1]
-        ) {
-          case true: {
-            ;(swiper.el.closest('[data-quiz]') as HTMLElement).setAttribute(
-              'data-quiz-end',
-              ''
-            )
-            break
-          }
+        checkQuizSlide(visibleSlide)
 
-          case false: {
-            ;(swiper.el.closest('[data-quiz]') as HTMLElement).removeAttribute(
-              'data-quiz-end'
-            )
-            break
-          }
-        }
+        visibleSlide === swiper.slides[swiper.slides.length - 1]
+          ? quiz.setAttribute('data-quiz-end', '')
+          : quiz.removeAttribute('data-quiz-end')
       },
     },
   }) as Swiper
+}
 
-  const descriptionBg = new window.Swiper('.description-bg .swiper', {
+const createDescriptionSlider = (): void => {
+  const slider = document.querySelector(
+    '*[data-slider="description"]'
+  ) as HTMLDivElement
+
+  if (!slider) return
+
+  const sliderBg = document.querySelector(
+    '*[data-slider="description-bg"]'
+  ) as HTMLDivElement
+  const swiperBg = sliderBg.querySelector('.swiper') as HTMLDivElement
+  const descriptionBg = new window.Swiper(swiperBg, {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 30,
@@ -150,7 +185,11 @@ export default (): void => {
     allowTouchMove: false,
   }) as Swiper
 
-  const descriptionBullets = new window.Swiper('.description-bullets .swiper', {
+  const sliderBullets = document.querySelector(
+    '*[data-slider="description-bullets"]'
+  ) as HTMLDivElement
+  const swiperBullets = sliderBullets.querySelector('.swiper') as HTMLDivElement
+  const descriptionBullets = new window.Swiper(swiperBullets, {
     slidesPerView: 3,
     slidesPerGroup: 1,
     spaceBetween: 20,
@@ -163,15 +202,9 @@ export default (): void => {
     },
   }) as Swiper
 
-  const descriptionInfo = new window.Swiper('.description-info .swiper', {
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 30,
-    speed: 1000,
-    allowTouchMove: false,
-  }) as Swiper
+  const swiper = slider.querySelector('.swiper') as HTMLDivElement
 
-  new window.Swiper('.description-slider .swiper', {
+  new window.Swiper(swiper, {
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 30,
@@ -183,8 +216,14 @@ export default (): void => {
     on: {
       slideChange: (swiper: Swiper): void => {
         descriptionBg.slideTo(swiper.activeIndex)
-        descriptionInfo.slideTo(swiper.activeIndex)
       },
     },
   }) as Swiper
+}
+
+export default (): void => {
+  createGallerySlider()
+  createProductsSlider()
+  createQuizSlider()
+  createDescriptionSlider()
 }

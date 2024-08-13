@@ -25,7 +25,7 @@
 <section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" id="content">
   <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim="hidden" data-movement="blend">Slider-swiper</h2>
   <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Class template for slider</h3>
-  <div class="relative w-full gallery-slider">
+  <div class="relative w-full" data-slider="gallery">
     <div class="p-4 -m-4 swiper">
       <div class="swiper-wrapper">
         <% for (var i = 0; i < 6; i++) { %>
@@ -105,7 +105,7 @@
       </div>
     </div>
   </div>
-  <div class="relative w-full products-slider">
+  <div class="relative w-full" data-slider="products">
     <div class="p-4 -m-4 swiper">
       <div class="swiper-wrapper">
         <% for (var i = 0; i < products.length; i++) { %>
@@ -175,10 +175,10 @@
 
 <!-- Квиз -->
 
-<section class="container quiz container-xs container-distance bg-grey dark:bg-dark">
+<section class="container container-xs container-distance bg-grey dark:bg-dark">
   <div class="relative flex justify-between p-5 overflow-hidden duration-500 bg-white shadow-md dark:bg-black rounded-2xl md:p-10 anim anim-fade" data-anim="hidden">
     <form class="w-full md:max-w-72 lg:max-w-md" data-form="params">
-      <div class="flex flex-col h-full quiz-slider group/quiz" data-quiz="stop">
+      <div class="flex flex-col h-full group/quiz" data-slider="quiz" data-quiz="stop">
         <div class="mx-0 swiper">
           <div class="swiper-wrapper">
             <div class="h-auto swiper-slide" data-quiz-slide>
@@ -239,16 +239,10 @@
         </div>
       </div>
     </form>
-    <div class="hidden w-full quiz-images md:block max-w-80 lg:max-w-sm">
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          <% for (var i = 0; i < 3; i++) { %>
-          <div class="swiper-slide pack pack-xl bg-grey dark:bg-dark rounded-xl" data-movement="light">
-            <%= loader %>
-            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
-          </div>
-          <% } %>
-        </div>
+    <div class="hidden w-full md:block max-w-80 lg:max-w-sm">
+      <div class="pack pack-xl bg-grey dark:bg-dark rounded-xl h-full" data-movement="light">
+        <%= loader %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
       </div>
     </div>
   </div>
@@ -256,9 +250,9 @@
 
 <!-- Описание -->
 
-<section class="container relative overflow-hidden bg-white description container-xs dark:bg-black">
+<section class="container relative overflow-hidden bg-white container-xs dark:bg-black">
   <div class="absolute inset-0 overflow-hidden">
-    <div class="relative h-full duration-1000 delay-200 description-bg">
+    <div class="relative h-full" data-slider="description-bg">
       <div class="h-full swiper">
         <div class="swiper-wrapper">
           <% for (var i = 0; i < 6; i++) { %>
@@ -273,7 +267,7 @@
   </div>
   <div class="relative z-10 flex flex-wrap justify-between gap-5 p-5 overflow-hidden bg-white shadow-md xl:flex-nowrap dark:bg-black rounded-2xl md:p-10">
     <div class="w-full lg:max-w-96 xl:max-w-md">
-      <div class="relative mb-5 overflow-hidden description-slider bg-grey dark:bg-dark rounded-2xl md:mb-3">
+      <div class="relative mb-5 overflow-hidden bg-grey dark:bg-dark rounded-2xl md:mb-3" data-slider="description">
         <div class="h-full swiper">
           <div class="h-full swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
@@ -285,7 +279,7 @@
           </div>
         </div>
       </div>
-      <div class="description-bullets">
+      <div data-slider="description-bullets">
         <div class="swiper">
           <div class="swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
@@ -298,23 +292,13 @@
         </div>
       </div>
     </div>
-    <div class="w-full h-auto description-info lg:max-w-96 xl:max-w-xl">
-      <div class="h-full swiper">
-        <div class="swiper-wrapper">
-          <% for (var i = 0; i < 6; i++) { %>
-          <div class="h-auto swiper-slide">
-            <div class="flex flex-col flex-grow h-full p-2">
-              <h4 class="mb-5 font-semibold text-3xl/tight font-alt md:text-5xl/tight">Slider slide</h4>
-              <p class="mb-5 font-semibold text-base/normal md:text-lg/normal md:md-10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
-              </p>
-              <button class="w-full mt-auto btn btn-primary btn-lg btn-fill max-w-48" data-waved="light">Button</button>
-            </div>
-          </div>
-          <% } %>
-        </div>
-      </div>
+    <div class="flex flex-col lg:max-w-96 xl:max-w-xl p-2">
+      <h4 class="mb-5 font-semibold text-3xl/tight font-alt md:text-5xl/tight">Slider slide</h4>
+      <p class="mb-5 font-semibold text-base/normal md:text-lg/normal md:md-10">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
+      </p>
+      <button class="w-full mt-auto btn btn-primary btn-lg btn-fill max-w-48" data-waved="light">Button</button>
     </div>
   </div>
 </section>
