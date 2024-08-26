@@ -1,7 +1,7 @@
 export default (): void => {
   const html = document.documentElement as HTMLHtmlElement
   const toggles = html.querySelectorAll(
-    '*[data-theme="toggle"]'
+    '*[data-theme-toggle]'
   ) as NodeListOf<HTMLInputElement>
   let theme: string = 'default'
 

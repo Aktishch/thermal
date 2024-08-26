@@ -115,5 +115,6 @@ module.exports = {
     require('./plugins/button'),
     require('./plugins/switch'),
     require('./plugins/animation'),
+    require('./plugins/pointer-coarse'),
   ],
 }

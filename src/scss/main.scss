@@ -1,9 +1,7 @@
-// Инициализация тайлвинд
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// Базовые стили
 @layer base {
   @import "@fancyapps/ui/dist/fancybox/fancybox.css";
   @import "swiper/css/bundle";
@@ -15,7 +13,6 @@
   @import "./ui-kit/movement";
 }
 
-// Компоненты
 @layer components {
   @import "./ui-kit/inverted";
   @import "./ui-kit/postcards";
@@ -29,7 +26,6 @@
   @import "./ui-kit/range";
 }
 
-// Снежинка
 .snowflake {
   background-image: url("../img/pictures/snow.png");
   animation       : snowflake 3000ms linear both 1;
@@ -51,14 +47,6 @@
   }
 }
 
-// Бегующая кнопка
-.running {
-  @media(pointer: coarse) {
-    @apply hidden;
-  }
-}
-
-// В покупки
 .in-shop {
   animation: in-shop 2000ms ease both;
 }
@@ -70,7 +58,6 @@
   }
 }
 
-// Фильтр
 .filtering {
   &__category.filtering-active {
     @apply text-white bg-second pointer-events-none;
@@ -97,7 +84,6 @@
   }
 }
 
-// Плеер
 .player {
   &__loading {
     animation: loading-player 1000ms steps(8) infinite;
@@ -110,7 +96,6 @@
   }
 }
 
-// Продукция
 .product {
   @media(hover) {
     &:hover &__heart {
@@ -129,7 +114,6 @@
   }
 }
 
-// Горизорнтальный скролл
 .scrolling {
   @screen md {
     height: var(--scroll-height);
