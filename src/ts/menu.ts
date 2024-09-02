@@ -23,7 +23,7 @@ export default (): void => {
   document.addEventListener('touchend', ((event: TouchEvent): void => {
     if (!active) return
 
-    if ((event.target as HTMLElement).closest('[data-sidebar="open"]')) {
+    if ((event.target as HTMLElement).closest(`#${menu.id}`)) {
       if (initialX - currentX > value) closeSidebar(menu)
     } else {
       if (initialX <= 32 && initialX - currentX < -value) openSidebar(menu)
