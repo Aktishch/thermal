@@ -42,17 +42,11 @@ export default (): File[] => {
 
           if (!listing.classList.contains('mb-5')) listing.classList.add('mb-5')
 
-          switch (data.length) {
-            case 3: {
-              download.classList.add('pointer-events-none', 'opacity-50')
-              text.innerText = 'Не более 3 файлов'
-              break
-            }
-
-            default: {
-              text.innerText = 'Добавить еще'
-              break
-            }
+          if (data.length === 3) {
+            download.classList.add('pointer-events-none', 'opacity-50')
+            text.innerText = 'Не более 3 файлов'
+          } else {
+            text.innerText = 'Добавить еще'
           }
         }
       }
@@ -87,19 +81,13 @@ export default (): File[] => {
         }
       }
 
-      switch (data.length) {
-        case 0: {
-          input.value = ''
-          text.innerText = 'Загрузить файлы'
-          listing.classList.remove('mb-5')
-          break
-        }
-
-        default: {
-          download.classList.remove('pointer-events-none', 'opacity-50')
-          text.innerText = 'Добавить еще'
-          break
-        }
+      if (data.length === 0) {
+        input.value = ''
+        text.innerText = 'Загрузить файлы'
+        listing.classList.remove('mb-5')
+      } else {
+        download.classList.remove('pointer-events-none', 'opacity-50')
+        text.innerText = 'Добавить еще'
       }
     }
   }) as EventListener)

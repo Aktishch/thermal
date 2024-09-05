@@ -31,19 +31,10 @@ export default (): void => {
 
         positionY += initialY * speed
         positionX += initialX * speed
-
-        switch (layer.dataset.parallaxLayer) {
-          case 'auto': {
-            layer.style.transform = `translate(${positionX / depth}%, ${positionY / depth}%)`
-            break
-          }
-
-          case 'opposite': {
-            layer.style.transform = `translate(${-positionX / depth}%, ${-positionY / depth}%)`
-            break
-          }
-        }
-
+        layer.style.transform =
+          layer.dataset.parallaxLayer === 'reverse'
+            ? `translate(${-positionX / depth}%, ${-positionY / depth}%)`
+            : `translate(${positionX / depth}%, ${positionY / depth}%)`
         window.requestAnimationFrame(setParallaxPosition)
       }
 

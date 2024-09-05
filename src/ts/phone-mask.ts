@@ -36,17 +36,7 @@ const onInput = (event: InputEvent): '' | undefined => {
 const onKeyUp = (event: KeyboardEvent): void => {
   const input = event.target as HTMLInputElement
 
-  switch (input.value[0]) {
-    case '8': {
-      input.maxLength = 17
-      break
-    }
-
-    default: {
-      input.maxLength = 18
-      break
-    }
-  }
+  input.maxLength = input.value[0] === '8' ? 17 : 18
 }
 
 const onKeyDown = (event: KeyboardEvent): void => {

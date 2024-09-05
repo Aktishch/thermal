@@ -11,9 +11,7 @@ export const fileHandler = ({
     error.classList.add('visible', 'opacity-100')
     error.innerText = 'Пожалуйста, загрузите изображение!'
     return false
-  } else if (
-    !['image/jpeg', 'image/png', 'image/gif'].includes(files[0].type)
-  ) {
+  } else if (!['image/jpeg', 'image/png'].includes(files[0].type)) {
     error.classList.add('visible', 'opacity-100')
     error.innerText = 'Только изображения (jpg, png)!'
     return false

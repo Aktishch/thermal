@@ -40,19 +40,13 @@ export default (): void => {
   }
 
   const statusTimer = (): void => {
-    switch (active) {
-      case true: {
-        active = false
-        icon.setAttribute('xlink:href', 'img/icons.svg#play')
-        break
-      }
-
-      case false: {
-        active = true
-        icon.setAttribute('xlink:href', 'img/icons.svg#pause')
-        setTime()
-        break
-      }
+    if (active) {
+      active = false
+      icon.setAttribute('xlink:href', 'img/icons.svg#play')
+    } else {
+      active = true
+      icon.setAttribute('xlink:href', 'img/icons.svg#pause')
+      setTime()
     }
   }
 

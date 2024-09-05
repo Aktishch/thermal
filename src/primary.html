@@ -23,8 +23,8 @@
 <!-- Галерея -->
 
 <section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" id="content">
-  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim="hidden" data-movement="blend">Slider-swiper</h2>
-  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Class template for slider</h3>
+  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Slider-swiper</h2>
+  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Class template for slider</h3>
   <div class="relative w-full" data-slider="gallery">
     <div class="p-4 -m-4 swiper">
       <div class="swiper-wrapper">
@@ -79,7 +79,7 @@
 ] %>
 
 <section class="container flex flex-col items-center justify-center overflow-hidden container-distance bg-grey dark:bg-dark">
-  <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:md-10 anim anim-up" data-anim="hidden" data-movement="blend">Products</h2>
+  <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:md-10 anim anim-up" data-anim data-movement="blend">Products</h2>
   <div class="w-full inverted mb-7" data-inverted="before">
     <div class="inverted-before">
       <button class="btn btn-primary btn-lg btn-fill" data-inverted-toggle="after" data-waved="light">Search</button>
@@ -161,7 +161,7 @@
 
 <section class="bg-white scrolling dark:bg-black" data-scrolling data-smooth-wrapper>
   <div class="container flex flex-col items-start pb-0 mb-5 md:md-10">
-    <h2 class="font-bold duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim="hidden" data-movement="blend">Horizontal scroll</h2>
+    <h2 class="font-bold duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Horizontal scroll</h2>
   </div>
   <div class="container flex gap-5 pt-0 overflow-x-auto md:gap-10 md:sticky md:top-40 scroll-smooth md:overflow-x-hidden" data-scrolling-horizontal data-smooth-sticky>
     <% for (var i = 0; i < 6; i++) { %>
@@ -176,7 +176,7 @@
 <!-- Квиз -->
 
 <section class="container container-xs container-distance bg-grey dark:bg-dark">
-  <div class="relative flex justify-between p-5 overflow-hidden duration-500 bg-white shadow-md dark:bg-black rounded-2xl md:p-10 anim anim-fade" data-anim="hidden">
+  <div class="relative flex justify-between p-5 overflow-hidden duration-500 bg-white shadow-md dark:bg-black rounded-2xl md:p-10 anim anim-fade" data-anim>
     <form class="w-full md:max-w-72 lg:max-w-md" data-form="params">
       <div class="flex flex-col h-full group/quiz" data-slider="quiz" data-quiz="stop">
         <div class="mx-0 swiper">
@@ -240,7 +240,7 @@
       </div>
     </form>
     <div class="hidden w-full md:block max-w-80 lg:max-w-sm">
-      <div class="pack pack-xl bg-grey dark:bg-dark rounded-xl h-full" data-movement="light">
+      <div class="h-full pack pack-xl bg-grey dark:bg-dark rounded-xl" data-movement="light">
         <%= loader %>
         <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
       </div>
@@ -292,7 +292,7 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col lg:max-w-96 xl:max-w-xl p-2">
+    <div class="flex flex-col p-2 lg:max-w-96 xl:max-w-xl">
       <h4 class="mb-5 font-semibold text-3xl/tight font-alt md:text-5xl/tight">Slider slide</h4>
       <p class="mb-5 font-semibold text-base/normal md:text-lg/normal md:md-10">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.

@@ -26,7 +26,7 @@ export const setAnimation = (): void => {
     scrolledPage().top > offsetTop - point &&
     scrolledPage().top < offsetTop + height
       ? (item.dataset.anim = 'show')
-      : (item.dataset.anim = 'hidden')
+      : (item.dataset.anim = '')
   })
 }
 

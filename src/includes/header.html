@@ -65,7 +65,7 @@
         <% _.forEach((nav.pages), (page) => { %>
         <a class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-waved="light" draggable="false" href="<%= page.link %>"><%= page.text %></a>
         <% }) %>
-        <div class="relative group/accordion" data-accordion="hidden" data-accordion-close="scroll">
+        <div class="relative group/accordion" data-accordion data-accordion-close="scroll">
           <button class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-accordion-toggle data-waved="light">
             Navigation
             <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-xs duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: false}) %>
@@ -103,7 +103,7 @@
           <% _.forEach((nav.pages), (page) => { %>
           <a class="text-xl hover:underline underline-offset-4" draggable="false" href="<%= page.link %>"><%= page.text %></a>
           <% }) %>
-          <div class="group/accordion" data-accordion="hidden" data-accordion-close="click">
+          <div class="group/accordion" data-accordion data-accordion-close="click">
             <button class="flex items-center text-xl hover:underline underline-offset-4" data-accordion-toggle>
               Navigation
               <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-sm opacity-60 duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: false}) %>
@@ -132,7 +132,7 @@
     <!-- Перетаскиваемое социальное меню -->
 
     <nav class="fixed z-20 flex flex-col items-center justify-center rounded-full pointer-events-none select-none bottom-2 -left-12 size-48 touch-none" data-social data-draggable>
-      <div class="absolute inset-0 overflow-hidden duration-300 ease-in-out rounded-full opacity-0 pointer-events-auto bg-primary bg-opacity-30 [&[data-social-round=hidden]]:scale-0 [&[data-social-round=hidden]]:-rotate-180" data-social-round="hidden">
+      <div class="absolute inset-0 overflow-hidden duration-300 ease-in-out rounded-full pointer-events-auto bg-primary bg-opacity-30 [&:not([data-social-round=show])]:scale-0 [&:not([data-social-round=show])]:-rotate-180 [&:not([data-social-round=show])]:opacity-0" data-social-round>
         <% for (var i = 0; i < social.length; i++) { %>
         <a class="absolute rounded-full btn btn-second" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
           <%= icon({id: social[i], className: 'icon text-3xl', data: false}) %>
@@ -193,7 +193,7 @@
 
       <!-- Умное меню -->
 
-      <nav class="container <%= data.status ? '' : 'hidden' %> relative z-10 py-4 duration-500 anim anim-down" data-anim="hidden">
+      <nav class="container <%= data.status ? '' : 'hidden' %> relative z-10 py-4 duration-500 anim anim-down" data-anim>
         <div class="flex items-center justify-between w-full max-w-full" data-smart>
           <h2 class="text-lg font-bold font-alt" data-smart-title>Smart-menu items</h2>
           <ul class="flex justify-between gap-3" data-smart-length>
@@ -203,8 +203,8 @@
             </li>
             <% } %>
           </ul>
-          <div class="relative min-w-max" data-smart-nav data-accordion="hidden" data-accordion-close="scroll">
-            <a class="btn btn-primary btn-lg btn-fill" data-accordion-toggle data-bubbles="hidden" draggable="false" href="javascript: ;">
+          <div class="relative min-w-max" data-smart-nav data-accordion data-accordion-close="scroll">
+            <a class="btn btn-primary btn-lg btn-fill" data-accordion-toggle data-bubbles draggable="false" href="javascript: ;">
               more <span class="ml-1" data-smart-count>0</span>
             </a>
             <div class="absolute right-0 bg-white rounded-lg shadow-md top-12 dark:bg-opacity-0 w-52" data-accordion-content>

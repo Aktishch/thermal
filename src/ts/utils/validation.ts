@@ -44,21 +44,15 @@ export const validation = (form: HTMLFormElement): boolean => {
       return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,8})+$/.test(value)
     }
 
-    switch (
+    if (
       input.value === null ||
       input.value === '' ||
       input.value.length === 0
     ) {
-      case true: {
-        inputError()
-        break
-      }
-
-      case false: {
-        input.classList.remove('input-warning')
-        error.classList.remove('visible', 'opacity-100')
-        break
-      }
+      inputError()
+    } else {
+      input.classList.remove('input-warning')
+      error.classList.remove('visible', 'opacity-100')
     }
 
     switch (input.dataset.input) {
@@ -99,17 +93,11 @@ export const validation = (form: HTMLFormElement): boolean => {
       }
 
       case 'text': {
-        switch (input.value.length > 0 && input.value.length < 10) {
-          case true: {
-            error.innerText = 'Введите не менее 10 символов!'
-            inputError()
-            break
-          }
-
-          case false: {
-            error.innerText = 'Пожалуйста, заполните это поле!'
-            break
-          }
+        if (input.value.length > 0 && input.value.length < 10) {
+          error.innerText = 'Введите не менее 10 символов!'
+          inputError()
+        } else {
+          error.innerText = 'Пожалуйста, заполните это поле!'
         }
 
         break

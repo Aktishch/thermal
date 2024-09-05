@@ -5,18 +5,12 @@ const cardsShowing = ({
   condition: boolean
   item: HTMLDivElement
 }): void => {
-  switch (condition) {
-    case true: {
-      item.classList.add('hidden')
-      break
-    }
-
-    case false: {
-      item.classList.remove('hidden')
-      item.classList.add('filtering-active')
-      setTimeout((): void => item.classList.remove('filtering-active'), 300)
-      break
-    }
+  if (condition) {
+    item.classList.add('hidden')
+  } else {
+    item.classList.remove('hidden')
+    item.classList.add('filtering-active')
+    setTimeout((): void => item.classList.remove('filtering-active'), 300)
   }
 }
 

@@ -3,7 +3,6 @@ export default (): void => {
   const toggles = html.querySelectorAll(
     '*[data-theme-toggle]'
   ) as NodeListOf<HTMLInputElement>
-  let theme: string = 'default'
 
   const togglesChecked = (check: boolean): void => {
     toggles.forEach((toggle: HTMLInputElement): void => {
@@ -12,45 +11,22 @@ export default (): void => {
   }
 
   const variationTheme = (): void => {
-    switch (html.classList.contains('dark')) {
-      case true: {
-        theme = 'default'
-        html.classList.remove('dark')
-        togglesChecked(false)
-        break
-      }
+    const status: boolean = html.dataset.theme === 'dark'
 
-      case false: {
-        theme = 'dark'
-        html.classList.add('dark')
-        togglesChecked(true)
-        break
-      }
-    }
-
-    localStorage.setItem('theme', theme)
+    html.dataset.theme = status ? 'default' : 'dark'
+    togglesChecked(!status)
+    localStorage.setItem('theme', html.dataset.theme)
   }
 
   if (localStorage.getItem('theme')) {
-    theme = String(localStorage.getItem('theme'))
+    const theme: string = String(localStorage.getItem('theme'))
 
-    switch (theme) {
-      case 'default': {
-        html.classList.remove('dark')
-        togglesChecked(false)
-        break
-      }
-
-      case 'dark': {
-        html.classList.add('dark')
-        togglesChecked(true)
-        break
-      }
-    }
+    html.dataset.theme = theme
+    togglesChecked(theme === 'dark')
   }
 
   toggles.forEach((toggle: HTMLInputElement): void => {
-    toggle.addEventListener('click', variationTheme as EventListener)
+    toggle.addEventListener('change', variationTheme as EventListener)
   })
 
   document.addEventListener('keyup', ((event: KeyboardEvent): void => {

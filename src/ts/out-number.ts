@@ -16,17 +16,11 @@ const setOutNumber = (section: HTMLElement): void => {
     const interval = setInterval((): void => {
       sum += step
 
-      switch (sum >= number) {
-        case true: {
-          item.innerHTML = String(number.toFixed(fixed))
-          clearInterval(interval)
-          break
-        }
-
-        case false: {
-          item.innerHTML = String(sum.toFixed(fixed))
-          break
-        }
+      if (sum >= number) {
+        item.innerHTML = String(number.toFixed(fixed))
+        clearInterval(interval)
+      } else {
+        item.innerHTML = String(sum.toFixed(fixed))
       }
     }, timer)
   })

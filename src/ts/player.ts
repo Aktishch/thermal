@@ -15,7 +15,6 @@ const playlist: Playlist[] = [
       'https://mp3minusovki.com/music/fhvndfjwserjgt/247bab1c312b2335afe3f5c9b496a3d3/01d63b016f64e0739a9e3d2599b6521f.mp3',
     poster: 'https://picsum.photos/600/400?random=1',
   },
-
   {
     artist: 'System of a down',
     song: 'Lonely Day',
@@ -23,7 +22,6 @@ const playlist: Playlist[] = [
       'https://cdn1.shadam.net/uploads/files/2018-09/1536003683_system-of-a-down-lonely-day.mp3',
     poster: 'https://picsum.photos/600/400?random=2',
   },
-
   {
     artist: 'Scorpions',
     song: 'Slave Me',
@@ -121,22 +119,16 @@ const setPlayer = ({
   }
 
   const statusComposition = (): void => {
-    switch (audio.paused) {
-      case true: {
-        audio.play()
-        icon.setAttribute('xlink:href', 'img/icons.svg#pause')
-        currentComposition()
-        condition.status = 'play'
-        break
-      }
-
-      case false: {
-        audio.pause()
-        icon.setAttribute('xlink:href', 'img/icons.svg#play')
-        currentComposition()
-        condition.status = 'pause'
-        break
-      }
+    if (audio.paused) {
+      audio.play()
+      icon.setAttribute('xlink:href', 'img/icons.svg#pause')
+      currentComposition()
+      condition.status = 'play'
+    } else {
+      audio.pause()
+      icon.setAttribute('xlink:href', 'img/icons.svg#play')
+      currentComposition()
+      condition.status = 'pause'
     }
 
     condition.index = index
@@ -347,22 +339,16 @@ const setPlayer = ({
       const volumeStatus = volume.querySelector('svg') as SVGSVGElement
       const volumeIcon = volumeStatus.querySelector('use') as SVGUseElement
 
-      switch (volume.dataset.playerVolume) {
-        case 'on': {
-          volume.dataset.playerVolume = 'off'
-          volumeStatus.classList.add('opacity-50')
-          volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-off')
-          audio.volume = 0
-          break
-        }
-
-        case 'off': {
-          volume.dataset.playerVolume = 'on'
-          volumeStatus.classList.remove('opacity-50')
-          volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-on')
-          audio.volume = 1
-          break
-        }
+      if (volume.dataset.playerVolume === 'off') {
+        volume.dataset.playerVolume = ''
+        volumeStatus.classList.remove('opacity-50')
+        volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-on')
+        audio.volume = 1
+      } else {
+        volume.dataset.playerVolume = 'off'
+        volumeStatus.classList.add('opacity-50')
+        volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-off')
+        audio.volume = 0
       }
     }) as EventListener)
   }

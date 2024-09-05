@@ -49,32 +49,18 @@ const setHorizontalScrolling = (): void => {
 }
 
 const scrollingInViewport = (): void => {
-  switch (
-    (document.documentElement as HTMLHtmlElement).clientWidth < media.md
-  ) {
-    case true: {
-      document.removeEventListener(
-        'wheel',
-        setHorizontalScrolling as EventListener
-      )
-      document.removeEventListener(
-        'scroll',
-        setHorizontalScrolling as EventListener
-      )
-      break
-    }
-
-    case false: {
-      document.addEventListener(
-        'wheel',
-        setHorizontalScrolling as EventListener
-      )
-      document.addEventListener(
-        'scroll',
-        setHorizontalScrolling as EventListener
-      )
-      break
-    }
+  if ((document.documentElement as HTMLHtmlElement).clientWidth < media.md) {
+    document.removeEventListener(
+      'wheel',
+      setHorizontalScrolling as EventListener
+    )
+    document.removeEventListener(
+      'scroll',
+      setHorizontalScrolling as EventListener
+    )
+  } else {
+    document.addEventListener('wheel', setHorizontalScrolling as EventListener)
+    document.addEventListener('scroll', setHorizontalScrolling as EventListener)
   }
 }
 

@@ -26,17 +26,13 @@ const setDraggable = (id: string): void => {
   let initialX: number
 
   const getDragPosition = (): void => {
-    draggable.closest('[data-draggable]')
-      ? setTranslate({
-          element: draggable.closest('[data-draggable]') as HTMLDivElement,
-          positionX: coordinates.left,
-          positionY: coordinates.top,
-        })
-      : setTranslate({
-          element: draggable,
-          positionX: coordinates.left,
-          positionY: coordinates.top,
-        })
+    setTranslate({
+      element: draggable.closest('[data-draggable]')
+        ? (draggable.closest('[data-draggable]') as HTMLDivElement)
+        : draggable,
+      positionX: coordinates.left,
+      positionY: coordinates.top,
+    })
   }
 
   const dragStart = (event: Event): void => {

@@ -3,9 +3,8 @@ const setBubbles = (event: Event): void => {
 
   btn.dataset.bubles = 'show'
   btn.classList.add('pointer-events-none')
-
   setTimeout((): void => {
-    btn.dataset.bubles = 'hidden'
+    btn.dataset.bubles = ''
     btn.classList.remove('pointer-events-none')
   }, 600)
 }

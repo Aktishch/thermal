@@ -17,26 +17,19 @@ const createAccordion = (accordion: HTMLDivElement): void => {
     content.style.height = `${content.scrollHeight}px`
     content.style.transitionDuration = duration ? `${transition}ms` : '0ms'
 
-    switch (accordion.dataset.accordion) {
-      case 'hidden': {
-        content.classList.add('overflow-hidden')
-
-        timeOut = setTimeout(
-          (): void => {
-            content.style.height = '0'
-          },
-          duration ? 10 : 0
-        )
-        break
-      }
-
-      case 'active': {
-        timeOut = setTimeout((): void => {
-          content.style.height = ''
-          content.classList.remove('overflow-hidden')
-        }, transition)
-        break
-      }
+    if (accordion.dataset.accordion === 'active') {
+      timeOut = setTimeout((): void => {
+        content.style.height = ''
+        content.classList.remove('overflow-hidden')
+      }, transition)
+    } else {
+      content.classList.add('overflow-hidden')
+      timeOut = setTimeout(
+        (): void => {
+          content.style.height = '0'
+        },
+        duration ? 10 : 0
+      )
     }
   }
 
@@ -44,19 +37,9 @@ const createAccordion = (accordion: HTMLDivElement): void => {
   setAccordionHeight(false)
 
   toggle.addEventListener('click', ((): void => {
-    switch (accordion.dataset.accordion) {
-      case 'hidden': {
-        accordion.dataset.accordion = 'active'
-        setAccordionHeight()
-        break
-      }
-
-      case 'active': {
-        accordion.dataset.accordion = 'hidden'
-        setAccordionHeight()
-        break
-      }
-    }
+    accordion.dataset.accordion =
+      accordion.dataset.accordion === 'active' ? '' : 'active'
+    setAccordionHeight()
   }) as EventListener)
 
   switch (accordion.dataset.accordionClose) {
@@ -68,7 +51,7 @@ const createAccordion = (accordion: HTMLDivElement): void => {
           ) !== accordion &&
           accordion.dataset.accordion === 'active'
         ) {
-          accordion.dataset.accordion = 'hidden'
+          accordion.dataset.accordion = ''
           setAccordionHeight()
         }
       }) as EventListener)
@@ -79,7 +62,7 @@ const createAccordion = (accordion: HTMLDivElement): void => {
     case 'scroll': {
       document.addEventListener('scroll', ((): void => {
         if (accordion.dataset.accordion === 'active') {
-          accordion.dataset.accordion = 'hidden'
+          accordion.dataset.accordion = ''
           setAccordionHeight()
         }
       }) as EventListener)

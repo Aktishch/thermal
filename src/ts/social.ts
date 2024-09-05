@@ -13,21 +13,9 @@ export default (): void => {
   const doubleTap = (): void => {
     const timeSince: number = new Date().getTime() - lastTap
 
-    if (timeSince < 300 && timeSince > 0) {
-      switch (round.dataset.socialRound) {
-        case 'hidden': {
-          round.dataset.socialRound = 'show'
-          round.classList.remove('opacity-0')
-          break
-        }
-
-        case 'show': {
-          round.dataset.socialRound = 'hidden'
-          round.classList.add('opacity-0')
-          break
-        }
-      }
-    }
+    if (timeSince < 300 && timeSince > 0)
+      round.dataset.socialRound =
+        round.dataset.socialRound === 'show' ? '' : 'show'
 
     lastTap = new Date().getTime()
   }

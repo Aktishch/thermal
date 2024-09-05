@@ -2,7 +2,7 @@
 
 module.exports = {
   content: ['./src/**/*.html', './src/ts/**/*.ts'],
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
   corePlugins: {
     container: false,
   },

@@ -48,7 +48,6 @@ export const createCalendar = (): void => {
     locale: localeRu,
     onChangeViewDate: (): void => {
       calendar.classList.add('opacity-20', 'pointer-events-none')
-
       setTimeout((): void => {
         filtering()
         calendar.classList.remove('opacity-20', 'pointer-events-none')

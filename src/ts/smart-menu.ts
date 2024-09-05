@@ -20,23 +20,16 @@ export default (): void => {
       ? smartMenu.offsetWidth
       : smartMenu.offsetWidth - nav.offsetWidth
 
-    switch (smartMenuWidth > 0 && smartMenuWidth < lengthWidth) {
-      case true: {
-        breaks.push(lengthWidth)
-        list.prepend(length.lastElementChild as HTMLLIElement)
+    if (smartMenuWidth > 0 && smartMenuWidth < lengthWidth) {
+      breaks.push(lengthWidth)
+      list.prepend(length.lastElementChild as HTMLLIElement)
+      count.innerText = String(breaks.length)
+      updateSmartMenu()
+    } else {
+      if (smartMenuWidth > breaks[breaks.length - 1]) {
+        breaks.pop()
+        length.append(list.firstElementChild as HTMLLIElement)
         count.innerText = String(breaks.length)
-        updateSmartMenu()
-        break
-      }
-
-      case false: {
-        if (smartMenuWidth > breaks[breaks.length - 1]) {
-          breaks.pop()
-          length.append(list.firstElementChild as HTMLLIElement)
-          count.innerText = String(breaks.length)
-        }
-
-        break
       }
     }
 
