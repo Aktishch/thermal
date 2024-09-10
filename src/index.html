@@ -223,21 +223,21 @@
             <h5 class="mb-3 font-medium text-xl/none">Name</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
-              <span class="input-error" data-error>Пожалуйста, введите ваше имя!</span>
+              <span class="error" data-error>Пожалуйста, введите ваше имя!</span>
             </div>
           </label>
           <label data-label="input">
             <h5 class="mb-3 font-medium text-xl/none">Telephone</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-              <span class="input-error" data-error>Пожалуйста, введите ваш номер!</span>
+              <span class="error" data-error>Пожалуйста, введите ваш номер!</span>
             </div>
           </label>
           <label data-label="input">
             <h5 class="mb-3 font-medium text-xl/none">Email</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="email" type="text" placeholder="_@_._" name="email">
-              <span class="input-error" data-error>Пожалуйста, введите корректный адрес!</span>
+              <span class="error" data-error>Пожалуйста, введите корректный адрес!</span>
             </div>
           </label>
           <div>
@@ -245,14 +245,14 @@
             <div class="flex items-center justify-between">
               <div class="relative flex-grow" data-label="input">
                 <input class="rounded-r-none input input-gray input-lg" data-input="min" data-position="top left" type="text" name="check-in">
-                <span class="input-error" data-error>Укажите дату!</span>
+                <span class="error" data-error>Укажите дату!</span>
               </div>
               <div class="relative flex-grow" data-label="input">
                 <input class="rounded-l-none input input-gray input-lg" data-input="max" type="text" name="check-out">
-                <div class="input-icon input-icon-right">
+                <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
                   <%= icon({id: 'calendar', className: 'icon text-xl', data: false}) %>
                 </div>
-                <span class="input-error" data-error>Укажите дату!</span>
+                <span class="error" data-error>Укажите дату!</span>
               </div>
             </div>
           </div>
@@ -260,7 +260,7 @@
             <h5 class="mb-3 font-medium text-xl/none">Number</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="float" type="text" placeholder="12345" name="number">
-              <span class="input-error" data-error>Пожалуйста, введите число!</span>
+              <span class="error" data-error>Пожалуйста, введите число!</span>
             </div>
           </label>
           <label data-label="input">
@@ -273,17 +273,17 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select>
-              <div class="input-icon input-icon-right">
+              <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
                 <%= icon({id: 'arrow-bottom', className: 'icon text-xs', data: false}) %>
               </div>
-              <span class="input-error" data-error>Пожалуйста, выберите вариант!</span>
+              <span class="error" data-error>Пожалуйста, выберите вариант!</span>
             </div>
           </label>
           <label data-label="input">
             <h5 class="mb-3 font-medium text-xl/none">Reviews</h5>
             <div class="relative">
               <textarea class="h-48 input input-gray input-lg" data-input="text" type="text" placeholder="Reviews" name="text"></textarea>
-              <span class="input-error" data-error>Пожалуйста, заполните это поле!</span>
+              <span class="error" data-error>Пожалуйста, заполните это поле!</span>
             </div>
           </label>
           <div class="relative" data-label="download">
@@ -291,7 +291,7 @@
               <input class="hidden" data-input="file" type="file">
               <span data-files-text>Загрузить файлы</span>
             </label>
-            <span class="input-error" data-error>Пожалуйста, загрузите изображение!</span>
+            <span class="error" data-error>Пожалуйста, загрузите изображение!</span>
           </div>
           <ul class="flex flex-col gap-1 text-xs" data-files-listing></ul>
           <div class="relative flex" data-label="input">
@@ -299,7 +299,7 @@
               <input class="mr-2 switch switch-checkbox" data-input="switch" type="checkbox" checked>
               <span class="text-xl">Policy</span>
             </label>
-            <span class="input-error" data-error>Пожалуйста, примите соглашение!</span>
+            <span class="error" data-error>Пожалуйста, примите соглашение!</span>
           </div>
           <button class="btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Submit</button>
         </form>
@@ -388,7 +388,7 @@
                 <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-drag>
                   <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-file="image"'}) %>
                 </div>
-                <span class="input-error" data-error>Пожалуйста, загрузите изображение!</span>
+                <span class="error" data-error>Пожалуйста, загрузите изображение!</span>
               </div>
               <div class="flex flex-wrap items-center justify-between gap-4">
                 <label class="flex-grow btn btn-primary btn-lg btn-fill" data-waved="light">

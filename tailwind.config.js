@@ -59,8 +59,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      alt: 'var(--tw-font-alt)',
-      base: 'var(--tw-font-base)',
+      alt: 'var(--font-alt)',
+      base: 'var(--font-base)',
     },
     gridColumn: {
       1: 'span 1',
@@ -106,14 +106,9 @@ module.exports = {
     },
   },
   plugins: [
-    require('./plugins/container'),
-    require('./plugins/dialog'),
-    require('./plugins/card'),
     require('./plugins/pack'),
-    require('./plugins/picture'),
     require('./plugins/input'),
     require('./plugins/button'),
-    require('./plugins/switch'),
     require('./plugins/animation'),
     require('./plugins/pointer-coarse'),
   ],

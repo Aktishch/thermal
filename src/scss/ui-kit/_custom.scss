@@ -39,7 +39,11 @@
       }
 
       svg {
-        @apply icon object-none;
+        width    : 1em;
+        min-width: 1em;
+        height   : 1em;
+
+        @apply block object-none;
       }
     }
   }

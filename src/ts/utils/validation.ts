@@ -28,7 +28,7 @@ export const validation = (form: HTMLFormElement): boolean => {
 
     const inputError = (): void => {
       input.focus()
-      input.classList.add('input-warning')
+      input.classList.add('input-error')
       error.classList.add('visible', 'opacity-100')
       validate = false
     }
@@ -51,7 +51,7 @@ export const validation = (form: HTMLFormElement): boolean => {
     ) {
       inputError()
     } else {
-      input.classList.remove('input-warning')
+      input.classList.remove('input-error')
       error.classList.remove('visible', 'opacity-100')
     }
 
@@ -113,7 +113,7 @@ export const validation = (form: HTMLFormElement): boolean => {
       'input',
       ((): void => {
         if (input.value.length > 0) {
-          input.classList.remove('input-warning')
+          input.classList.remove('input-error')
           error.classList.remove('visible', 'opacity-100')
         }
       }) as EventListener,

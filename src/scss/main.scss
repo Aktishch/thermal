@@ -14,16 +14,23 @@
 }
 
 @layer components {
+  @import "./ui-kit/card";
   @import "./ui-kit/inverted";
   @import "./ui-kit/postcards";
   @import "./ui-kit/like";
-  @import "./ui-kit/load";
   @import "./ui-kit/button-glow";
   @import "./ui-kit/button-bubles";
   @import "./ui-kit/button-border";
   @import "./ui-kit/quantity";
   @import "./ui-kit/rating";
   @import "./ui-kit/range";
+  @import "./ui-kit/container";
+  @import "./ui-kit/dialog";
+  @import "./ui-kit/load";
+  @import "./ui-kit/image";
+  @import "./ui-kit/icon";
+  @import "./ui-kit/error";
+  @import "./ui-kit/switch";
 }
 
 .snowflake {

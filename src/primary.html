@@ -88,16 +88,16 @@
       <div class="flex items-center justify-between gap-4">
         <form class="w-full" data-form="action" action="primary.html">
           <div class="relative" data-label="input">
-            <input class="pl-10 input input-gray input-lg" data-input type="search" placeholder="Поиск..." list="search" name="search">
-            <span class="input-error" data-error>Пожалуйста, заполните это поле!</span>
+            <input class="pl-11 input input-gray input-lg" data-input type="search" placeholder="Поиск..." list="search" name="search">
+            <span class="error" data-error>Пожалуйста, заполните это поле!</span>
             <datalist id="search">
               <option>Milk</option>
               <option>Tomato</option>
               <option>Meat</option>
               <option>Potatoes</option>
             </datalist>
-            <button class="input-icon input-icon-pointer input-icon-left opacity-30" type="submit">
-              <%= icon({id: 'search', className: 'icon text-black text-xl', data: false}) %>
+            <button class="absolute top-0 bottom-0 left-0 flex items-center justify-center h-full cursor-pointer w-11" type="submit">
+              <%= icon({id: 'search', className: 'icon text-black/30 text-xl', data: false}) %>
             </button>
           </div>
         </form>
@@ -206,14 +206,14 @@
                   <h5 class="mb-3 font-medium text-xl/none">Name</h5>
                   <div class="relative">
                     <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
-                    <span class="input-error" data-error>Пожалуйста, введите ваше имя!</span>
+                    <span class="error" data-error>Пожалуйста, введите ваше имя!</span>
                   </div>
                 </label>
                 <label data-label="input">
                   <h5 class="mb-3 font-medium text-xl/none">Telephone</h5>
                   <div class="relative">
                     <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-                    <span class="input-error" data-error>Пожалуйста, введите ваш номер!</span>
+                    <span class="error" data-error>Пожалуйста, введите ваш номер!</span>
                   </div>
                 </label>
                 <button class="w-full btn btn-primary btn-lg btn-fill" data-waved="light" type="submit">Submit</button>

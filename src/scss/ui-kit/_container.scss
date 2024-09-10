@@ -1,0 +1,41 @@
+.container {
+  --container-padding: 40px;
+  --container-content: 100vw - 32px;
+
+  padding: var(--container-padding) calc(50% - ((var(--container-content)) / 2));
+
+  @screen xs {
+    &-xs {
+      --container-content: var(--content-xs);
+    }
+  }
+
+  @screen sm {
+    --container-padding: 50px;
+    --container-content: var(--content-sm);
+  }
+
+  @screen md {
+    --container-padding: 60px;
+    --container-content: var(--content-md);
+  }
+
+  @screen lg {
+    --container-padding: 70px;
+    --container-content: var(--content-lg);
+  }
+
+  @screen xl {
+    --container-padding: 80px;
+    --container-content: var(--content-xl);
+
+    &-distance {
+      --container-width   : var(--content-xl);
+      --container-distance: 1.25rem;
+      --container-content : calc(var(--container-width) + (var(--container-distance) * 2));
+
+      margin       : var(--container-distance);
+      border-radius: var(--container-distance);
+    }
+  }
+}

@@ -28,7 +28,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         '--tw-input-text': theme('colors.white.DEFAULT'),
         backgroundColor: theme('colors.transparent'),
       },
-      '&-warning': {
+      '&-error': {
         borderColor: theme('colors.red.DEFAULT'),
       },
       '&:-webkit-autofill': {
@@ -39,42 +39,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         transition: 'background-color 1000000ms ease-in-out 0ms',
         '-webkit-text-fill-color': 'var(--tw-input-text) !important',
         '-webkit-text-stroke-color': 'var(--tw-input-text) !important',
-      },
-      '&-icon': {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        width: '3rem',
-        height: '100%',
-        pointerEvents: 'none',
-        '&-pointer': {
-          pointerEvents: 'auto',
-          cursor: 'pointer',
-        },
-        '&-left': {
-          left: 0,
-        },
-        '&-right': {
-          right: 0,
-        },
-      },
-      '&-error': {
-        fontSize: theme('fontSize.xs'),
-        color: theme('colors.red.DEFAULT'),
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        bottom: '-1rem',
-        height: '1rem',
-        opacity: 0,
-        visibility: 'hidden',
-        transition: '300ms ease',
       },
     },
   })
