@@ -1,11 +1,29 @@
+@use "sass:color";
+
+@function rgb($hex) {
+  @return color.red($hex),
+  color.green($hex),
+  color.blue($hex);
+}
+
+$colors: ("primary": #af1a4c,
+  "second": #d7a751,
+  "black": #000,
+  "white": #fff,
+  "gray": #b2b2b2,
+  "grey": #f6f7f9,
+  "dark": #303030,
+  "red": #be1b1b,
+  "green": #27ae60);
+
 :root {
-  --font-alt  : "Circe", Arial, sans-serif;
-  --font-base : "SF Pro Display", Helvetica, sans-serif;
-  --content-xs: calc(theme(screens.xs) - 32.98px);
-  --content-sm: calc(theme(screens.sm) - 35.98px);
-  --content-md: calc(theme(screens.md) - 47.98px);
-  --content-lg: calc(theme(screens.lg) - 51.98px);
-  --content-xl: calc(theme(screens.xl) - 245.98px);
+  --font-alt : "SF Pro Display", Arial, sans-serif;
+  --font-base: "Inter", Helvetica, sans-serif;
+
+  @each $key,
+  $value in $colors {
+    --color-#{$key}: #{rgb($value)};
+  }
 }
 
 * {
@@ -65,10 +83,6 @@ img {
   &:is([src=""], [src="/"]) {
     @apply hidden;
   }
-}
-
-dialog {
-  @apply static border-none size-auto;
 }
 
 address {

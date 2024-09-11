@@ -12,8 +12,12 @@
     @apply bg-transparent p-0;
   }
 
-  &-custom &__content>.f-button.is-close-btn {
-    @apply top-2 right-2 bg-white text-black rounded-full shadow-md;
+  &-custom &__content {
+    @apply text-black w-full h-auto;
+
+    &>.f-button.is-close-btn {
+      @apply top-2 right-2 bg-white text-black rounded-full shadow-md;
+    }
   }
 }
 

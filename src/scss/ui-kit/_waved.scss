@@ -12,11 +12,11 @@
   }
 
   [data-waved="light"] & {
-    --waved-color: theme("colors.white.DEFAULT / 40%");
+    --waved-color: theme("colors.white.DEFAULT / 0.4");
   }
 
   [data-waved="dark"] & {
-    --waved-color: theme("colors.black.DEFAULT / 40%");
+    --waved-color: theme("colors.black.DEFAULT / 0.4");
   }
 }
 

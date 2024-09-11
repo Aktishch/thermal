@@ -1,4 +1,7 @@
 const plugin = require('tailwindcss/plugin')
+const {
+  default: flattenColorPalette,
+} = require('tailwindcss/lib/util/flattenColorPalette')
 const { parseColor, formatColor } = require('tailwindcss/lib/util/color')
 
 module.exports = plugin(({ addComponents, matchComponents, theme }) => {
@@ -17,8 +20,8 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       borderRadius: theme('borderRadius.lg'),
       transition: '200ms ease',
       userSelect: 'initial',
-      '&:not(&-error):focus': {
-        borderColor: 'var(--tw-input-focus)',
+      '&:focus': {
+        boxShadow: '0 0 0 1px var(--tw-input-color)',
       },
       '&:disabled': {
         pointerEvents: 'none',
@@ -28,8 +31,8 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         '--tw-input-text': theme('colors.white.DEFAULT'),
         backgroundColor: theme('colors.transparent'),
       },
-      '&-error': {
-        borderColor: theme('colors.red.DEFAULT'),
+      '&&-error': {
+        '--tw-input-color': theme('colors.red.DEFAULT'),
       },
       '&:-webkit-autofill': {
         color: 'var(--tw-input-text) !important',
@@ -40,29 +43,34 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         '-webkit-text-fill-color': 'var(--tw-input-text) !important',
         '-webkit-text-stroke-color': 'var(--tw-input-text) !important',
       },
+      '@media (hover)': {
+        '&:hover': {
+          backgroundColor: 'var(--tw-input-hovered)',
+        },
+      },
     },
   })
   matchComponents(
     {
       input: (color) => {
-        if (!color.DEFAULT) return null
+        if (typeof color !== 'function') return null
 
-        const parsed = parseColor(color.DEFAULT)
-
-        if (!parsed.color) return null
+        const value = color({})
+        const parsed = parseColor(value)
 
         return {
-          '--tw-input-color': formatColor({
+          '--tw-input-color': value,
+          '--tw-input-hovered': formatColor({
             mode: 'rgba',
             color: parsed.color,
-            alpha: 0.3,
+            alpha: 0.1,
           }),
-          '--tw-input-focus': color.DEFAULT,
         }
       },
     },
     {
-      values: theme('colors'),
+      values: flattenColorPalette(theme('colors')),
+      type: 'color',
     }
   )
   matchComponents(

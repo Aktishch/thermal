@@ -6,33 +6,32 @@
 
   @screen xs {
     &-xs {
-      --container-content: var(--content-xs);
+      --container-content: calc(theme(screens.xs) - 32.98px);
     }
   }
 
   @screen sm {
     --container-padding: 50px;
-    --container-content: var(--content-sm);
+    --container-content: calc(theme(screens.sm) - 35.98px);
   }
 
   @screen md {
     --container-padding: 60px;
-    --container-content: var(--content-md);
+    --container-content: calc(theme(screens.md) - 47.98px);
   }
 
   @screen lg {
     --container-padding: 70px;
-    --container-content: var(--content-lg);
+    --container-content: calc(theme(screens.lg) - 51.98px);
   }
 
   @screen xl {
     --container-padding: 80px;
-    --container-content: var(--content-xl);
+    --container-content: calc(theme(screens.xl) - 245.98px);
 
     &-distance {
-      --container-width   : var(--content-xl);
       --container-distance: 1.25rem;
-      --container-content : calc(var(--container-width) + (var(--container-distance) * 2));
+      --container-content : calc((theme(screens.xl) - 245.98px) + (var(--container-distance) * 2));
 
       margin       : var(--container-distance);
       border-radius: var(--container-distance);

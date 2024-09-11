@@ -1,52 +1,10 @@
 const plugin = require('tailwindcss/plugin')
+const {
+  default: flattenColorPalette,
+} = require('tailwindcss/lib/util/flattenColorPalette')
 const { parseColor, formatColor } = require('tailwindcss/lib/util/color')
 
 module.exports = plugin(({ addComponents, matchComponents, theme }) => {
-  const checkColor = (color, amount) => {
-    if (color[0] === '#') color = color.slice(1)
-
-    const number = parseInt(color, 16)
-    const r = (number >> 16) + amount
-    const g = (number & 0x0000ff) + amount
-    const b = ((number >> 8) & 0x00ff) + amount
-
-    const checkColorValue = (value) => {
-      if (value > 255) value = 255
-      if (value < 0) value = 0
-
-      return value
-    }
-
-    const red = checkColorValue(r)
-    const green = checkColorValue(g)
-    const blue = checkColorValue(b)
-
-    return ((red << 16) | green | (blue << 8)).toString(16)
-  }
-
-  const getColor = (color, amount) => {
-    const r = parseInt(color.substring(1, 3), 16)
-    const g = parseInt(color.substring(3, 5), 16)
-    const b = parseInt(color.substring(5, 7), 16)
-
-    const getColorValue = (value) => {
-      value = parseInt(value + amount)
-      value = value < 255 ? value : 255
-      value = value > 0 ? value : 0
-      value = Math.round(value)
-
-      return value.toString(16).length === 1
-        ? `0${value.toString(16)}`
-        : value.toString(16)
-    }
-
-    const red = getColorValue(r)
-    const green = getColorValue(g)
-    const blue = getColorValue(b)
-
-    return `#${red + green + blue}`
-  }
-
   addComponents({
     '.btn': {
       '*': {
@@ -161,18 +119,13 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
   matchComponents(
     {
       btn: (color) => {
-        if (!color.DEFAULT) return null
+        if (typeof color !== 'function') return null
 
-        const parsed = parseColor(color.DEFAULT)
-
-        if (!parsed.color) return null
-
-        const [r, g, b] = parsed.color
-        const hex = `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`
-        const amount = 25
+        const value = color({})
+        const parsed = parseColor(value)
 
         return {
-          '--tw-btn-color': color.DEFAULT,
+          '--tw-btn-color': value,
           '--tw-btn-fade': formatColor({
             mode: 'rgba',
             color: parsed.color,
@@ -183,15 +136,13 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
             color: parsed.color,
             alpha: 0.4,
           }),
-          '--tw-btn-hovered':
-            checkColor(hex, -amount) !== '0'
-              ? getColor(hex, -amount)
-              : getColor(hex, amount),
+          '--tw-btn-hovered': `color-mix(in srgb, ${value} 85%, ${theme('colors.black.DEFAULT')})`,
         }
       },
     },
     {
-      values: theme('colors'),
+      values: flattenColorPalette(theme('colors')),
+      type: 'color',
     }
   )
   matchComponents(

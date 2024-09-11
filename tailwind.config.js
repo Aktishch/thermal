@@ -1,5 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 
+const createColor = (variable) => {
+  return ({ opacityValue }) => {
+    return `rgba(var(--color-${variable}), ${opacityValue !== undefined ? opacityValue : 1})`
+  }
+}
+
 module.exports = {
   content: ['./src/**/*.html', './src/ts/**/*.ts'],
   darkMode: ['class', '[data-theme="dark"]'],
@@ -31,31 +37,31 @@ module.exports = {
       current: 'currentColor',
       inherit: 'inherit',
       primary: {
-        DEFAULT: '#af1a4c',
+        DEFAULT: createColor('primary'),
       },
       second: {
-        DEFAULT: '#d7a751',
+        DEFAULT: createColor('second'),
       },
       black: {
-        DEFAULT: '#000000',
+        DEFAULT: createColor('black'),
       },
       white: {
-        DEFAULT: '#ffffff',
+        DEFAULT: createColor('white'),
       },
       gray: {
-        DEFAULT: '#b2b2b2',
+        DEFAULT: createColor('gray'),
       },
       grey: {
-        DEFAULT: '#f6f7f9',
+        DEFAULT: createColor('grey'),
       },
       dark: {
-        DEFAULT: '#303030',
+        DEFAULT: createColor('dark'),
       },
       red: {
-        DEFAULT: '#be1b1b',
+        DEFAULT: createColor('red'),
       },
       green: {
-        DEFAULT: '#27ae60',
+        DEFAULT: createColor('green'),
       },
     },
     fontFamily: {

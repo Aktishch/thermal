@@ -34,6 +34,8 @@ import dataSave from './ts/data-save'
 import dragAndDrop from './ts/drag-and-drop'
 import choiceFile from './ts/choice-file'
 import copy from './ts/copy'
+import cookie from './ts/cookie'
+import combination from './ts/combination'
 import createImage from './ts/create-image'
 import inputs from './ts/inputs'
 import phoneMask from './ts/phone-mask'
@@ -89,6 +91,8 @@ const initialization = (): void => {
   dragAndDrop()
   choiceFile()
   copy()
+  cookie()
+  combination()
   createImage()
   inputs()
   phoneMask()
