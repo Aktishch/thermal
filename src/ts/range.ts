@@ -1,3 +1,5 @@
+type Range = HTMLInputElement | HTMLOutputElement
+
 const getPosition = ({
   number,
   input,
@@ -51,9 +53,7 @@ export default (): void => {
 
     switch (wrappers.length) {
       case 1: {
-        const output = range.querySelector('*[data-range-output]') as
-          | HTMLOutputElement
-          | HTMLInputElement
+        const output = range.querySelector('*[data-range-output]') as Range
         const input = range.querySelector(
           '*[data-range-input]'
         ) as HTMLInputElement
@@ -79,10 +79,8 @@ export default (): void => {
       case 2: {
         const outputs = range.querySelectorAll(
           '*[data-range-output]'
-        ) as NodeListOf<HTMLOutputElement | HTMLInputElement>
-        const firstOutput = outputs[first] as
-          | HTMLOutputElement
-          | HTMLInputElement
+        ) as NodeListOf<Range>
+        const firstOutput = outputs[first] as Range
         const firstInput = (wrappers[first] as HTMLDivElement).querySelector(
           '*[data-range-input]'
         ) as HTMLInputElement
@@ -92,7 +90,7 @@ export default (): void => {
         const firstBubble = (wrappers[first] as HTMLDivElement).querySelector(
           '*[data-range-bubble]'
         ) as HTMLOutputElement
-        const lastOutput = outputs[last] as HTMLOutputElement | HTMLInputElement
+        const lastOutput = outputs[last] as Range
         const lastInput = (wrappers[last] as HTMLDivElement).querySelector(
           '*[data-range-input]'
         ) as HTMLInputElement

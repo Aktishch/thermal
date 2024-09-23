@@ -19,6 +19,7 @@ export default (): void => {
     prevOffsetTop = currentOffsetTop
   }
 
+  scrollHeader()
   document.addEventListener('scroll', scrollHeader as EventListener)
 
   const smoothScroll = document.querySelector(

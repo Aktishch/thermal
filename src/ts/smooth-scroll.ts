@@ -125,6 +125,9 @@ export default (): void => {
               layer.style.transform = `translateX(${layerPosition / layerDepth}px)`
               break
             }
+
+            default:
+              return
           }
         }
 

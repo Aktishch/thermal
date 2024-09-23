@@ -55,7 +55,7 @@ import game from './ts/game'
 import preloader from './ts/preloader'
 import './scss/main.scss'
 
-const initialization = (): void => {
+window.addEventListener('DOMContentLoaded', ((): void => {
   fancybox()
   sliderSwiper()
   yandexMap()
@@ -110,6 +110,4 @@ const initialization = (): void => {
   worldMap()
   game()
   preloader()
-}
-
-window.addEventListener('DOMContentLoaded', initialization as EventListener)
+}) as EventListener)

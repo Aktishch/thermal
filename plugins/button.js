@@ -12,6 +12,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       },
       '--tw-btn-color': theme('colors.black.DEFAULT'),
       '--tw-btn-accent': theme('colors.white.DEFAULT'),
+      '--tw-btn-hovered': `color-mix(in srgb, var(--tw-btn-color) 85%, ${theme('colors.black.DEFAULT')})`,
       color: 'var(--tw-btn-color)',
       fontSize: theme('fontSize.base'),
       fontWeight: theme('fontWeight.semibold'),
@@ -136,7 +137,6 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
             color: parsed.color,
             alpha: 0.4,
           }),
-          '--tw-btn-hovered': `color-mix(in srgb, ${value} 85%, ${theme('colors.black.DEFAULT')})`,
         }
       },
     },

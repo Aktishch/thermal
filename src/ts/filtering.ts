@@ -50,7 +50,7 @@ export default (): void => {
     const hash: string = window.location.hash.substr(1)
     const categories = document.querySelectorAll(
       `*[data-filtering-category="${value}"]`
-    ) as NodeListOf<HTMLButtonElement | HTMLDivElement>
+    ) as NodeListOf<HTMLElement>
     const cards = document.querySelectorAll(
       `*[data-filtering-card="${value}"]`
     ) as NodeListOf<HTMLDivElement>
@@ -61,22 +61,18 @@ export default (): void => {
       `*[data-filtering-line="${value}"]`
     ) as HTMLSpanElement
 
-    const currentCategory = (): HTMLButtonElement | HTMLDivElement => {
-      let active = categories[0] as HTMLButtonElement | HTMLDivElement
+    const currentCategory = (): HTMLElement => {
+      let active = categories[0] as HTMLElement
 
-      categories.forEach(
-        (category: HTMLButtonElement | HTMLDivElement): void => {
-          if (category.classList.contains('filtering-active')) active = category
-        }
-      )
+      categories.forEach((category: HTMLElement): void => {
+        if (category.classList.contains('filtering-active')) active = category
+      })
 
       return active
     }
 
-    const currentCard = (
-      category: HTMLButtonElement | HTMLDivElement
-    ): void => {
-      const active = currentCategory() as HTMLButtonElement | HTMLDivElement
+    const currentCard = (category: HTMLElement): void => {
+      const active = currentCategory() as HTMLElement
       const name: string = String(category.dataset.filteringValue)
 
       active.classList.remove('filtering-active')
@@ -92,7 +88,7 @@ export default (): void => {
 
     currentCard(currentCategory())
 
-    categories.forEach((category: HTMLButtonElement | HTMLDivElement): void => {
+    categories.forEach((category: HTMLElement): void => {
       if (!category) return
 
       category.addEventListener('click', ((): void => {
@@ -103,9 +99,7 @@ export default (): void => {
     if (hash && hash !== '') {
       for (const [index, card] of cards.entries()) {
         if (card.querySelector(`#${hash}`)) {
-          const category = categories[index] as
-            | HTMLButtonElement
-            | HTMLDivElement
+          const category = categories[index] as HTMLElement
 
           currentCard(category)
         }

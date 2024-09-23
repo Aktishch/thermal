@@ -1,12 +1,12 @@
 import { fileHandler } from './file-handler'
 
+type Label = HTMLLabelElement | HTMLDivElement
+
 export const validation = (form: HTMLFormElement): boolean => {
-  const labels = form.querySelectorAll('*[data-label="input"]') as NodeListOf<
-    HTMLLabelElement | HTMLDivElement
-  >
-  const download = form.querySelector(
-    '*[data-label="download"]'
-  ) as HTMLDivElement
+  const labels = form.querySelectorAll(
+    '*[data-label="input"]'
+  ) as NodeListOf<Label>
+  const download = form.querySelector('*[data-label="download"]') as Label
   let validate: boolean = true
 
   if (download) {
@@ -18,7 +18,7 @@ export const validation = (form: HTMLFormElement): boolean => {
     validate = fileHandler({ input, error })
   }
 
-  labels.forEach((label: HTMLLabelElement | HTMLDivElement): void => {
+  labels.forEach((label: Label): void => {
     if (!label) return
 
     const input = label.querySelector('*[data-input]') as HTMLInputElement

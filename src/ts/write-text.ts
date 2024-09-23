@@ -3,16 +3,16 @@ const writeText = (section: HTMLElement): void => {
 
   if (!record) return
 
-  const recordText: string = String(record.dataset.record)
-  const recordSpeed: number = Number(record.dataset.recordSpeed) || 30
-  const letters: string[] = [recordText].join('').split('')
+  const text: string = String(record.dataset.record)
+  const speed: string | undefined = record.dataset.recordSpeed
+  const letters: string[] = [text].join('').split('')
 
   const interval = setInterval(
     (): void => {
       if (!letters[0]) return clearInterval(interval)
       record.innerHTML += letters.shift()
     },
-    recordSpeed !== undefined ? recordSpeed : 100
+    speed !== undefined ? Number(speed) : 100
   )
 }
 

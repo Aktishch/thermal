@@ -38,12 +38,10 @@ export default (): void => {
 
   const shopShow = (): void => {
     shop.dataset.shop = 'show'
-    shop.classList.remove('invisible', 'opacity-0')
   }
 
   const shopHidden = (): void => {
-    shop.dataset.shop = 'hidden'
-    shop.classList.add('invisible', 'opacity-0')
+    shop.dataset.shop = ''
   }
 
   const createAnimInShop = (event: MouseEvent): void => {

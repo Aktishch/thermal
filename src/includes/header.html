@@ -161,7 +161,7 @@
 
     <!-- В покупки -->
 
-    <div class="fixed z-20 top-2/4 left-0 md:left-auto right-0 md:right-10 bg-white dark:bg-black dark:text-white rounded-2xl -translate-y-1/2 shadow-md invisible opacity-0 w-full max-w-80 mx-auto p-5 duration-300 [&[data-shop=hidden]]:-translate-y-1/3" data-shop="hidden">
+    <div class="fixed z-20 top-2/4 left-0 md:left-auto right-0 md:right-10 bg-white dark:bg-black dark:text-white rounded-2xl -translate-y-1/2 shadow-md w-full max-w-80 mx-auto p-5 duration-300 [&:not([data-shop=show])]:invisible [&:not([data-shop=show])]:opacity-0 [&:not([data-shop=show])]:-translate-y-1/3" data-shop>
       <div class="flex items-center justify-between mb-4">
         <h4 class="mr-3 text-2xl font-semibold font-alt">Product in shop</h4>
         <button class="p-1 rounded btn btn-primary" data-shop-close data-waved="light">
@@ -193,7 +193,7 @@
 
       <!-- Умное меню -->
 
-      <nav class="container <%= data.status ? '' : 'hidden' %> relative z-10 py-4 duration-500 anim anim-down" data-anim>
+      <nav class="container <%= data.status ? null : 'hidden' %> relative z-10 py-4 duration-500 anim anim-down" data-anim>
         <div class="flex items-center justify-between w-full max-w-full" data-smart>
           <h2 class="text-lg font-bold font-alt" data-smart-title>Smart-menu items</h2>
           <ul class="flex justify-between gap-3" data-smart-length>

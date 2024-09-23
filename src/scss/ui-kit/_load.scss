@@ -1,10 +1,10 @@
 .loader {
-  @apply flex items-center justify-center absolute inset-0 pointer-events-none;
+  @apply flex items-center justify-center absolute inset-0 text-primary pointer-events-none;
 
   &-progress {
     animation: progress 1800ms linear infinite;
 
-    @apply text-4xl text-primary;
+    @apply text-4xl;
   }
 
   &-icon {

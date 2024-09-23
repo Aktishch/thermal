@@ -7,6 +7,8 @@ type Playlist = {
   poster: string
 }
 
+type Time = HTMLDivElement | HTMLSpanElement
+
 const playlist: Playlist[] = [
   {
     artist: 'Slipknot',
@@ -61,12 +63,8 @@ const setPlayer = ({
   const icon = status.querySelector('use') as SVGUseElement
   const prev = player.querySelector('*[data-player-prev]') as HTMLButtonElement
   const next = player.querySelector('*[data-player-next]') as HTMLButtonElement
-  const start = player.querySelector('*[data-player-start]') as
-    | HTMLDivElement
-    | HTMLSpanElement
-  const end = player.querySelector('*[data-player-end]') as
-    | HTMLDivElement
-    | HTMLSpanElement
+  const start = player.querySelector('*[data-player-start]') as Time
+  const end = player.querySelector('*[data-player-end]') as Time
   const volume = player.querySelector(
     '*[data-player-volume]'
   ) as HTMLButtonElement

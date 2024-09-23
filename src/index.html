@@ -130,7 +130,7 @@
   <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Drop-down list</h3>
   <div class="flex flex-col w-full gap-5">
     <% for (var i = 0; i < 3; i++) { %>
-    <div class="relative px-4 py-4 overflow-hidden duration-500 shadow-md bg-second/10 rounded-2xl md:py-6 anim anim-up group/accordion" data-anim data-accordion="<%= i === 0 ? 'active' : '' %>" data-accordion-close="click">
+    <div class="relative px-4 py-4 overflow-hidden duration-500 shadow-md bg-second/10 rounded-2xl md:py-6 anim anim-up group/accordion" data-anim data-accordion="<%= i === 0 ? 'active' : null %>" data-accordion-close="click">
       <div class="flex items-center justify-between gap-4">
         <h4 class="font-semibold font-alt text-xl/tight">Documents - <%= i + 1 %></h4>
         <button class="rounded-full btn btn-primary btn-fill size-9 shrink-0" data-accordion-toggle data-waved="light">
