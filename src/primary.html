@@ -64,8 +64,8 @@
   },
   {
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
-    oldPrice: '55 000$',
-    price: '47 000$'
+    oldPrice: '12 000$',
+    price: '9 000$'
   },
   {
     text: 'Lorem ipsum dolor sit',
@@ -86,7 +86,7 @@
     </div>
     <div class="inverted-after">
       <div class="flex items-center justify-between gap-4">
-        <form class="w-full" data-form="action" action="primary.html">
+        <form class="flex-grow" data-form="action" action="primary.html">
           <div class="relative" data-label="input">
             <input class="pl-11 input input-gray input-lg" data-input type="search" placeholder="Поиск..." list="search" name="search">
             <span class="error" data-error>Пожалуйста, заполните это поле!</span>
@@ -110,13 +110,13 @@
       <div class="swiper-wrapper">
         <% for (var i = 0; i < products.length; i++) { %>
         <div class="h-auto swiper-slide">
-          <div class="h-full p-1 cursor-pointer product card card-hovered card-active dark:bg-black" data-product>
+          <div class="h-full p-1 cursor-pointer card card-hovered group/product card-active dark:bg-black" data-product>
             <div class="pack pack-md bg-grey dark:bg-dark rounded-2xl">
               <%= loader %>
               <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"'}) %>
-              <label class="absolute like top-2 right-2">
-                <input class="hidden product__toggle like-toggle" type="checkbox">
-                <div class="product__heart like-heart">
+              <label class="absolute invisible block overflow-hidden duration-200 rounded-full opacity-0 cursor-pointer top-2 right-2 pointer-coarse:visible pointer-coarse:opacity-100 group group-hover/product:opacity-100 group-hover/product:visible has-[:checked]:visible has-[:checked]:opacity-100" data-waved="light">
+                <input class="hidden peer" type="checkbox">
+                <div class="flex items-center justify-center text-2xl text-opacity-50 duration-200 ease-linear rounded-full group-has-[:checked]:text-opacity-100 bg-white/40 text-red stroke-red size-10">
                   <%= icon({id: 'like', className: 'icon', data: false}) %>
                 </div>
               </label>
@@ -124,17 +124,17 @@
             <div class="p-2 card-content md:p-4">
               <h4 class="mb-2 font-bold text-lg/none font-alt md:text-xl/none" data-product-name>Name <%= i %></h4>
               <p class="mb-3 cursor-pointer text-base/normal hover:underline underline-offset-4 opacity-70"><%= products[i].text %></p>
-              <div class="flex flex-wrap items-end justify-between gap-4 mt-auto mb-5">
+              <div class="flex items-end justify-between gap-4 mt-auto mb-5">
                 <div class="flex flex-col w-full md:w-auto">
                   <% if (products[i].oldPrice) { %>
                   <span class="mb-2 line-through text-sm/none md:text-base/none opacity-60" data-product-oldprice><%= products[i].oldPrice %></span>
                   <% } %>
                   <span class="font-semibold text-xl/none md:text-2xl/none" data-product-price><%= products[i].price %></span>
                 </div>
-                <div class="quantity swiper-no-swiping" data-quantity>
-                  <button class="quantity-btn btn btn-gray btn-fill" data-quantity-decrease data-waved="light">-</button>
-                  <input class="quantity-input input" data-product-quantity data-input="number" type="text" value="1" maxlength="3" name="quantity">
-                  <button class="quantity-btn btn btn-gray btn-fill" data-quantity-increase data-waved="light">+</button>
+                <div class="flex items-center justify-between p-1 border border-solid rounded-full border-gray w-max swiper-no-swiping" data-quantity>
+                  <button class="rounded-full size-8 shrink-0 btn btn-gray btn-fill active:translate-y-0" data-quantity-decrease data-waved="light">-</button>
+                  <input class="w-10 h-auto text-center bg-transparent shrink-0" data-product-quantity data-input="number" type="text" value="1" maxlength="3" name="quantity">
+                  <button class="rounded-full size-8 shrink-0 btn btn-gray btn-fill active:translate-y-0" data-quantity-increase data-waved="light">+</button>
                 </div>
               </div>
               <button class="swiper-no-swiping btn btn-primary btn-lg btn-fade" data-product-button data-waved="light">

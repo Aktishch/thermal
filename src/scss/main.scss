@@ -17,12 +17,9 @@
   @import "./ui-kit/card";
   @import "./ui-kit/inverted";
   @import "./ui-kit/postcards";
-  @import "./ui-kit/like";
   @import "./ui-kit/button-glow";
   @import "./ui-kit/button-bubles";
   @import "./ui-kit/button-border";
-  @import "./ui-kit/quantity";
-  @import "./ui-kit/rating";
   @import "./ui-kit/range";
   @import "./ui-kit/container";
   @import "./ui-kit/load";
@@ -99,24 +96,6 @@
 @keyframes loading-player {
   100% {
     transform: rotateZ(360deg);
-  }
-}
-
-.product {
-  @media(hover) {
-    &:hover &__heart {
-      @apply visible opacity-100;
-    }
-
-    @screen md {
-      &__heart {
-        @apply invisible opacity-0;
-      }
-
-      &__toggle:checked+&__heart {
-        @apply visible opacity-100;
-      }
-    }
   }
 }
 

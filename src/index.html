@@ -322,16 +322,16 @@
           <h4 class="text-2xl font-semibold">Toggle:</h4>
           <input class="switch switch-toggle" type="checkbox">
           <h4 class="text-2xl font-semibold">Quantity:</h4>
-          <div class="quantity" data-quantity>
-            <button class="quantity-btn btn btn-gray btn-fill" data-quantity-decrease data-waved="light">-</button>
-            <input class="quantity-input input" data-input="number" type="text" value="1" maxlength="3" name="quantity">
-            <button class="quantity-btn btn btn-gray btn-fill" data-quantity-increase data-waved="light">+</button>
+          <div class="flex items-center justify-between p-1 border border-solid rounded-full border-gray w-max" data-quantity>
+            <button class="rounded-full size-8 shrink-0 btn btn-gray btn-fill active:translate-y-0" data-quantity-decrease data-waved="light">-</button>
+            <input class="w-10 h-auto text-center bg-transparent shrink-0" data-input="number" type="text" value="1" maxlength="3" name="quantity">
+            <button class="rounded-full size-8 shrink-0 btn btn-gray btn-fill active:translate-y-0" data-quantity-increase data-waved="light">+</button>
           </div>
           <h4 class="text-2xl font-semibold">Rating:</h4>
-          <div class="p-3 rounded-full rating bg-gray/40">
+          <div class="flex flex-row-reverse items-center gap-3 p-3 rounded-full w-max bg-gray/40">
             <% for (var i = 5; i > 0; i--) { %>
-            <input class="hidden rating-input" id="rating-<%= i %>" type="radio" value="<%= i %>" name="rating">
-            <label class="rating-star" for="rating-<%= i %>">
+            <input class="hidden peer/rating" id="rating-<%= i %>" type="radio" value="<%= i %>" name="rating">
+            <label class="text-2xl text-opacity-50 duration-200 cursor-pointer text-second hover:text-opacity-100 peer/star peer-hover/star:text-opacity-100 peer-checked/rating:text-opacity-100" for="rating-<%= i %>">
               <%= icon({id: 'star', className: 'icon', data: false}) %>
             </label>
             <% } %>
