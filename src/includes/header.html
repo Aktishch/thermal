@@ -59,21 +59,21 @@
 
     <header class="container fixed top-0 left-0 right-0 z-30 flex items-center justify-between gap-5 py-4 duration-300 bg-black" data-header>
       <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
-        <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: false}) %>
+        <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: null}) %>
       </a>
       <nav class="items-center justify-between hidden w-full max-w-4xl gap-4 ml-auto lg:flex">
-        <% _.forEach((nav.pages), (page) => { %>
-        <a class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-waved="light" draggable="false" href="<%= page.link %>"><%= page.text %></a>
+        <% _.forEach((nav.pages), (item) => { %>
+        <a class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-waved="light" draggable="false" href="<%= item.link %>"><%= item.text %></a>
         <% }) %>
         <div class="relative group/accordion" data-accordion data-accordion-close="scroll">
           <button class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-accordion-toggle data-waved="light">
             Navigation
-            <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-xs duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: false}) %>
+            <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-xs duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
           </button>
           <div class="absolute right-0 w-full bg-white rounded-lg shadow-md top-16 group-[[data-accordion=active]]/accordion:top-10" data-accordion-content>
             <div class="flex flex-col gap-4 p-4">
-              <% _.forEach((nav.blocks), (block) => { %>
-              <a class="text-sm btn btn-gray hover:underline underline-offset-4" data-waved="dark" data-scroll draggable="false" href="<%= block.id %>"><%= block.text %></a>
+              <% _.forEach((nav.blocks), (item) => { %>
+              <a class="text-sm btn btn-gray hover:underline underline-offset-4" data-waved="dark" data-scroll draggable="false" href="<%= item.id %>"><%= item.text %></a>
               <% }) %>
             </div>
           </div>
@@ -92,26 +92,26 @@
       <div class="flex flex-col bg-black bg-opacity-70 overflow-auto backdrop-blur-sm w-full max-w-[375px] h-full duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
         <div class="flex items-center justify-between gap-2 p-4 duration-500 delay-300 bg-black group-[[data-sidebar=close]]/menu:-translate-y-full">
           <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
-            <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: false}) %>
+            <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: null}) %>
           </a>
           <input class="switch switch-toggle" data-theme-toggle type="checkbox">
           <button class="p-1 btn btn-second" data-sidebar-close="menu" data-waved="light">
-            <%= icon({id: 'close', className: 'icon text-white text-2xl', data: false}) %>
+            <%= icon({id: 'close', className: 'icon text-white text-2xl', data: null}) %>
           </button>
         </div>
         <div class="flex flex-col items-start gap-4 px-4 pt-4 pb-10 text-white duration-700 delay-500 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
-          <% _.forEach((nav.pages), (page) => { %>
-          <a class="text-xl hover:underline underline-offset-4" draggable="false" href="<%= page.link %>"><%= page.text %></a>
+          <% _.forEach((nav.pages), (item) => { %>
+          <a class="text-xl hover:underline underline-offset-4" draggable="false" href="<%= item.link %>"><%= item.text %></a>
           <% }) %>
           <div class="group/accordion" data-accordion data-accordion-close="click">
             <button class="flex items-center text-xl hover:underline underline-offset-4" data-accordion-toggle>
               Navigation
-              <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-sm opacity-60 duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: false}) %>
+              <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-sm opacity-60 duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
             </button>
             <div data-accordion-content>
               <div class="flex flex-col items-start gap-2 pl-5 mt-2">
-                <% _.forEach((nav.blocks), (block) => { %>
-                <a class="text-lg hover:underline underline-offset-4" data-scroll draggable="false" href="<%= block.id %>"><%= block.text %></a>
+                <% _.forEach((nav.blocks), (item) => { %>
+                <a class="text-lg hover:underline underline-offset-4" data-scroll draggable="false" href="<%= item.id %>"><%= item.text %></a>
                 <% }) %>
               </div>
             </div>
@@ -119,11 +119,11 @@
         </div>
         <div class="px-4 pt-4 pb-10 mt-auto duration-500 delay-1000 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:translate-y-1/4">
           <div class="flex items-center justify-center gap-4">
-            <% for (var i = 0; i < social.length; i++) { %>
+            <% _.forEach((social), (item) => { %>
             <a class="rounded-full btn btn-second" data-waved="dark" draggable="false" href="javascript: ;">
-              <%= icon({id: social[i], className: 'icon text-3xl', data: false}) %>
+              <%= icon({id: item, className: 'icon text-3xl', data: null}) %>
             </a>
-            <% } %>
+            <% }) %>
           </div>
         </div>
       </div>
@@ -133,11 +133,11 @@
 
     <nav class="fixed z-20 flex flex-col items-center justify-center rounded-full pointer-events-none select-none bottom-2 -left-12 size-48 touch-none" data-social data-draggable>
       <div class="absolute inset-0 overflow-hidden duration-300 ease-in-out rounded-full pointer-events-auto bg-primary bg-opacity-30 [&:not([data-social-round=show])]:scale-0 [&:not([data-social-round=show])]:-rotate-180 [&:not([data-social-round=show])]:opacity-0" data-social-round>
-        <% for (var i = 0; i < social.length; i++) { %>
+        <% _.forEach((social), (item) => { %>
         <a class="absolute rounded-full btn btn-second" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
-          <%= icon({id: social[i], className: 'icon text-3xl', data: false}) %>
+          <%= icon({id: item, className: 'icon text-3xl', data: null}) %>
         </a>
-        <% } %>
+        <% }) %>
       </div>
       <button class="p-1 overflow-hidden rounded-full shadow-md pointer-events-auto size-10 btn btn-primary btn-contur before:content-auto before:block before:bg-current before:rounded-inherit before:size-full" data-social-button data-waved="light" id="draggable"></button>
     </nav>
@@ -165,7 +165,7 @@
       <div class="flex items-center justify-between mb-4">
         <h4 class="mr-3 text-2xl font-semibold font-alt">Product in shop</h4>
         <button class="p-1 rounded btn btn-primary" data-shop-close data-waved="light">
-          <%= icon({id: 'close', className: 'icon text-lg', data: false}) %>
+          <%= icon({id: 'close', className: 'icon text-lg', data: null}) %>
         </button>
       </div>
       <div class="flex items-center mb-4">

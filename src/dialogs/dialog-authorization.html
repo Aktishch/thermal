@@ -1,4 +1,7 @@
-<% var icon = _.template(require('../components/icon.html').default) %>
+<%
+  var icon = _.template(require('../components/icon.html').default)
+  var error = _.template(require('../components/error.html').default)
+%>
 
 <dialog class="max-w-sm px-5 py-10 dark:bg-black dark:text-white rounded-xl">
   <form class="flex flex-col gap-5" data-form="action" action="primary.html">
@@ -6,17 +9,17 @@
     <label data-label="input">
       <h5 class="mb-3 font-medium text-xl/none">Telephone</h5>
       <div class="relative">
-        <input class="input input-gray input-md" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-        <span class="error" data-error>Пожалуйста, введите ваш номер!</span>
+        <input class="input input-gray input-md" data-input="tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel">
+        <%= error({text: 'Введите ваш номер'}) %>
       </div>
     </label>
     <label data-label="input">
       <h5 class="mb-3 font-medium text-xl/none">Password</h5>
       <div class="relative">
-        <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="Your password here" autocomplete="new-password" name="password">
-        <span class="error" data-error>Пожалуйста, введите пароль!</span>
+        <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="********" autocomplete="new-password" name="password">
+        <%= error({text: 'Введите пароль'}) %>
         <button class="absolute top-0 bottom-0 right-0 flex items-center justify-center w-10 h-full cursor-pointer" data-password="/" type="button">
-          <%= icon({id: 'eye-visible', className: 'icon text-black text-xl pointer-events-none', data: false}) %>
+          <%= icon({id: 'eye-visible', className: 'icon text-black text-xl pointer-events-none', data: null}) %>
         </button>
       </div>
     </label>

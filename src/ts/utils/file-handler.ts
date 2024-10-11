@@ -8,19 +8,19 @@ export const fileHandler = ({
   const files = input.files as FileList
 
   if (files.length === 0) {
-    error.classList.add('visible', 'opacity-100')
-    error.innerText = 'Пожалуйста, загрузите изображение!'
+    error.classList.remove('invisible', 'opacity-0')
+    error.innerText = 'Загрузите изображение'
     return false
   } else if (!['image/jpeg', 'image/png'].includes(files[0].type)) {
-    error.classList.add('visible', 'opacity-100')
-    error.innerText = 'Только изображения (jpg, png)!'
+    error.classList.remove('invisible', 'opacity-0')
+    error.innerText = 'Только изображения (jpg, png)'
     return false
   } else if (files[0].size > 2 * Math.pow(1024, 2)) {
-    error.classList.add('visible', 'opacity-100')
-    error.innerText = 'Размер не более 2 мб!'
+    error.classList.remove('invisible', 'opacity-0')
+    error.innerText = 'Размер не более 2 мб'
     return false
   } else {
-    error.classList.remove('visible', 'opacity-100')
+    error.classList.add('invisible', 'opacity-0')
     return true
   }
 }

@@ -8,6 +8,7 @@
   var picture = _.template(require('./components/picture.html').default)
   var loader = _.template(require('./components/loader.html').default)({icon})
   var preloader = require('./components/preloader.html').default
+  var error = _.template(require('./components/error.html').default)
   var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture})
   var player = _.template(require('./includes/player.html').default)({loader, icon, picture})
   var footer = _.template(require('./includes/footer.html').default)({loader, picture})
@@ -45,7 +46,7 @@
       <article class="h-full card card-hovered dark:bg-black">
         <div class="pack pack-md bg-grey dark:bg-dark" data-movement="light">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: null}) %>
         </div>
         <div class="px-3 py-5 card-content md:px-5">
           <h4 class="mb-4 font-semibold text-2xl/tight font-alt">Article <%= i %></h4>
@@ -63,7 +64,7 @@
         <div class="inverted-before card card-hovered dark:bg-black">
           <div class="pack pack-xs bg-grey dark:bg-dark">
             <%= loader %>
-            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: false}) %>
+            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: null}) %>
           </div>
           <div class="px-3 py-5 card-content md:px-5">
             <h4 class="font-semibold text-2xl/tight font-alt">Article <%= i %></h4>
@@ -134,7 +135,7 @@
       <div class="flex items-center justify-between gap-4">
         <h4 class="font-semibold font-alt text-xl/tight">Documents - <%= i + 1 %></h4>
         <button class="rounded-full btn btn-primary btn-fill size-9 shrink-0" data-accordion-toggle data-waved="light">
-          <%= icon({id: 'arrow-right', className: 'icon text-sm duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: false}) %>
+          <%= icon({id: 'arrow-right', className: 'icon text-sm duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
         </button>
       </div>
       <div data-accordion-content>
@@ -142,7 +143,7 @@
           <% for (var j = 0; j < 4; j++) { %>
           <a class="relative flex items-center gap-4 p-3 bg-white rounded-lg hover:underline underline-offset-4 dark:bg-black" data-waved="dark" draggable="false" href="javascript: ;">
             <div class="flex items-center justify-center rounded-lg size-12 bg-primary/10 shrink-0">
-              <%= icon({id: 'file', className: 'icon text-primary text-2xl', data: false}) %>
+              <%= icon({id: 'file', className: 'icon text-primary text-2xl', data: null}) %>
             </div>
             <p class="text-sm/normal md:text-base/normal">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </a>
@@ -195,19 +196,19 @@
     <%= picture({src: 'img/pictures/circle-white', format: 'png', className: 'absolute z-10 -bottom-8 -right-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="reverse" data-parallax-speed="4" data-parallax-depth="2"'}) %>
     <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-10 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"'}) %>
     <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category filtering-active md:p-0" data-filtering-category="filtering" data-filtering-value="text-style">Text-style</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="form-validate">Form-validate</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="switches">Switches</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="file">File</div>
+      <button class="flex-grow p-4 text-xl filtering__category filtering-active md:p-0" data-filtering-category="filtering" data-filtering-value="text-style">Text-style</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="form-validate">Form-validate</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="switches">Switches</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="filtering" data-filtering-value="file">File</button>
       <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="filtering"></span>
     </div>
     <div class="text-black duration-500 bg-white shadow-md rounded-3xl p-7 md:p-10 anim anim-fade" data-anim>
       <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="text-style">
         <ul class="flex flex-col gap-4 list-disc list-inside text-primary">
-          <% _.forEach((numbers), (number) => { %>
+          <% _.forEach((numbers), (item) => { %>
           <li>
-            <span class="text-second <%= number.text %>">
-              --text-<span data-number="<%= number.value %>" data-number-step="1" data-number-time="2" data-number-fixed="0">0</span>
+            <span class="text-second <%= item.text %>">
+              --text-<span data-number="<%= item.value %>" data-number-step="1" data-number-time="2" data-number-fixed="0">0</span>
             </span>
           </li>
           <% }) %>
@@ -223,21 +224,21 @@
             <h5 class="mb-3 font-medium text-xl/none">Name</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
-              <span class="error" data-error>Пожалуйста, введите ваше имя!</span>
+              <%= error({text: 'Введите ваше имя'}) %>
             </div>
           </label>
           <label data-label="input">
             <h5 class="mb-3 font-medium text-xl/none">Telephone</h5>
             <div class="relative">
-              <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-              <span class="error" data-error>Пожалуйста, введите ваш номер!</span>
+              <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel">
+              <%= error({text: 'Введите ваш номер'}) %>
             </div>
           </label>
           <label data-label="input">
             <h5 class="mb-3 font-medium text-xl/none">Email</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="email" type="text" placeholder="_@_._" name="email">
-              <span class="error" data-error>Пожалуйста, введите корректный адрес!</span>
+              <%= error({text: 'Введите корректный адрес'}) %>
             </div>
           </label>
           <div>
@@ -245,14 +246,14 @@
             <div class="flex items-center justify-between">
               <div class="relative flex-grow" data-label="input">
                 <input class="rounded-r-none input input-gray input-lg" data-input="min" data-position="top left" type="text" name="check-in">
-                <span class="error" data-error>Укажите дату!</span>
+                <%= error({text: 'Укажите дату'}) %>
               </div>
               <div class="relative flex-grow" data-label="input">
                 <input class="rounded-l-none input input-gray input-lg" data-input="max" type="text" name="check-out">
                 <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
-                  <%= icon({id: 'calendar', className: 'icon text-xl', data: false}) %>
+                  <%= icon({id: 'calendar', className: 'icon text-xl', data: null}) %>
                 </div>
-                <span class="error" data-error>Укажите дату!</span>
+                <%= error({text: 'Укажите дату'}) %>
               </div>
             </div>
           </div>
@@ -260,7 +261,7 @@
             <h5 class="mb-3 font-medium text-xl/none">Number</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="float" type="text" placeholder="12345" name="number">
-              <span class="error" data-error>Пожалуйста, введите число!</span>
+              <%= error({text: 'Введите число'}) %>
             </div>
           </label>
           <label data-label="input">
@@ -274,16 +275,16 @@
                 <option value="4">4</option>
               </select>
               <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
-                <%= icon({id: 'arrow-bottom', className: 'icon text-xs', data: false}) %>
+                <%= icon({id: 'arrow-bottom', className: 'icon text-xs', data: null}) %>
               </div>
-              <span class="error" data-error>Пожалуйста, выберите вариант!</span>
+              <%= error({text: 'Выберите вариант'}) %>
             </div>
           </label>
           <label data-label="input">
             <h5 class="mb-3 font-medium text-xl/none">Reviews</h5>
             <div class="relative">
               <textarea class="h-48 input input-gray input-lg" data-input="text" type="text" placeholder="Reviews" name="text"></textarea>
-              <span class="error" data-error>Пожалуйста, заполните это поле!</span>
+              <%= error({text: 'Заполните это поле'}) %>
             </div>
           </label>
           <div class="relative" data-label="download">
@@ -291,7 +292,7 @@
               <input class="hidden" data-input="file" type="file">
               <span data-files-text>Загрузить файлы</span>
             </label>
-            <span class="error" data-error>Пожалуйста, загрузите изображение!</span>
+            <%= error({text: 'Загрузите изображение'}) %>
           </div>
           <ul class="flex flex-col gap-1 text-xs" data-files-listing></ul>
           <div class="relative flex" data-label="input">
@@ -299,7 +300,7 @@
               <input class="mr-2 switch switch-checkbox" data-input="switch" type="checkbox" checked>
               <span class="text-xl">Policy</span>
             </label>
-            <span class="error" data-error>Пожалуйста, примите соглашение!</span>
+            <%= error({text: 'Примите соглашение'}) %>
           </div>
           <button class="btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Submit</button>
         </form>
@@ -332,7 +333,7 @@
             <% for (var i = 5; i > 0; i--) { %>
             <input class="hidden peer/rating" id="rating-<%= i %>" type="radio" value="<%= i %>" name="rating">
             <label class="text-2xl text-opacity-50 duration-200 cursor-pointer text-second hover:text-opacity-100 peer/star peer-hover/star:text-opacity-100 peer-checked/rating:text-opacity-100" for="rating-<%= i %>">
-              <%= icon({id: 'star', className: 'icon', data: false}) %>
+              <%= icon({id: 'star', className: 'icon', data: null}) %>
             </label>
             <% } %>
           </div>
@@ -375,7 +376,7 @@
           <div class="flex items-center w-full gap-3 mb-5">
             <div class="w-10 rounded-full cursor-pointer shrink-0 pack pack-xl bg-primary/40" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-avatar.html">
               <div class="absolute inset-0 flex items-center justify-center">
-                <%= icon({id: 'user', className: 'icon text-white text-sm', data: false}) %>
+                <%= icon({id: 'user', className: 'icon text-white text-sm', data: null}) %>
               </div>
               <%= picture({src: '', format: '', className: 'image', data: 'data-avatar'}) %>
             </div>
@@ -388,7 +389,7 @@
                 <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-drag>
                   <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-file="image"'}) %>
                 </div>
-                <span class="error" data-error>Пожалуйста, загрузите изображение!</span>
+                <%= error({text: 'Загрузите изображение'}) %>
               </div>
               <div class="flex flex-wrap items-center justify-between gap-4">
                 <label class="flex-grow btn btn-primary btn-lg btn-fill" data-waved="light">
@@ -443,7 +444,7 @@
     <div class="w-72" data-parallax-hovered="600">
       <div class="duration-300 ease-linear pack pack-xxl bg-grey dark:bg-dark" data-parallax-item="10">
         <%= loader %>
-        <%= picture({src: parallax.bg, format: 'png', className: 'image', data: false}) %>
+        <%= picture({src: parallax.bg, format: 'png', className: 'image', data: null}) %>
         <div class="absolute duration-300 ease-linear border-8 border-solid inset-5 border-second" data-parallax-item="100"></div>
         <%= picture({src: parallax.img, format: 'png', className: 'image ease-linear duration-300', data: 'data-parallax-item="80"'}) %>
         <div class="absolute bottom-0 left-0 right-0 top-auto p-10 text-white duration-300 ease-linear pointer-events-none" data-parallax-item="160">

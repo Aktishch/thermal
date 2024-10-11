@@ -1,5 +1,4 @@
 <%
-  var calendar = ['date-5-5', 'date-7-6', 'date-10-6']
   var icon = _.template(require('../components/icon.html').default)
   var loader = _.template(require('../components/loader.html').default)({icon})
   var picture = _.template(require('../components/picture.html').default)
@@ -13,12 +12,12 @@
       <div class="relative" id="calendar"></div>
     </div>
     <div class="w-full md:w-1/2">
-      <% for (var i = 0; i < calendar.length; i++) { %>
-      <div class="w-full filtering__card pack pack-md bg-gray rounded-2xl" data-filtering-card="calendar" data-filtering-value="<%= calendar[i] %>">
+      <% _.forEach((['date-5-5', 'date-7-6', 'date-10-6']), (item) => { %>
+      <div class="w-full filtering__card pack pack-md bg-gray rounded-2xl" data-filtering-card="calendar" data-filtering-value="<%= item %>">
         <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: null}) %>
       </div>
-      <% } %>
+      <% }) %>
     </div>
   </div>
 </dialog>

@@ -29,13 +29,13 @@ export const validation = (form: HTMLFormElement): boolean => {
     const inputError = (): void => {
       input.focus()
       input.classList.add('input-error')
-      error.classList.add('visible', 'opacity-100')
+      error.classList.remove('invisible', 'opacity-0')
       validate = false
     }
 
     const maxLengthInputTel = (value: number): void => {
       if (input.value.length > 0 && input.value.length < value) {
-        error.innerText = 'Введите корректный номер!'
+        error.innerText = 'Введите корректный номер'
         inputError()
       }
     }
@@ -52,7 +52,7 @@ export const validation = (form: HTMLFormElement): boolean => {
       inputError()
     } else {
       input.classList.remove('input-error')
-      error.classList.remove('visible', 'opacity-100')
+      error.classList.add('invisible', 'opacity-0')
     }
 
     switch (input.dataset.input) {
@@ -74,7 +74,7 @@ export const validation = (form: HTMLFormElement): boolean => {
           }
 
           default: {
-            error.innerText = 'Пожалуйста, введите ваш номер!'
+            error.innerText = 'Введите ваш номер'
             break
           }
         }
@@ -94,10 +94,10 @@ export const validation = (form: HTMLFormElement): boolean => {
 
       case 'text': {
         if (input.value.length > 0 && input.value.length < 10) {
-          error.innerText = 'Введите не менее 10 символов!'
+          error.innerText = 'Введите не менее 10 символов'
           inputError()
         } else {
-          error.innerText = 'Пожалуйста, заполните это поле!'
+          error.innerText = 'Заполните это поле'
         }
 
         break
@@ -114,7 +114,7 @@ export const validation = (form: HTMLFormElement): boolean => {
       ((): void => {
         if (input.value.length > 0) {
           input.classList.remove('input-error')
-          error.classList.remove('visible', 'opacity-100')
+          error.classList.add('invisible', 'opacity-0')
         }
       }) as EventListener,
       { once: true }

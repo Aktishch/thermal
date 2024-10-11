@@ -23,20 +23,18 @@
 
 <!-- Сетка -->
 
-<% var grid = ['lg:row-5', 'lg:row-4', 'lg:row-5', 'lg:row-5', 'lg:row-4', 'lg:row-4'] %>
-
 <section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" id="content">
   <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">GridBox</h2>
   <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Columns and rows</h3>
   <div class="grid w-full grid-flow-row-dense grid-cols-2 gap-3 lg:grid-cols-3 md:gap-5 lg:gap-8">
-    <% for (var i = 0; i < grid.length; i++) { %>
-    <div class="<%= grid[i] %> duration-1000 anim anim-circle" data-anim>
+    <% _.forEach((['lg:row-5', 'lg:row-4', 'lg:row-5', 'lg:row-5', 'lg:row-4', 'lg:row-4']), (item) => { %>
+    <div class="<%= item %> duration-1000 anim anim-circle" data-anim>
       <a class="h-full shadow-md pack pack-xl bg-grey dark:bg-dark rounded-xl" data-movement="light" data-fancybox="grid" draggable="false" href="img/pictures/town-grey.jpg">
         <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: null}) %>
       </a>
     </div>
-    <% } %>
+    <% }) %>
   </div>
 </section>
 
@@ -49,10 +47,10 @@
     <div class="absolute z-10 w-1/2 h-full pack pack-xs" data-compare-before>
       <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-compare-image'}) %>
     </div>
-    <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'block relative w-full h-full', data: false}) %>
+    <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'block relative w-full h-full', data: null}) %>
     <div class="flex items-center justify-center absolute top-0 bottom-0 left-2/4 z-20 bg-white dark:bg-black -translate-x-1/2 w-1 h-[95%] my-auto" data-compare-change>
       <button class="rounded-full btn btn-primary btn-fill cursor-col-resize size-12 shrink-0">
-        <%= icon({id: 'arrows', className: 'icon text-xl', data: false}) %>
+        <%= icon({id: 'arrows', className: 'icon text-xl', data: null}) %>
       </button>
     </div>
   </div>
@@ -64,12 +62,12 @@
   <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Sorting</h2>
   <div class="w-full max-w-xl mx-auto filtering" data-filtering="sorting">
     <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category filtering-active md:p-0" data-filtering-category="sorting" data-filtering-value="all">All</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="primary">Primary</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="second">Second</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="green">Green</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="mix">Mix</div>
-      <div class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="none">None</div>
+      <button class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category filtering-active md:p-0" data-filtering-category="sorting" data-filtering-value="all">All</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="primary">Primary</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="second">Second</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="green">Green</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="mix">Mix</button>
+      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="none">None</button>
       <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="sorting"></span>
     </div>
     <div class="grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-10">
@@ -119,7 +117,7 @@
     <time class="mb-5 text-2xl font-semibold text-center text-white" data-timer-units></time>
     <div class="flex items-center justify-center gap-4">
       <button class="rounded-full size-10 btn btn-second btn-fade shrink-0" data-timer-turn data-waved="dark">
-        <%= icon({id: 'play', className: 'icon text-4xl', data: false}) %>
+        <%= icon({id: 'play', className: 'icon text-4xl', data: null}) %>
       </button>
       <button class="btn btn-second btn-sm btn-light" data-timer-reset data-waved="dark">Reset</button>
     </div>
