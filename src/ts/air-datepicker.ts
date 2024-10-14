@@ -1,4 +1,4 @@
-import AirDatepicker from 'air-datepicker'
+import AirDatepicker, { AirDatepickerPosition } from 'air-datepicker'
 import localeRu from 'air-datepicker/locale/ru'
 import { touchDevice } from './utils'
 import filtering from './filtering'
@@ -83,7 +83,8 @@ export default (): void => {
       isMobile: touchDevice(),
       autoClose: true,
       minDate: new Date(),
-      position: 'bottom left' || inputMin.dataset.position,
+      position:
+        (inputMin.dataset.position as AirDatepickerPosition) || 'bottom left',
     }) as AirDatepicker<HTMLInputElement>
 
     const max = new window.AirDatepicker(inputMax, {
@@ -96,7 +97,8 @@ export default (): void => {
       isMobile: touchDevice(),
       autoClose: true,
       minDate: new Date(),
-      position: 'bottom left' || inputMax.dataset.position,
+      position:
+        (inputMax.dataset.position as AirDatepickerPosition) || 'bottom left',
     }) as AirDatepicker<HTMLInputElement>
   })
 }

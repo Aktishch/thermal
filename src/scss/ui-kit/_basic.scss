@@ -46,7 +46,7 @@ body {
 }
 
 main {
-  @apply flex flex-col min-h-screen;
+  @apply flex flex-col overflow-hidden min-h-screen;
 }
 
 ::selection {

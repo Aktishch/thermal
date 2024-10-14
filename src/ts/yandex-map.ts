@@ -29,12 +29,17 @@ export default (): void => {
 
       const placemark = new maps.Placemark(
         mark,
-        {},
+        {
+          hintContent: 'Студия К.И.Т.',
+          balloonContentHeader: 'Студия К.И.Т.',
+          balloonContentBody: 'г. Краснодар',
+          balloonContentFooter: 'ул.Рождественская Набережная 45/1',
+        },
         {
           iconLayout: 'default#image',
-          iconImageHref: './img/pictures/geo.png',
-          iconImageSize: [40, 50],
-          iconImageOffset: [-20, -25],
+          iconImageHref: './img/pictures/point.svg',
+          iconImageSize: [62, 62],
+          iconImageOffset: [-31, -31],
         }
       )
 
@@ -54,6 +59,17 @@ export default (): void => {
       map.controls.remove('rulerControl')
       map.behaviors.disable(['scrollZoom'])
       map.geoObjects.add(placemark)
+
+      map.geoObjects.events.add('click', ((event: any): void => {
+        const target = event.get('target')
+        const hintContent: string = target.properties._data.hintContent
+
+        map.panTo(target.geometry.getCoordinates(), {
+          useMapMargin: true,
+        })
+
+        alert(hintContent)
+      }) as EventListener)
     })
     .catch((error: string) => console.log('Failed to load Yandex Maps', error))
 }

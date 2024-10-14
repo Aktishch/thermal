@@ -8,8 +8,8 @@
     }
   }
 
-  &-custom &-error {
-    @apply bg-transparent p-0;
+  &-custom &__content:is(&-error) {
+    @apply bg-transparent text-white w-auto p-0;
   }
 
   &-custom &__content {

@@ -36,12 +36,19 @@ const createGallerySlider = (): void => {
 
   if (!slider) return
 
-  const swiper = slider.querySelector('.swiper') as HTMLDivElement
-  const pagination = slider.querySelector(
-    '.swiper-pagination'
+  const value: string = slider.dataset.slider
+  const swiper = slider.querySelector(
+    `*[data-slider-swiper="${value}"]`
   ) as HTMLDivElement
-  const prev = slider.querySelector('.swiper-button-prev') as HTMLButtonElement
-  const next = slider.querySelector('.swiper-button-next') as HTMLButtonElement
+  const pagination = slider.querySelector(
+    `*[data-slider-pagination="${value}"]`
+  ) as HTMLDivElement
+  const prev = slider.querySelector(
+    `*[data-slider-prev="${value}"]`
+  ) as HTMLButtonElement
+  const next = slider.querySelector(
+    `*[data-slider-next="${value}"]`
+  ) as HTMLButtonElement
 
   new window.Swiper(swiper, {
     pagination: {
@@ -81,12 +88,19 @@ const createProductsSlider = (): void => {
 
   if (!slider) return
 
-  const swiper = slider.querySelector('.swiper') as HTMLDivElement
-  const pagination = slider.querySelector(
-    '.swiper-pagination'
+  const value: string = slider.dataset.slider
+  const swiper = slider.querySelector(
+    `*[data-slider-swiper="${value}"]`
   ) as HTMLDivElement
-  const prev = slider.querySelector('.swiper-button-prev') as HTMLButtonElement
-  const next = slider.querySelector('.swiper-button-next') as HTMLButtonElement
+  const pagination = slider.querySelector(
+    `*[data-slider-pagination="${value}"]`
+  ) as HTMLDivElement
+  const prev = slider.querySelector(
+    `*[data-slider-prev="${value}"]`
+  ) as HTMLButtonElement
+  const next = slider.querySelector(
+    `*[data-slider-next="${value}"]`
+  ) as HTMLButtonElement
 
   new window.Swiper(swiper, {
     pagination: {
@@ -123,22 +137,25 @@ const createQuizSlider = (): void => {
 
   if (!slider) return
 
-  const swiper = slider.querySelector('.swiper') as HTMLDivElement
-  const pagination = slider.querySelector(
-    '.swiper-pagination'
+  const value: string = slider.dataset.slider
+  const swiper = slider.querySelector(
+    `*[data-slider-swiper="${value}"]`
   ) as HTMLDivElement
-  const prev = slider.querySelector('.swiper-button-prev') as HTMLButtonElement
-  const next = slider.querySelector('.swiper-button-next') as HTMLButtonElement
+  const pagination = slider.querySelector(
+    `*[data-slider-pagination="${value}"]`
+  ) as HTMLDivElement
+  const prev = slider.querySelector(
+    `*[data-slider-prev="${value}"]`
+  ) as HTMLButtonElement
+  const next = slider.querySelector(
+    `*[data-slider-next="${value}"]`
+  ) as HTMLButtonElement
 
   new window.Swiper(swiper, {
     pagination: {
       el: pagination,
       type: 'custom',
-      renderCustom: (
-        swiper: Swiper,
-        current: number,
-        total: number
-      ): string => {
+      renderCustom: (_, current: number, total: number): string => {
         return String(total - current)
       },
     },
@@ -152,7 +169,9 @@ const createQuizSlider = (): void => {
     allowTouchMove: false,
     watchSlidesProgress: true,
     on: {
-      slideChange: (swiper: Swiper): void => {
+      slideChange: (
+        swiper: Swiper & { visibleSlides: [HTMLDivElement] }
+      ): void => {
         const quiz = swiper.el.closest('[data-quiz]') as HTMLElement
         const visibleSlide = swiper.visibleSlides[0] as HTMLDivElement
 
@@ -176,7 +195,10 @@ const createDescriptionSlider = (): void => {
   const sliderBg = document.querySelector(
     '*[data-slider="description-bg"]'
   ) as HTMLDivElement
-  const swiperBg = sliderBg.querySelector('.swiper') as HTMLDivElement
+  const valueBg: string = sliderBg.dataset.slider
+  const swiperBg = sliderBg.querySelector(
+    `*[data-slider-swiper="${valueBg}"]`
+  ) as HTMLDivElement
   const descriptionBg = new window.Swiper(swiperBg, {
     slidesPerView: 1,
     slidesPerGroup: 1,
@@ -188,7 +210,10 @@ const createDescriptionSlider = (): void => {
   const sliderBullets = document.querySelector(
     '*[data-slider="description-bullets"]'
   ) as HTMLDivElement
-  const swiperBullets = sliderBullets.querySelector('.swiper') as HTMLDivElement
+  const valueBullets: string = sliderBullets.dataset.slider
+  const swiperBullets = sliderBullets.querySelector(
+    `*[data-slider-swiper="${valueBullets}"]`
+  ) as HTMLDivElement
   const descriptionBullets = new window.Swiper(swiperBullets, {
     slidesPerView: 3,
     slidesPerGroup: 1,
@@ -202,7 +227,10 @@ const createDescriptionSlider = (): void => {
     },
   }) as Swiper
 
-  const swiper = slider.querySelector('.swiper') as HTMLDivElement
+  const value: string = slider.dataset.slider
+  const swiper = slider.querySelector(
+    `*[data-slider-swiper="${value}"]`
+  ) as HTMLDivElement
 
   new window.Swiper(swiper, {
     slidesPerView: 1,
