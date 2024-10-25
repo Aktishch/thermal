@@ -1,5 +1,4 @@
 @use "sass:color";
-@tailwind base;
 
 @function rgb($hex) {
   @return color.channel($hex, "red"),
