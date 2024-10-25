@@ -160,7 +160,7 @@
 
 <!-- Горизорнтальный скролл -->
 
-<section class="bg-white scrolling dark:bg-black" data-scrolling data-smooth-wrapper>
+<section class="bg-white dark:bg-black md:h-[var(--scroll-height)]" data-scrolling data-smooth-wrapper>
   <div class="container flex flex-col items-start pb-0 mb-5 md:md-10">
     <h2 class="font-bold duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Horizontal scroll</h2>
   </div>
@@ -168,7 +168,7 @@
     <% for (var i = 0; i < 6; i++) { %>
     <a class="pack pack-xs bg-grey dark:bg-dark rounded-3xl shadow-md shrink-0 w-80 md:w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
-      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-300', data: 'data-scrolling-image'}) %>
+      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image md:translate-x-[var(--scroll-moving)] md:scale-150 ease-in-out duration-300', data: 'data-scrolling-image'}) %>
     </a>
     <% } %>
   </div>

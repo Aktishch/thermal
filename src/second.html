@@ -58,26 +58,25 @@
 
 <!-- Сортировка -->
 
+<% var filtering = ['all', 'primary', 'second', 'green', 'mix', 'none'] %>
+
 <section class="container flex flex-col items-center justify-center bg-white container-xs dark:bg-black">
   <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Sorting</h2>
-  <div class="w-full max-w-xl mx-auto filtering" data-filtering="sorting">
-    <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim>
-      <button class="flex-grow p-4 text-xl text-center cursor-pointer filtering__category filtering-active md:p-0" data-filtering-category="sorting" data-filtering-value="all">All</button>
-      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="primary">Primary</button>
-      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="second">Second</button>
-      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="green">Green</button>
-      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="mix">Mix</button>
-      <button class="flex-grow p-4 text-xl filtering__category md:p-0" data-filtering-category="sorting" data-filtering-value="none">None</button>
+  <div class="w-full max-w-xl mx-auto" data-filtering="sorting">
+    <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-gray md:mb-10 md:pb-4 anim anim-up" data-anim>
+      <% for (var i = 0; i < filtering.length; i++) { %>
+      <button class="flex-grow p-4 text-xl text-center cursor-pointer md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= i === 0 ? 'filtering-category' : null %>" data-filtering-category="sorting" data-filtering-value="<%= filtering[i] %>"><%= filtering[i] %></button>
+      <% } %>
       <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="sorting"></span>
     </div>
     <div class="grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-10">
       <% for (var i = 0; i < 3; i++) { %>
-      <div class="py-10 filtering__card bg-primary" data-filtering-card="sorting" data-filtering-value="primary mix"></div>
-      <div class="py-10 filtering__card bg-second" data-filtering-card="sorting" data-filtering-value="second"></div>
-      <div class="py-10 filtering__card bg-green" data-filtering-card="sorting" data-filtering-value="green mix"></div>
+      <div class="py-10 bg-primary" data-filtering-card="sorting" data-filtering-value="primary mix"></div>
+      <div class="py-10 bg-second" data-filtering-card="sorting" data-filtering-value="second"></div>
+      <div class="py-10 bg-green" data-filtering-card="sorting" data-filtering-value="green mix"></div>
       <% } %>
     </div>
-    <div class="uppercase text-lg/none filtering__card font-alt" data-filtering-plug="sorting">Empty</div>
+    <div class="uppercase text-lg/none font-alt" data-filtering-plug="sorting">Empty</div>
   </div>
 </section>
 

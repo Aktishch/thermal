@@ -49,9 +49,10 @@ export default (): void => {
       title.innerText = String(country.dataset.worldCountry)
     }
 
-    image.classList.add('pointer-events-none')
+    image.classList.add('pointer-events-none', 'size-5')
     rect.classList.add(
       'pointer-events-none',
+      'fill-white',
       'invisible',
       'opacity-0',
       'duration-200'
@@ -61,32 +62,26 @@ export default (): void => {
       'invisible',
       'opacity-0',
       'duration-200',
+      'fill-black',
       'text-sm'
     )
     map.appendChild(image)
     map.appendChild(rect)
     map.appendChild(text)
     image.setAttribute('href', 'img/pictures/flag.svg')
-    image.setAttribute('width', '18')
-    image.setAttribute('height', '18')
     image.setAttribute(
       'y',
       `${positionY - (image.getBoundingClientRect().height * ratio) / 1.2}`
     )
     image.setAttribute('x', `${positionX}`)
     text.innerHTML = String(country.dataset.worldCountry)
-    text.setAttribute('fill', '#000000')
     text.setAttribute(
       'y',
       `${positionY + (text.getBoundingClientRect().height * ratio) / 1.2}`
     )
     text.setAttribute('x', `${positionX}`)
-    rect.setAttribute('fill', '#ffffff')
-    rect.setAttribute('width', `${text.getBoundingClientRect().width * ratio}`)
-    rect.setAttribute(
-      'height',
-      `${text.getBoundingClientRect().height * ratio}`
-    )
+    rect.setAttribute('width', `${text.getBoundingClientRect().width}`)
+    rect.setAttribute('height', `${text.getBoundingClientRect().height}`)
     rect.setAttribute('y', `${positionY}`)
     rect.setAttribute('x', `${positionX}`)
     rect.setAttribute('rx', '2')

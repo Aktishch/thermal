@@ -51,7 +51,7 @@
   animation: in-shop 2000ms ease both;
 }
 
-@keyframes filtering-active {
+@keyframes filtering-card {
   0% {
     opacity  : 0;
     transform: translateY(50px);
@@ -63,18 +63,8 @@
   }
 }
 
-.filtering {
-  &__category.filtering-active {
-    @apply text-white bg-second pointer-events-none;
-
-    @screen md {
-      @apply font-bold text-primary bg-opacity-0;
-    }
-  }
-
-  &__card.filtering-active {
-    animation: filtering-active 300ms ease both 1;
-  }
+.filtering-card {
+  animation: filtering-card 300ms ease both 1;
 }
 
 @keyframes loading-player {
@@ -86,19 +76,5 @@
 .player {
   &__loading {
     animation: loading-player 1000ms steps(8) infinite;
-  }
-}
-
-.scrolling {
-  @screen md {
-    height: var(--scroll-height);
-  }
-
-  &__image {
-    @screen md {
-      width    : 130%;
-      height   : 130%;
-      transform: translate3d(var(--scroll-moving), 0, 0);
-    }
   }
 }

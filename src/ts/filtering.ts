@@ -9,8 +9,8 @@ const cardsShowing = ({
     item.classList.add('hidden')
   } else {
     item.classList.remove('hidden')
-    item.classList.add('filtering-active')
-    setTimeout((): void => item.classList.remove('filtering-active'), 300)
+    item.classList.add('filtering-card')
+    setTimeout((): void => item.classList.remove('filtering-card'), 300)
   }
 }
 
@@ -65,7 +65,7 @@ export default (): void => {
       let active = categories[0] as HTMLElement
 
       categories.forEach((category: HTMLElement): void => {
-        if (category.classList.contains('filtering-active')) active = category
+        if (category.classList.contains('filtering-category')) active = category
       })
 
       return active
@@ -75,8 +75,8 @@ export default (): void => {
       const active = currentCategory() as HTMLElement
       const name: string = String(category.dataset.filteringValue)
 
-      active.classList.remove('filtering-active')
-      category.classList.add('filtering-active')
+      active.classList.remove('filtering-category')
+      category.classList.add('filtering-category')
 
       if (line) {
         line.style.width = `${category.offsetWidth}px`
