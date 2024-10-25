@@ -202,9 +202,9 @@
     <%= picture({src: 'img/pictures/circle-white', format: 'png', className: 'absolute z-10 -bottom-8 -right-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="reverse" data-parallax-speed="4" data-parallax-depth="2"'}) %>
     <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-10 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"'}) %>
     <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim>
-      <% for (var i = 0; i < filtering.length; i++) { %>
-      <button class="flex-grow p-4 text-xl md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= i === 0 ? 'filtering-category' : null %>" data-filtering-category="filtering" data-filtering-value="<%= filtering[i] %>"><%= filtering[i] %></button>
-      <% } %>
+      <% _.forEach((filtering), (item, key) => { %>
+      <button class="flex-grow p-4 text-xl md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="filtering" data-filtering-value="<%= item %>"><%= item %></button>
+      <% }) %>
       <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="filtering"></span>
     </div>
     <div class="text-black duration-500 bg-white shadow-md rounded-3xl p-7 md:p-10 anim anim-fade" data-anim>
