@@ -1,7 +1,11 @@
-.card {
-  @apply flex flex-col relative bg-white rounded-2xl overflow-hidden h-full duration-200;
+@tailwind components;
 
-  &-content {
-    @apply flex flex-col flex-grow;
+@layer components {
+  .card {
+    @apply flex flex-col relative bg-white rounded-2xl overflow-hidden h-full duration-200;
+
+    &-content {
+      @apply flex flex-col flex-grow;
+    }
   }
 }

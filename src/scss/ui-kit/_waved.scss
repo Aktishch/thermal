@@ -1,28 +1,32 @@
-.waved {
-  z-index: 1;
+@tailwind base;
 
-  @apply absolute inset-0 rounded-inherit overflow-hidden pointer-events-none;
-
-  &-circle {
-    background-color: var(--waved-color);
-    transform       : translate(-50%, -50%) scale(0);
-    animation       : waved 1000ms ease forwards;
-
-    @apply block absolute rounded-full size-10;
+@layer base {
+  @keyframes waved {
+    to {
+      opacity  : 0;
+      transform: translate(-50%, -50%) scale(25);
+    }
   }
 
-  [data-waved="light"] & {
-    --waved-color: theme("colors.white.DEFAULT / 0.4");
-  }
+  .waved {
+    z-index: 1;
 
-  [data-waved="dark"] & {
-    --waved-color: theme("colors.black.DEFAULT / 0.4");
-  }
-}
+    @apply absolute inset-0 rounded-inherit overflow-hidden pointer-events-none;
 
-@keyframes waved {
-  to {
-    opacity  : 0;
-    transform: translate(-50%, -50%) scale(25);
+    &-circle {
+      background-color: var(--waved-color);
+      transform       : translate(-50%, -50%) scale(0);
+      animation       : waved 1000ms ease forwards;
+
+      @apply block absolute rounded-full size-10;
+    }
+
+    [data-waved="light"] & {
+      --waved-color: theme("colors.white.DEFAULT / 0.4");
+    }
+
+    [data-waved="dark"] & {
+      --waved-color: theme("colors.black.DEFAULT / 0.4");
+    }
   }
 }

@@ -1,232 +1,236 @@
-.loader {
-  @apply flex items-center justify-center absolute inset-0 text-primary pointer-events-none;
+@tailwind components;
 
-  &-progress {
-    animation: progress 1800ms linear infinite;
-
-    @apply text-4xl;
-  }
-
-  &-icon {
-    animation: loader 1500ms ease-in-out infinite;
-  }
-}
-
-.preloader {
-  @apply flex items-center justify-center text-primary;
-
-  &-circle {
-    animation: preloader-circle 1200ms linear infinite;
-
-    @apply bg-current rounded-inherit size-10;
-  }
-
-  &-bullet {
-    animation: preloader-bullet 1300ms ease infinite both;
-
-    &:nth-child(1) {
-      animation-delay: 400ms;
-    }
-
-    &:nth-child(2) {
-      animation-delay: 600ms;
-    }
-
-    &:nth-child(3) {
-      animation-delay: 800ms;
-    }
-
-    @apply bg-current rounded-full size-8;
-  }
-
-  &-line {
-    animation: preloader-line 1200ms infinite ease-in-out;
-
-    &:nth-child(1) {
-      animation-delay: -1100ms;
-    }
-
-    &:nth-child(2) {
-      animation-delay: -1000ms;
-    }
-
-    &:nth-child(3) {
-      animation-delay: -900ms;
-    }
-
-    &:nth-child(4) {
-      animation-delay: -800ms;
-    }
-
-    &:nth-child(5) {
-      animation-delay: -700ms;
-    }
-
-    @apply bg-current w-3 h-20;
-  }
-
-  &-square {
-    animation: preloader-square 1000ms ease infinite;
-
-    &:nth-child(2) {
-      animation-delay: 250ms;
-    }
-
-    &:nth-child(3) {
-      animation-delay: 750ms;
-    }
-
-    &:nth-child(4) {
-      animation-delay: 500ms;
-    }
-
-    @apply bg-current opacity-40 size-7;
-  }
-
-  &--circles {
-
-    &::before,
-    &::after {
-      border-width: 12px;
-
-      @apply content-auto absolute inset-0 rounded-inherit border-solid border-inherit;
-    }
-
-    &::before {
-      animation: progress 1000ms linear infinite;
-
-      @apply border-x-transparent;
-    }
-
-    &::after {
-      animation: progress 1200ms linear infinite;
-
-      @apply border-y-transparent;
-    }
-
-    @apply relative bg-transparent rounded-full size-24;
-  }
-
-  &--bullets {
-    @apply gap-5;
-  }
-
-  &--lines {
-    @apply gap-2;
-  }
-
-  &--squares {
-    @apply flex-wrap gap-1 w-16;
-  }
-
-  &--pulse {
-
-    &::before,
-    &::after {
-      animation: preloader-pulse 1000ms ease-out infinite;
-
-      @apply content-auto absolute inset-0 border-4 border-solid border-current rounded-full size-full;
-    }
-
-    &::after {
-      animation-delay: -500ms;
-    }
-
-    @apply relative size-20;
-  }
-}
-
-@keyframes progress {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loader {
-  0% {
-    stroke: {
-      dasharray : 1px, 200px;
-      dashoffset: 0;
+@layer components {
+  @keyframes progress {
+    to {
+      transform: rotate(360deg);
     }
   }
 
-  50% {
-    stroke: {
-      dasharray : 100px, 200px;
-      dashoffset: -15px;
+  @keyframes loader {
+    0% {
+      stroke: {
+        dasharray : 1px, 200px;
+        dashoffset: 0;
+      }
+    }
+
+    50% {
+      stroke: {
+        dasharray : 100px, 200px;
+        dashoffset: -15px;
+      }
+    }
+
+    100% {
+      stroke: {
+        dasharray : 100px, 200px;
+        dashoffset: -125px;
+      }
     }
   }
 
-  100% {
-    stroke: {
-      dasharray : 100px, 200px;
-      dashoffset: -125px;
+  @keyframes preloader-circle {
+
+    0%,
+    100% {
+      opacity  : 0.2;
+      transform: scale(0.4);
+    }
+
+    50% {
+      opacity  : 1;
+      transform: scale(1);
     }
   }
-}
 
-@keyframes preloader-circle {
+  @keyframes preloader-bullet {
 
-  0%,
-  100% {
-    opacity  : 0.2;
-    transform: scale(0.4);
+    0%,
+    100% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1);
+    }
   }
 
-  50% {
-    opacity  : 1;
-    transform: scale(1);
-  }
-}
+  @keyframes preloader-line {
 
-@keyframes preloader-bullet {
+    0%,
+    40%,
+    100% {
+      transform: scaleY(0.4);
+    }
 
-  0%,
-  100% {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-}
-
-@keyframes preloader-line {
-
-  0%,
-  40%,
-  100% {
-    transform: scaleY(0.4);
+    20% {
+      transform: scaleY(1.0);
+    }
   }
 
-  20% {
-    transform: scaleY(1.0);
-  }
-}
+  @keyframes preloader-square {
 
-@keyframes preloader-square {
+    0%,
+    100% {
+      opacity: 1;
+    }
 
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  25%,
-  50%,
-  75% {
-    opacity: 0.4;
-  }
-}
-
-@keyframes preloader-pulse {
-
-  0% {
-    opacity  : 1;
-    transform: scale(0);
+    25%,
+    50%,
+    75% {
+      opacity: 0.4;
+    }
   }
 
-  100% {
-    opacity  : 0;
-    transform: scale(1);
+  @keyframes preloader-pulse {
+
+    0% {
+      opacity  : 1;
+      transform: scale(0);
+    }
+
+    100% {
+      opacity  : 0;
+      transform: scale(1);
+    }
+  }
+
+  .loader {
+    @apply flex items-center justify-center absolute inset-0 text-primary pointer-events-none;
+
+    &-progress {
+      animation: progress 1800ms linear infinite;
+
+      @apply text-4xl;
+    }
+
+    &-icon {
+      animation: loader 1500ms ease-in-out infinite;
+    }
+  }
+
+  .preloader {
+    @apply flex items-center justify-center text-primary;
+
+    &-circle {
+      animation: preloader-circle 1200ms linear infinite;
+
+      @apply bg-current rounded-inherit size-10;
+    }
+
+    &-bullet {
+      animation: preloader-bullet 1300ms ease infinite both;
+
+      &:nth-child(1) {
+        animation-delay: 400ms;
+      }
+
+      &:nth-child(2) {
+        animation-delay: 600ms;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 800ms;
+      }
+
+      @apply bg-current rounded-full size-8;
+    }
+
+    &-line {
+      animation: preloader-line 1200ms infinite ease-in-out;
+
+      &:nth-child(1) {
+        animation-delay: -1100ms;
+      }
+
+      &:nth-child(2) {
+        animation-delay: -1000ms;
+      }
+
+      &:nth-child(3) {
+        animation-delay: -900ms;
+      }
+
+      &:nth-child(4) {
+        animation-delay: -800ms;
+      }
+
+      &:nth-child(5) {
+        animation-delay: -700ms;
+      }
+
+      @apply bg-current w-3 h-20;
+    }
+
+    &-square {
+      animation: preloader-square 1000ms ease infinite;
+
+      &:nth-child(2) {
+        animation-delay: 250ms;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 750ms;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 500ms;
+      }
+
+      @apply bg-current opacity-40 size-7;
+    }
+
+    &--circles {
+
+      &::before,
+      &::after {
+        border-width: 12px;
+
+        @apply content-auto absolute inset-0 rounded-inherit border-solid border-inherit;
+      }
+
+      &::before {
+        animation: progress 1000ms linear infinite;
+
+        @apply border-x-transparent;
+      }
+
+      &::after {
+        animation: progress 1200ms linear infinite;
+
+        @apply border-y-transparent;
+      }
+
+      @apply relative bg-transparent rounded-full size-24;
+    }
+
+    &--bullets {
+      @apply gap-5;
+    }
+
+    &--lines {
+      @apply gap-2;
+    }
+
+    &--squares {
+      @apply flex-wrap gap-1 w-16;
+    }
+
+    &--pulse {
+
+      &::before,
+      &::after {
+        animation: preloader-pulse 1000ms ease-out infinite;
+
+        @apply content-auto absolute inset-0 border-4 border-solid border-current rounded-full size-full;
+      }
+
+      &::after {
+        animation-delay: -500ms;
+      }
+
+      @apply relative size-20;
+    }
   }
 }

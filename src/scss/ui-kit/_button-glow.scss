@@ -1,40 +1,44 @@
-.btn-glow {
-  z-index: 1;
+@tailwind components;
 
-  &::before {
-    animation: glowing 20000ms linear infinite;
-    z-index  : -1;
+@layer components {
+  @keyframes glowing {
 
-    @apply content-auto absolute -inset-1 opacity-0 rounded-inherit blur-sm ease-in-out duration-300;
+    0%,
+    100% {
+      background-position: 0 0;
+    }
 
-    background: {
-      image: linear-gradient(120deg, #ff304f, #581b98, #482ff7, #fc5185, #17b978, #ea5455, #2b1de8, #dd00f3);
-      size : 400%;
+    50% {
+      background-position: 400% 0;
     }
   }
 
-  &::after {
-    background-color: var(--tw-btn-color);
-    z-index         : -1;
+  .btn-glow {
+    z-index: 1;
 
-    @apply content-auto absolute inset-0 rounded-inherit ease-in-out duration-300;
-  }
+    &::before {
+      animation: glowing 20000ms linear infinite;
+      z-index  : -1;
 
-  @media(hover) {
-    &:hover::before {
-      @apply opacity-100;
+      @apply content-auto absolute -inset-1 opacity-0 rounded-inherit blur-sm ease-in-out duration-300;
+
+      background: {
+        image: linear-gradient(120deg, #ff304f, #581b98, #482ff7, #fc5185, #17b978, #ea5455, #2b1de8, #dd00f3);
+        size : 400%;
+      }
     }
-  }
-}
 
-@keyframes glowing {
+    &::after {
+      background-color: var(--tw-btn-color);
+      z-index         : -1;
 
-  0%,
-  100% {
-    background-position: 0 0;
-  }
+      @apply content-auto absolute inset-0 rounded-inherit ease-in-out duration-300;
+    }
 
-  50% {
-    background-position: 400% 0;
+    @media(hover) {
+      &:hover::before {
+        @apply opacity-100;
+      }
+    }
   }
 }

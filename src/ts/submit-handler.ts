@@ -47,7 +47,7 @@ const submitHandler = ({
             method: 'POST',
             body: formData,
           })
-            .then((response: Response) => {
+            .then((response: Response): Promise<{ status: boolean }> => {
               return response.json()
             })
             .then((response): void => {

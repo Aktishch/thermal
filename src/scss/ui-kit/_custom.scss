@@ -1,58 +1,62 @@
-.fancybox {
-  &-custom * {
+@tailwind base;
 
-    &,
-    &::before,
-    &::after {
-      @apply box-border;
-    }
-  }
+@layer base {
+  .fancybox {
+    &-custom * {
 
-  &-custom &__content:is(&-error) {
-    @apply bg-transparent text-white w-auto p-0;
-  }
-
-  &-custom &__content {
-    @apply text-black w-full h-auto;
-
-    &>.f-button.is-close-btn {
-      @apply top-2 right-2 bg-white text-black rounded-full shadow-md;
-    }
-  }
-}
-
-.swiper {
-  &-pagination {
-    @apply flex items-center justify-center static gap-2;
-
-    & &-bullet {
-      @apply bg-current rounded-full size-3 cursor-pointer duration-200;
-
-      &:not(.swiper-pagination-bullet-active) {
-        @apply opacity-50;
-      }
-    }
-  }
-
-  &-button {
-
-    &-prev,
-    &-next {
+      &,
+      &::before,
       &::after {
-        @apply hidden;
+        @apply box-border;
       }
+    }
 
-      svg {
-        width    : 1em;
-        min-width: 1em;
-        height   : 1em;
+    &-custom &__content:is(&-error) {
+      @apply bg-transparent text-white w-auto p-0;
+    }
 
-        @apply block object-none;
+    &-custom &__content {
+      @apply text-black w-full h-auto;
+
+      &>.f-button.is-close-btn {
+        @apply top-2 right-2 bg-white text-black rounded-full shadow-md;
       }
     }
   }
-}
 
-#air-datepicker-global-container {
-  z-index: 1100;
+  .swiper {
+    &-pagination {
+      @apply flex items-center justify-center static gap-2;
+
+      & &-bullet {
+        @apply bg-current rounded-full size-3 cursor-pointer duration-200;
+
+        &:not(.swiper-pagination-bullet-active) {
+          @apply opacity-50;
+        }
+      }
+    }
+
+    &-button {
+
+      &-prev,
+      &-next {
+        &::after {
+          @apply hidden;
+        }
+
+        svg {
+          width    : 1em;
+          min-width: 1em;
+          height   : 1em;
+
+          @apply block object-none;
+        }
+      }
+    }
+  }
+
+  #air-datepicker-global-container {
+    z-index: 1100;
+  }
 }

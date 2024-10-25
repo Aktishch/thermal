@@ -61,20 +61,24 @@
     <% for (var i = 3; i < articles.length; i++) { %>
     <div class="hidden duration-500 sm:block anim anim-up" data-anim data-listing-item>
       <article class="h-full inverted">
-        <div class="shadow-md inverted-before card hover:shadow-xl dark:bg-black">
-          <div class="pack pack-xs bg-grey dark:bg-dark">
-            <%= loader %>
-            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: null}) %>
-          </div>
-          <div class="px-3 py-5 card-content md:px-5">
-            <h4 class="font-semibold text-2xl/tight font-alt">Article <%= i %></h4>
+        <div class="inverted-before">
+          <div class="shadow-md card hover:shadow-xl dark:bg-black">
+            <div class="pack pack-xs bg-grey dark:bg-dark">
+              <%= loader %>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: null}) %>
+            </div>
+            <div class="px-3 py-5 card-content md:px-5">
+              <h4 class="font-semibold text-2xl/tight font-alt">Article <%= i %></h4>
+            </div>
           </div>
         </div>
-        <div class="shadow-md inverted-after card hover:shadow-xl dark:bg-black">
-          <div class="px-3 py-5 card-content md:px-5">
-            <h4 class="mb-4 font-semibold text-2xl/tight font-alt">Article <%= i %></h4>
-            <p class="mb-5 text-justify text-sm/normal md:text-base/normal"><%= articles[i] %></p>
-            <button class="mt-auto btn btn-primary btn-lg btn-fill" data-waved="light">Button</button>
+        <div class="inverted-after">
+          <div class="shadow-md card hover:shadow-xl dark:bg-black">
+            <div class="px-3 py-5 card-content md:px-5">
+              <h4 class="mb-4 font-semibold text-2xl/tight font-alt">Article <%= i %></h4>
+              <p class="mb-5 text-justify text-sm/normal md:text-base/normal"><%= articles[i] %></p>
+              <button class="mt-auto btn btn-primary btn-lg btn-fill" data-waved="light">Button</button>
+            </div>
           </div>
         </div>
       </article>
@@ -188,7 +192,7 @@
   }
 ] %>
 
-<section class="container flex flex-col items-center min-h-screen text-white bg-white bg-center bg-no-repeat bg-cover filtering dark:bg-black" data-smooth-wrapper data-parallax data-section data-bg="img/pictures/town-grey.jpg" data-bg-webp="img/pictures/town-grey.webp">
+<section class="container flex flex-col items-center min-h-screen overflow-hidden text-white bg-white bg-center bg-no-repeat bg-cover filtering dark:bg-black" data-smooth-wrapper data-parallax data-section data-bg="img/pictures/town-grey.jpg" data-bg-webp="img/pictures/town-grey.webp">
   <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Filter</h2>
   <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">paralax, form and other...</h3>
   <div class="relative w-full max-w-xl mx-auto" data-filtering="filtering">
@@ -437,7 +441,7 @@
   }
 ] %>
 
-<section class="container flex flex-col items-center justify-center bg-white dark:bg-black" data-parallax>
+<section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" data-parallax>
   <h2 class="mb-8 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Parallax hovered</h2>
   <div class="flex flex-col items-center gap-5 lg:flex-row lg:justify-between md:gap-10">
     <% _.forEach((parallaxes), (parallax) => { %>

@@ -1,39 +1,23 @@
+@use "./ui-kit/fonts";
+@use "./ui-kit/basic";
+@use "./ui-kit/custom";
+@use "./ui-kit/waved";
+@use "./ui-kit/movement";
+@use "./ui-kit/inverted";
+@use "./ui-kit/postcards";
+@use "./ui-kit/button-glow";
+@use "./ui-kit/button-bubles";
+@use "./ui-kit/button-border";
+@use "./ui-kit/range";
+@use "./ui-kit/container";
+@use "./ui-kit/card";
+@use "./ui-kit/load";
+@use "./ui-kit/image";
+@use "./ui-kit/icon";
+@use "./ui-kit/switch";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  @import "@fancyapps/ui/dist/fancybox/fancybox.css";
-  @import "swiper/css/bundle";
-  @import "air-datepicker/air-datepicker.css";
-  @import "./ui-kit/fonts";
-  @import "./ui-kit/basic";
-  @import "./ui-kit/custom";
-  @import "./ui-kit/waved";
-  @import "./ui-kit/movement";
-}
-
-@layer components {
-  @import "./ui-kit/card";
-  @import "./ui-kit/inverted";
-  @import "./ui-kit/postcards";
-  @import "./ui-kit/button-glow";
-  @import "./ui-kit/button-bubles";
-  @import "./ui-kit/button-border";
-  @import "./ui-kit/range";
-  @import "./ui-kit/container";
-  @import "./ui-kit/load";
-  @import "./ui-kit/image";
-  @import "./ui-kit/icon";
-  @import "./ui-kit/switch";
-}
-
-.snowflake {
-  background-image: url("../img/pictures/snow.png");
-  animation       : snowflake 3000ms linear both 1;
-
-  @apply absolute bg-no-repeat bg-center bg-contain;
-}
 
 @keyframes snowflake {
   0% {
@@ -49,14 +33,33 @@
   }
 }
 
-.in-shop {
-  animation: in-shop 2000ms ease both;
+.snowflake {
+  background-image: url("../img/pictures/snow.png");
+  animation       : snowflake 3000ms linear both 1;
+
+  @apply absolute bg-no-repeat bg-center bg-contain;
 }
 
 @keyframes in-shop {
   100% {
     top : -100px;
     left: 100%;
+  }
+}
+
+.in-shop {
+  animation: in-shop 2000ms ease both;
+}
+
+@keyframes filtering-active {
+  0% {
+    opacity  : 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity  : 1;
+    transform: translateY(0);
   }
 }
 
@@ -74,27 +77,15 @@
   }
 }
 
-@keyframes filtering-active {
-  0% {
-    opacity  : 0;
-    transform: translateY(50px);
-  }
-
+@keyframes loading-player {
   100% {
-    opacity  : 1;
-    transform: translateY(0);
+    transform: rotateZ(360deg);
   }
 }
 
 .player {
   &__loading {
     animation: loading-player 1000ms steps(8) infinite;
-  }
-}
-
-@keyframes loading-player {
-  100% {
-    transform: rotateZ(360deg);
   }
 }
 

@@ -88,6 +88,54 @@
 
     <% var social = ['ok', 'yt', 'inst', 'tw', 'fb', 'vk'] %>
 
+    <% var pallete = [
+      {
+        text: 'Первичный',
+        name: 'primary',
+        value: '#af1a4c'
+      },
+      {
+        text: 'Вторичный',
+        name: 'second',
+        value: '#d7a751'
+      },
+      {
+        text: 'Черный',
+        name: 'black',
+        value: '#000000'
+      },
+      {
+        text: 'Белый',
+        name: 'white',
+        value: '#ffffff'
+      },
+      {
+        text: 'Темно-серый',
+        name: 'gray',
+        value: '#b2b2b2'
+      },
+      {
+        text: 'Светло-серый',
+        name: 'grey',
+        value: '#f6f7f9'
+      },
+      {
+        text: 'Темный',
+        name: 'dark',
+        value: '#303030'
+      },
+      {
+        text: 'Красный',
+        name: 'red',
+        value: '#be1b1b'
+      },
+      {
+        text: 'Зеленый',
+        name: 'green',
+        value: '#27ae60'
+      }
+    ] %>
+
     <div class="fixed inset-0 z-40 bg-black/50 duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
       <div class="flex flex-col bg-black bg-opacity-70 overflow-auto backdrop-blur-sm w-full max-w-[375px] h-full duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
         <div class="flex items-center justify-between gap-2 p-4 duration-500 delay-300 bg-black group-[[data-sidebar=close]]/menu:-translate-y-full">
@@ -118,6 +166,18 @@
           </div>
         </div>
         <div class="px-4 pt-4 pb-10 mt-auto duration-500 delay-1000 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:translate-y-1/4">
+          <div class="text-white mb-7" data-pallete>
+            <ul class="flex flex-col gap-4 mb-8">
+              <% _.forEach((pallete), (item) => { %>
+              <li class="flex items-center justify-between gap-5" data-pallete-item>
+                <span class="text-base font-normal"><%= item.text %></span>
+                <input class="ml-auto bg-transparent cursor-pointer size-7 shrink-0" data-pallete-input="<%= item.name %>" type="color" value="<%= item.value %>">
+                <button class="rounded btn btn-white text-second" data-pallete-button="<%= item.value %>" data-waved="dark">Сбросить</button>
+              </li>
+              <% }) %>
+            </ul>
+            <button class="w-full btn btn-second btn-lg btn-fill" data-pallete-reset data-waved="dark">Сбросить всё</button>
+          </div>
           <div class="flex items-center justify-center gap-4">
             <% _.forEach((social), (item) => { %>
             <a class="rounded-full btn btn-second" data-waved="dark" draggable="false" href="javascript: ;">

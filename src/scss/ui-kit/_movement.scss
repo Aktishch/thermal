@@ -1,37 +1,41 @@
-.movement {
-  &[data-movement="light"] {
-    &::after {
-      background-image: radial-gradient(circle closest-side, theme("colors.white.DEFAULT"), theme("colors.transparent"));
+@tailwind base;
 
-      @apply opacity-30;
-    }
+@layer base {
+  .movement {
+    &[data-movement="light"] {
+      &::after {
+        background-image: radial-gradient(circle closest-side, theme("colors.white.DEFAULT"), theme("colors.transparent"));
 
-    @media(hover) {
-      &:hover::after {
-        @apply size-60;
+        @apply opacity-30;
+      }
+
+      @media(hover) {
+        &:hover::after {
+          @apply size-60;
+        }
       }
     }
-  }
 
-  &[data-movement="blend"] {
-    &::after {
-      @apply bg-white rounded-full mix-blend-difference;
-    }
+    &[data-movement="blend"] {
+      &::after {
+        @apply bg-white rounded-full mix-blend-difference;
+      }
 
-    @apply relative;
+      @apply relative;
 
-    @media(hover) {
-      &:hover::after {
-        @apply size-16;
+      @media(hover) {
+        &:hover::after {
+          @apply size-16;
+        }
       }
     }
-  }
 
-  &::after {
-    transform : translate(-50%, -50%) translate(var(--x), var(--y));
-    transition: width 300ms ease, height 300ms ease;
-    z-index   : 1;
+    &::after {
+      transform : translate(-50%, -50%) translate(var(--x), var(--y));
+      transition: width 300ms ease, height 300ms ease;
+      z-index   : 1;
 
-    @apply content-auto absolute top-0 left-0 pointer-events-none size-0;
+      @apply content-auto absolute top-0 left-0 pointer-events-none size-0;
+    }
   }
 }

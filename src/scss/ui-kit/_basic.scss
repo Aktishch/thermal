@@ -1,4 +1,5 @@
 @use "sass:color";
+@tailwind base;
 
 @function rgb($hex) {
   @return color.channel($hex, "red"),
@@ -16,99 +17,101 @@ $colors: ("primary": #af1a4c,
   "red": #be1b1b,
   "green": #27ae60);
 
-:root {
-  --font-alt : "SF Pro Display", Arial, sans-serif;
-  --font-base: "Inter", Helvetica, sans-serif;
+@layer base {
+  :root {
+    --font-alt : "SF Pro Display", Arial, sans-serif;
+    --font-base: "Inter", Helvetica, sans-serif;
 
-  @each $key,
-  $value in $colors {
-    --color-#{$key}: #{rgb($value)};
+    @each $key,
+    $value in $colors {
+      --color-#{$key}: #{rgb($value)};
+    }
   }
-}
 
-* {
-  -webkit-tap-highlight-color: theme("colors.transparent");
+  * {
+    -webkit-tap-highlight-color: theme("colors.transparent");
 
-  @apply m-0 p-0;
+    @apply m-0 p-0;
 
-  scrollbar: {
-    width: thin;
-    color: theme("colors.primary.DEFAULT") theme("colors.black.DEFAULT");
+    scrollbar: {
+      width: thin;
+      color: theme("colors.primary.DEFAULT") theme("colors.black.DEFAULT");
+    }
   }
-}
 
-html {
-  font-size: 16px !important;
-}
-
-body {
-  @apply bg-white font-base text-black;
-}
-
-main {
-  @apply flex flex-col overflow-hidden min-h-screen;
-}
-
-::selection {
-  @apply text-white bg-primary;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  &:empty {
-    @apply hidden;
+  html {
+    font-size: 16px !important;
   }
-}
 
-ul {
-  @apply list-none list-outside;
-}
-
-ol {
-  @apply list-decimal list-inside;
-}
-
-picture {
-  @apply static;
-}
-
-img {
-  @apply select-none;
-
-  &:is([src=""], [src="/"]) {
-    @apply hidden;
+  body {
+    @apply bg-white font-base text-black;
   }
-}
 
-address {
-  @apply not-italic;
-}
+  main {
+    @apply flex flex-col min-h-screen;
+  }
 
-q {
-  quotes: "\201c""\201E";
-}
+  ::selection {
+    @apply text-white bg-primary;
+  }
 
-label {
-  @apply block;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    &:empty {
+      @apply hidden;
+    }
+  }
 
-a,
-button,
-input,
-textarea,
-select {
-  @apply outline-0;
-}
+  ul {
+    @apply list-none list-outside;
+  }
 
-textarea {
-  @apply overflow-auto resize-none;
-}
+  ol {
+    @apply list-decimal list-inside;
+  }
 
-select {
-  @apply appearance-none;
+  picture {
+    @apply static;
+  }
+
+  img {
+    @apply select-none;
+
+    &:is([src=""], [src="/"]) {
+      @apply hidden;
+    }
+  }
+
+  address {
+    @apply not-italic;
+  }
+
+  q {
+    quotes: "\201c""\201E";
+  }
+
+  label {
+    @apply block;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    @apply outline-0;
+  }
+
+  textarea {
+    @apply overflow-auto resize-none;
+  }
+
+  select {
+    @apply appearance-none;
+  }
 }

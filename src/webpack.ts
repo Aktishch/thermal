@@ -14,6 +14,7 @@ import smartMenu from './ts/smart-menu'
 import social from './ts/social'
 import draggable from './ts/draggable'
 import theme from './ts/theme'
+import pallete from './ts/pallete'
 import snowflakes from './ts/snowflakes'
 import runningButton from './ts/running-button'
 import animation from './ts/animation'
@@ -53,6 +54,10 @@ import timer from './ts/timer'
 import worldMap from './ts/world-map'
 import game from './ts/game'
 import preloader from './ts/preloader'
+
+import '@fancyapps/ui/dist/fancybox/fancybox.css'
+import 'swiper/css/bundle'
+import 'air-datepicker/air-datepicker.css'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
@@ -72,6 +77,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   social()
   draggable()
   theme()
+  pallete()
   snowflakes()
   runningButton()
   animation()
