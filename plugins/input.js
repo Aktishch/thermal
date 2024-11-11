@@ -8,6 +8,12 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
   addComponents({
     '.input': {
       '--tw-input-text': theme('colors.black.DEFAULT'),
+      '--tw-input-color': theme('colors.black.DEFAULT'),
+      '--tw-input-hovered': formatColor({
+        mode: 'rgba',
+        color: parseColor(theme('colors.black.DEFAULT')).color,
+        alpha: 0.1,
+      }),
       display: 'block',
       width: '100%',
       height: 'var(--tw-input-size)',

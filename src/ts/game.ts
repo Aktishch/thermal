@@ -67,7 +67,6 @@ export default (): void => {
       'pack',
       'pack-xl',
       'btn',
-      'btn-black',
       'btn-contur',
       'active:transform-none'
     )

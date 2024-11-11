@@ -11,7 +11,7 @@ const submitHandler = ({
   const form = event.target as HTMLFormElement
 
   switch (form.dataset.form) {
-    case 'action': {
+    case '': {
       if (!validation(form)) event.preventDefault()
       break
     }

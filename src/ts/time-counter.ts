@@ -10,7 +10,14 @@ export default (): void => {
   const units = timer.querySelectorAll(
     '*[data-counter-unit]'
   ) as NodeListOf<HTMLSpanElement>
-  const date: number = new Date(2024, 11, 23, 0, 0, 0).getTime()
+  const date: number = new Date(
+    Number(counter.dataset.year),
+    Number(counter.dataset.month) - 1,
+    Number(counter.dataset.day),
+    Number(counter.dataset.hour) || 0,
+    Number(counter.dataset.minute) || 0,
+    Number(counter.dataset.second) || 0
+  ).getTime()
 
   const getTimeCounter = (): void => {
     const distance: number = date - new Date().getTime()

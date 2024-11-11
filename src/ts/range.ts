@@ -1,35 +1,39 @@
 type Range = HTMLInputElement | HTMLOutputElement
 
 const getPosition = ({
+  size,
   number,
   input,
   progress,
   bubble,
 }: {
+  size: number
   number: number
   input: HTMLInputElement
   progress: HTMLDivElement
   bubble: HTMLOutputElement
 }): void => {
+  const percent: number = size / 100
+  const half: number = size / 2
   const value: number = Number(input.value)
-  const min: number = input.min ? Number(input.min) : 0
-  const max: number = input.max ? Number(input.max) : 100
+  const min: number = Number(input.min) || 0
+  const max: number = Number(input.max) || 100
   let step: number
 
   switch (number) {
     case 0: {
       step = ((value - min) * 100) / (max - min)
       progress.style.left = '0'
-      bubble.style.left = `calc(${step}% - (${step * 0.28}px))`
-      progress.style.width = `calc(${step}% + (${14 - step * 0.28}px))`
+      bubble.style.left = `calc(${step}% - (${step * percent}px))`
+      progress.style.width = `calc(${step}% + (${half - step * percent}px))`
       break
     }
 
     case 1: {
       step = ((value - max) * 100) / (min - max)
       progress.style.right = '0'
-      bubble.style.right = `calc(${step}% - (${step * 0.28}px))`
-      progress.style.width = `calc(${step}% + (${14 - step * 0.28}px))`
+      bubble.style.right = `calc(${step}% - (${step * percent}px))`
+      progress.style.width = `calc(${step}% + (${half - step * percent}px))`
       break
     }
   }
@@ -45,11 +49,15 @@ export default (): void => {
   ranges.forEach((range: HTMLDivElement): void => {
     if (!range) return
 
+    const size: number =
+      range.dataset.range !== '' ? Number(range.dataset.range) : 28
     const wrappers = range.querySelectorAll(
       '*[data-range-wrapper]'
     ) as NodeListOf<HTMLDivElement>
     const first: number = 0
     const last: number = 1
+
+    range.style.setProperty('--bubble-size', `${size / 16}rem`)
 
     switch (wrappers.length) {
       case 1: {
@@ -65,14 +73,12 @@ export default (): void => {
         ) as HTMLOutputElement
 
         const changeRange = (): void => {
-          getPosition({ number: first, input, progress, bubble })
+          getPosition({ size, number: first, input, progress, bubble })
           output.value = input.value
         }
 
         changeRange()
-
         input.addEventListener('input', changeRange as EventListener)
-
         break
       }
 
@@ -103,12 +109,14 @@ export default (): void => {
 
         const changeRanges = (): void => {
           getPosition({
+            size,
             number: first,
             input: firstInput,
             progress: firstProgress,
             bubble: firstBubble,
           })
           getPosition({
+            size,
             number: last,
             input: lastInput,
             progress: lastProgress,

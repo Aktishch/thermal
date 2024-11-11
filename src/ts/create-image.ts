@@ -17,7 +17,7 @@ export default (): void => {
 
     createImage.addEventListener('load', ((): void => {
       context.drawImage(createImage, 0, 0)
-      context.font = '24px SF Pro Display'
+      context.font = '1,5rem SF Pro Display'
       context.fillStyle = '#000'
       context.textAlign = 'center'
 

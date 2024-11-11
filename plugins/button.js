@@ -11,6 +11,16 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         pointerEvents: 'none',
       },
       '--tw-btn-color': theme('colors.black.DEFAULT'),
+      '--tw-btn-fade': formatColor({
+        mode: 'rgba',
+        color: parseColor(theme('colors.black.DEFAULT')).color,
+        alpha: 0.3,
+      }),
+      '--tw-btn-focus': formatColor({
+        mode: 'rgba',
+        color: parseColor(theme('colors.black.DEFAULT')).color,
+        alpha: 0.4,
+      }),
       '--tw-btn-accent': theme('colors.white.DEFAULT'),
       '--tw-btn-hovered': `color-mix(in srgb, var(--tw-btn-color) 85%, ${theme('colors.black.DEFAULT')})`,
       color: 'var(--tw-btn-color)',

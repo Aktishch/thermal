@@ -343,16 +343,16 @@
             <% } %>
           </div>
           <h4 class="text-2xl font-semibold">Range:</h4>
-          <div class="w-full max-w-xs range" data-range>
+          <div class="w-full max-w-xs range" data-range="28">
             <div class="flex items-center justify-between mb-4">
               <span class="text-base">Value</span>
               <output class="text-base opacity-60" data-range-output></output>
             </div>
             <div class="relative text-white pointer-events-none">
-              <div class="range-wrapper" data-range-wrapper>
+              <div class="relative h-2 rounded" data-range-wrapper>
                 <input class="range-input bg-gray" data-range-input type="range" step="1" max="10" value="5">
-                <div class="range-progress bg-primary" data-range-progress></div>
-                <output class="range-bubble bg-primary" data-range-bubble></output>
+                <div class="range-progress bg-green" data-range-progress></div>
+                <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
               </div>
             </div>
           </div>
@@ -362,15 +362,15 @@
               <input class="w-16 text-center input input-gray input-lg" data-range-output data-input="number" type="text" maxlength="3">
             </div>
             <div class="relative text-white pointer-events-none">
-              <div class="range-wrapper" data-range-wrapper>
-                <input class="range-input bg-primary" data-range-input type="range" step="1" max="100" value="30">
+              <div class="relative h-2 rounded last:-mt-2" data-range-wrapper>
+                <input class="range-input bg-green" data-range-input type="range" step="1" max="100" value="30">
                 <div class="range-progress bg-gray" data-range-progress></div>
-                <output class="range-bubble bg-primary" data-range-bubble></output>
+                <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
               </div>
-              <div class="range-wrapper" data-range-wrapper>
-                <input class="range-input bg-primary" data-range-input type="range" step="1" max="100" value="70">
+              <div class="relative h-2 rounded last:-mt-2" data-range-wrapper>
+                <input class="range-input bg-green" data-range-input type="range" step="1" max="100" value="70">
                 <div class="range-progress bg-gray" data-range-progress></div>
-                <output class="range-bubble bg-primary" data-range-bubble></output>
+                <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
               </div>
             </div>
           </div>

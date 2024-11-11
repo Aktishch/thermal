@@ -7,8 +7,6 @@ type Playlist = {
   poster: string
 }
 
-type Time = HTMLDivElement | HTMLSpanElement
-
 const playlist: Playlist[] = [
   {
     artist: 'Slipknot',
@@ -63,8 +61,8 @@ const setPlayer = ({
   const icon = status.querySelector('use') as SVGUseElement
   const prev = player.querySelector('*[data-player-prev]') as HTMLButtonElement
   const next = player.querySelector('*[data-player-next]') as HTMLButtonElement
-  const start = player.querySelector('*[data-player-start]') as Time
-  const end = player.querySelector('*[data-player-end]') as Time
+  const start = player.querySelector('*[data-player-start]') as HTMLSpanElement
+  const end = player.querySelector('*[data-player-end]') as HTMLSpanElement
   const volume = player.querySelector(
     '*[data-player-volume]'
   ) as HTMLButtonElement
@@ -83,19 +81,18 @@ const setPlayer = ({
   }
 
   const setComposition = (index: number): void => {
-    if (artist) artist.innerText = playlist[index].artist
-    if (song) song.innerText = playlist[index].song
-    if (audio) audio.src = playlist[index].audio
-    if (poster) poster.src = playlist[index].poster
+    const composition: Playlist = playlist[index]
+
+    if (artist) artist.innerText = composition.artist
+    if (song) song.innerText = composition.song
+    if (audio) audio.src = composition.audio
+    if (poster) poster.src = composition.poster
   }
 
   const currentComposition = (): void => {
-    compositions.forEach((composition: HTMLButtonElement): void => {
+    for (const [key, composition] of compositions.entries()) {
       if (!composition) return
 
-      const compositionIndex: number = Number(
-        composition.dataset.playerComposition
-      )
       const compositionStatus = composition.querySelector(
         '*[data-player-status]'
       ) as SVGElement
@@ -106,14 +103,12 @@ const setPlayer = ({
       if (audio.played)
         compositionIcon.setAttribute(
           'xlink:href',
-          compositionIndex === index
-            ? 'img/icons.svg#pause'
-            : 'img/icons.svg#play'
+          key === index ? 'img/icons.svg#pause' : 'img/icons.svg#play'
         )
 
       if (audio.paused)
         compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
-    })
+    }
   }
 
   const statusComposition = (): void => {
@@ -211,12 +206,9 @@ const setPlayer = ({
   }
 
   const audioLoad = (event: Event): void => {
-    compositions.forEach((composition: HTMLButtonElement): void => {
+    for (const [key, composition] of compositions.entries()) {
       if (!composition) return
 
-      const compositionIndex: number = Number(
-        composition.dataset.playerComposition
-      )
       const compositionLoading = composition.querySelector(
         '*[data-player-loading]'
       ) as SVGElement
@@ -226,11 +218,12 @@ const setPlayer = ({
 
       switch (event.type) {
         case 'loadstart': {
+          progress.classList.add('pointer-events-none', 'opacity-50')
           play.classList.add('pointer-events-none')
           loading.classList.remove('hidden')
           status.classList.add('hidden')
 
-          if (compositionIndex === index) {
+          if (key === index) {
             composition.classList.add('pointer-events-none')
             compositionLoading.classList.remove('hidden')
             compositionStatus.classList.add('hidden')
@@ -240,6 +233,7 @@ const setPlayer = ({
         }
 
         case 'loadeddata': {
+          progress.classList.remove('pointer-events-none', 'opacity-50')
           play.classList.remove('pointer-events-none')
           loading.classList.add('hidden')
           status.classList.remove('hidden')
@@ -249,7 +243,7 @@ const setPlayer = ({
           break
         }
       }
-    })
+    }
   }
 
   const audioTiming = ({
@@ -257,23 +251,27 @@ const setPlayer = ({
     time,
   }: {
     type: string
-    time: HTMLDivElement | HTMLSpanElement
+    time: HTMLSpanElement
   }): void => {
+    if (!time) return
+
+    let timing: number
+
     switch (type) {
       case 'timeupdate': {
-        minutes = Math.floor(audio.currentTime / 60)
-        seconds = Math.floor(audio.currentTime % 60)
+        timing = audio.currentTime
         break
       }
 
       case 'loadedmetadata': {
-        minutes = Math.floor(audio.duration / 60)
-        seconds = Math.floor(audio.duration % 60)
+        timing = audio.duration
         break
       }
     }
 
-    if (time) time.innerText = `${timeFormat(minutes)}:${timeFormat(seconds)}`
+    minutes = Math.floor(timing / 60)
+    seconds = Math.floor(timing % 60)
+    time.innerText = `${timeFormat(minutes)}:${timeFormat(seconds)}`
   }
 
   const audioStart = (event: Event): void => {
@@ -315,22 +313,18 @@ const setPlayer = ({
     }
   }
 
-  compositions.forEach((composition: HTMLButtonElement): void => {
+  for (const [key, composition] of compositions.entries()) {
     if (!composition) return
 
-    const compositionIndex: number = Number(
-      composition.dataset.playerComposition
-    )
-
     composition.addEventListener('click', ((): void => {
-      if (compositionIndex !== index) {
-        index = compositionIndex
+      if (key !== index) {
+        index = key
         setComposition(index)
       }
 
       statusComposition()
     }) as EventListener)
-  })
+  }
 
   if (volume) {
     volume.addEventListener('click', ((): void => {

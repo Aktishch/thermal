@@ -76,7 +76,7 @@ export default (): void => {
       const createSmothSticky = (): void => {
         if (
           wrapper.getBoundingClientRect().top < 0 &&
-          wrapper.getBoundingClientRect().bottom - window.screen.height > 0
+          wrapper.getBoundingClientRect().bottom > 0
         ) {
           stickyPosition +=
             (scrolledPage().top - wrapper.offsetTop - stickyPosition) * speed

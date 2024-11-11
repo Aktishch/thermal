@@ -7,32 +7,37 @@
 
     @screen xs {
       &-xs {
-        --container-content: calc(theme(screens.xs) - 32.98px);
+        --container-xs     : calc(theme(screens.xs) - 32.98px);
+        --container-content: var(--container-xs);
       }
     }
 
     @screen sm {
       --container-padding: 50px;
-      --container-content: calc(theme(screens.sm) - 35.98px);
+      --container-sm     : calc(theme(screens.sm) - 35.98px);
+      --container-content: var(--container-sm);
     }
 
     @screen md {
       --container-padding: 60px;
-      --container-content: calc(theme(screens.md) - 47.98px);
+      --container-md     : calc(theme(screens.md) - 47.98px);
+      --container-content: var(--container-md);
     }
 
     @screen lg {
       --container-padding: 70px;
-      --container-content: calc(theme(screens.lg) - 51.98px);
+      --container-lg     : calc(theme(screens.lg) - 51.98px);
+      --container-content: var(--container-lg);
     }
 
     @screen xl {
       --container-padding: 80px;
-      --container-content: calc(theme(screens.xl) - 245.98px);
+      --container-xl     : calc(theme(screens.xl) - 245.98px);
+      --container-content: var(--container-xl);
 
       &-distance {
         --container-distance: 1.25rem;
-        --container-content : calc((theme(screens.xl) - 245.98px) + (var(--container-distance) * 2));
+        --container-content : calc(var(--container-xl) + (var(--container-distance) * 2));
 
         margin       : var(--container-distance);
         border-radius: var(--container-distance);
