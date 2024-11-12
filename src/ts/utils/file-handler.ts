@@ -5,17 +5,17 @@ export const fileHandler = ({
   input: HTMLInputElement
   error: HTMLSpanElement
 }): boolean => {
-  const files = input.files as FileList
+  const file = (input.files as FileList)[0] as File
 
-  if (files.length === 0) {
+  if (file === undefined) {
     error.classList.remove('invisible', 'opacity-0')
     error.innerText = 'Загрузите изображение'
     return false
-  } else if (!['image/jpeg', 'image/png'].includes(files[0].type)) {
+  } else if (!['image/jpeg', 'image/png'].includes(file.type)) {
     error.classList.remove('invisible', 'opacity-0')
     error.innerText = 'Только изображения (jpg, png)'
     return false
-  } else if (files[0].size > 2 * Math.pow(1024, 2)) {
+  } else if (file.size > 2 * Math.pow(1024, 2)) {
     error.classList.remove('invisible', 'opacity-0')
     error.innerText = 'Размер не более 2 мб'
     return false

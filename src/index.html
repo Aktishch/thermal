@@ -223,23 +223,23 @@
         </p>
       </div>
       <div data-filtering-card="filtering" data-filtering-value="form-validate">
-        <form class="flex flex-col w-full max-w-sm gap-5 mx-auto" data-form="submit" data-files data-datepicker id="data-save">
+        <form class="flex flex-col w-full max-w-sm gap-5 mx-auto" data-form="submit" data-datepicker id="data-save">
           <input type="hidden" value="Главная" name="theme">
-          <label data-label="input">
+          <label data-label>
             <h5 class="mb-3 font-medium text-xl/none">Name</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
               <%= error({text: 'Введите ваше имя'}) %>
             </div>
           </label>
-          <label data-label="input">
+          <label data-label>
             <h5 class="mb-3 font-medium text-xl/none">Telephone</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel">
               <%= error({text: 'Введите ваш номер'}) %>
             </div>
           </label>
-          <label data-label="input">
+          <label data-label>
             <h5 class="mb-3 font-medium text-xl/none">Email</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="email" type="text" placeholder="_@_._" name="email">
@@ -249,11 +249,11 @@
           <div>
             <h5 class="mb-3 font-medium text-xl/none">Date</h5>
             <div class="flex items-center justify-between">
-              <div class="relative flex-grow" data-label="input">
+              <div class="relative flex-grow" data-label>
                 <input class="rounded-r-none input input-gray input-lg" data-input="min" data-position="top left" type="text" name="check-in">
                 <%= error({text: 'Укажите дату'}) %>
               </div>
-              <div class="relative flex-grow" data-label="input">
+              <div class="relative flex-grow" data-label>
                 <input class="rounded-l-none input input-gray input-lg" data-input="max" type="text" name="check-out">
                 <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
                   <%= icon({id: 'calendar', className: 'icon text-xl', data: null}) %>
@@ -262,14 +262,14 @@
               </div>
             </div>
           </div>
-          <label data-label="input">
+          <label data-label>
             <h5 class="mb-3 font-medium text-xl/none">Number</h5>
             <div class="relative">
               <input class="input input-gray input-lg" data-input="float" type="text" placeholder="12345" name="number">
               <%= error({text: 'Введите число'}) %>
             </div>
           </label>
-          <label data-label="input">
+          <label data-label>
             <h5 class="mb-3 font-medium text-xl/none">Select</h5>
             <div class="relative">
               <select class="input input-gray input-lg" data-input="select" name="select">
@@ -285,22 +285,24 @@
               <%= error({text: 'Выберите вариант'}) %>
             </div>
           </label>
-          <label data-label="input">
+          <label data-label>
             <h5 class="mb-3 font-medium text-xl/none">Reviews</h5>
             <div class="relative">
               <textarea class="h-48 input input-gray input-lg" data-input="text" type="text" placeholder="Reviews" name="text"></textarea>
               <%= error({text: 'Заполните это поле'}) %>
             </div>
           </label>
-          <div class="relative" data-label="download">
-            <label class="btn btn-second btn-lg btn-fade" data-waved="dark">
-              <input class="hidden" data-input="file" type="file">
-              <span data-files-text>Загрузить файлы</span>
-            </label>
-            <%= error({text: 'Загрузите изображение'}) %>
+          <div class="flex flex-col gap-5">
+            <div class="relative" data-label>
+              <label class="btn btn-second btn-lg btn-fade" data-waved="dark">
+                <input class="hidden" data-input="file" id="files" type="file">
+                Загрузить файлы
+              </label>
+              <%= error({text: 'Загрузите изображение'}) %>
+            </div>
+            <ul class="flex flex-col gap-1 text-xs" data-files></ul>
           </div>
-          <ul class="flex flex-col gap-1 text-xs" data-files-listing></ul>
-          <div class="relative flex" data-label="input">
+          <div class="relative flex" data-label>
             <label class="flex flex-row items-center cursor-pointer">
               <input class="mr-2 switch switch-checkbox" data-input="switch" type="checkbox" checked>
               <span class="text-xl">Policy</span>
@@ -389,7 +391,7 @@
           </div>
           <form class="mb-5" data-form="submit">
             <input type="hidden" value="Изображение" name="theme">
-            <div class="flex flex-col" data-label="download">
+            <div class="flex flex-col" data-label>
               <div class="relative mb-5">
                 <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-drag>
                   <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-file="image"'}) %>

@@ -1,4 +1,4 @@
-import { fileHandler } from './utils'
+import { uploadFile, fileHandler } from './utils'
 
 export default (): File[] => {
   const data: File[] = []
@@ -8,47 +8,38 @@ export default (): File[] => {
       (event.target as HTMLInputElement).getAttribute('data-input') === 'file'
     ) {
       const input = event.target as HTMLInputElement
-      const form = input.closest('[data-files]') as HTMLFormElement
+      const form = input.closest('[data-form]') as HTMLFormElement
 
       if (!form) return
 
-      const download = form.querySelector(
-        '*[data-label="download"]'
-      ) as HTMLDivElement
+      const label = input.closest('[data-label]') as HTMLDivElement
       const files = input.files as FileList
-      const text = download.querySelector(
-        '*[data-files-text]'
-      ) as HTMLSpanElement
-      const error = download.querySelector('*[data-error]') as HTMLSpanElement
-      const listing = form.querySelector(
-        '*[data-files-listing]'
-      ) as HTMLUListElement
+      const error = label.querySelector('*[data-error]') as HTMLSpanElement
+      const listing = form.querySelector('*[data-files]') as HTMLUListElement
       const item = document.createElement('li') as HTMLLIElement
 
       item.classList.add('flex', 'items-center', 'justify-between', 'gap-5')
 
-      if (fileHandler({ input, error })) {
-        for (let i: number = 0; i < files.length; i++) {
-          data.push(files[i])
+      for (let i: number = 0; i < files.length; i++) {
+        const file = files[i] as File
+
+        uploadFile(file).then(({ name }): void => {
+          if (!fileHandler({ input, error })) return
+
+          data.push(file)
           item.setAttribute('data-files-item', '')
           item.innerHTML = `
-            <span class="truncate">${files[i].name}</span>
-            <button class="btn btn-gray text-sm p-1" data-files-remove="${files[i].name}" type="button">
+            <span class="truncate">${name}</span>
+            <button class="btn btn-gray text-sm p-1" data-files-remove="${name}" type="button">
               <svg class="icon">
                 <use xlink:href="img/icons.svg#close"></use>
               </svg>
             </button>`
           listing.appendChild(item)
 
-          if (!listing.classList.contains('mb-5')) listing.classList.add('mb-5')
-
-          if (data.length === 3) {
-            download.classList.add('pointer-events-none', 'opacity-50')
-            text.innerText = 'Не более 3 файлов'
-          } else {
-            text.innerText = 'Добавить еще'
-          }
-        }
+          if (data.length === 3)
+            label.classList.add('pointer-events-none', 'opacity-50')
+        })
       }
     }
   }) as EventListener)
@@ -56,22 +47,14 @@ export default (): File[] => {
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLButtonElement).closest('[data-files-remove]')) {
       const btn = event.target as HTMLButtonElement
-      const form = btn.closest('[data-files') as HTMLFormElement
+      const form = btn.closest('[data-form') as HTMLFormElement
 
       if (!form) return
 
-      const download = form.querySelector(
-        '*[data-label="download"]'
-      ) as HTMLDivElement
-      const input = download.querySelector(
+      const input = form.querySelector(
         '*[data-input="file"]'
       ) as HTMLInputElement
-      const text = download.querySelector(
-        '*[data-files-text]'
-      ) as HTMLSpanElement
-      const listing = form.querySelector(
-        '*[data-files-listing]'
-      ) as HTMLUListElement
+      const label = input.closest('[data-label]') as HTMLDivElement
       const item = btn.closest('[data-files-item]') as HTMLLIElement
 
       for (let i: number = 0; i < data.length; i++) {
@@ -81,14 +64,9 @@ export default (): File[] => {
         }
       }
 
-      if (data.length === 0) {
-        input.value = ''
-        text.innerText = 'Загрузить файлы'
-        listing.classList.remove('mb-5')
-      } else {
-        download.classList.remove('pointer-events-none', 'opacity-50')
-        text.innerText = 'Добавить еще'
-      }
+      data.length === 0
+        ? (input.value = '')
+        : label.classList.remove('pointer-events-none', 'opacity-50')
     }
   }) as EventListener)
 

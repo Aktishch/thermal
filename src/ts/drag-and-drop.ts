@@ -1,4 +1,4 @@
-import { fileHandler } from './utils'
+import { uploadFile, fileHandler } from './utils'
 
 export default (): void => {
   const dragEvents: string[] = ['dragenter', 'dragover', 'dragleave', 'drop']
@@ -15,14 +15,12 @@ export default (): void => {
 
         if (!form) return
 
-        const download = form.querySelector(
-          '*[data-label="download"]'
-        ) as HTMLDivElement
-        const input = download.querySelector(
+        const label = drag.closest('[data-label]') as HTMLDivElement
+        const input = label.querySelector(
           '*[data-input="file"]'
         ) as HTMLInputElement
-        const error = download.querySelector('*[data-error]') as HTMLSpanElement
-        const image = download.querySelector(
+        const error = label.querySelector('*[data-error]') as HTMLSpanElement
+        const image = label.querySelector(
           '*[data-file="image"]'
         ) as HTMLImageElement
 
@@ -38,21 +36,16 @@ export default (): void => {
           }
 
           case 'drop': {
-            const files = (event.dataTransfer as DataTransfer).files as FileList
-
             drag.classList.remove('bg-opacity-50')
-            input.files = files
+            input.files = (event.dataTransfer as DataTransfer).files as FileList
 
             const file = (input.files as FileList)[0] as File
-            const readFile = new FileReader() as FileReader
 
-            file ? readFile.readAsDataURL(file) : (image.src = '')
-
-            readFile.addEventListener('loadend', ((): void => {
+            uploadFile(file).then(({ url }): void => {
               if (!fileHandler({ input, error })) return
 
-              image.src = String(readFile.result)
-            }) as EventListener)
+              image.src = url
+            })
 
             break
           }

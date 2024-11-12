@@ -23,6 +23,7 @@ const submitHandler = ({
 
       const formData: FormData = new FormData(form)
       const searchParams = new URLSearchParams() as URLSearchParams
+      const listing = form.querySelector('*[data-files]') as HTMLUListElement
       const submitBtn = form.querySelector(
         'button[type="submit"]'
       ) as HTMLButtonElement
@@ -31,7 +32,7 @@ const submitHandler = ({
       for (const pair of formData.entries())
         searchParams.append(pair[0], String(pair[1]))
 
-      if (form.hasAttribute('data-files') && data !== null)
+      if (listing && data.length !== 0)
         for (let i: number = 0; i < data.length; i++)
           formData.append('file[]', data[i])
 
@@ -58,23 +59,15 @@ const submitHandler = ({
               form.reset()
               submitBtn.disabled = false
 
-              if (form.hasAttribute('data-files')) {
-                const listing = form.querySelector(
-                  '*[data-files-listing]'
-                ) as HTMLUListElement
-                const text = form.querySelector(
-                  '*[data-files-text]'
-                ) as HTMLSpanElement
-
+              if (listing) {
                 listing.innerHTML = ''
-                listing.classList.remove('mb-5')
-                text.innerHTML = 'Загрузить файлы'
                 data.length = 0
               }
             })
             .catch((error: string): void =>
               console.log('The form has not been sent', error)
             )
+
           break
         }
 

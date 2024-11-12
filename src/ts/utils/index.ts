@@ -1,4 +1,5 @@
 export * from './coordinates'
+export * from './upload-file'
 export * from './file-handler'
 export * from './is-safari'
 export * from './media'
