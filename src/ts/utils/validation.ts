@@ -37,73 +37,74 @@ export const validation = (form: HTMLFormElement): boolean => {
       }
     }
 
-    if (input.dataset.input === 'file') {
-      validate = fileHandler({ input, error })
-    } else {
-      input.value.length === 0 ? getError() : hideError()
+    input.value.length === 0 ? getError() : hideError()
 
-      switch (input.dataset.input) {
-        case 'name': {
-          if (input.value.length === 1) getError()
-          break
-        }
-
-        case 'tel': {
-          switch (input.value[0]) {
-            case '8': {
-              maxLengthInputTel(17)
-              break
-            }
-
-            case '+': {
-              maxLengthInputTel(18)
-              break
-            }
-
-            default: {
-              error.innerText = 'Введите ваш номер'
-              break
-            }
-          }
-
-          break
-        }
-
-        case 'email': {
-          if (emailFormat(input.value)) getError()
-          break
-        }
-
-        case 'select': {
-          if (input.value === 'empty') getError()
-          break
-        }
-
-        case 'text': {
-          if (input.value.length > 0 && input.value.length < 10) {
-            error.innerText = 'Введите не менее 10 символов'
-            getError()
-          } else {
-            error.innerText = 'Заполните это поле'
-          }
-
-          break
-        }
-
-        case 'switch': {
-          if (input.checked === false) getError()
-          break
-        }
+    switch (input.dataset.input) {
+      case 'name': {
+        if (input.value.length === 1) getError()
+        break
       }
 
-      input.addEventListener(
-        'input',
-        ((): void => {
-          if (input.value.length > 0) hideError()
-        }) as EventListener,
-        { once: true }
-      )
+      case 'tel': {
+        switch (input.value[0]) {
+          case '8': {
+            maxLengthInputTel(17)
+            break
+          }
+
+          case '+': {
+            maxLengthInputTel(18)
+            break
+          }
+
+          default: {
+            error.innerText = 'Введите ваш номер'
+            break
+          }
+        }
+
+        break
+      }
+
+      case 'email': {
+        if (emailFormat(input.value)) getError()
+        break
+      }
+
+      case 'select': {
+        if (input.value === 'empty') getError()
+        break
+      }
+
+      case 'text': {
+        if (input.value.length > 0 && input.value.length < 10) {
+          error.innerText = 'Введите не менее 10 символов'
+          getError()
+        } else {
+          error.innerText = 'Заполните это поле'
+        }
+
+        break
+      }
+
+      case 'switch': {
+        if (input.checked === false) getError()
+        break
+      }
+
+      case 'file': {
+        if (!fileHandler({ input, error })) getError()
+        break
+      }
     }
+
+    input.addEventListener(
+      'input',
+      ((): void => {
+        if (input.value.length > 0) hideError()
+      }) as EventListener,
+      { once: true }
+    )
   })
 
   return validate

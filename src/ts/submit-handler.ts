@@ -1,13 +1,7 @@
 import { validation } from './utils'
 import { dialog } from './fancybox'
 
-const submitHandler = ({
-  event,
-  data,
-}: {
-  event: Event
-  data: File[]
-}): void => {
+const submitHandler = (event: Event): void => {
   const form = event.target as HTMLFormElement
 
   switch (form.dataset.form) {
@@ -23,7 +17,7 @@ const submitHandler = ({
 
       const formData: FormData = new FormData(form)
       const searchParams = new URLSearchParams() as URLSearchParams
-      const listing = form.querySelector('*[data-files]') as HTMLUListElement
+      // const listing = form.querySelector('*[data-files]') as HTMLUListElement
       const submitBtn = form.querySelector(
         'button[type="submit"]'
       ) as HTMLButtonElement
@@ -32,9 +26,9 @@ const submitHandler = ({
       for (const pair of formData.entries())
         searchParams.append(pair[0], String(pair[1]))
 
-      if (listing && data.length !== 0)
-        for (let i: number = 0; i < data.length; i++)
-          formData.append('file[]', data[i])
+      // if (listing && data.length !== 0)
+      //   for (let i: number = 0; i < data.length; i++)
+      //     formData.append('file[]', data[i])
 
       const queryString: string = searchParams.toString()
 
@@ -59,10 +53,10 @@ const submitHandler = ({
               form.reset()
               submitBtn.disabled = false
 
-              if (listing) {
-                listing.innerHTML = ''
-                data.length = 0
-              }
+              // if (listing) {
+              //   listing.innerHTML = ''
+              //   data.length = 0
+              // }
             })
             .catch((error: string): void =>
               console.log('The form has not been sent', error)
@@ -84,9 +78,9 @@ const submitHandler = ({
   }
 }
 
-export default (data: File[]): void => {
+export default (): void => {
   document.addEventListener('submit', ((event: Event): void => {
     if ((event.target as HTMLFormElement).hasAttribute('data-form'))
-      submitHandler({ event, data })
+      submitHandler(event)
   }) as EventListener)
 }

@@ -1,6 +1,7 @@
 type UploadFile = {
   name: string
   size: number
+  type: string
   url: string
 }
 
@@ -19,6 +20,7 @@ export const uploadFile = (file: File): Promise<UploadFile> => {
         ? resolve({
             name: file.name,
             size: file.size,
+            type: file.type,
             url: reader.result.toString(),
           })
         : createReject()

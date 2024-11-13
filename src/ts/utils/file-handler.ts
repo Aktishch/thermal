@@ -5,7 +5,8 @@ export const fileHandler = ({
   input: HTMLInputElement
   error: HTMLSpanElement
 }): boolean => {
-  const file = (input.files as FileList)[0] as File
+  const files = input.files as FileList
+  const file = files[0] as File
 
   if (file === undefined) {
     error.classList.remove('invisible', 'opacity-0')

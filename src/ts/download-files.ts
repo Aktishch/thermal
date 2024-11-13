@@ -1,7 +1,8 @@
 import { uploadFile, fileHandler } from './utils'
 
-export default (): File[] => {
-  const data: File[] = []
+export default () => {
+  const data: DataTransfer = new DataTransfer()
+  const fileList = data.files as FileList
 
   document.addEventListener('change', ((event: Event): void => {
     if (
@@ -20,26 +21,33 @@ export default (): File[] => {
 
       item.classList.add('flex', 'items-center', 'justify-between', 'gap-5')
 
-      for (let i: number = 0; i < files.length; i++) {
-        const file = files[i] as File
+      if (files.length !== 0) {
+        for (let i: number = 0; i < files.length; i++) {
+          const file = files[i] as File
 
-        uploadFile(file).then(({ name }): void => {
-          if (!fileHandler({ input, error })) return
+          uploadFile(file).then(({ name }): void => {
+            if (!fileHandler({ input, error })) return
 
-          data.push(file)
-          item.setAttribute('data-files-item', '')
-          item.innerHTML = `
-            <span class="truncate">${name}</span>
-            <button class="btn btn-gray text-sm p-1" data-files-remove="${name}" type="button">
-              <svg class="icon">
-                <use xlink:href="img/icons.svg#close"></use>
-              </svg>
-            </button>`
-          listing.appendChild(item)
+            data.items.add(file)
+            item.setAttribute('data-files-item', '')
+            item.innerHTML = `
+              <span class="truncate">${name}</span>
+              <button class="btn btn-gray text-sm p-1" data-files-remove="${name}" type="button">
+                <svg class="icon">
+                  <use xlink:href="img/icons.svg#close"></use>
+                </svg>
+              </button>`
+            listing.appendChild(item)
 
-          if (data.length === 3)
-            label.classList.add('pointer-events-none', 'opacity-50')
-        })
+            console.log(data.files)
+
+            if ((data.files as FileList).length === 3)
+              label.classList.add('pointer-events-none', 'opacity-50')
+          })
+        }
+      } else {
+        input.files = data.files as FileList
+        console.log(data.files)
       }
     }
   }) as EventListener)
@@ -57,14 +65,19 @@ export default (): File[] => {
       const label = input.closest('[data-label]') as HTMLDivElement
       const item = btn.closest('[data-files-item]') as HTMLLIElement
 
-      for (let i: number = 0; i < data.length; i++) {
-        if (btn.dataset.filesRemove === String(data[i].name)) {
-          data.splice(i, 1)
+      for (let i: number = 0; i < (data.files as FileList).length; i++) {
+        if (
+          btn.dataset.filesRemove === String((data.files as FileList)[i].name)
+        ) {
+          console.log((data.files as FileList)[i])
+          // delete (data.files as FileList)[i]
+          // data.splice(i, 1)
           item.remove()
         }
       }
 
-      data.length === 0
+      console.log(data.files)
+      ;(data.files as FileList).length === 0
         ? (input.value = '')
         : label.classList.remove('pointer-events-none', 'opacity-50')
     }
