@@ -1,16 +1,16 @@
 import { fileHandler } from './file-handler'
 
-type Label = HTMLLabelElement | HTMLDivElement
+export type FormLabel = HTMLLabelElement | HTMLDivElement
 
 const emailFormat = (value: string): boolean => {
   return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,8})+$/.test(value)
 }
 
 export const validation = (form: HTMLFormElement): boolean => {
-  const labels = form.querySelectorAll('*[data-label]') as NodeListOf<Label>
+  const labels = form.querySelectorAll('*[data-label]') as NodeListOf<FormLabel>
   let validate: boolean = true
 
-  labels.forEach((label: Label): void => {
+  labels.forEach((label: FormLabel): void => {
     if (!label) return
 
     const input = label.querySelector('*[data-input]') as HTMLInputElement

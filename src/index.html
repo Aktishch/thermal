@@ -92,37 +92,37 @@
 
 <!-- Кнопки -->
 
-<% var buttons = ['', 'btn-contur', 'btn-fade', 'btn-contur btn-fade', 'btn-fill', 'btn-light', 'btn-xxl', 'btn-xl', 'btn-lg', 'btn-md', 'btn-sm', 'btn-xs', 'btn-contur btn-swipe', 'btn-fill btn-glow', 'data-waved="light"', 'data-waved="dark"', 'data-bubbles', 'btn-rect', 'btn-frame', 'btn-lines'] %>
+<% var buttons = ['', 'btn-contur', 'btn-fade', 'btn-contur btn-fade', 'btn-fill', 'btn-light', 'btn-contur btn-swipe', 'btn-xxl', 'btn-xl', 'btn-lg', 'btn-md', 'btn-sm', 'btn-xs', 'btn-fill btn-glow', 'data-waved="light"', 'data-waved="dark"', 'btn-bubbles', 'btn-rect', 'btn-frame', 'btn-lines'] %>
 
 <section class="container flex flex-col items-center justify-center bg-white container-xs dark:bg-black">
   <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Buttons</h2>
   <h3 class="mb-5 font-semibold duration-500 text-bas/tighte md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Buttons standard</h3>
   <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 0; i < 6; i++) { %>
-    <button class="btn btn-primary btn-lg <%= buttons[i] %>">btn--primary <%= buttons[i] %></button>
+    <% for (var i = 0; i < 7; i++) { %>
+    <button class="btn btn-primary btn-lg <%= buttons[i] %>">btn-primary <%= buttons[i] %></button>
     <% } %>
   </div>
   <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">Buttons size</h3>
   <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 6; i < 12; i++) { %>
+    <% for (var i = 7; i < 13; i++) { %>
     <button class="btn btn-primary <%= buttons[i] %> btn-fill"><%= buttons[i] %></button>
     <% } %>
   </div>
   <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">Buttons effects</h3>
   <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 12; i < 14; i++) { %>
+    <% for (var i = 13; i < 14; i++) { %>
     <button class="btn btn-primary btn-lg <%= buttons[i] %>"><%= buttons[i] %></button>
     <% } %>
   </div>
-  <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">Buttons click</h3>
+  <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">Buttons waved</h3>
   <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 14; i < 17; i++) { %>
+    <% for (var i = 14; i < 16; i++) { %>
     <button class="btn btn-primary btn-lg btn-fill" <%= buttons[i] %>><%= buttons[i] %></button>
     <% } %>
   </div>
   <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">Buttons click</h3>
   <div class="grid w-full gap-5 md:grid-cols-2 lg:grid-cols-3">
-    <% for (var i = 17; i < buttons.length; i++) { %>
+    <% for (var i = 16; i < buttons.length; i++) { %>
     <button class="btn btn-primary btn-lg <%= buttons[i] %>"><%= buttons[i] %></button>
     <% } %>
   </div>
@@ -135,7 +135,7 @@
   <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Drop-down list</h3>
   <div class="flex flex-col w-full gap-5">
     <% for (var i = 0; i < 3; i++) { %>
-    <div class="relative px-4 py-4 overflow-hidden duration-500 shadow-md bg-second/10 rounded-2xl md:py-6 anim anim-up group/accordion" data-anim data-accordion="<%= i === 0 ? 'active' : null %>" data-accordion-close="click">
+    <div class="relative px-4 py-4 overflow-hidden duration-500 shadow-md bg-second/10 rounded-2xl md:py-6 anim anim-up group/accordion" data-anim data-accordion="<%= i === 0 ? 'active' : null %>" data-close-click>
       <div class="flex items-center justify-between gap-4">
         <h4 class="font-semibold font-alt text-xl/tight">Documents - <%= i + 1 %></h4>
         <button class="rounded-full btn btn-primary btn-fill size-9 shrink-0" data-accordion-toggle data-waved="light">

@@ -33,7 +33,9 @@ export default (): void => {
       }
     }
 
-    ;(list.querySelectorAll('li') as NodeListOf<HTMLLIElement>).length === 0
+    const items = list.querySelectorAll('li') as NodeListOf<HTMLLIElement>
+
+    items.length === 0
       ? nav.classList.add('hidden')
       : nav.classList.remove('hidden')
 

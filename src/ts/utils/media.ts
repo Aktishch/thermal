@@ -1,4 +1,4 @@
-type Media = {
+export type Media = {
   [index: string]: number
 }
 

@@ -65,7 +65,7 @@
         <% _.forEach((nav.pages), (item) => { %>
         <a class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-waved="light" draggable="false" href="<%= item.link %>"><%= item.text %></a>
         <% }) %>
-        <div class="relative group/accordion" data-accordion data-accordion-close="scroll">
+        <div class="relative group/accordion" data-accordion data-close-scroll>
           <button class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-accordion-toggle data-waved="light">
             Navigation
             <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-xs duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
@@ -151,7 +151,7 @@
           <% _.forEach((nav.pages), (item) => { %>
           <a class="text-xl hover:underline underline-offset-4" draggable="false" href="<%= item.link %>"><%= item.text %></a>
           <% }) %>
-          <div class="group/accordion" data-accordion data-accordion-close="click">
+          <div class="group/accordion" data-accordion data-close-click>
             <button class="flex items-center text-xl hover:underline underline-offset-4" data-accordion-toggle>
               Navigation
               <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-sm opacity-60 duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
@@ -263,8 +263,8 @@
             </li>
             <% } %>
           </ul>
-          <div class="relative min-w-max" data-smart-nav data-accordion data-accordion-close="scroll">
-            <a class="btn btn-primary btn-lg btn-fill" data-accordion-toggle data-bubbles draggable="false" href="javascript: ;">
+          <div class="relative min-w-max" data-smart-nav data-accordion data-close-scroll>
+            <a class="btn btn-primary btn-lg btn-fill btn-bubbles" data-accordion-toggle draggable="false" href="javascript: ;">
               more <span class="ml-1" data-smart-count>0</span>
             </a>
             <div class="absolute right-0 bg-white rounded-lg shadow-md top-12 dark:bg-opacity-0 w-52" data-accordion-content>

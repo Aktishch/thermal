@@ -1,6 +1,11 @@
 import { Coordinates } from './utils'
 
-const randomPpsition = ({ min, max }: { min: number; max: number }): number => {
+export type RandomPosition = {
+  min: number
+  max: number
+}
+
+const randomPosition = ({ min, max }: RandomPosition): number => {
   return Math.floor(min + Math.random() * (max - min + 1))
 }
 
@@ -15,8 +20,8 @@ export default (): void => {
 
   running.addEventListener('mouseenter', ((): void => {
     const coordinates: Coordinates = {
-      top: randomPpsition({ min: 0, max: 90 }),
-      left: randomPpsition({ min: 0, max: 90 }),
+      top: randomPosition({ min: 0, max: 90 }),
+      left: randomPosition({ min: 0, max: 90 }),
     }
 
     running.style.top = `${coordinates.top}%`

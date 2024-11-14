@@ -3,6 +3,19 @@ import localeRu from 'air-datepicker/locale/ru'
 import { touchDevice } from './utils'
 import filtering from './filtering'
 
+export type AirDatepickerCell = {
+  date: Date
+  cellType: string
+}
+
+export type AirDatepickerRenderCell = {
+  classes: string
+  attrs: {
+    'data-filtering-category': string
+    'data-filtering-value': string
+  }
+}
+
 const excludeDates: number[] = [
   +new Date(2024, 4, 5),
   +new Date(2024, 5, 7),
@@ -27,10 +40,7 @@ export const createCalendar = (): void => {
   const renderCellHandler = ({
     date,
     cellType,
-  }: {
-    date: Date
-    cellType: string
-  }) => {
+  }: AirDatepickerCell): AirDatepickerRenderCell => {
     if (cellType === 'day') {
       return {
         classes: window.excludeDates.includes(+date)

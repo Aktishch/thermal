@@ -1,5 +1,12 @@
 import { touchDevice } from './utils'
 
+export type PalleteColors = {
+  [index: string]: {
+    hex: string
+    rgb: string
+  }
+}
+
 export default (): void => {
   if (touchDevice()) return
 
@@ -8,16 +15,13 @@ export default (): void => {
 
   if (!pallete) return
 
-  const colors: {
-    [index: string]: {
-      hex: string
-      rgb: string
-    }
-  } = JSON.parse(localStorage.getItem('pallete') || '{}')
+  const colors: PalleteColors = JSON.parse(
+    localStorage.getItem('pallete') || '{}'
+  )
 
   const items = pallete.querySelectorAll(
     '*[data-pallete-item]'
-  ) as NodeListOf<HTMLLinkElement>
+  ) as NodeListOf<HTMLLIElement>
   const reset = pallete.querySelector(
     '*[data-pallete-reset]'
   ) as HTMLButtonElement
@@ -37,7 +41,7 @@ export default (): void => {
       html.style.setProperty(`--color-${key}`, colors[key].rgb)
   }
 
-  items.forEach((item: HTMLLinkElement): void => {
+  items.forEach((item: HTMLLIElement): void => {
     if (!item) return
 
     const input = item.querySelector(
@@ -47,7 +51,7 @@ export default (): void => {
       '*[data-pallete-button]'
     ) as HTMLButtonElement
     const name: string = String(input.dataset.palleteInput)
-    const value = String(button.dataset.palleteButton)
+    const value: string = String(button.dataset.palleteButton)
 
     const colorRemove = (): void => {
       if (colors[name]) delete colors[name]

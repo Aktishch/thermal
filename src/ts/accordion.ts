@@ -42,36 +42,26 @@ const createAccordion = (accordion: HTMLDivElement): void => {
     setAccordionHeight()
   }) as EventListener)
 
-  switch (accordion.dataset.accordionClose) {
-    case 'click': {
-      document.addEventListener('click', ((event: Event): void => {
-        if (
-          (event.target as HTMLElement).closest(
-            '[data-accordion-close="click"]'
-          ) !== accordion &&
-          accordion.dataset.accordion === 'active'
-        ) {
-          accordion.dataset.accordion = ''
-          setAccordionHeight()
-        }
-      }) as EventListener)
+  if (accordion.hasAttribute('data-close-click')) {
+    document.addEventListener('click', ((event: Event): void => {
+      if (
+        (event.target as HTMLElement).closest('[data-close-click]') !==
+          accordion &&
+        accordion.dataset.accordion === 'active'
+      ) {
+        accordion.dataset.accordion = ''
+        setAccordionHeight()
+      }
+    }) as EventListener)
+  }
 
-      break
-    }
-
-    case 'scroll': {
-      document.addEventListener('scroll', ((): void => {
-        if (accordion.dataset.accordion === 'active') {
-          accordion.dataset.accordion = ''
-          setAccordionHeight()
-        }
-      }) as EventListener)
-
-      break
-    }
-
-    default:
-      return
+  if (accordion.hasAttribute('data-close-scroll')) {
+    document.addEventListener('scroll', ((): void => {
+      if (accordion.dataset.accordion === 'active') {
+        accordion.dataset.accordion = ''
+        setAccordionHeight()
+      }
+    }) as EventListener)
   }
 }
 

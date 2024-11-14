@@ -1,5 +1,10 @@
 import { Coordinates, touchDevice } from './utils'
 
+export type WavedCircle = {
+  positionY: number
+  positionX: number
+}
+
 const setWaved = (event: Event): void => {
   const item = (event.target as HTMLElement).closest(
     '[data-waved]'
@@ -7,13 +12,7 @@ const setWaved = (event: Event): void => {
   const waved = item.querySelector('.waved') as HTMLDivElement
   const circle = document.createElement('div') as HTMLDivElement
 
-  const createCircle = ({
-    positionY,
-    positionX,
-  }: {
-    positionY: number
-    positionX: number
-  }): void => {
+  const createCircle = ({ positionY, positionX }: WavedCircle): void => {
     const coordinates: Coordinates = {
       top: positionY - item.getBoundingClientRect().top,
       left: positionX - item.getBoundingClientRect().left,
@@ -29,19 +28,23 @@ const setWaved = (event: Event): void => {
   switch (event.type) {
     case 'touchstart': {
       if (!touchDevice()) return
+
       createCircle({
         positionY: (event as TouchEvent).touches[0].clientY,
         positionX: (event as TouchEvent).touches[0].clientX,
       })
+
       break
     }
 
     case 'mousedown': {
       if (touchDevice()) return
+
       createCircle({
         positionY: (event as MouseEvent).clientY,
         positionX: (event as MouseEvent).clientX,
       })
+
       break
     }
   }

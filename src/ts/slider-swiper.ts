@@ -11,6 +11,10 @@ import {
 import { media } from './utils'
 import { checkQuizSlide } from './quiz'
 
+export interface QuizSwiper extends Swiper {
+  visibleSlides: [HTMLDivElement]
+}
+
 declare global {
   interface Window {
     Swiper: typeof Swiper
@@ -169,9 +173,7 @@ const createQuizSlider = (): void => {
     allowTouchMove: false,
     watchSlidesProgress: true,
     on: {
-      slideChange: (
-        swiper: Swiper & { visibleSlides: [HTMLDivElement] }
-      ): void => {
+      slideChange: (swiper: QuizSwiper): void => {
         const quiz = swiper.el.closest('[data-quiz]') as HTMLElement
         const visibleSlide = swiper.visibleSlides[0] as HTMLDivElement
 

@@ -3,7 +3,7 @@ import { createCalendar } from './air-datepicker'
 import filtering from './filtering'
 import waved from './waved'
 
-type Dialog = {
+export type FancyboxDialog = {
   open: (src: string) => void
   notClosing: (src: string) => void
   close: () => void
@@ -12,7 +12,7 @@ type Dialog = {
 declare global {
   interface Window {
     Fancybox: typeof Fancybox
-    dialog: Dialog
+    dialog: FancyboxDialog
   }
 }
 
@@ -22,7 +22,7 @@ Fancybox.defaults.autoFocus = false
 Fancybox.defaults.placeFocusBack = false
 window.Fancybox = Fancybox
 
-export const dialog: Dialog = {
+export const dialog: FancyboxDialog = {
   open: (src: string): void => {
     window.Fancybox.show(
       [

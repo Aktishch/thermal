@@ -1,14 +1,12 @@
 import { Coordinates, scrollbarShow, scrollbarHidden } from './utils'
 
-const setTranslate = ({
-  element,
-  positionX,
-  positionY,
-}: {
+type Draggable = {
   element: HTMLButtonElement | HTMLDivElement
   positionX: number
   positionY: number
-}): void => {
+}
+
+const setTranslate = ({ element, positionX, positionY }: Draggable): void => {
   element.style.transform = `translate(${positionX}px, ${positionY}px)`
 }
 

@@ -1,10 +1,15 @@
-const cardsShowing = ({
-  condition,
-  item,
-}: {
+export type FilterCardsShowing = {
   condition: boolean
   item: HTMLDivElement
-}): void => {
+}
+
+export type FilterHandler = {
+  name: string
+  cards: NodeListOf<HTMLDivElement>
+  plug: HTMLDivElement
+}
+
+const filterCardsShowing = ({ condition, item }: FilterCardsShowing): void => {
   if (condition) {
     item.classList.add('hidden')
   } else {
@@ -14,15 +19,7 @@ const cardsShowing = ({
   }
 }
 
-const filterHandler = ({
-  name,
-  cards,
-  plug,
-}: {
-  name: string
-  cards: NodeListOf<HTMLDivElement>
-  plug: HTMLDivElement
-}): void => {
+const filterHandler = ({ name, cards, plug }: FilterHandler): void => {
   let hidden: number = 0
 
   cards.forEach((card: HTMLDivElement): void => {
@@ -30,12 +27,13 @@ const filterHandler = ({
       String(card.dataset.filteringValue).split(' ').includes(name) === false
     const showAll: boolean = name.toLowerCase() === 'all'
 
-    cardsShowing({ condition: absence && !showAll, item: card })
+    filterCardsShowing({ condition: absence && !showAll, item: card })
 
     if (absence && !showAll) ++hidden
   })
 
-  if (plug) cardsShowing({ condition: hidden !== cards.length, item: plug })
+  if (plug)
+    filterCardsShowing({ condition: hidden !== cards.length, item: plug })
 }
 
 export default (): void => {

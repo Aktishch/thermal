@@ -1,10 +1,9 @@
-export const fileHandler = ({
-  input,
-  error,
-}: {
+export type FileHandler = {
   input: HTMLInputElement
   error: HTMLSpanElement
-}): boolean => {
+}
+
+export const fileHandler = ({ input, error }: FileHandler): boolean => {
   const files = input.files as FileList
   const file = files[0] as File
 

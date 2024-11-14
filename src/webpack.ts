@@ -20,7 +20,6 @@ import runningButton from './ts/running-button'
 import animation from './ts/animation'
 import waved from './ts/waved'
 import movement from './ts/movement'
-import bubbles from './ts/bubbles'
 import inverted from './ts/inverted'
 import listing from './ts/listing'
 import accordion from './ts/accordion'
@@ -83,7 +82,6 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   animation()
   waved()
   movement()
-  bubbles()
   inverted()
   listing()
   accordion()

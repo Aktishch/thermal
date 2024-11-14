@@ -19,8 +19,6 @@ export default (): void => {
   const products = document.querySelectorAll(
     '*[data-product]'
   ) as NodeListOf<HTMLDivElement>
-  let timeOut: NodeJS.Timeout
-
   const classes: string[] = [
     'in-shop',
     'flex',
@@ -35,6 +33,8 @@ export default (): void => {
     '-translate-x-1/2',
     'size-10',
   ]
+
+  let timeOut: NodeJS.Timeout
 
   const shopShow = (): void => {
     shop.dataset.shop = 'show'

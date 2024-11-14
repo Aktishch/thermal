@@ -6,6 +6,8 @@ export default (): void => {
 
   const togglesChecked = (check: boolean): void => {
     toggles.forEach((toggle: HTMLInputElement): void => {
+      if (!toggle) return
+
       toggle.checked = check
     })
   }

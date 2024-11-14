@@ -1,10 +1,26 @@
 import { scrollbarShow, scrollbarHidden, timeFormat } from './utils'
 
-type Playlist = {
+export type Playlist = {
   artist: string
   song: string
   audio: string
   poster: string
+}
+
+export type Player = {
+  id: string
+  playlist: Playlist[]
+}
+
+export type PlayerCondition = {
+  status: string
+  time: number
+  index: number
+}
+
+export type PlayerTiming = {
+  type: string
+  time: HTMLSpanElement
 }
 
 const playlist: Playlist[] = [
@@ -31,13 +47,7 @@ const playlist: Playlist[] = [
   },
 ]
 
-const setPlayer = ({
-  id,
-  playlist,
-}: {
-  id: string
-  playlist: Playlist[]
-}): void => {
+const setPlayer = ({ id, playlist }: Player): void => {
   const player = document.querySelector(`#${id}`) as HTMLElement
 
   if (!player) return
@@ -70,11 +80,7 @@ const setPlayer = ({
   let index: number = 0
   let minutes: number
   let seconds: number
-  let condition: {
-    status: string
-    time: number
-    index: number
-  } = {
+  let condition: PlayerCondition = {
     status: 'pause',
     time: 0,
     index: 0,
@@ -246,13 +252,7 @@ const setPlayer = ({
     }
   }
 
-  const audioTiming = ({
-    type,
-    time,
-  }: {
-    type: string
-    time: HTMLSpanElement
-  }): void => {
+  const audioTiming = ({ type, time }: PlayerTiming): void => {
     if (!time) return
 
     let timing: number

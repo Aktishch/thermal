@@ -1,4 +1,4 @@
-type UploadFile = {
+export type UploadFile = {
   name: string
   size: number
   type: string
