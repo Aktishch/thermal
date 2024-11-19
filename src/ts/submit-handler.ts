@@ -17,18 +17,15 @@ const submitHandler = (event: Event): void => {
 
       const formData: FormData = new FormData(form)
       const searchParams = new URLSearchParams() as URLSearchParams
-      // const listing = form.querySelector('*[data-files]') as HTMLUListElement
       const submitBtn = form.querySelector(
         'button[type="submit"]'
       ) as HTMLButtonElement
       let requestUrl: string
 
-      for (const pair of formData.entries())
+      for (const pair of formData.entries()) {
         searchParams.append(pair[0], String(pair[1]))
-
-      // if (listing && data.length !== 0)
-      //   for (let i: number = 0; i < data.length; i++)
-      //     formData.append('file[]', data[i])
+        console.log(pair)
+      }
 
       const queryString: string = searchParams.toString()
 
@@ -42,21 +39,22 @@ const submitHandler = (event: Event): void => {
             method: 'POST',
             body: formData,
           })
-            .then((response: Response): Promise<{ status: boolean }> => {
-              return response.json()
+            .then((response: Response) => {
+              response.text()
             })
-            .then((response): void => {
+            .then((): void => {
               dialog.close()
-              response.status
-                ? dialog.open('./dialogs/dialog-success.html')
-                : dialog.open('./dialogs/dialog-error.html')
+              dialog.open('./dialogs/dialog-success.html')
+              // response.status
+              //   : dialog.open('./dialogs/dialog-error.html')
               form.reset()
               submitBtn.disabled = false
 
-              // if (listing) {
-              //   listing.innerHTML = ''
-              //   data.length = 0
-              // }
+              const listing = form.querySelector(
+                '*[data-download-listing]'
+              ) as HTMLUListElement
+
+              if (listing) listing.innerHTML = ''
             })
             .catch((error: string): void =>
               console.log('The form has not been sent', error)

@@ -292,15 +292,15 @@
               <%= error({text: 'Заполните это поле'}) %>
             </div>
           </label>
-          <div class="flex flex-col gap-5">
+          <div class="flex flex-col gap-5" data-download>
             <div class="relative" data-label>
               <label class="btn btn-second btn-lg btn-fade" data-waved="dark">
-                <input class="hidden" data-input="file" id="files" type="file">
+                <input class="hidden" data-input="file" type="file" multiple name="files[]">
                 Загрузить файлы
               </label>
               <%= error({text: 'Загрузите изображение'}) %>
             </div>
-            <ul class="flex flex-col gap-1 text-xs" data-files></ul>
+            <ul class="flex flex-col gap-1 text-xs" data-download-listing></ul>
           </div>
           <div class="relative flex" data-label>
             <label class="flex flex-row items-center cursor-pointer">
@@ -400,7 +400,7 @@
               </div>
               <div class="flex flex-wrap items-center justify-between gap-4">
                 <label class="flex-grow btn btn-primary btn-lg btn-fill" data-waved="light">
-                  <input class="hidden" data-input="file" type="file" name="file[]">
+                  <input class="hidden" data-input="file" type="file" name="files[]">
                   Загрузить
                 </label>
                 <button class="flex-grow btn btn-primary btn-lg btn-contur" data-waved="dark" type="submit">Отправить</button>
