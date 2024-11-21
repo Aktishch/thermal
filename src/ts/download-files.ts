@@ -17,40 +17,41 @@ export default () => {
     let data = new DataTransfer() as DataTransfer
 
     input.addEventListener('change', ((): void => {
-      let files = input.files as FileList
+      const files = input.files as FileList
 
       if (files.length !== 0 && listing) {
         for (let i: number = 0; i < files.length; i++) {
           uploadFile(files[i] as File).then(({ file }): void => {
             if (!fileHandler({ input, error })) return
 
-            const item = document.createElement('li') as HTMLLIElement
+            if ((data.files as FileList).length === 3) {
+              label.classList.add('pointer-events-none', 'opacity-50')
+            } else {
+              const item = document.createElement('li') as HTMLLIElement
 
-            item.classList.add(
-              'flex',
-              'items-center',
-              'justify-between',
-              'gap-5'
-            )
-            item.setAttribute('data-download-item', '')
-            item.innerHTML = `
+              item.classList.add(
+                'flex',
+                'items-center',
+                'justify-between',
+                'gap-5'
+              )
+              item.setAttribute('data-download-item', '')
+              item.innerHTML = `
                 <span class="truncate">${file.name}</span>
                 <button class="btn btn-gray text-sm p-1" data-download-remove="${file.name}" type="button">
                   <svg class="icon">
                     <use xlink:href="img/icons.svg#close"></use>
                   </svg>
                 </button>`
-            listing.appendChild(item)
-            data.items.add(file)
-
-            if ((data.files as FileList).length === 3)
-              label.classList.add('pointer-events-none', 'opacity-50')
+              listing.appendChild(item)
+              data.items.add(file)
+              input.files = data.files as FileList
+            }
           })
         }
+      } else {
+        input.files = data.files as FileList
       }
-
-      files = data.files as FileList
-      console.log(data.files, input.files)
     }) as EventListener)
 
     download.addEventListener('click', ((event: Event): void => {
@@ -79,8 +80,6 @@ export default () => {
         } else {
           label.classList.remove('pointer-events-none', 'opacity-50')
         }
-
-        console.log(data.files, input.files)
       }
     }) as EventListener)
   })

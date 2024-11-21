@@ -22,10 +22,8 @@ const submitHandler = (event: Event): void => {
       ) as HTMLButtonElement
       let requestUrl: string
 
-      for (const pair of formData.entries()) {
+      for (const pair of formData.entries())
         searchParams.append(pair[0], String(pair[1]))
-        console.log(pair)
-      }
 
       const queryString: string = searchParams.toString()
 
@@ -39,14 +37,14 @@ const submitHandler = (event: Event): void => {
             method: 'POST',
             body: formData,
           })
-            .then((response: Response) => {
-              response.text()
+            .then((response: Response): Promise<{ status: boolean }> => {
+              return response.json()
             })
-            .then((): void => {
+            .then((response): void => {
               dialog.close()
-              dialog.open('./dialogs/dialog-success.html')
-              // response.status
-              //   : dialog.open('./dialogs/dialog-error.html')
+              response.status
+                ? dialog.open('./dialogs/dialog-success.html')
+                : dialog.open('./dialogs/dialog-error.html')
               form.reset()
               submitBtn.disabled = false
 
