@@ -28,15 +28,14 @@ import parallax from './ts/parallax'
 import filtering from './ts/filtering'
 import outNumber from './ts/out-number'
 import writeText from './ts/write-text'
-import downloadFiles from './ts/download-files'
+import fileList from './ts/file-list'
 import submitHandler from './ts/submit-handler'
 import dataSave from './ts/data-save'
-import dragAndDrop from './ts/drag-and-drop'
-import choiceFile from './ts/choice-file'
+import imagePreview from './ts/image-preview'
 import copy from './ts/copy'
 import cookie from './ts/cookie'
 import combination from './ts/combination'
-import createImage from './ts/create-image'
+import canvasRendering from './ts/canvas-rendering'
 import inputs from './ts/inputs'
 import phoneMask from './ts/phone-mask'
 import password from './ts/password'
@@ -90,15 +89,14 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   filtering()
   outNumber()
   writeText()
-  downloadFiles()
+  fileList()
   submitHandler()
   dataSave()
-  dragAndDrop()
-  choiceFile()
+  imagePreview()
   copy()
   cookie()
   combination()
-  createImage()
+  canvasRendering()
   inputs()
   phoneMask()
   password()

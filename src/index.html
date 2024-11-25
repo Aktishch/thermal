@@ -92,20 +92,20 @@
 
 <!-- Кнопки -->
 
-<% var buttons = ['', 'btn-contur', 'btn-fade', 'btn-contur btn-fade', 'btn-fill', 'btn-light', 'btn-contur btn-swipe', 'btn-xxl', 'btn-xl', 'btn-lg', 'btn-md', 'btn-sm', 'btn-xs', 'btn-fill btn-glow', 'data-waved="light"', 'data-waved="dark"', 'btn-bubbles', 'btn-rect', 'btn-frame', 'btn-lines'] %>
+<% var buttons = ['', 'btn-contur', 'btn-fade', 'btn-contur btn-fade', 'btn-fill', 'btn-text', 'btn-contur btn-swipe', 'btn-xxl', 'btn-xl', 'btn-lg', 'btn-md', 'btn-sm', 'btn-xs', 'btn-fill btn-glow', 'data-waved="light"', 'data-waved="dark"', 'btn-bubbles', 'btn-rect', 'btn-frame', 'btn-lines'] %>
 
 <section class="container flex flex-col items-center justify-center bg-white container-xs dark:bg-black">
   <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Buttons</h2>
   <h3 class="mb-5 font-semibold duration-500 text-bas/tighte md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Buttons standard</h3>
   <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
     <% for (var i = 0; i < 7; i++) { %>
-    <button class="btn btn-primary btn-lg <%= buttons[i] %>">btn-primary <%= buttons[i] %></button>
+    <button class="btn btn-primary btn-lg <%= buttons[i] %>">btn <%= buttons[i] %></button>
     <% } %>
   </div>
   <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">Buttons size</h3>
   <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
     <% for (var i = 7; i < 13; i++) { %>
-    <button class="btn btn-primary <%= buttons[i] %> btn-fill"><%= buttons[i] %></button>
+    <button class="btn btn-primary <%= buttons[i] %> btn-fill btn-light">btn-light <%= buttons[i] %></button>
     <% } %>
   </div>
   <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">Buttons effects</h3>
@@ -292,15 +292,15 @@
               <%= error({text: 'Заполните это поле'}) %>
             </div>
           </label>
-          <div class="flex flex-col gap-5" data-download>
-            <div class="relative" data-label>
+          <div class="flex flex-col gap-5" data-filelist>
+            <div class="relative" data-filelist-label data-label>
               <label class="btn btn-second btn-lg btn-fade" data-waved="dark">
-                <input class="hidden" data-input="file" type="file" multiple name="files[]">
-                Загрузить файлы
+                <input class="hidden" data-filelist-input data-input="file" type="file" multiple name="files[]">
+                <span data-filelist-text>Загрузить файлы</span>
               </label>
               <%= error({text: 'Загрузите изображение'}) %>
             </div>
-            <ul class="flex flex-col gap-1 text-xs" data-download-listing></ul>
+            <ul class="flex flex-col gap-1 text-xs" data-filelist-items></ul>
           </div>
           <div class="relative flex" data-label>
             <label class="flex flex-row items-center cursor-pointer">
@@ -381,7 +381,7 @@
       <div data-filtering-card="filtering" data-filtering-value="file">
         <div class="w-full max-w-xs mx-auto" id="copy">
           <div class="flex items-center w-full gap-3 mb-5">
-            <div class="w-10 rounded-full cursor-pointer shrink-0 pack pack-xl bg-primary/40" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-avatar.html">
+            <div class="w-10 rounded-full cursor-pointer shrink-0 pack pack-xl bg-primary/40" data-fancybox-avatar data-type="ajax" data-src="dialogs/dialog-avatar.html">
               <div class="absolute inset-0 flex items-center justify-center">
                 <%= icon({id: 'user', className: 'icon text-white text-sm', data: null}) %>
               </div>
@@ -389,18 +389,21 @@
             </div>
             <h4 class="text-2xl font-bold">Name Surname</h4>
           </div>
-          <form class="mb-5" data-form="submit">
+          <form class="mb-5" data-form="submit" data-preview>
             <input type="hidden" value="Изображение" name="theme">
             <div class="flex flex-col" data-label>
               <div class="relative mb-5">
-                <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-drag>
-                  <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-file="image"'}) %>
+                <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-preview-drag>
+                  <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-preview-image'}) %>
                 </div>
+                <button class="btn btn-gray btn-fill size-10 rounded-lg absolute top-3 right-3" data-preview-remove data-waved="dark" type="button" disabled>
+                  <%= icon({id: 'trash', className: 'icon text-red text-2xl', data: null}) %>
+                </button>
                 <%= error({text: 'Загрузите изображение'}) %>
               </div>
               <div class="flex flex-wrap items-center justify-between gap-4">
-                <label class="flex-grow btn btn-primary btn-lg btn-fill" data-waved="light">
-                  <input class="hidden" data-input="file" type="file" name="files[]">
+                <label class="flex-grow btn btn-primary btn-lg btn-fill" data-preview-label data-waved="light">
+                  <input class="hidden" data-preview-input data-input="file" type="file" name="files[]">
                   Загрузить
                 </label>
                 <button class="flex-grow btn btn-primary btn-lg btn-contur" data-waved="dark" type="submit">Отправить</button>
@@ -413,9 +416,9 @@
               <span class="absolute left-0 right-0 invisible text-sm duration-300 opacity-0 top-full text-primary" data-copy-result>Скопировано</span>
             </div>
             <button class="btn btn-gray btn-lg btn-fill" data-waved="dark" data-fancybox-calendar data-type="ajax" data-src="dialogs/dialog-calendar.html">Calendar</button>
-            <div class="relative" data-image="SL-QGLZC-KHQDJ2H">
-              <canvas class="hidden" data-image-canvas="img/pictures/certificate.jpg" width="540" height="750"></canvas>
-              <a class="btn btn-gray btn-lg btn-fill" data-image-download data-waved="dark" draggable="false" href="" download>Download canvas</a>
+            <div class="relative" data-rendering="SL-QGLZC-KHQDJ2H">
+              <canvas class="hidden" data-rendering-canvas="img/pictures/certificate.jpg" width="540" height="750"></canvas>
+              <a class="btn btn-gray btn-lg btn-fill" data-rendering-download data-waved="dark" draggable="false" href="" download="certificate">Download canvas</a>
             </div>
             <div data-cookie="/" id="cookie">
               <button class="w-full btn btn-gray btn-lg btn-fill" data-cookie-button data-waved="dark">Cookie</button>

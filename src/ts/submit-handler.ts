@@ -48,11 +48,41 @@ const submitHandler = (event: Event): void => {
               form.reset()
               submitBtn.disabled = false
 
-              const listing = form.querySelector(
-                '*[data-download-listing]'
-              ) as HTMLUListElement
+              if (form.hasAttribute('data-preview')) {
+                const label = form.querySelector(
+                  '*[data-preview-label]'
+                ) as HTMLLabelElement
+                const image = form.querySelector(
+                  '*[data-preview-image]'
+                ) as HTMLImageElement
+                const remove = form.querySelector(
+                  '*[data-preview-remove]'
+                ) as HTMLButtonElement
 
-              if (listing) listing.innerHTML = ''
+                image.src = ''
+                remove.disabled = true
+                label.classList.remove('pointer-events-none', 'opacity-50')
+              }
+
+              const filelist = document.querySelector(
+                '*[data-filelist]'
+              ) as HTMLDivElement
+
+              if (filelist) {
+                const label = filelist.querySelector(
+                  '*[data-filelist-label]'
+                ) as HTMLLabelElement
+                const text = label.querySelector(
+                  '*[data-filelist-text]'
+                ) as HTMLSpanElement
+                const items = filelist.querySelector(
+                  '*[data-filelist-items]'
+                ) as HTMLUListElement
+
+                label.classList.remove('pointer-events-none', 'opacity-50')
+                text.textContent = 'Загрузить файлы'
+                items.innerHTML = ''
+              }
             })
             .catch((error: string): void =>
               console.log('The form has not been sent', error)

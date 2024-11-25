@@ -22,7 +22,9 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         alpha: 0.4,
       }),
       '--tw-btn-accent': theme('colors.white.DEFAULT'),
-      '--tw-btn-hovered': `color-mix(in srgb, var(--tw-btn-color) 85%, ${theme('colors.black.DEFAULT')})`,
+      '--tw-btn-hovered': theme('colors.black.DEFAULT'),
+      '--tw-btn-fill':
+        'color-mix(in srgb, var(--tw-btn-color) 80%, var(--tw-btn-hovered))',
       color: 'var(--tw-btn-color)',
       fontSize: theme('fontSize.base'),
       fontWeight: theme('fontWeight.semibold'),
@@ -59,11 +61,11 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         color: 'var(--tw-btn-accent)',
         backgroundColor: 'var(--tw-btn-color)',
         '&:focus-visible': {
-          backgroundColor: 'var(--tw-btn-hovered)',
+          backgroundColor: 'var(--tw-btn-fill)',
         },
         '@media (hover)': {
           '&:hover': {
-            backgroundColor: 'var(--tw-btn-hovered)',
+            backgroundColor: 'var(--tw-btn-fill)',
           },
         },
       },
@@ -81,7 +83,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
           },
         },
       },
-      '&-light': {
+      '&-text': {
         color: 'var(--tw-btn-color)',
         backgroundColor: 'var(--tw-btn-accent)',
         border: `1px solid ${theme('colors.transparent')}`,
@@ -98,6 +100,9 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       },
       '&-contur': {
         border: '1px solid var(--tw-btn-color)',
+      },
+      '&-light': {
+        '--tw-btn-hovered': theme('colors.white.DEFAULT'),
       },
       '&-swipe': {
         zIndex: 1,

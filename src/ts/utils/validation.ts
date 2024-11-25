@@ -93,7 +93,14 @@ export const validation = (form: HTMLFormElement): boolean => {
       }
 
       case 'file': {
-        if (!fileHandler({ input, error })) getError()
+        const files = input.files as FileList
+        const file = files[0] as File
+
+        if (file && !fileHandler({ error, file })) {
+          getError()
+        } else {
+          error.innerText = 'Загрузите файл'
+        }
         break
       }
     }

@@ -1,5 +1,6 @@
 import { Fancybox } from '@fancyapps/ui'
 import { createCalendar } from './air-datepicker'
+import imagePreview from './image-preview'
 import filtering from './filtering'
 import waved from './waved'
 
@@ -69,6 +70,16 @@ export default (): void => {
     dragToClose: false,
     on: {
       done: (): void => waved(),
+    },
+  })
+
+  window.Fancybox.bind('[data-fancybox-avatar]', {
+    dragToClose: false,
+    on: {
+      done: (): void => {
+        imagePreview()
+        waved()
+      },
     },
   })
 
