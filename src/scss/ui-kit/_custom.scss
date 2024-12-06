@@ -10,11 +10,11 @@
     }
 
     &-custom &__content:is(&-error) {
-      @apply bg-transparent text-white w-auto p-0;
+      @apply bg-transparent text-white p-0;
     }
 
     &-custom &__content {
-      @apply text-black w-full h-auto;
+      @apply text-black;
 
       &>.f-button.is-close-btn {
         @apply top-2 right-2 bg-white text-black rounded-full shadow-md;
@@ -24,14 +24,10 @@
 
   .swiper {
     &-pagination {
-      @apply flex items-center justify-center static gap-2;
+      @apply flex items-center justify-center static gap-4;
 
       & &-bullet {
-        @apply bg-current rounded-full size-3 cursor-pointer duration-200;
-
-        &:not(.swiper-pagination-bullet-active) {
-          @apply opacity-50;
-        }
+        @apply bg-current rounded-full size-3 !m-0 duration-200;
       }
     }
 
