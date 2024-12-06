@@ -28,7 +28,7 @@ export const checkQuizSlide = (slide: HTMLElement): void => {
     }
   }
 
-  active ? (quiz.dataset.quiz = 'stop') : (quiz.dataset.quiz = 'auto')
+  quiz.dataset.quiz = active ? 'stop' : ''
 }
 
 export default (): void => {

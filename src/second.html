@@ -65,7 +65,7 @@
   <div class="w-full max-w-xl mx-auto" data-filtering="sorting">
     <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-gray md:mb-10 md:pb-4 anim anim-up" data-anim>
       <% _.forEach((filtering), (item, key) => { %>
-      <button class="flex-grow p-4 text-xl text-center cursor-pointer md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="sorting" data-filtering-value="<%= item %>"><%= item %></button>
+      <button class="grow p-4 text-xl text-center cursor-pointer md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="sorting" data-filtering-value="<%= item %>"><%= item %></button>
       <% }) %>
       <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="sorting"></span>
     </div>

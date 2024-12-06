@@ -203,7 +203,7 @@
     <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-10 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"'}) %>
     <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim>
       <% _.forEach((filtering), (item, key) => { %>
-      <button class="flex-grow p-4 text-xl md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="filtering" data-filtering-value="<%= item %>"><%= item %></button>
+      <button class="grow p-4 text-xl md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="filtering" data-filtering-value="<%= item %>"><%= item %></button>
       <% }) %>
       <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="filtering"></span>
     </div>
@@ -249,11 +249,11 @@
           <div>
             <h5 class="mb-3 font-medium text-xl/none">Date</h5>
             <div class="flex items-center justify-between">
-              <div class="relative flex-grow" data-label>
+              <div class="relative grow" data-label>
                 <input class="rounded-r-none input input-gray input-lg" data-input="min" data-position="top left" type="text" name="check-in">
                 <%= error({text: 'Укажите дату'}) %>
               </div>
-              <div class="relative flex-grow" data-label>
+              <div class="relative grow" data-label>
                 <input class="rounded-l-none input input-gray input-lg" data-input="max" type="text" name="check-out">
                 <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
                   <%= icon({id: 'calendar', className: 'icon text-xl', data: null}) %>
@@ -396,17 +396,17 @@
                 <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-preview-drag>
                   <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-preview-image'}) %>
                 </div>
-                <button class="btn btn-gray btn-fill size-10 rounded-lg absolute top-3 right-3" data-preview-remove data-waved="dark" type="button" disabled>
+                <button class="absolute rounded-lg btn btn-gray btn-fill size-10 top-3 right-3" data-preview-remove data-waved="dark" type="button" disabled>
                   <%= icon({id: 'trash', className: 'icon text-red text-2xl', data: null}) %>
                 </button>
                 <%= error({text: 'Загрузите изображение'}) %>
               </div>
               <div class="flex flex-wrap items-center justify-between gap-4">
-                <label class="flex-grow btn btn-primary btn-lg btn-fill" data-preview-label data-waved="light">
+                <label class="grow btn btn-primary btn-lg btn-fill" data-preview-label data-waved="light">
                   <input class="hidden" data-preview-input data-input="file" type="file" name="files[]">
                   Загрузить
                 </label>
-                <button class="flex-grow btn btn-primary btn-lg btn-contur" data-waved="dark" type="submit">Отправить</button>
+                <button class="grow btn btn-primary btn-lg btn-contur" data-waved="dark" type="submit">Отправить</button>
               </div>
             </div>
           </form>
