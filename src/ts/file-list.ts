@@ -14,7 +14,7 @@ export default () => {
     const input = label.querySelector(
       '*[data-filelist-input]'
     ) as HTMLInputElement
-    const error = label.querySelector('*[data-error]') as HTMLSpanElement
+    const error = filelist.querySelector('*[data-error]') as HTMLSpanElement
     const text = label.querySelector('*[data-filelist-text]') as HTMLSpanElement
     const items = filelist.querySelector(
       '*[data-filelist-items]'

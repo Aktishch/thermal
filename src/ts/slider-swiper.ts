@@ -155,6 +155,17 @@ const createQuizSlider = (): void => {
     `*[data-slider-next="${value}"]`
   ) as HTMLButtonElement
 
+  const checkSlide = (swiper: QuizSwiper): void => {
+    const quiz = swiper.el.closest('[data-quiz]') as HTMLElement
+    const visibleSlide = swiper.visibleSlides[0] as HTMLDivElement
+
+    checkQuizSlide(visibleSlide)
+
+    visibleSlide === swiper.slides[swiper.slides.length - 1]
+      ? quiz.setAttribute('data-quiz-end', '')
+      : quiz.removeAttribute('data-quiz-end')
+  }
+
   new window.Swiper(swiper, {
     pagination: {
       el: pagination,
@@ -173,16 +184,8 @@ const createQuizSlider = (): void => {
     allowTouchMove: false,
     watchSlidesProgress: true,
     on: {
-      slideChange: (swiper: QuizSwiper): void => {
-        const quiz = swiper.el.closest('[data-quiz]') as HTMLElement
-        const visibleSlide = swiper.visibleSlides[0] as HTMLDivElement
-
-        checkQuizSlide(visibleSlide)
-
-        visibleSlide === swiper.slides[swiper.slides.length - 1]
-          ? quiz.setAttribute('data-quiz-end', '')
-          : quiz.removeAttribute('data-quiz-end')
-      },
+      init: (swiper: QuizSwiper): void => checkSlide(swiper),
+      slideChange: (swiper: QuizSwiper): void => checkSlide(swiper),
     },
   }) as Swiper
 }

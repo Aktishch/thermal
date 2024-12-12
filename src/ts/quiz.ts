@@ -10,25 +10,25 @@ export const checkQuizSlide = (slide: HTMLElement): void => {
     ...slide.querySelectorAll('select'),
     ...slide.querySelectorAll('textarea'),
   ]
-  let active: boolean = true
+  let active: boolean = false
 
-  for (const index in inputs) {
-    if (!Object.hasOwnProperty.call(inputs, index)) continue
+  if (inputs.length === 0) {
+    active = true
+  } else {
+    inputs.forEach((input: QuizInput): void => {
+      if (!input) return
 
-    const input = inputs[index] as QuizInput
+      if (input.type === 'checkbox' || input.type === 'radio') {
+        const toggle = input as HTMLInputElement
 
-    if (input.type === 'checkbox' || input.type === 'radio') {
-      if ((input as HTMLInputElement).checked !== false) {
-        active = false
-        break
+        if (toggle.checked !== false) active = true
+      } else if (input.value.length !== 0) {
+        active = true
       }
-    } else if (input.value !== '') {
-      active = false
-      break
-    }
+    })
   }
 
-  quiz.dataset.quiz = active ? 'stop' : ''
+  quiz.dataset.quiz = active ? '' : 'stop'
 }
 
 export default (): void => {
