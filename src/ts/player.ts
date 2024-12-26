@@ -292,6 +292,23 @@ const setPlayer = ({ id, playlist }: Player): void => {
     currentComposition()
   }
 
+  const mutedState = (): void => {
+    const volumeStatus = volume.querySelector('svg') as SVGSVGElement
+    const volumeIcon = volumeStatus.querySelector('use') as SVGUseElement
+
+    if (volume.dataset.playerVolume === 'off') {
+      volume.dataset.playerVolume = ''
+      volumeStatus.classList.remove('opacity-50')
+      volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-on')
+      audio.muted = false
+    } else {
+      volume.dataset.playerVolume = 'off'
+      volumeStatus.classList.add('opacity-50')
+      volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-off')
+      audio.muted = true
+    }
+  }
+
   setComposition(index)
 
   if (start) start.innerText = '00:00'
@@ -326,25 +343,6 @@ const setPlayer = ({ id, playlist }: Player): void => {
     }) as EventListener)
   }
 
-  if (volume) {
-    volume.addEventListener('click', ((): void => {
-      const volumeStatus = volume.querySelector('svg') as SVGSVGElement
-      const volumeIcon = volumeStatus.querySelector('use') as SVGUseElement
-
-      if (volume.dataset.playerVolume === 'off') {
-        volume.dataset.playerVolume = ''
-        volumeStatus.classList.remove('opacity-50')
-        volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-on')
-        audio.volume = 1
-      } else {
-        volume.dataset.playerVolume = 'off'
-        volumeStatus.classList.add('opacity-50')
-        volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-off')
-        audio.volume = 0
-      }
-    }) as EventListener)
-  }
-
   play.addEventListener('click', statusComposition as EventListener)
   next.addEventListener('click', nextComposition as EventListener)
   prev.addEventListener('click', prevComposition as EventListener)
@@ -367,6 +365,7 @@ const setPlayer = ({ id, playlist }: Player): void => {
   audio.addEventListener('timeupdate', audioEnd as EventListener)
   audio.addEventListener('ended', nextComposition as EventListener)
   audio.addEventListener('pause', audioPause as EventListener)
+  volume.addEventListener('click', mutedState as EventListener)
 }
 
 const playOnlyOne = (event: Event): void => {

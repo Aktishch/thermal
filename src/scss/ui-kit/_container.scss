@@ -32,7 +32,7 @@
 
     @screen xl {
       --container-padding: 80px;
-      --container-xl     : calc(theme(screens.xl) - 245.98px);
+      --container-xl     : calc(theme(screens.xl) - 135.98px);
       --container-content: var(--container-xl);
 
       &-distance {
