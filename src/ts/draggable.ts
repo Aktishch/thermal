@@ -1,16 +1,20 @@
 import { Coordinates, scrollbarShow, scrollbarHidden } from './utils'
 
-type Draggable = {
+export type Draggable = {
   element: HTMLButtonElement | HTMLDivElement
   positionX: number
   positionY: number
 }
 
-const setTranslate = ({ element, positionX, positionY }: Draggable): void => {
+export const setTranslateDraggable = ({
+  element,
+  positionX,
+  positionY,
+}: Draggable): void => {
   element.style.transform = `translate(${positionX}px, ${positionY}px)`
 }
 
-const setDraggable = (id: string): void => {
+export const setDraggable = (id: string): void => {
   const draggable = document.querySelector(`#${id}`) as HTMLButtonElement
 
   if (!draggable) return
@@ -24,7 +28,7 @@ const setDraggable = (id: string): void => {
   let initialX: number
 
   const getDragPosition = (): void => {
-    setTranslate({
+    setTranslateDraggable({
       element: draggable.closest('[data-draggable]')
         ? (draggable.closest('[data-draggable]') as HTMLDivElement)
         : draggable,

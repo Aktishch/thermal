@@ -1,6 +1,6 @@
 export type DataSave = { [index: string]: string }
 
-const dataSave = (id: string): void => {
+export const saveFormData = (id: string): void => {
   const form = document.querySelector(`#${id}`) as HTMLFormElement
 
   if (!form) return
@@ -31,4 +31,4 @@ const dataSave = (id: string): void => {
   }) as EventListener)
 }
 
-export default (): void => dataSave('data-save')
+export default (): void => saveFormData('data-save')

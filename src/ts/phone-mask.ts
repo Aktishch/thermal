@@ -1,8 +1,8 @@
-const getValue = (input: HTMLInputElement): string => {
+export const getPhoneValue = (input: HTMLInputElement): string => {
   return input.value.replace(/\D/g, '')
 }
 
-const formatterValue = (value: string): string => {
+export const formatterValue = (value: string): string => {
   if (value[0] === '9') value = '7' + value
 
   const firstVal: string = value[0] === '8' ? '8' : '+7'
@@ -18,10 +18,10 @@ const formatterValue = (value: string): string => {
   return formatted
 }
 
-const onInput = (event: InputEvent): '' | undefined => {
+export const onInput = (event: InputEvent): '' | undefined => {
   const input = event.target as HTMLInputElement
   const selection: number | null = input.selectionStart
-  const value: string = getValue(input)
+  const value: string = getPhoneValue(input)
 
   if (!value) return (input.value = '')
 
@@ -33,22 +33,22 @@ const onInput = (event: InputEvent): '' | undefined => {
   input.value = formatterValue(value)
 }
 
-const onKeyUp = (event: KeyboardEvent): void => {
+export const onKeyUp = (event: KeyboardEvent): void => {
   const input = event.target as HTMLInputElement
 
   input.maxLength = input.value[0] === '8' ? 17 : 18
 }
 
-const onKeyDown = (event: KeyboardEvent): void => {
+export const onKeyDown = (event: KeyboardEvent): void => {
   const input = event.target as HTMLInputElement
-  const value: string = getValue(input)
+  const value: string = getPhoneValue(input)
 
   if (event.code === 'Backspace' && value.length === 1) input.value = ''
 }
 
-const onPaste = (event: ClipboardEvent): void => {
+export const onPaste = (event: ClipboardEvent): void => {
   const input = event.target as HTMLInputElement
-  const value: string = getValue(input)
+  const value: string = getPhoneValue(input)
   const pasted: DataTransfer | null = event.clipboardData
 
   if (pasted && /\D/g.test(pasted.getData('Text'))) {

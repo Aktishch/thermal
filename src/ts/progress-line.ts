@@ -1,6 +1,6 @@
 import { scrolledPage } from './utils'
 
-const setProgressLineWidth = (): void => {
+export const setProgressLineWidth = (): void => {
   const progressLine = document.querySelector(
     '*[data-progress-line]'
   ) as HTMLDivElement

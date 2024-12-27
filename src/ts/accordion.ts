@@ -1,4 +1,4 @@
-const createAccordion = (accordion: HTMLDivElement): void => {
+export const createAccordion = (accordion: HTMLDivElement): void => {
   const toggle = accordion.querySelector('*[data-accordion-toggle]') as
     | HTMLDivElement
     | HTMLButtonElement

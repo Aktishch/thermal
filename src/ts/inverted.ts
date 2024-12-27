@@ -3,7 +3,7 @@ export type InvertedToggle = {
   condition: string
 }
 
-const invertedToggle = ({ event, condition }: InvertedToggle): void => {
+export const invertedToggle = ({ event, condition }: InvertedToggle): void => {
   if (
     (event.target as HTMLButtonElement).closest(
       `[data-inverted-toggle="${condition}"]`

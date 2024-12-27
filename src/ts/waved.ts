@@ -5,7 +5,7 @@ export type WavedCircle = {
   positionX: number
 }
 
-const setWaved = (event: Event): void => {
+export const setWaved = (event: Event): void => {
   const item = (event.target as HTMLElement).closest(
     '[data-waved]'
   ) as HTMLElement

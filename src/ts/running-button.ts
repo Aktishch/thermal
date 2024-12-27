@@ -5,7 +5,7 @@ export type RandomPosition = {
   max: number
 }
 
-const randomPosition = ({ min, max }: RandomPosition): number => {
+export const randomBtnPosition = ({ min, max }: RandomPosition): number => {
   return Math.floor(min + Math.random() * (max - min + 1))
 }
 
@@ -20,8 +20,8 @@ export default (): void => {
 
   running.addEventListener('mouseenter', ((): void => {
     const coordinates: Coordinates = {
-      top: randomPosition({ min: 0, max: 90 }),
-      left: randomPosition({ min: 0, max: 90 }),
+      top: randomBtnPosition({ min: 0, max: 90 }),
+      left: randomBtnPosition({ min: 0, max: 90 }),
     }
 
     running.style.top = `${coordinates.top}%`

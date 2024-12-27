@@ -1,4 +1,4 @@
-const visibilityPassword = (event: Event): void => {
+export const visibilityPassword = (event: Event): void => {
   const password = event.target as HTMLButtonElement
   const label = password.closest('[data-label]') as HTMLLabelElement
   const input = label.querySelector(

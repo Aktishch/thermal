@@ -1,4 +1,4 @@
-const setCookie = (event: Event): void => {
+export const setCookie = (event: Event): void => {
   const block = (event.target as HTMLButtonElement).closest(
     '[data-cookie]'
   ) as HTMLElement

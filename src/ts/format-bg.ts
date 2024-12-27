@@ -1,4 +1,4 @@
-const canUseWebp = (): boolean => {
+export const canUseWebp = (): boolean => {
   const canvas = document.createElement('canvas') as HTMLCanvasElement
 
   return canvas.getContext && canvas.getContext('2d')
@@ -6,7 +6,7 @@ const canUseWebp = (): boolean => {
     : false
 }
 
-const createBackground = (data: string): void => {
+export const createBackground = (data: string): void => {
   const items = document.querySelectorAll(
     `*[${data}]`
   ) as NodeListOf<HTMLElement>

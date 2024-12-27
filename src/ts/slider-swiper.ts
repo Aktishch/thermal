@@ -33,7 +33,7 @@ Swiper.use([
 Swiper.defaults.touchStartPreventDefault = false
 window.Swiper = Swiper
 
-const createGallerySlider = (): void => {
+export const createGallerySlider = (): void => {
   const slider = document.querySelector(
     '*[data-slider="gallery"]'
   ) as HTMLDivElement
@@ -85,7 +85,7 @@ const createGallerySlider = (): void => {
   }) as Swiper
 }
 
-const createProductsSlider = (): void => {
+export const createProductsSlider = (): void => {
   const slider = document.querySelector(
     '*[data-slider="products"]'
   ) as HTMLDivElement
@@ -134,7 +134,7 @@ const createProductsSlider = (): void => {
   }) as Swiper
 }
 
-const createQuizSlider = (): void => {
+export const createQuizSlider = (): void => {
   const slider = document.querySelector(
     '*[data-slider="quiz"]'
   ) as HTMLDivElement
@@ -190,7 +190,7 @@ const createQuizSlider = (): void => {
   }) as Swiper
 }
 
-const createDescriptionSlider = (): void => {
+export const createDescriptionSlider = (): void => {
   const slider = document.querySelector(
     '*[data-slider="description"]'
   ) as HTMLDivElement

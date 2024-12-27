@@ -1,4 +1,4 @@
-const writeText = (section: HTMLElement): void => {
+export const setWriteText = (section: HTMLElement): void => {
   const record = section.querySelector('*[data-record]') as HTMLElement
 
   if (!record) return
@@ -16,11 +16,11 @@ const writeText = (section: HTMLElement): void => {
   )
 }
 
-const scrollToText = (): void => {
+export const scrollToText = (): void => {
   const section = document.querySelector('*[data-section]') as HTMLElement
 
   if (section && window.screen.height >= section.getBoundingClientRect().top) {
-    writeText(section)
+    setWriteText(section)
     document.removeEventListener('scroll', scrollToText as EventListener)
   }
 }

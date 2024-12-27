@@ -1,4 +1,4 @@
-const quantityDecrease = (event: Event): void => {
+export const quantityDecrease = (event: Event): void => {
   const quantity = (event.target as HTMLButtonElement).closest(
     '[data-quantity]'
   ) as HTMLDivElement
@@ -10,7 +10,7 @@ const quantityDecrease = (event: Event): void => {
   if (value < 1) input.value = '1'
 }
 
-const quantityIncrease = (event: Event): void => {
+export const quantityIncrease = (event: Event): void => {
   const quantity = (event.target as HTMLButtonElement).closest(
     '[data-quantity]'
   ) as HTMLDivElement

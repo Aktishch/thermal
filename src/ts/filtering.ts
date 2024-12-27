@@ -1,3 +1,5 @@
+import { scrollToElement } from './scroll-to'
+
 export type FilterCardsShowing = {
   condition: boolean
   item: HTMLDivElement
@@ -9,7 +11,10 @@ export type FilterHandler = {
   plug: HTMLDivElement
 }
 
-const filterCardsShowing = ({ condition, item }: FilterCardsShowing): void => {
+export const filterCardsShowing = ({
+  condition,
+  item,
+}: FilterCardsShowing): void => {
   if (condition) {
     item.classList.add('hidden')
   } else {
@@ -19,7 +24,7 @@ const filterCardsShowing = ({ condition, item }: FilterCardsShowing): void => {
   }
 }
 
-const filterHandler = ({ name, cards, plug }: FilterHandler): void => {
+export const filterHandler = ({ name, cards, plug }: FilterHandler): void => {
   let hidden: number = 0
 
   cards.forEach((card: HTMLDivElement): void => {
@@ -100,6 +105,8 @@ export default (): void => {
           const category = categories[index] as HTMLElement
 
           currentCard(category)
+
+          setTimeout((): void => scrollToElement(filter), 100)
         }
       }
     }

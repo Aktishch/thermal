@@ -2,7 +2,7 @@ import { fileHandler } from './file-handler'
 
 export type FormLabel = HTMLLabelElement | HTMLDivElement
 
-const emailFormat = (value: string): boolean => {
+export const emailFormat = (value: string): boolean => {
   return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,8})+$/.test(value)
 }
 

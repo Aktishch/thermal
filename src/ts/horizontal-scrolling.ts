@@ -1,6 +1,6 @@
 import { media, scrolledPage } from './utils'
 
-const setScrollingHeight = (): void => {
+export const setScrollingHeight = (): void => {
   const scrollings = document.querySelectorAll(
     '*[data-scrolling]'
   ) as NodeListOf<HTMLElement>
@@ -18,7 +18,7 @@ const setScrollingHeight = (): void => {
   })
 }
 
-const setHorizontalScrolling = (): void => {
+export const setHorizontalScrolling = (): void => {
   const scrollings = document.querySelectorAll(
     '*[data-scrolling]'
   ) as NodeListOf<HTMLElement>
@@ -48,7 +48,7 @@ const setHorizontalScrolling = (): void => {
   })
 }
 
-const scrollingInViewport = (): void => {
+export const scrollingInViewport = (): void => {
   if ((document.documentElement as HTMLHtmlElement).clientWidth < media.md) {
     document.removeEventListener(
       'wheel',

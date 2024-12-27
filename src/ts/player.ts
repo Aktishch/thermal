@@ -47,7 +47,7 @@ const playlist: Playlist[] = [
   },
 ]
 
-const setPlayer = ({ id, playlist }: Player): void => {
+export const setPlayer = ({ id, playlist }: Player): void => {
   const player = document.querySelector(`#${id}`) as HTMLElement
 
   if (!player) return
@@ -368,7 +368,7 @@ const setPlayer = ({ id, playlist }: Player): void => {
   volume.addEventListener('click', mutedState as EventListener)
 }
 
-const playOnlyOne = (event: Event): void => {
+export const playOnlyOne = (event: Event): void => {
   const audios = document.querySelectorAll(
     'audio'
   ) as NodeListOf<HTMLAudioElement>

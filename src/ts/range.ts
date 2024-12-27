@@ -8,7 +8,7 @@ export type RangePosition = {
   bubble: HTMLOutputElement
 }
 
-const getPosition = ({
+export const getBubblesPosition = ({
   size,
   number,
   input,
@@ -75,7 +75,7 @@ export default (): void => {
         ) as HTMLOutputElement
 
         const changeRange = (): void => {
-          getPosition({ size, number: first, input, progress, bubble })
+          getBubblesPosition({ size, number: first, input, progress, bubble })
           output.value = input.value
         }
 
@@ -110,14 +110,14 @@ export default (): void => {
         ) as HTMLOutputElement
 
         const changeRanges = (): void => {
-          getPosition({
+          getBubblesPosition({
             size,
             number: first,
             input: firstInput,
             progress: firstProgress,
             bubble: firstBubble,
           })
-          getPosition({
+          getBubblesPosition({
             size,
             number: last,
             input: lastInput,

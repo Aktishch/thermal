@@ -1,7 +1,7 @@
 import { validation } from './utils'
 import { dialog } from './fancybox'
 
-const submitHandler = (event: Event): void => {
+export const formSubmitHandler = (event: Event): void => {
   const form = event.target as HTMLFormElement
 
   switch (form.dataset.form) {
@@ -107,6 +107,6 @@ const submitHandler = (event: Event): void => {
 export default (): void => {
   document.addEventListener('submit', ((event: Event): void => {
     if ((event.target as HTMLFormElement).hasAttribute('data-form'))
-      submitHandler(event)
+      formSubmitHandler(event)
   }) as EventListener)
 }
