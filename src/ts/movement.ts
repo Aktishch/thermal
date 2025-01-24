@@ -25,6 +25,7 @@ export default (): void => {
     if (!item) return
 
     item.classList.add('movement')
+    item.addEventListener('mouseover', setMovement as EventListener)
     item.addEventListener('mousemove', setMovement as EventListener)
   })
 }

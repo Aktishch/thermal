@@ -42,7 +42,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
           color: parseColor(theme('colors.black.DEFAULT')).color,
           alpha: 0.3,
         })}`,
-        transform: 'translateY(0.25rem)',
+        translate: '0 0.25rem',
       },
       '&:disabled': {
         pointerEvents: 'none',

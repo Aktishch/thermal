@@ -1,8 +1,8 @@
 @layer base {
   @keyframes waved {
     to {
-      opacity  : 0;
-      transform: translate(-50%, -50%) scale(25);
+      opacity: 0;
+      scale  : 25;
     }
   }
 
@@ -13,8 +13,9 @@
 
     &-circle {
       background-color: var(--waved-color);
-      transform       : translate(-50%, -50%) scale(0);
       animation       : waved 1000ms ease forwards;
+      translate       : -50% -50%;
+      scale           : 0;
 
       @apply block absolute rounded-full size-10;
     }

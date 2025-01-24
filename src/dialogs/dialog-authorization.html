@@ -3,7 +3,7 @@
   var error = _.template(require('../components/error.html').default)
 %>
 
-<dialog class="w-full max-w-sm px-5 py-10 dark:bg-black dark:text-white rounded-xl">
+<dialog class="w-full max-w-sm px-5 py-10 text-black bg-white dark:bg-black dark:text-white rounded-xl">
   <form class="flex flex-col gap-5" data-form action="primary.html">
     <input type="hidden" value="Авторизация" name="theme">
     <label data-label>
@@ -25,5 +25,5 @@
     </label>
     <button class="btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Enter</button>
   </form>
-  <div class="mx-auto mt-5 text-lg cursor-pointer hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
+  <button class="mx-auto mt-5 text-lg hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</button>
 </dialog>

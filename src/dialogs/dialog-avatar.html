@@ -4,7 +4,7 @@
   var error = _.template(require('../components/error.html').default)
 %>
 
-<dialog class="w-full max-w-xs px-5 py-10 dark:bg-black dark:text-white rounded-xl">
+<dialog class="w-full max-w-xs px-5 py-10 text-black bg-white dark:bg-black dark:text-white rounded-xl">
   <form data-preview="avatar">
     <input type="hidden" value="Аватарка" name="theme">
     <div class="relative mb-5">
@@ -12,7 +12,7 @@
         <div class="absolute inset-0 flex items-center justify-center">
           <%= icon({id: 'user', className: 'icon text-white dark:text-black text-6xl', data: null}) %>
         </div>
-        <%= picture({src: '', format: '', className: 'image', data: 'data-preview-image'}) %>
+        <%= picture({src: '', format: '', className: 'image rounded-full', data: 'data-preview-image'}) %>
       </div>
       <%= error({text: 'Загрузите изображение'}) %>
     </div>

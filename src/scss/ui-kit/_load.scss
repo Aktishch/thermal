@@ -1,7 +1,7 @@
 @layer components {
   @keyframes progress {
     to {
-      transform: rotate(360deg);
+      rotate: 360deg;
     }
   }
 
@@ -32,13 +32,13 @@
 
     0%,
     100% {
-      opacity  : 0.2;
-      transform: scale(0.4);
+      opacity: 0.2;
+      scale  : 0.4;
     }
 
     50% {
-      opacity  : 1;
-      transform: scale(1);
+      opacity: 1;
+      scale  : 1;
     }
   }
 
@@ -46,11 +46,11 @@
 
     0%,
     100% {
-      transform: scale(0);
+      scale: 0;
     }
 
     50% {
-      transform: scale(1);
+      scale: 1;
     }
   }
 
@@ -59,11 +59,11 @@
     0%,
     40%,
     100% {
-      transform: scaleY(0.4);
+      scale: 1 0.4;
     }
 
     20% {
-      transform: scaleY(1.0);
+      scale: 1 1;
     }
   }
 
@@ -82,15 +82,14 @@
   }
 
   @keyframes preloader-pulse {
-
     0% {
-      opacity  : 1;
-      transform: scale(0);
+      opacity: 1;
+      scale  : 0;
     }
 
     100% {
-      opacity  : 0;
-      transform: scale(1);
+      opacity: 0;
+      scale  : 1;
     }
   }
 

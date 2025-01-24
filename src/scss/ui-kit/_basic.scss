@@ -43,7 +43,7 @@ $colors: ("primary": #af1a4c,
   }
 
   body {
-    @apply bg-white font-base text-black;
+    @apply bg-white font-normal font-base text-black text-base;
   }
 
   main {
@@ -72,10 +72,6 @@ $colors: ("primary": #af1a4c,
 
   ol {
     @apply list-decimal list-inside;
-  }
-
-  picture {
-    @apply static;
   }
 
   img {

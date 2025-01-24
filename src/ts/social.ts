@@ -20,21 +20,31 @@ export default (): void => {
     lastTap = new Date().getTime()
   }
 
-  for (let i: number = 0; i < links.length; i++) {
-    const network = links[i] as HTMLAnchorElement
+  const getLinksPosition = (): void => {
+    const radius = Number(social.dataset.social) * 100 || 100
+    const width: number = social.offsetWidth
+    const height: number = social.offsetHeight
+    const length: number = links.length
+    const step: number = (2 * Math.PI) / length
+    let angle: number = 0
 
-    network.style.top =
-      (
-        42 +
-        35 * Math.sin(-0.5 * Math.PI - 2 * (1 / links.length) * i * Math.PI)
-      ).toFixed(4) + '%'
-    network.style.left =
-      (
-        42 -
-        35 * Math.cos(-0.5 * Math.PI - 2 * (1 / links.length) * i * Math.PI)
-      ).toFixed(4) + '%'
+    for (let i: number = 0; i < length; i++) {
+      const link = links[i] as HTMLAnchorElement
+
+      link.style.top =
+        Math.round(
+          height / 2 + radius * Math.sin(angle) - link.offsetHeight / 2
+        ) + 'px'
+      link.style.left =
+        Math.round(
+          width / 2 + radius * Math.cos(angle) - link.offsetWidth / 2
+        ) + 'px'
+      angle += step
+    }
   }
 
+  getLinksPosition()
+  window.addEventListener('resize', getLinksPosition as EventListener)
   btn.addEventListener('click', doubleTap as EventListener)
   btn.addEventListener('touchstart', doubleTap as EventListener)
 }

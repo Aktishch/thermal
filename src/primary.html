@@ -24,15 +24,19 @@
 <!-- Галерея -->
 
 <section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" id="content">
-  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Slider-swiper</h2>
-  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">Class template for slider</h3>
+  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
+    Slider-swiper
+  </h2>
+  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">
+    Class template for slider
+  </h3>
   <div class="relative w-full" data-slider="gallery">
     <div class="p-4 -m-4 swiper" data-slider-swiper="gallery">
       <div class="swiper-wrapper">
         <% for (var i = 0; i < 6; i++) { %>
-        <a class="shadow-md swiper-slide pack pack-md bg-grey dark:bg-dark rounded-2xl" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
+        <a class="shadow-md swiper-slide pack pack-md bg-grey dark:bg-dark rounded-2xl group" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: null}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image rounded-2xl duration-300 ease-linear group-hover:scale-110', data: null}) %>
         </a>
         <% } %>
       </div>
@@ -80,7 +84,9 @@
 ] %>
 
 <section class="container flex flex-col items-center justify-center overflow-hidden container-distance bg-grey dark:bg-dark">
-  <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:md-10 anim anim-up" data-anim data-movement="blend">Products</h2>
+  <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:md-10 anim anim-up" data-anim data-movement="blend">
+    Products
+  </h2>
   <div class="w-full inverted mb-7" data-inverted="before">
     <div class="inverted-before">
       <button class="btn btn-primary btn-lg btn-fill" data-inverted-toggle="after" data-waved="light">Search</button>
@@ -111,10 +117,10 @@
       <div class="swiper-wrapper">
         <% _.forEach((products), (item) => { %>
         <div class="h-auto swiper-slide">
-          <div class="p-1 shadow-md cursor-pointer card hover:shadow-xl group/product active:translate-y-1 dark:bg-black" data-product>
+          <div class="p-1 shadow-md cursor-pointer card hover:shadow-xl group/product dark:bg-black" data-product>
             <div class="pack pack-md bg-grey dark:bg-dark rounded-2xl">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"'}) %>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-2xl', data: 'data-product-image="img/pictures/town-grey.jpg"'}) %>
               <label class="absolute invisible block overflow-hidden duration-200 rounded-full opacity-0 cursor-pointer top-2 right-2 pointer-coarse:visible pointer-coarse:opacity-100 group group-hover/product:opacity-100 group-hover/product:visible has-[:checked]:visible has-[:checked]:opacity-100" data-waved="light">
                 <input class="hidden peer" type="checkbox">
                 <div class="flex items-center justify-center text-2xl text-opacity-50 duration-200 ease-linear rounded-full group-has-[:checked]:text-opacity-100 bg-white/40 text-red stroke-red size-10">
@@ -122,10 +128,12 @@
                 </div>
               </label>
             </div>
-            <div class="p-2 card-content md:p-4">
+            <div class="items-start p-2 card-content md:p-4">
               <h4 class="mb-2 font-bold text-lg/none font-alt md:text-xl/none" data-product-name>Name</h4>
-              <p class="mb-3 cursor-pointer text-base/normal hover:underline underline-offset-4 opacity-70"><%= item.text %></p>
-              <div class="flex items-end justify-between gap-4 mt-auto mb-5">
+              <a class="mb-3 hover:underline underline-offset-4" draggable="false" href="">
+                <p class="opacity-70"><%= item.text %></p>
+              </a>
+              <div class="flex items-end justify-between w-full gap-4 mt-auto mb-5">
                 <div class="flex flex-col w-full md:w-auto">
                   <% if (item.oldPrice) { %>
                   <span class="mb-2 line-through text-sm/none md:text-base/none opacity-60" data-product-oldprice><%= item.oldPrice %></span>
@@ -138,7 +146,7 @@
                   <button class="rounded-full size-8 shrink-0 btn btn-gray btn-fill active:translate-y-0" data-quantity-increase data-waved="light">+</button>
                 </div>
               </div>
-              <button class="swiper-no-swiping btn btn-primary btn-lg btn-fade" data-product-button data-waved="light">
+              <button class="w-full swiper-no-swiping btn btn-primary btn-lg btn-fade" data-product-button data-waved="light">
                 <%= icon({id: 'basket', className: 'icon mr-2', data: null}) %>
                 Basket
               </button>
@@ -162,13 +170,15 @@
 
 <section class="bg-white dark:bg-black md:h-[var(--scroll-height)]" data-scrolling data-smooth-wrapper>
   <div class="container flex flex-col items-start pb-0 mb-5 md:md-10">
-    <h2 class="font-bold duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">Horizontal scroll</h2>
+    <h2 class="font-bold duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
+      Horizontal scroll
+    </h2>
   </div>
   <div class="container flex gap-5 pt-0 overflow-x-auto md:gap-10 md:sticky md:top-40 scroll-smooth md:overflow-x-hidden" data-scrolling-horizontal data-smooth-sticky>
     <% for (var i = 0; i < 6; i++) { %>
     <a class="pack pack-xs bg-grey dark:bg-dark rounded-3xl shadow-md shrink-0 w-80 md:w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
-      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image md:translate-x-[var(--scroll-moving)] md:scale-150 ease-in-out duration-300', data: 'data-scrolling-image'}) %>
+      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image rounded-3xl md:translate-x-[var(--scroll-moving)] md:scale-150 ease-in-out duration-300', data: 'data-scrolling-image'}) %>
     </a>
     <% } %>
   </div>
@@ -184,7 +194,9 @@
           <div class="swiper-wrapper">
             <div class="h-auto swiper-slide" data-quiz-slide>
               <div class="flex flex-col h-full">
-                <h4 class="mb-5 text-2xl font-semibold">Radio:</h4>
+                <h4 class="mb-5 text-2xl font-semibold">
+                  Radio:
+                </h4>
                 <div class="flex items-center gap-5">
                   <input class="switch switch-radio" type="radio" value="radio-1" name="radio">
                   <input class="switch switch-radio" type="radio" value="radio-2" name="radio">
@@ -194,7 +206,9 @@
             </div>
             <div class="h-auto swiper-slide" data-quiz-slide>
               <div class="flex flex-col h-full">
-                <h4 class="mb-5 text-2xl font-semibold">Checkbox:</h4>
+                <h4 class="mb-5 text-2xl font-semibold">
+                  Checkbox:
+                </h4>
                 <div class="flex items-center gap-5">
                   <input class="switch switch-checkbox" type="checkbox" value="checkbox-1" name="checkbox[]">
                   <input class="switch switch-checkbox" type="checkbox" value="checkbox-2" name="checkbox[]">
@@ -241,9 +255,9 @@
       </div>
     </form>
     <div class="hidden w-full md:block max-w-80 lg:max-w-sm">
-      <div class="h-full pack pack-xl bg-grey dark:bg-dark rounded-xl" data-movement="light">
+      <div class="h-full pack pack-xl bg-grey dark:bg-dark rounded-xl group" data-movement="light">
         <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: null}) %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-xl duration-300 ease-linear group-hover:scale-110', data: null}) %>
       </div>
     </div>
   </div>
@@ -270,9 +284,9 @@
         <div class="h-full swiper" data-slider-swiper="description">
           <div class="h-full swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
-            <a class="h-full swiper-slide pack pack-xl" data-movement="light" data-fancybox="catalog" draggable="false" href="img/pictures/town.jpg">
+            <a class="h-full swiper-slide pack pack-xl group" data-movement="light" data-fancybox="catalog" draggable="false" href="img/pictures/town.jpg">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: null}) %>
+              <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image duration-300 ease-linear group-hover:scale-110', data: null}) %>
             </a>
             <% } %>
           </div>
@@ -282,17 +296,19 @@
         <div class="swiper" data-slider-swiper="description-bullets">
           <div class="swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
-            <div class="cursor-pointer swiper-slide pack pack-xl bg-grey dark:bg-dark rounded-2xl">
+            <button class="swiper-slide pack pack-xl bg-grey dark:bg-dark rounded-2xl group">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: null}) %>
-            </div>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-2xl duration-300 ease-linear group-hover:scale-110', data: null}) %>
+            </button>
             <% } %>
           </div>
         </div>
       </div>
     </div>
     <div class="flex flex-col p-2 lg:max-w-96 xl:max-w-xl">
-      <h4 class="mb-5 font-semibold text-3xl/tight font-alt md:text-5xl/tight">Slider slide</h4>
+      <h4 class="mb-5 font-semibold text-3xl/tight font-alt md:text-5xl/tight">
+        Slider slide
+      </h4>
       <p class="mb-5 font-semibold text-base/normal md:text-lg/normal md:md-10">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. In minus dolor magnam! Tenetur quam maiores vel vero iste aperiam dolores ipsa, quae autem sunt quo quia omnis commodi, impedit recusandae.

@@ -22,13 +22,13 @@
 @keyframes snowflake {
   0% {
     opacity  : 1;
-    transform: translate(-50%, 0);
+    translate: -50% 0;
     filter   : hue-rotate(0deg);
   }
 
   100% {
     opacity  : 0;
-    transform: translate(-50%, 1000%);
+    translate: -50% 1000%;
     filter   : hue-rotate(500deg);
   }
 }
@@ -54,12 +54,12 @@
 @keyframes filtering-card {
   0% {
     opacity  : 0;
-    transform: translateY(50px);
+    translate: 0 50px;
   }
 
   100% {
     opacity  : 1;
-    transform: translateY(0);
+    translate: 0 0;
   }
 }
 
@@ -67,14 +67,12 @@
   animation: filtering-card 300ms ease both 1;
 }
 
-@keyframes loading-player {
+@keyframes loading {
   100% {
-    transform: rotateZ(360deg);
+    rotate: z 360deg;
   }
 }
 
-.player {
-  &__loading {
-    animation: loading-player 1000ms steps(8) infinite;
-  }
+.loading {
+  animation: loading 1000ms steps(8) infinite;
 }

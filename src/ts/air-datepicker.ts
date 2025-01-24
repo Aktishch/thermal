@@ -17,9 +17,9 @@ export type AirDatepickerRenderCell = {
 }
 
 const excludeDates: number[] = [
-  +new Date(2024, 4, 5),
-  +new Date(2024, 5, 7),
-  +new Date(2024, 5, 10),
+  +new Date(2025, 0, 5),
+  +new Date(2025, 0, 7),
+  +new Date(2025, 1, 10),
 ]
 
 declare global {

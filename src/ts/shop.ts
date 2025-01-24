@@ -55,7 +55,7 @@ export default (): void => {
     inShop.style.top = `${coordinates.top}px`
     inShop.style.left = `${coordinates.left}px`
     inShop.innerHTML = `
-      <svg class="icon text-second text-base">
+      <svg class="icon text-second">
         <use xlink:href="img/icons.svg#basket"></use>
       </svg>`
     body.appendChild(inShop)
