@@ -9,21 +9,28 @@ declare global {
 window.ymaps = ymaps
 
 export default (): void => {
-  const yandexMap = document.querySelector('#yandex-map') as HTMLDivElement
+  const yandexMap = document.querySelector(
+    '*[data-yandex-map]'
+  ) as HTMLDivElement
 
   if (!yandexMap) return
+
+  const coordinates: string[] = String(yandexMap.dataset.yandexMap).split(',')
+  const mark: number[] = []
+
+  for (let i: number = 0; i < coordinates.length; i++) {
+    mark.push(Number(coordinates[i]))
+  }
 
   window.ymaps
     .load('https://api-maps.yandex.ru/2.1/?lang=ru_RU')
     .then((maps): void => {
-      const center: number[] = [45.03191007458623, 38.921171499999936]
-      const mark: number[] = [45.03191007458623, 38.921171499999936]
       const inputs: Element[] = [
         ...document.querySelectorAll('[data-suggest-view]'),
       ]
 
       const map = new maps.Map(yandexMap, {
-        center: center,
+        center: mark,
         zoom: 16,
       })
 

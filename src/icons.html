@@ -1,0 +1,32 @@
+<%
+  var data = {
+    title: 'Icons',
+    status: true
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader = require('./components/preloader.html').default
+  var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture})
+  var footer = _.template(require('./includes/footer.html').default)({loader, picture})
+%>
+
+<%= header %>
+
+<!-- <%= data.title %> -->
+
+<% var icons = ['loader', 'burger', 'close', 'success', 'basket', 'search', 'like', 'calendar', 'star', 'arrow-left', 'arrow-right', 'arrows', 'arrow-bottom', 'eye-visible', 'eye-hidden', 'file', 'user', 'ok', 'yt', 'inst', 'fb', 'tw', 'vk', 'play', 'pause', 'arrow-prev', 'arrow-next', 'volume-on', 'volume-off', 'loading', 'trash'] %>
+
+<section class="container grow">
+  <ul class="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+    <% _.forEach((icons), (item) => { %>
+    <li class="flex items-center">
+      <%= icon({id: item, className: 'icon text-base mr-2', data: false}) %>
+      id: <%= item %>
+    </li>
+    <% }) %>
+  </ul>
+</section>
+
+<%= footer %>

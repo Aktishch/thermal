@@ -16,7 +16,7 @@
 
 <%= header %>
 
-<!-- Первоначальный блок -->
+<!-- <%= data.title %> -->
 
 <section class="container flex flex-col items-center justify-center bg-white dark:bg-black min-h-[500px] xl:min-h-[600px]" id="header">
   <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block mb-10 duration-1000 anim anim-up', data: 'data-anim'}) %>
@@ -472,7 +472,7 @@
               <canvas class="hidden" data-rendering-canvas="img/pictures/certificate.jpg" width="540" height="750"></canvas>
               <a class="btn btn-gray btn-lg btn-fill" data-rendering-download data-waved="dark" draggable="false" href="" download="certificate">Download canvas</a>
             </div>
-            <div data-cookie="/" id="cookie">
+            <div data-cookie="/" data-expires="7" id="cookie">
               <button class="w-full btn btn-gray btn-lg btn-fill" data-cookie-button data-waved="dark">Cookie</button>
             </div>
           </div>
