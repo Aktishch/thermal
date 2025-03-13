@@ -27,5 +27,13 @@
     [data-waved="dark"] & {
       --waved-color: theme("colors.black.DEFAULT / 0.4");
     }
+
+    [data-theme="dark"] [data-waved="light"][data-waved-reverse] & {
+      --waved-color: theme("colors.black.DEFAULT / 0.4");
+    }
+
+    [data-theme="dark"] [data-waved="dark"][data-waved-reverse] & {
+      --waved-color: theme("colors.white.DEFAULT / 0.4");
+    }
   }
 }

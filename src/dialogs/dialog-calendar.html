@@ -15,7 +15,7 @@
       <% _.forEach((['date-5-1', 'date-7-1', 'date-10-2']), (item) => { %>
       <div class="w-full filtering-card pack pack-md bg-gray rounded-2xl group" data-filtering-card="calendar" data-filtering-value="<%= item %>">
         <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-2xl duration-300 ease-linear group-hover:scale-110', data: null}) %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-inherit duration-300 ease-linear group-hover:scale-110', data: null}) %>
       </div>
       <% }) %>
     </div>

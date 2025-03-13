@@ -1,7 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 
-const createColor = (variable) => {
-  return ({ opacityValue }) => {
+type CreateColor = {
+  opacityValue: undefined | number
+}
+
+const createColor = (
+  variable: string
+): (({ opacityValue }: CreateColor) => string) => {
+  return ({ opacityValue }: CreateColor) => {
     return `rgba(var(--color-${variable}), ${opacityValue !== undefined ? opacityValue : 1})`
   }
 }

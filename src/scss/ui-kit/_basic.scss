@@ -74,6 +74,10 @@ $colors: ("primary": #af1a4c,
     @apply list-decimal list-inside;
   }
 
+  picture {
+    @apply rounded-inherit;
+  }
+
   img {
     @apply select-none;
 
