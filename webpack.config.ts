@@ -1,35 +1,47 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
-const fs = require('fs')
-const path = require('path')
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import CopyPlugin from 'copy-webpack-plugin'
+import fs from 'fs'
+import path from 'path'
 
-const generatePlugins = ({ templateDir, script, src }) => {
-  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+type GeneratePlugins = {
+  templateDir: string
+  script: 'body' | 'head' | boolean
+  src: string
+}
+
+const generatePlugins = ({
+  templateDir,
+  script,
+  src,
+}: GeneratePlugins): HtmlWebpackPlugin[] => {
+  const templateFiles: string[] = fs.readdirSync(
+    path.resolve(__dirname, templateDir)
+  )
 
   return templateFiles
-    .map((templateFile) => {
-      const parts = templateFile.split('.')
-      const name = parts[0]
-      const extension = parts[1]
+    .map((templateFile: string): HtmlWebpackPlugin => {
+      const parts: string[] = templateFile.split('.')
+      const name: string = parts[0]
+      const extension: string = parts[1]
 
-      if (extension !== 'html') return null
-
-      return new HtmlWebpackPlugin({
-        inject: script,
-        scriptLoading: 'blocking',
-        filename: `${src}${name}.html`,
-        template: path.resolve(
-          __dirname,
-          `${templateDir}/${name}.${extension}`
-        ),
-        minify: {
-          collapseWhitespace: false,
-        },
-      })
+      if (extension === 'html') {
+        return new HtmlWebpackPlugin({
+          inject: script,
+          scriptLoading: 'blocking',
+          filename: `${src}${name}.html`,
+          template: path.resolve(
+            __dirname,
+            `${templateDir}/${name}.${extension}`
+          ),
+          minify: {
+            collapseWhitespace: false,
+          },
+        })
+      }
     })
-    .filter((templateFile) => templateFile !== null)
+    .filter((templateFile: HtmlWebpackPlugin): boolean => templateFile !== null)
 }
 
 module.exports = {

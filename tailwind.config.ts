@@ -1,5 +1,3 @@
-/** @type {import('tailwindcss').Config} */
-
 type CreateColor = {
   opacityValue: undefined | number
 }
