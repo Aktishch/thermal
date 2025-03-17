@@ -1,11 +1,7 @@
-type CreateColor = {
-  opacityValue: undefined | number
-}
+import type { Config } from 'tailwindcss'
 
-const createColor = (
-  variable: string
-): (({ opacityValue }: CreateColor) => string) => {
-  return ({ opacityValue }: CreateColor) => {
+const createColor = (variable: string): any => {
+  return ({ opacityValue }: { opacityValue: undefined | number }): string => {
     return `rgba(var(--color-${variable}), ${opacityValue !== undefined ? opacityValue : 1})`
   }
 }
@@ -122,4 +118,4 @@ module.exports = {
     require('./plugins/animation'),
     require('./plugins/pointer-coarse'),
   ],
-}
+} satisfies Config
