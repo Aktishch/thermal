@@ -1,7 +1,6 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -9,14 +8,6 @@
     ],
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./node_modules/@yandex/ymaps3-types"
-    ],
-    "paths": {
-      "ymaps3": [
-        "./node_modules/@yandex/ymaps3-types"
-      ]
-    }
+    "typeRoots": ["./node_modules/@types"]
   }
 }

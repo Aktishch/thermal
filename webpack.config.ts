@@ -12,11 +12,13 @@ type GeneratePlugins = {
   src: string
 }
 
-const generatePlugins = ({ templateDir, script, src }: GeneratePlugins): HtmlWebpackPlugin[] => {
+type TemplateFile = HtmlWebpackPlugin | undefined
+
+const generatePlugins = ({ templateDir, script, src }: GeneratePlugins): TemplateFile[] => {
   const templateFiles: string[] = fs.readdirSync(path.resolve(__dirname, templateDir))
 
   return templateFiles
-    .map((templateFile: string): HtmlWebpackPlugin => {
+    .map((templateFile: string): TemplateFile => {
       const parts: string[] = templateFile.split('.')
       const name: string = parts[0]
       const extension: string = parts[1]
@@ -33,7 +35,7 @@ const generatePlugins = ({ templateDir, script, src }: GeneratePlugins): HtmlWeb
         })
       }
     })
-    .filter((templateFile: HtmlWebpackPlugin): boolean => templateFile !== null)
+    .filter((templateFile: TemplateFile): boolean => templateFile !== null)
 }
 
 module.exports = {

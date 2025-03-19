@@ -17,14 +17,17 @@
     "ui-kit",
     "js",
     "ts",
-    "webpack"
+    "webpack",
+    "tailwind",
+    "tsconfig",
+    "prettier.config",
+    "postcss.config",
+    "eslint.config"
   ],
   "author": "Aktishch <aktishch@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.26.9",
-    "@babel/preset-typescript": "^7.26.0",
-    "@tsconfig/recommended": "^1.0.8",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "autoprefixer": "^10.4.21",
