@@ -1,7 +1,4 @@
-export type QuizInput =
-  | HTMLInputElement
-  | HTMLSelectElement
-  | HTMLTextAreaElement
+export type QuizInput = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
 
 export const checkQuizSlide = (slide: HTMLElement): void => {
   const quiz = slide.closest('[data-quiz]') as HTMLElement
@@ -33,9 +30,7 @@ export const checkQuizSlide = (slide: HTMLElement): void => {
 
 export default (): void => {
   document.addEventListener('input', ((event: InputEvent): void => {
-    const slide = (event.target as QuizInput).closest(
-      '[data-quiz-slide]'
-    ) as HTMLElement
+    const slide = (event.target as QuizInput).closest('[data-quiz-slide]') as HTMLElement
 
     if (slide) checkQuizSlide(slide)
   }) as EventListener)

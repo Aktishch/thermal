@@ -1,24 +1,16 @@
-import { uploadFile, fileHandler } from './utils'
+import { fileHandler, uploadFile } from './utils'
 
 export default () => {
-  const filelists = document.querySelectorAll(
-    '*[data-filelist]'
-  ) as NodeListOf<HTMLDivElement>
+  const filelists = document.querySelectorAll('*[data-filelist]') as NodeListOf<HTMLDivElement>
 
   filelists.forEach((filelist: HTMLDivElement): void => {
     if (!filelist) return
 
-    const label = filelist.querySelector(
-      '*[data-filelist-label]'
-    ) as HTMLLabelElement
-    const input = label.querySelector(
-      '*[data-filelist-input]'
-    ) as HTMLInputElement
+    const label = filelist.querySelector('*[data-filelist-label]') as HTMLLabelElement
+    const input = label.querySelector('*[data-filelist-input]') as HTMLInputElement
     const error = filelist.querySelector('*[data-error]') as HTMLSpanElement
     const text = label.querySelector('*[data-filelist-text]') as HTMLSpanElement
-    const items = filelist.querySelector(
-      '*[data-filelist-items]'
-    ) as HTMLUListElement
+    const items = filelist.querySelector('*[data-filelist-items]') as HTMLUListElement
     let data = new DataTransfer() as DataTransfer
 
     const uploadFilesList = (): void => {
@@ -36,12 +28,7 @@ export default () => {
             if ((data.files as FileList).length < 3) {
               const item = document.createElement('li') as HTMLLIElement
 
-              item.classList.add(
-                'flex',
-                'items-center',
-                'justify-between',
-                'gap-5'
-              )
+              item.classList.add('flex', 'items-center', 'justify-between', 'gap-5')
               item.setAttribute('data-filelist-item', '')
               item.innerHTML = `
                 <span class="truncate">${file.name}</span>
@@ -69,9 +56,7 @@ export default () => {
     }) as EventListener)
 
     filelist.addEventListener('click', ((event: Event): void => {
-      if (
-        (event.target as HTMLButtonElement).closest('[data-filelist-remove]')
-      ) {
+      if ((event.target as HTMLButtonElement).closest('[data-filelist-remove]')) {
         const remove = event.target as HTMLButtonElement
         const item = remove.closest('[data-filelist-item]') as HTMLLIElement
         const files = data.files as FileList

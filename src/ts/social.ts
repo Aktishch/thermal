@@ -4,18 +4,14 @@ export default (): void => {
   if (!social) return
 
   const round = social.querySelector('*[data-social-round]') as HTMLDivElement
-  const links = social.querySelectorAll(
-    '*[data-social-link]'
-  ) as NodeListOf<HTMLAnchorElement>
+  const links = social.querySelectorAll('*[data-social-link]') as NodeListOf<HTMLAnchorElement>
   const btn = social.querySelector('*[data-social-button]') as HTMLButtonElement
   let lastTap: number
 
   const doubleTap = (): void => {
     const timeSince: number = new Date().getTime() - lastTap
 
-    if (timeSince < 300 && timeSince > 0)
-      round.dataset.socialRound =
-        round.dataset.socialRound === 'show' ? '' : 'show'
+    if (timeSince < 300 && timeSince > 0) round.dataset.socialRound = round.dataset.socialRound === 'show' ? '' : 'show'
 
     lastTap = new Date().getTime()
   }
@@ -31,14 +27,8 @@ export default (): void => {
     for (let i: number = 0; i < length; i++) {
       const link = links[i] as HTMLAnchorElement
 
-      link.style.top =
-        Math.round(
-          height / 2 + radius * Math.sin(angle) - link.offsetHeight / 2
-        ) + 'px'
-      link.style.left =
-        Math.round(
-          width / 2 + radius * Math.cos(angle) - link.offsetWidth / 2
-        ) + 'px'
+      link.style.top = Math.round(height / 2 + radius * Math.sin(angle) - link.offsetHeight / 2) + 'px'
+      link.style.left = Math.round(width / 2 + radius * Math.cos(angle) - link.offsetWidth / 2) + 'px'
       angle += step
     }
   }

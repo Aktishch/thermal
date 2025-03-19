@@ -1,116 +1,116 @@
-import fancybox from './ts/fancybox'
-import sliderSwiper from './ts/slider-swiper'
-import yandexMap from './ts/yandex-map'
+import accordion from './ts/accordion'
 import airDatepicker from './ts/air-datepicker'
-import smoothScroll from './ts/smooth-scroll'
-import scrollHeader from './ts/scroll-header'
+import animation from './ts/animation'
+import canvasRendering from './ts/canvas-rendering'
+import combination from './ts/combination'
+import compare from './ts/compare'
+import cookie from './ts/cookie'
+import copy from './ts/copy'
 import currentTab from './ts/current-tab'
 import currentYear from './ts/current-year'
-import sidebar from './ts/sidebar'
-import menu from './ts/menu'
-import progressLine from './ts/progress-line'
-import scrollTo from './ts/scroll-to'
-import smartMenu from './ts/smart-menu'
-import social from './ts/social'
+import dataSave from './ts/data-save'
 import draggable from './ts/draggable'
-import theme from './ts/theme'
-import pallete from './ts/pallete'
-import snowflakes from './ts/snowflakes'
-import runningButton from './ts/running-button'
-import animation from './ts/animation'
-import waved from './ts/waved'
-import movement from './ts/movement'
+import fancybox from './ts/fancybox'
+import fileList from './ts/file-list'
+import filtering from './ts/filtering'
+import formatBg from './ts/format-bg'
+import game from './ts/game'
+import horizontalScrolling from './ts/horizontal-scrolling'
+import imagePreview from './ts/image-preview'
+import inputs from './ts/inputs'
 import inverted from './ts/inverted'
 import listing from './ts/listing'
-import accordion from './ts/accordion'
-import formatBg from './ts/format-bg'
-import parallax from './ts/parallax'
-import filtering from './ts/filtering'
+import menu from './ts/menu'
+import movement from './ts/movement'
 import outNumber from './ts/out-number'
-import writeText from './ts/write-text'
-import fileList from './ts/file-list'
-import submitHandler from './ts/submit-handler'
-import dataSave from './ts/data-save'
-import imagePreview from './ts/image-preview'
-import copy from './ts/copy'
-import cookie from './ts/cookie'
-import combination from './ts/combination'
-import canvasRendering from './ts/canvas-rendering'
-import inputs from './ts/inputs'
-import phoneMask from './ts/phone-mask'
+import pallete from './ts/pallete'
+import parallax from './ts/parallax'
 import password from './ts/password'
-import quantity from './ts/quantity'
-import range from './ts/range'
+import phoneMask from './ts/phone-mask'
 import player from './ts/player'
-import shop from './ts/shop'
-import warning from './ts/warning'
-import horizontalScrolling from './ts/horizontal-scrolling'
+import preloader from './ts/preloader'
+import progressLine from './ts/progress-line'
+import quantity from './ts/quantity'
 import quiz from './ts/quiz'
-import compare from './ts/compare'
+import range from './ts/range'
+import runningButton from './ts/running-button'
+import scrollHeader from './ts/scroll-header'
+import scrollTo from './ts/scroll-to'
+import shop from './ts/shop'
+import sidebar from './ts/sidebar'
+import sliderSwiper from './ts/slider-swiper'
+import smartMenu from './ts/smart-menu'
+import smoothScroll from './ts/smooth-scroll'
+import snowflakes from './ts/snowflakes'
+import social from './ts/social'
+import submitHandler from './ts/submit-handler'
+import theme from './ts/theme'
 import timeCounter from './ts/time-counter'
 import timer from './ts/timer'
+import warning from './ts/warning'
+import waved from './ts/waved'
 import worldMap from './ts/world-map'
-import game from './ts/game'
-import preloader from './ts/preloader'
+import writeText from './ts/write-text'
+import yandexMap from './ts/yandex-map'
 
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
-import 'swiper/css/bundle'
 import 'air-datepicker/air-datepicker.css'
+import 'swiper/css/bundle'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
-  fancybox()
-  sliderSwiper()
-  yandexMap()
+  accordion()
   airDatepicker()
+  animation()
+  canvasRendering()
+  combination()
+  compare()
+  cookie()
+  copy()
   currentTab()
   currentYear()
-  smoothScroll()
-  scrollHeader()
-  sidebar()
-  menu()
-  progressLine()
-  scrollTo()
-  smartMenu()
-  social()
+  dataSave()
   draggable()
-  theme()
-  pallete()
-  snowflakes()
-  runningButton()
-  animation()
-  waved()
-  movement()
+  fancybox()
+  fileList()
+  filtering()
+  formatBg()
+  game()
+  horizontalScrolling()
+  imagePreview()
+  inputs()
   inverted()
   listing()
-  accordion()
-  formatBg()
-  parallax()
-  filtering()
+  menu()
+  movement()
   outNumber()
-  writeText()
-  fileList()
-  submitHandler()
-  dataSave()
-  imagePreview()
-  copy()
-  cookie()
-  combination()
-  canvasRendering()
-  inputs()
-  phoneMask()
+  pallete()
+  parallax()
   password()
-  quantity()
-  range()
+  phoneMask()
   player()
-  shop()
-  warning()
-  horizontalScrolling()
+  preloader()
+  progressLine()
+  quantity()
   quiz()
-  compare()
+  range()
+  runningButton()
+  scrollHeader()
+  scrollTo()
+  shop()
+  sidebar()
+  sliderSwiper()
+  smartMenu()
+  smoothScroll()
+  snowflakes()
+  social()
+  submitHandler()
+  theme()
   timeCounter()
   timer()
+  warning()
+  waved()
   worldMap()
-  game()
-  preloader()
+  writeText()
+  yandexMap()
 }) as EventListener)

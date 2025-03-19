@@ -7,9 +7,7 @@ export const canUseWebp = (): boolean => {
 }
 
 export const createBackground = (data: string): void => {
-  const items = document.querySelectorAll(
-    `*[${data}]`
-  ) as NodeListOf<HTMLElement>
+  const items = document.querySelectorAll(`*[${data}]`) as NodeListOf<HTMLElement>
 
   items.forEach((item: HTMLElement): void => {
     if (!item) return
@@ -19,8 +17,7 @@ export const createBackground = (data: string): void => {
 }
 
 export default (): void => {
-  const firefox: RegExpMatchArray | null =
-    window.navigator.userAgent.match(/Firefox\/([0-9]+)\./)
+  const firefox: RegExpMatchArray | null = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./)
   const firefoxVersion: number = firefox ? Number(firefox[1]) : 0
 
   createBackground('data-bg')

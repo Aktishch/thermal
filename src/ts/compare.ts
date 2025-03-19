@@ -1,22 +1,14 @@
-import { scrollbarShow, scrollbarHidden } from './utils'
+import { scrollbarHidden, scrollbarShow } from './utils'
 
 export default (): void => {
-  const compares = document.querySelectorAll(
-    '*[data-compare]'
-  ) as NodeListOf<HTMLDivElement>
+  const compares = document.querySelectorAll('*[data-compare]') as NodeListOf<HTMLDivElement>
 
   compares.forEach((compare: HTMLDivElement): void => {
     if (!compare) return
 
-    const before = compare.querySelector(
-      '*[data-compare-before]'
-    ) as HTMLDivElement
-    const image = compare.querySelector(
-      '*[data-compare-image]'
-    ) as HTMLImageElement
-    const change = compare.querySelector(
-      '*[data-compare-change]'
-    ) as HTMLDivElement
+    const before = compare.querySelector('*[data-compare-before]') as HTMLDivElement
+    const image = compare.querySelector('*[data-compare-image]') as HTMLImageElement
+    const change = compare.querySelector('*[data-compare-change]') as HTMLDivElement
     let active: boolean = false
     let value: number
     let position: number
@@ -50,11 +42,7 @@ export default (): void => {
         }
 
         case 'touchmove': {
-          for (
-            let i: number = 0;
-            i < (event as TouchEvent).changedTouches.length;
-            i++
-          ) {
+          for (let i: number = 0; i < (event as TouchEvent).changedTouches.length; i++) {
             position = (event as TouchEvent).changedTouches[i].pageX
           }
 

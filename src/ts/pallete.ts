@@ -15,16 +15,10 @@ export default (): void => {
 
   if (!pallete) return
 
-  const colors: PalleteColors = JSON.parse(
-    localStorage.getItem('pallete') || '{}'
-  )
+  const colors: PalleteColors = JSON.parse(localStorage.getItem('pallete') || '{}')
 
-  const items = pallete.querySelectorAll(
-    '*[data-pallete-item]'
-  ) as NodeListOf<HTMLLIElement>
-  const reset = pallete.querySelector(
-    '*[data-pallete-reset]'
-  ) as HTMLButtonElement
+  const items = pallete.querySelectorAll('*[data-pallete-item]') as NodeListOf<HTMLLIElement>
+  const reset = pallete.querySelector('*[data-pallete-reset]') as HTMLButtonElement
 
   const hexToRgb = (hex: string): string => {
     hex = hex.replace(/^#/, '')
@@ -37,19 +31,14 @@ export default (): void => {
   }
 
   if (Object.keys(colors).length !== 0) {
-    for (const key in colors)
-      html.style.setProperty(`--color-${key}`, colors[key].rgb)
+    for (const key in colors) html.style.setProperty(`--color-${key}`, colors[key].rgb)
   }
 
   items.forEach((item: HTMLLIElement): void => {
     if (!item) return
 
-    const input = item.querySelector(
-      '*[data-pallete-input]'
-    ) as HTMLInputElement
-    const button = item.querySelector(
-      '*[data-pallete-button]'
-    ) as HTMLButtonElement
+    const input = item.querySelector('*[data-pallete-input]') as HTMLInputElement
+    const button = item.querySelector('*[data-pallete-button]') as HTMLButtonElement
     const name: string = String(input.dataset.palleteInput)
     const value: string = String(button.dataset.palleteButton)
 

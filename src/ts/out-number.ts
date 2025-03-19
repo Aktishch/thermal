@@ -1,7 +1,5 @@
 export const setOutNumber = (section: HTMLElement): void => {
-  const items = section.querySelectorAll(
-    '*[data-number]'
-  ) as NodeListOf<HTMLSpanElement>
+  const items = section.querySelectorAll('*[data-number]') as NodeListOf<HTMLSpanElement>
 
   items.forEach((item: HTMLSpanElement): void => {
     if (!item) return
@@ -35,5 +33,4 @@ export const scrollToNumbers = (): void => {
   }
 }
 
-export default (): void =>
-  document.addEventListener('scroll', scrollToNumbers as EventListener)
+export default (): void => document.addEventListener('scroll', scrollToNumbers as EventListener)

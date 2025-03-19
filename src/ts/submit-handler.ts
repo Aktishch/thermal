@@ -1,5 +1,5 @@
-import { validation } from './utils'
 import { dialog } from './fancybox'
+import { validation } from './utils'
 
 export const formSubmitHandler = (event: Event): void => {
   const form = event.target as HTMLFormElement
@@ -17,13 +17,10 @@ export const formSubmitHandler = (event: Event): void => {
 
       const formData: FormData = new FormData(form)
       const searchParams = new URLSearchParams() as URLSearchParams
-      const submitBtn = form.querySelector(
-        'button[type="submit"]'
-      ) as HTMLButtonElement
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
       let requestUrl: string
 
-      for (const pair of formData.entries())
-        searchParams.append(pair[0], String(pair[1]))
+      for (const pair of formData.entries()) searchParams.append(pair[0], String(pair[1]))
 
       const queryString: string = searchParams.toString()
 
@@ -49,44 +46,28 @@ export const formSubmitHandler = (event: Event): void => {
               submitBtn.disabled = false
 
               if (form.hasAttribute('data-preview')) {
-                const label = form.querySelector(
-                  '*[data-preview-label]'
-                ) as HTMLLabelElement
-                const image = form.querySelector(
-                  '*[data-preview-image]'
-                ) as HTMLImageElement
-                const remove = form.querySelector(
-                  '*[data-preview-remove]'
-                ) as HTMLButtonElement
+                const label = form.querySelector('*[data-preview-label]') as HTMLLabelElement
+                const image = form.querySelector('*[data-preview-image]') as HTMLImageElement
+                const remove = form.querySelector('*[data-preview-remove]') as HTMLButtonElement
 
                 image.src = ''
                 remove.disabled = true
                 label.classList.remove('pointer-events-none', 'opacity-50')
               }
 
-              const filelist = document.querySelector(
-                '*[data-filelist]'
-              ) as HTMLDivElement
+              const filelist = document.querySelector('*[data-filelist]') as HTMLDivElement
 
               if (filelist) {
-                const label = filelist.querySelector(
-                  '*[data-filelist-label]'
-                ) as HTMLLabelElement
-                const text = label.querySelector(
-                  '*[data-filelist-text]'
-                ) as HTMLSpanElement
-                const items = filelist.querySelector(
-                  '*[data-filelist-items]'
-                ) as HTMLUListElement
+                const label = filelist.querySelector('*[data-filelist-label]') as HTMLLabelElement
+                const text = label.querySelector('*[data-filelist-text]') as HTMLSpanElement
+                const items = filelist.querySelector('*[data-filelist-items]') as HTMLUListElement
 
                 label.classList.remove('pointer-events-none', 'opacity-50')
                 text.textContent = 'Загрузить файлы'
                 items.innerHTML = ''
               }
             })
-            .catch((error: string): void =>
-              console.log('The form has not been sent', error)
-            )
+            .catch((error: string): void => console.log('The form has not been sent', error))
 
           break
         }
@@ -106,7 +87,6 @@ export const formSubmitHandler = (event: Event): void => {
 
 export default (): void => {
   document.addEventListener('submit', ((event: Event): void => {
-    if ((event.target as HTMLFormElement).hasAttribute('data-form'))
-      formSubmitHandler(event)
+    if ((event.target as HTMLFormElement).hasAttribute('data-form')) formSubmitHandler(event)
   }) as EventListener)
 }

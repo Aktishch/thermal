@@ -1,4 +1,4 @@
-import { scrollbarShow, scrollbarHidden, timeFormat } from './utils'
+import { scrollbarHidden, scrollbarShow, timeFormat } from './utils'
 
 export type Playlist = {
   artist: string
@@ -34,15 +34,13 @@ const playlist: Playlist[] = [
   {
     artist: 'System of a down',
     song: 'Lonely Day',
-    audio:
-      'https://cdn1.shadam.net/uploads/files/2018-09/1536003683_system-of-a-down-lonely-day.mp3',
+    audio: 'https://cdn1.shadam.net/uploads/files/2018-09/1536003683_system-of-a-down-lonely-day.mp3',
     poster: 'https://picsum.photos/600/400?random=2',
   },
   {
     artist: 'Scorpions',
     song: 'Slave Me',
-    audio:
-      'https://ruo.morsmusic.org/load/941771577/Scorpions_-_Slave_Me_(musmore.com).mp3',
+    audio: 'https://ruo.morsmusic.org/load/941771577/Scorpions_-_Slave_Me_(musmore.com).mp3',
     poster: 'https://picsum.photos/600/400?random=3',
   },
 ]
@@ -52,18 +50,12 @@ export const setPlayer = ({ id, playlist }: Player): void => {
 
   if (!player) return
 
-  const compositions = player.querySelectorAll(
-    '*[data-player-composition]'
-  ) as NodeListOf<HTMLButtonElement>
-  const poster = player.querySelector(
-    '*[data-player-poster]'
-  ) as HTMLImageElement
+  const compositions = player.querySelectorAll('*[data-player-composition]') as NodeListOf<HTMLButtonElement>
+  const poster = player.querySelector('*[data-player-poster]') as HTMLImageElement
   const artist = player.querySelector('*[data-player-artist]') as HTMLElement
   const song = player.querySelector('*[data-player-song]') as HTMLElement
   const audio = player.querySelector('*[data-player-audio]') as HTMLAudioElement
-  const progress = player.querySelector(
-    '*[data-player-progress]'
-  ) as HTMLDivElement
+  const progress = player.querySelector('*[data-player-progress]') as HTMLDivElement
   const range = player.querySelector('*[data-player-range]') as HTMLDivElement
   const play = player.querySelector('*[data-player-play]') as HTMLButtonElement
   const loading = play.querySelector('*[data-player-loading]') as SVGElement
@@ -73,9 +65,7 @@ export const setPlayer = ({ id, playlist }: Player): void => {
   const next = player.querySelector('*[data-player-next]') as HTMLButtonElement
   const start = player.querySelector('*[data-player-start]') as HTMLSpanElement
   const end = player.querySelector('*[data-player-end]') as HTMLSpanElement
-  const volume = player.querySelector(
-    '*[data-player-volume]'
-  ) as HTMLButtonElement
+  const volume = player.querySelector('*[data-player-volume]') as HTMLButtonElement
   let active: boolean = false
   let index: number = 0
   let minutes: number
@@ -99,21 +89,13 @@ export const setPlayer = ({ id, playlist }: Player): void => {
     for (const [key, composition] of compositions.entries()) {
       if (!composition) return
 
-      const compositionStatus = composition.querySelector(
-        '*[data-player-status]'
-      ) as SVGElement
-      const compositionIcon = compositionStatus.querySelector(
-        'use'
-      ) as SVGUseElement
+      const compositionStatus = composition.querySelector('*[data-player-status]') as SVGElement
+      const compositionIcon = compositionStatus.querySelector('use') as SVGUseElement
 
       if (audio.played)
-        compositionIcon.setAttribute(
-          'xlink:href',
-          key === index ? 'img/icons.svg#pause' : 'img/icons.svg#play'
-        )
+        compositionIcon.setAttribute('xlink:href', key === index ? 'img/icons.svg#pause' : 'img/icons.svg#play')
 
-      if (audio.paused)
-        compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
+      if (audio.paused) compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
     }
   }
 
@@ -134,8 +116,7 @@ export const setPlayer = ({ id, playlist }: Player): void => {
   }
 
   const randomComposition = (): void => {
-    if (player.dataset.player === 'random')
-      index = Math.floor(Math.random() * playlist.length)
+    if (player.dataset.player === 'random') index = Math.floor(Math.random() * playlist.length)
   }
 
   const nextComposition = (): void => {
@@ -193,14 +174,8 @@ export const setPlayer = ({ id, playlist }: Player): void => {
         }
 
         case 'touchmove': {
-          for (
-            let i: number = 0;
-            i < (event as TouchEvent).changedTouches.length;
-            i++
-          ) {
-            const clickX: number =
-              (event as TouchEvent).changedTouches[i].pageX -
-              progress.getBoundingClientRect().left
+          for (let i: number = 0; i < (event as TouchEvent).changedTouches.length; i++) {
+            const clickX: number = (event as TouchEvent).changedTouches[i].pageX - progress.getBoundingClientRect().left
 
             setProgress(clickX)
           }
@@ -215,12 +190,8 @@ export const setPlayer = ({ id, playlist }: Player): void => {
     for (const [key, composition] of compositions.entries()) {
       if (!composition) return
 
-      const compositionLoading = composition.querySelector(
-        '*[data-player-loading]'
-      ) as SVGElement
-      const compositionStatus = composition.querySelector(
-        '*[data-player-status]'
-      ) as SVGElement
+      const compositionLoading = composition.querySelector('*[data-player-loading]') as SVGElement
+      const compositionStatus = composition.querySelector('*[data-player-status]') as SVGElement
 
       switch (event.type) {
         case 'loadstart': {
@@ -255,7 +226,7 @@ export const setPlayer = ({ id, playlist }: Player): void => {
   const audioTiming = ({ type, time }: PlayerTiming): void => {
     if (!time) return
 
-    let timing: number
+    let timing: number = 0
 
     switch (type) {
       case 'timeupdate': {
@@ -369,9 +340,7 @@ export const setPlayer = ({ id, playlist }: Player): void => {
 }
 
 export const playOnlyOne = (event: Event): void => {
-  const audios = document.querySelectorAll(
-    'audio'
-  ) as NodeListOf<HTMLAudioElement>
+  const audios = document.querySelectorAll('audio') as NodeListOf<HTMLAudioElement>
 
   for (let i: number = 0; i < audios.length; i++) {
     const audio = audios[i] as HTMLAudioElement

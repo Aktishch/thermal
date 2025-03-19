@@ -15,7 +15,6 @@ export const copyText = (event: Event): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLButtonElement).closest('[data-copy-button]'))
-      copyText(event)
+    if ((event.target as HTMLButtonElement).closest('[data-copy-button]')) copyText(event)
   }) as EventListener)
 }

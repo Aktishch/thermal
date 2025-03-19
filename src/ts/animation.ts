@@ -8,9 +8,7 @@ export const setOffset = (element: HTMLElement): Coordinates => {
 }
 
 export const setAnimation = (): void => {
-  const items = document.querySelectorAll(
-    '*[data-anim]'
-  ) as NodeListOf<HTMLElement>
+  const items = document.querySelectorAll('*[data-anim]') as NodeListOf<HTMLElement>
 
   items.forEach((item: HTMLElement): void => {
     if (!item) return
@@ -20,11 +18,9 @@ export const setAnimation = (): void => {
     const screenPosition: number = 4
     let point: number = window.innerHeight - height / screenPosition
 
-    if (point > window.innerHeight)
-      point = window.innerHeight - window.innerHeight / screenPosition
+    if (point > window.innerHeight) point = window.innerHeight - window.innerHeight / screenPosition
 
-    scrolledPage().top > offsetTop - point &&
-    scrolledPage().top < offsetTop + height
+    scrolledPage().top > offsetTop - point && scrolledPage().top < offsetTop + height
       ? (item.dataset.anim = 'show')
       : (item.dataset.anim = '')
   })

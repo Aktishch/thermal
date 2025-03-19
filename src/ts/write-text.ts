@@ -25,5 +25,4 @@ export const scrollToText = (): void => {
   }
 }
 
-export default (): void =>
-  document.addEventListener('scroll', scrollToText as EventListener)
+export default (): void => document.addEventListener('scroll', scrollToText as EventListener)

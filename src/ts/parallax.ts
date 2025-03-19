@@ -1,19 +1,13 @@
 import { Coordinates, touchDevice } from './utils'
 
 export default (): void => {
-  const parallaxes = document.querySelectorAll(
-    '*[data-parallax]'
-  ) as NodeListOf<HTMLElement>
+  const parallaxes = document.querySelectorAll('*[data-parallax]') as NodeListOf<HTMLElement>
 
   parallaxes.forEach((parallax: HTMLElement): void => {
     if (!parallax || touchDevice()) return
 
-    const layers = parallax.querySelectorAll(
-      '*[data-parallax-layer]'
-    ) as NodeListOf<HTMLElement>
-    const hovereds = parallax.querySelectorAll(
-      '*[data-parallax-hovered]'
-    ) as NodeListOf<HTMLElement>
+    const layers = parallax.querySelectorAll('*[data-parallax-layer]') as NodeListOf<HTMLElement>
+    const hovereds = parallax.querySelectorAll('*[data-parallax-hovered]') as NodeListOf<HTMLElement>
 
     layers.forEach((layer: HTMLElement): void => {
       if (!layer) return
@@ -57,9 +51,7 @@ export default (): void => {
       if (!hovered) return
 
       const perspective: number = Number(hovered.dataset.parallaxHovered) || 600
-      const items = hovered.querySelectorAll(
-        '*[data-parallax-item]'
-      ) as NodeListOf<HTMLElement>
+      const items = hovered.querySelectorAll('*[data-parallax-item]') as NodeListOf<HTMLElement>
       const depth: number = 10
       let positionY: number = 0
       let positionX: number = 0
@@ -75,9 +67,7 @@ export default (): void => {
       })
 
       hovered.addEventListener('mousemove', ((event: MouseEvent): void => {
-        const rect = (
-          event.target as HTMLElement
-        ).getBoundingClientRect() as DOMRect
+        const rect = (event.target as HTMLElement).getBoundingClientRect() as DOMRect
         const coordinates: Coordinates = {
           top: (event.clientY - rect.top) / rect.height,
           left: (event.clientX - rect.left) / rect.width,

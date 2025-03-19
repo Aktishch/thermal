@@ -1,4 +1,4 @@
-import { Coordinates, scrollbarShow, scrollbarHidden } from './utils'
+import { Coordinates, scrollbarHidden, scrollbarShow } from './utils'
 
 export type Draggable = {
   element: HTMLButtonElement | HTMLDivElement
@@ -6,11 +6,7 @@ export type Draggable = {
   positionY: number
 }
 
-export const setTranslateDraggable = ({
-  element,
-  positionX,
-  positionY,
-}: Draggable): void => {
+export const setTranslateDraggable = ({ element, positionX, positionY }: Draggable): void => {
   element.style.transform = `translate(${positionX}px, ${positionY}px)`
 }
 

@@ -5,9 +5,7 @@ export const saveFormData = (id: string): void => {
 
   if (!form) return
 
-  const inputs = form.querySelectorAll(
-    '*[data-input]'
-  ) as NodeListOf<HTMLInputElement>
+  const inputs = form.querySelectorAll('*[data-input]') as NodeListOf<HTMLInputElement>
   let formData: DataSave = {}
 
   if (sessionStorage.getItem(`${id}`)) {
@@ -15,8 +13,7 @@ export const saveFormData = (id: string): void => {
 
     inputs.forEach((input: HTMLInputElement): void => {
       if (input.dataset.input !== 'file' && input.dataset.input !== 'switch') {
-        for (const key in formData)
-          if (input.name === key) input.value = formData[key]
+        for (const key in formData) if (input.name === key) input.value = formData[key]
       }
     })
   }

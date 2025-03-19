@@ -1,7 +1,7 @@
 import { Fancybox } from '@fancyapps/ui'
 import { createCalendar } from './air-datepicker'
-import imagePreview from './image-preview'
 import filtering from './filtering'
+import imagePreview from './image-preview'
 
 export type FancyboxDialog = {
   open: (src: string) => void

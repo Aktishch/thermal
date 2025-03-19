@@ -7,9 +7,7 @@ export type WavedCircle = {
 
 export const setWaved = (event: Event): void => {
   if ((event.target as HTMLElement).closest('[data-waved]')) {
-    const item = (event.target as HTMLElement).closest(
-      '[data-waved]'
-    ) as HTMLElement
+    const item = (event.target as HTMLElement).closest('[data-waved]') as HTMLElement
 
     const waved = document.createElement('div') as HTMLDivElement
     const circle = document.createElement('div') as HTMLDivElement

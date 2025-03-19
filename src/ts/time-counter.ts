@@ -3,13 +3,9 @@ export default (): void => {
 
   if (!counter) return
 
-  const subtitle = counter.querySelector(
-    '*[data-counter-subtitle]'
-  ) as HTMLDivElement
+  const subtitle = counter.querySelector('*[data-counter-subtitle]') as HTMLDivElement
   const timer = counter.querySelector('*[data-counter-timer]') as HTMLDivElement
-  const units = timer.querySelectorAll(
-    '*[data-counter-unit]'
-  ) as NodeListOf<HTMLSpanElement>
+  const units = timer.querySelectorAll('*[data-counter-unit]') as NodeListOf<HTMLSpanElement>
   const date: number = new Date(
     Number(counter.dataset.year),
     Number(counter.dataset.month) - 1,
@@ -32,10 +28,7 @@ export default (): void => {
       Math.floor((distance % minute) / 1000),
     ]
 
-    units.forEach(
-      (element: HTMLSpanElement, index: number): string =>
-        (element.textContent = String(values[index]))
-    )
+    units.forEach((element: HTMLSpanElement, index: number): string => (element.textContent = String(values[index])))
 
     if (distance < 0) removeTimeCounter()
   }

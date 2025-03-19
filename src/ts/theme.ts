@@ -1,8 +1,6 @@
 export default (): void => {
   const html = document.documentElement as HTMLHtmlElement
-  const toggles = html.querySelectorAll(
-    '*[data-theme-toggle]'
-  ) as NodeListOf<HTMLInputElement>
+  const toggles = html.querySelectorAll('*[data-theme-toggle]') as NodeListOf<HTMLInputElement>
 
   const togglesChecked = (check: boolean): void => {
     toggles.forEach((toggle: HTMLInputElement): void => {

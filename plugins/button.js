@@ -1,7 +1,5 @@
 const plugin = require('tailwindcss/plugin')
-const {
-  default: flattenColorPalette,
-} = require('tailwindcss/lib/util/flattenColorPalette')
+const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 const { parseColor, formatColor } = require('tailwindcss/lib/util/color')
 
 module.exports = plugin(({ addComponents, matchComponents, theme }) => {
@@ -23,8 +21,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       }),
       '--tw-btn-accent': theme('colors.white.DEFAULT'),
       '--tw-btn-hovered': theme('colors.black.DEFAULT'),
-      '--tw-btn-fill':
-        'color-mix(in srgb, var(--tw-btn-color) 80%, var(--tw-btn-hovered))',
+      '--tw-btn-fill': 'color-mix(in srgb, var(--tw-btn-color) 80%, var(--tw-btn-hovered))',
       color: 'var(--tw-btn-color)',
       fontSize: theme('fontSize.base'),
       fontWeight: theme('fontWeight.semibold'),

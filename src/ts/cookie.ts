@@ -1,7 +1,5 @@
 export default (): void => {
-  const cookies = document.querySelectorAll(
-    '*[data-cookie]'
-  ) as NodeListOf<HTMLElement>
+  const cookies = document.querySelectorAll('*[data-cookie]') as NodeListOf<HTMLElement>
 
   cookies.forEach((cookie: HTMLElement): void => {
     if (!cookie) return
@@ -12,9 +10,7 @@ export default (): void => {
     if (document.cookie.indexOf(value) !== -1) {
       cookie.remove()
     } else {
-      const button = cookie.querySelector(
-        '*[data-cookie-button]'
-      ) as HTMLButtonElement
+      const button = cookie.querySelector('*[data-cookie-button]') as HTMLButtonElement
       const expires: number = Number(cookie.dataset.expires) || 7
       const date: string = new Date(
         new Date().getFullYear(),

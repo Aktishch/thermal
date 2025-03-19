@@ -4,14 +4,8 @@ export type InvertedToggle = {
 }
 
 export const invertedToggle = ({ event, condition }: InvertedToggle): void => {
-  if (
-    (event.target as HTMLButtonElement).closest(
-      `[data-inverted-toggle="${condition}"]`
-    )
-  ) {
-    const inverted = (event.target as HTMLButtonElement).closest(
-      '[data-inverted]'
-    ) as HTMLElement
+  if ((event.target as HTMLButtonElement).closest(`[data-inverted-toggle="${condition}"]`)) {
+    const inverted = (event.target as HTMLButtonElement).closest('[data-inverted]') as HTMLElement
 
     inverted.dataset.inverted = condition
   }

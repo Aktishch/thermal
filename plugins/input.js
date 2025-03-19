@@ -1,7 +1,5 @@
 const plugin = require('tailwindcss/plugin')
-const {
-  default: flattenColorPalette,
-} = require('tailwindcss/lib/util/flattenColorPalette')
+const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 const { parseColor, formatColor } = require('tailwindcss/lib/util/color')
 
 module.exports = plugin(({ addComponents, matchComponents, theme }) => {

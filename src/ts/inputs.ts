@@ -15,9 +15,7 @@ export const inputNumber = (event: Event): void => {
 export const inputFloat = (event: Event): void => {
   const input = event.target as HTMLInputElement
 
-  input.value = input.value
-    .replace(/^\.|[^\d.]|\.(?=.*\.)|^0+(?=\d)/g, '')
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+  input.value = input.value.replace(/^\.|[^\d.]|\.(?=.*\.)|^0+(?=\d)/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
 
 export default (): void => {

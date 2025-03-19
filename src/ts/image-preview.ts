@@ -1,26 +1,16 @@
-import { uploadFile, fileHandler } from './utils'
 import { dialog } from './fancybox'
+import { fileHandler, uploadFile } from './utils'
 
 export default (): void => {
-  const previews = document.querySelectorAll(
-    '*[data-preview]'
-  ) as NodeListOf<HTMLFormElement>
+  const previews = document.querySelectorAll('*[data-preview]') as NodeListOf<HTMLFormElement>
 
   previews.forEach((preview: HTMLFormElement): void => {
     if (!preview) return
 
-    const label = preview.querySelector(
-      '*[data-preview-label]'
-    ) as HTMLLabelElement
-    const image = preview.querySelector(
-      '*[data-preview-image]'
-    ) as HTMLImageElement
-    const remove = preview.querySelector(
-      '*[data-preview-remove]'
-    ) as HTMLButtonElement
-    const input = label.querySelector(
-      '*[data-preview-input]'
-    ) as HTMLInputElement
+    const label = preview.querySelector('*[data-preview-label]') as HTMLLabelElement
+    const image = preview.querySelector('*[data-preview-image]') as HTMLImageElement
+    const remove = preview.querySelector('*[data-preview-remove]') as HTMLButtonElement
+    const input = label.querySelector('*[data-preview-input]') as HTMLInputElement
     const error = preview.querySelector('*[data-error]') as HTMLSpanElement
     const drag = preview.querySelector('*[data-preview-drag]') as HTMLDivElement
     let data = new DataTransfer() as DataTransfer
@@ -43,9 +33,7 @@ export default (): void => {
           if (preview.dataset.preview === 'avatar') {
             const formData = new FormData(preview) as FormData
             const requestUrl: string = './ajax/submit-handler.php'
-            const avatar = document.querySelector(
-              '*[data-avatar]'
-            ) as HTMLImageElement
+            const avatar = document.querySelector('*[data-avatar]') as HTMLImageElement
 
             dialog.notClosing('./dialogs/dialog-preloader.html')
 
@@ -60,9 +48,7 @@ export default (): void => {
                 avatar.src = url
                 dialog.close()
               })
-              .catch((error: string): void =>
-                console.log('The form has not been sent', error)
-              )
+              .catch((error: string): void => console.log('The form has not been sent', error))
           }
         })
       } else {
@@ -71,12 +57,7 @@ export default (): void => {
     }
 
     if (drag) {
-      const dragEvents: string[] = [
-        'dragenter',
-        'dragover',
-        'dragleave',
-        'drop',
-      ]
+      const dragEvents: string[] = ['dragenter', 'dragover', 'dragleave', 'drop']
 
       dragEvents.forEach((dragEvent: string): void => {
         drag.addEventListener(dragEvent, ((event: DragEvent): void => {
@@ -94,8 +75,7 @@ export default (): void => {
             }
 
             case 'drop': {
-              const files = (event.dataTransfer as DataTransfer)
-                .files as FileList
+              const files = (event.dataTransfer as DataTransfer).files as FileList
 
               drag.classList.remove('bg-opacity-50')
               getImagePreview(files)

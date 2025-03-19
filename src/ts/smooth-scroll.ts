@@ -1,18 +1,14 @@
-import { isSafari, scrolledPage, touchDevice } from './utils'
 import { setAnimation } from './animation'
+import { isSafari, scrolledPage, touchDevice } from './utils'
 
 export default (): void => {
-  const smoothScroll = document.querySelector(
-    '#smooth-scroll'
-  ) as HTMLDivElement
+  const smoothScroll = document.querySelector('#smooth-scroll') as HTMLDivElement
 
   if (!smoothScroll || isSafari() || touchDevice()) return
 
   const html = document.documentElement as HTMLHtmlElement
   const body = document.body as HTMLBodyElement
-  const wrappers = smoothScroll.querySelectorAll(
-    '*[data-smooth-wrapper]'
-  ) as NodeListOf<HTMLElement>
+  const wrappers = smoothScroll.querySelectorAll('*[data-smooth-wrapper]') as NodeListOf<HTMLElement>
   const speed: number = Number(smoothScroll.dataset.smoothSpeed) / 100 || 0.02
   let smoothSpeed: number = speed
   let offset: number = 0
@@ -35,10 +31,7 @@ export default (): void => {
     window.requestAnimationFrame(createSmoothScroll)
   }
 
-  if (
-    performance.navigation.type === 1 &&
-    sessionStorage.getItem('translateY')
-  ) {
+  if (performance.navigation.type === 1 && sessionStorage.getItem('translateY')) {
     setBodyHeight()
     smoothSpeed = 1
     smoothScroll.style.transform = String(sessionStorage.getItem('translateY'))
@@ -49,24 +42,14 @@ export default (): void => {
 
   html.classList.add('overflow-x-hidden')
   body.classList.add('overflow-hidden')
-  smoothScroll.classList.add(
-    'fixed',
-    'top-0',
-    'left-0',
-    'right-0',
-    'overflow-hidden'
-  )
+  smoothScroll.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'overflow-hidden')
   window.requestAnimationFrame(createSmoothScroll)
 
   wrappers.forEach((wrapper: HTMLElement): void => {
     if (!wrapper) return
 
-    const stickys = wrapper.querySelectorAll(
-      '*[data-smooth-sticky]'
-    ) as NodeListOf<HTMLElement>
-    const layers = wrapper.querySelectorAll(
-      '*[data-smooth-layer]'
-    ) as NodeListOf<HTMLElement>
+    const stickys = wrapper.querySelectorAll('*[data-smooth-sticky]') as NodeListOf<HTMLElement>
+    const layers = wrapper.querySelectorAll('*[data-smooth-layer]') as NodeListOf<HTMLElement>
 
     stickys.forEach((sticky: HTMLElement): void => {
       if (!sticky) return
@@ -74,12 +57,8 @@ export default (): void => {
       let stickyPosition: number = 0
 
       const createSmothSticky = (): void => {
-        if (
-          wrapper.getBoundingClientRect().top < 0 &&
-          wrapper.getBoundingClientRect().bottom > 0
-        ) {
-          stickyPosition +=
-            (scrolledPage().top - wrapper.offsetTop - stickyPosition) * speed
+        if (wrapper.getBoundingClientRect().top < 0 && wrapper.getBoundingClientRect().bottom > 0) {
+          stickyPosition += (scrolledPage().top - wrapper.offsetTop - stickyPosition) * speed
           sticky.style.transform = `translateY(${stickyPosition}px)`
         }
 
@@ -101,9 +80,7 @@ export default (): void => {
           wrapper.getBoundingClientRect().top - window.screen.height <= 0 &&
           scrolledPage().top < wrapper.offsetTop + wrapper.offsetHeight
         ) {
-          layerPosition +=
-            (scrolledPage().top - wrapper.offsetTop - layerPosition) *
-            layerSpeed
+          layerPosition += (scrolledPage().top - wrapper.offsetTop - layerPosition) * layerSpeed
 
           switch (layer.dataset.smoothLayer) {
             case 'top': {

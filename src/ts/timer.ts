@@ -5,9 +5,7 @@ export default (): void => {
 
   if (!timer) return
 
-  const stopwatch = timer.querySelector(
-    '*[data-timer-stopwatch]'
-  ) as HTMLDivElement
+  const stopwatch = timer.querySelector('*[data-timer-stopwatch]') as HTMLDivElement
   const units = timer.querySelector('*[data-timer-units]') as HTMLTimeElement
   const turn = timer.querySelector('*[data-timer-turn]') as HTMLButtonElement
   const icon = turn.querySelector('use') as SVGUseElement

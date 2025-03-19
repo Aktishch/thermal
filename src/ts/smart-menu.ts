@@ -4,13 +4,9 @@ export default (): void => {
   if (!smartMenu) return
 
   const title = smartMenu.querySelector('*[data-smart-title]') as HTMLElement
-  const length = smartMenu.querySelector(
-    '*[data-smart-length]'
-  ) as HTMLUListElement
+  const length = smartMenu.querySelector('*[data-smart-length]') as HTMLUListElement
   const nav = smartMenu.querySelector('*[data-smart-nav]') as HTMLDivElement
-  const count = smartMenu.querySelector(
-    '*[data-smart-count]'
-  ) as HTMLSpanElement
+  const count = smartMenu.querySelector('*[data-smart-count]') as HTMLSpanElement
   const list = smartMenu.querySelector('*[data-smart-list]') as HTMLUListElement
   const breaks: number[] = []
 
@@ -35,13 +31,8 @@ export default (): void => {
 
     const items = list.querySelectorAll('li') as NodeListOf<HTMLLIElement>
 
-    items.length === 0
-      ? nav.classList.add('hidden')
-      : nav.classList.remove('hidden')
-
-    lengthWidth === 0
-      ? title.classList.remove('hidden')
-      : title.classList.add('hidden')
+    items.length === 0 ? nav.classList.add('hidden') : nav.classList.remove('hidden')
+    lengthWidth === 0 ? title.classList.remove('hidden') : title.classList.add('hidden')
   }
 
   updateSmartMenu()

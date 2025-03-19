@@ -1,10 +1,10 @@
-import { Configuration } from 'webpack'
+import CopyPlugin from 'copy-webpack-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import fs from 'fs'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
-import CopyPlugin from 'copy-webpack-plugin'
-import fs from 'fs'
 import path from 'path'
+import { Configuration } from 'webpack'
 
 type GeneratePlugins = {
   templateDir: string
@@ -12,14 +12,8 @@ type GeneratePlugins = {
   src: string
 }
 
-const generatePlugins = ({
-  templateDir,
-  script,
-  src,
-}: GeneratePlugins): HtmlWebpackPlugin[] => {
-  const templateFiles: string[] = fs.readdirSync(
-    path.resolve(__dirname, templateDir)
-  )
+const generatePlugins = ({ templateDir, script, src }: GeneratePlugins): HtmlWebpackPlugin[] => {
+  const templateFiles: string[] = fs.readdirSync(path.resolve(__dirname, templateDir))
 
   return templateFiles
     .map((templateFile: string): HtmlWebpackPlugin => {
@@ -32,10 +26,7 @@ const generatePlugins = ({
           inject: script,
           scriptLoading: 'blocking',
           filename: `${src}${name}.html`,
-          template: path.resolve(
-            __dirname,
-            `${templateDir}/${name}.${extension}`
-          ),
+          template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
           minify: {
             collapseWhitespace: false,
           },
@@ -84,10 +75,7 @@ module.exports = {
     rules: [
       {
         test: /\.html$/i,
-        include: [
-          path.resolve(__dirname, 'src/includes'),
-          path.resolve(__dirname, 'src/components'),
-        ],
+        include: [path.resolve(__dirname, 'src/includes'), path.resolve(__dirname, 'src/components')],
         use: ['raw-loader'],
       },
       {
@@ -96,12 +84,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.m?[jt]s$/i,

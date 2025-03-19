@@ -8,13 +8,7 @@ export type RangePosition = {
   bubble: HTMLOutputElement
 }
 
-export const getBubblesPosition = ({
-  size,
-  number,
-  input,
-  progress,
-  bubble,
-}: RangePosition): void => {
+export const getBubblesPosition = ({ size, number, input, progress, bubble }: RangePosition): void => {
   const percent: number = size / 100
   const half: number = size / 2
   const value: number = Number(input.value)
@@ -44,18 +38,13 @@ export const getBubblesPosition = ({
 }
 
 export default (): void => {
-  const ranges = document.querySelectorAll(
-    '*[data-range]'
-  ) as NodeListOf<HTMLDivElement>
+  const ranges = document.querySelectorAll('*[data-range]') as NodeListOf<HTMLDivElement>
 
   ranges.forEach((range: HTMLDivElement): void => {
     if (!range) return
 
-    const size: number =
-      range.dataset.range !== '' ? Number(range.dataset.range) : 28
-    const wrappers = range.querySelectorAll(
-      '*[data-range-wrapper]'
-    ) as NodeListOf<HTMLDivElement>
+    const size: number = range.dataset.range !== '' ? Number(range.dataset.range) : 28
+    const wrappers = range.querySelectorAll('*[data-range-wrapper]') as NodeListOf<HTMLDivElement>
     const first: number = 0
     const last: number = 1
 
@@ -64,15 +53,9 @@ export default (): void => {
     switch (wrappers.length) {
       case 1: {
         const output = range.querySelector('*[data-range-output]') as Range
-        const input = range.querySelector(
-          '*[data-range-input]'
-        ) as HTMLInputElement
-        const progress = range.querySelector(
-          '*[data-range-progress]'
-        ) as HTMLDivElement
-        const bubble = range.querySelector(
-          '*[data-range-bubble]'
-        ) as HTMLOutputElement
+        const input = range.querySelector('*[data-range-input]') as HTMLInputElement
+        const progress = range.querySelector('*[data-range-progress]') as HTMLDivElement
+        const bubble = range.querySelector('*[data-range-bubble]') as HTMLOutputElement
 
         const changeRange = (): void => {
           getBubblesPosition({ size, number: first, input, progress, bubble })
@@ -85,13 +68,9 @@ export default (): void => {
       }
 
       case 2: {
-        const outputs = range.querySelectorAll(
-          '*[data-range-output]'
-        ) as NodeListOf<Range>
+        const outputs = range.querySelectorAll('*[data-range-output]') as NodeListOf<Range>
         const firstOutput = outputs[first] as Range
-        const firstInput = (wrappers[first] as HTMLDivElement).querySelector(
-          '*[data-range-input]'
-        ) as HTMLInputElement
+        const firstInput = (wrappers[first] as HTMLDivElement).querySelector('*[data-range-input]') as HTMLInputElement
         const firstProgress = (wrappers[first] as HTMLDivElement).querySelector(
           '*[data-range-progress]'
         ) as HTMLDivElement
@@ -99,15 +78,11 @@ export default (): void => {
           '*[data-range-bubble]'
         ) as HTMLOutputElement
         const lastOutput = outputs[last] as Range
-        const lastInput = (wrappers[last] as HTMLDivElement).querySelector(
-          '*[data-range-input]'
-        ) as HTMLInputElement
+        const lastInput = (wrappers[last] as HTMLDivElement).querySelector('*[data-range-input]') as HTMLInputElement
         const lastProgress = (wrappers[last] as HTMLDivElement).querySelector(
           '*[data-range-progress]'
         ) as HTMLDivElement
-        const lastBubble = (wrappers[last] as HTMLDivElement).querySelector(
-          '*[data-range-bubble]'
-        ) as HTMLOutputElement
+        const lastBubble = (wrappers[last] as HTMLDivElement).querySelector('*[data-range-bubble]') as HTMLOutputElement
 
         const changeRanges = (): void => {
           getBubblesPosition({

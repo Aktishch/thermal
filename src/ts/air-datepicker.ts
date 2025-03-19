@@ -1,7 +1,7 @@
 import AirDatepicker, { AirDatepickerPosition } from 'air-datepicker'
 import localeRu from 'air-datepicker/locale/ru'
-import { touchDevice } from './utils'
 import filtering from './filtering'
+import { touchDevice } from './utils'
 
 export type AirDatepickerCell = {
   date: Date
@@ -16,11 +16,7 @@ export type AirDatepickerRenderCell = {
   }
 }
 
-const excludeDates: number[] = [
-  +new Date(2025, 0, 5),
-  +new Date(2025, 0, 7),
-  +new Date(2025, 1, 10),
-]
+const excludeDates: number[] = [+new Date(2025, 0, 5), +new Date(2025, 0, 7), +new Date(2025, 1, 10)]
 
 declare global {
   interface Window {
@@ -37,10 +33,7 @@ export const createCalendar = (): void => {
 
   if (!calendar) return
 
-  const renderCellHandler = ({
-    date,
-    cellType,
-  }: AirDatepickerCell): AirDatepickerRenderCell => {
+  const renderCellHandler = ({ date, cellType }: AirDatepickerCell): AirDatepickerRenderCell | undefined => {
     if (cellType === 'day') {
       return {
         classes: window.excludeDates.includes(+date)
@@ -69,19 +62,13 @@ export const createCalendar = (): void => {
 }
 
 export default (): void => {
-  const datepickers = document.querySelectorAll(
-    '*[data-datepicker]'
-  ) as NodeListOf<HTMLFormElement>
+  const datepickers = document.querySelectorAll('*[data-datepicker]') as NodeListOf<HTMLFormElement>
 
   datepickers.forEach((datepicker: HTMLFormElement): void => {
     if (!datepicker) return
 
-    const inputMin = datepicker.querySelector(
-      '*[data-input="min"]'
-    ) as HTMLInputElement
-    const inputMax = datepicker.querySelector(
-      '*[data-input="max"]'
-    ) as HTMLInputElement
+    const inputMin = datepicker.querySelector('*[data-input="min"]') as HTMLInputElement
+    const inputMax = datepicker.querySelector('*[data-input="max"]') as HTMLInputElement
 
     const min = new window.AirDatepicker(inputMin, {
       onSelect({ date }) {
@@ -93,8 +80,7 @@ export default (): void => {
       isMobile: touchDevice(),
       autoClose: true,
       minDate: new Date(),
-      position:
-        (inputMin.dataset.position as AirDatepickerPosition) || 'bottom left',
+      position: (inputMin.dataset.position as AirDatepickerPosition) || 'bottom left',
     }) as AirDatepicker<HTMLInputElement>
 
     const max = new window.AirDatepicker(inputMax, {
@@ -107,8 +93,7 @@ export default (): void => {
       isMobile: touchDevice(),
       autoClose: true,
       minDate: new Date(),
-      position:
-        (inputMax.dataset.position as AirDatepickerPosition) || 'bottom left',
+      position: (inputMax.dataset.position as AirDatepickerPosition) || 'bottom left',
     }) as AirDatepicker<HTMLInputElement>
   })
 }
