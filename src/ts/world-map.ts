@@ -37,8 +37,8 @@ export default (): void => {
     }
 
     image.classList.add('pointer-events-none', 'size-5')
-    rect.classList.add('pointer-events-none', 'fill-white', 'invisible', 'opacity-0', 'duration-200')
-    text.classList.add('pointer-events-none', 'invisible', 'opacity-0', 'duration-200', 'fill-black', 'text-sm')
+    rect.classList.add('pointer-events-none', 'fill-white', 'invisible', 'opacity-0', 'transition-opacity')
+    text.classList.add('pointer-events-none', 'invisible', 'opacity-0', 'transition-opacity', 'fill-black', 'text-sm')
     map.appendChild(image)
     map.appendChild(rect)
     map.appendChild(text)

@@ -6,8 +6,9 @@
       transform         : rotateX(40deg);
       transform-style   : preserve-3d;
       perspective-origin: center center;
+      transition        : transform 300ms ease-in-out;
 
-      @apply relative bg-grey size-40 ease-linear duration-300;
+      @apply relative bg-grey size-40;
 
       @media(hover) {
         &:hover {
@@ -52,7 +53,7 @@
     &-particle {
       background-size    : 300% 300%;
       backface-visibility: hidden;
-      transition         : transform 300ms, filter 1000ms;
+      transition         : transform 300ms ease, filter 1000ms ease;
       filter             : grayscale(0.9);
 
       &:nth-child(1) {

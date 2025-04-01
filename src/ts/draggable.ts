@@ -25,9 +25,7 @@ export const setDraggable = (id: string): void => {
 
   const getDragPosition = (): void => {
     setTranslateDraggable({
-      element: draggable.closest('[data-draggable]')
-        ? (draggable.closest('[data-draggable]') as HTMLDivElement)
-        : draggable,
+      element: (draggable.closest('[data-draggable]') as HTMLDivElement) || draggable,
       positionX: coordinates.left,
       positionY: coordinates.top,
     })

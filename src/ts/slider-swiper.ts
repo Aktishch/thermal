@@ -41,6 +41,7 @@ export const createGallerySlider = (): void => {
     slidesPerView: 1.3,
     spaceBetween: 20,
     grabCursor: true,
+    watchSlidesProgress: true,
     loop: true,
     freeMode: true,
     breakpoints: {

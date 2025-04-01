@@ -75,7 +75,6 @@ export default (): void => {
 
         positionY = coordinates.left * (depth * 2) - depth
         positionX = coordinates.top * (depth * 2) - depth
-
         hovered.style.setProperty('--rotate-y', `${-positionY}deg`)
         hovered.style.setProperty('--rotate-x', `${positionX}deg`)
       }) as EventListener)

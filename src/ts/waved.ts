@@ -11,6 +11,7 @@ export const setWaved = (event: Event): void => {
 
     const waved = document.createElement('div') as HTMLDivElement
     const circle = document.createElement('div') as HTMLDivElement
+
     const createCircle = ({ positionY, positionX }: WavedCircle): void => {
       const coordinates: Coordinates = {
         top: positionY - item.getBoundingClientRect().top,

@@ -29,11 +29,16 @@
     }
 
     &::after {
-      transform : translate(-50%, -50%) translate(var(--x), var(--y));
-      transition: width 300ms ease, height 300ms ease;
-      z-index   : 1;
+      transform: translate(-50%, -50%) translate(var(--x), var(--y));
+      z-index  : 1;
 
       @apply content-auto absolute top-0 left-0 pointer-events-none size-0;
+
+      transition: {
+        property       : width, height;
+        duration       : 300ms;
+        timing-function: ease;
+      }
     }
   }
 }

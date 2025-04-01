@@ -1,5 +1,9 @@
 export type DataSave = { [index: string]: string }
 
+export const checkingValue = (input: HTMLInputElement): boolean => {
+  return input.dataset.input !== 'file' && input.dataset.input !== 'switch'
+}
+
 export const saveFormData = (id: string): void => {
   const form = document.querySelector(`#${id}`) as HTMLFormElement
 
@@ -12,7 +16,7 @@ export const saveFormData = (id: string): void => {
     formData = JSON.parse(sessionStorage.getItem(`${id}`) || '{}')
 
     inputs.forEach((input: HTMLInputElement): void => {
-      if (input.dataset.input !== 'file' && input.dataset.input !== 'switch') {
+      if (checkingValue(input)) {
         for (const key in formData) if (input.name === key) input.value = formData[key]
       }
     })
@@ -20,7 +24,7 @@ export const saveFormData = (id: string): void => {
 
   form.addEventListener('input', ((): void => {
     inputs.forEach((input: HTMLInputElement): void => {
-      if (input.dataset.input !== 'file' && input.dataset.input !== 'switch') {
+      if (checkingValue(input)) {
         formData[input.name] = input.value
         sessionStorage.setItem(`${id}`, JSON.stringify(formData))
       }

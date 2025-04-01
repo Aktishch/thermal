@@ -6,7 +6,6 @@ export const copyText = (event: Event): void => {
   button.disabled = true
   window.navigator.clipboard.writeText(String(copy.dataset.copy))
   result.classList.remove('invisible', 'opacity-0')
-
   setTimeout((): void => {
     button.disabled = false
     result.classList.add('invisible', 'opacity-0')

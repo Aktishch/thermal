@@ -12,12 +12,12 @@ export default (): void => {
     } else {
       const button = cookie.querySelector('*[data-cookie-button]') as HTMLButtonElement
       const expires: number = Number(cookie.dataset.expires) || 7
+      const path: string = String(cookie.dataset.cookie) || '/'
       const date: string = new Date(
         new Date().getFullYear(),
         new Date().getMonth(),
         new Date().getDate() + expires
       ).toUTCString()
-      const path: string = String(cookie.dataset.cookie) || '/'
 
       button.addEventListener('click', ((): void => {
         document.cookie = `${value}=1; path=${path}; expires=${date}`

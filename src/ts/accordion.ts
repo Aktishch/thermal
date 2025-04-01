@@ -6,24 +6,23 @@ export const createAccordion = (accordion: HTMLDivElement): void => {
   const setAccordionHeight = (duration = true): void => {
     if (timeOut) clearTimeout(timeOut)
 
-    const transition: number = duration ? Math.max(content.scrollHeight / 2, 100) : 0
+    const scrollHeight: number = content.scrollHeight
+    const transitionDuration: number = duration ? Math.max(scrollHeight / 2, 100) : 0
 
-    content.style.height = `${content.scrollHeight}px`
-    content.style.transitionDuration = duration ? `${transition}ms` : '0ms'
+    content.style.height = `${scrollHeight}px`
+    content.style.transitionProperty = 'height'
+    content.style.transitionDuration = `${transitionDuration}ms`
 
     if (accordion.dataset.accordion === 'active') {
       timeOut = setTimeout((): void => {
         content.style.height = ''
         content.classList.remove('overflow-hidden')
-      }, transition)
+      }, transitionDuration)
     } else {
       content.classList.add('overflow-hidden')
-      timeOut = setTimeout(
-        (): void => {
-          content.style.height = '0'
-        },
-        duration ? 10 : 0
-      )
+      timeOut = setTimeout((): void => {
+        content.style.height = '0'
+      }, transitionDuration)
     }
   }
 

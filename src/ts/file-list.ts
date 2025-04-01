@@ -32,7 +32,7 @@ export default () => {
               item.setAttribute('data-filelist-item', '')
               item.innerHTML = `
                 <span class="truncate">${file.name}</span>
-                <button class="btn btn-gray text-sm p-1" data-filelist-remove="${file.name}" type="button">
+                <button class="btn btn-gray text-sm p-1" data-filelist-remove="${file.name}" data-waved="dark" type="button">
                   <svg class="icon">
                     <use xlink:href="img/icons.svg#close"></use>
                   </svg>

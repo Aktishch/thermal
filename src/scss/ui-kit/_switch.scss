@@ -4,7 +4,7 @@
       @apply opacity-50 pointer-events-none;
     }
 
-    @apply flex items-center justify-center relative text-primary border border-solid border-gray select-none appearance-none cursor-pointer ease-linear duration-200;
+    @apply flex items-center justify-center relative text-primary border border-solid border-gray select-none appearance-none cursor-pointer transition duration-200 ease-linear;
 
     @media(hover) {
       &:hover {
@@ -33,9 +33,13 @@
 
     &-radio {
       &::after {
-        transition: opacity 100ms linear, transform 100ms linear;
-
         @apply content-auto block bg-current rounded-inherit scale-0 opacity-0 size-3;
+
+        transition: {
+          property       : opacity, transform;
+          duration       : 100ms;
+          timing-function: linear;
+        }
       }
 
       @apply rounded-full size-5 min-w-5;

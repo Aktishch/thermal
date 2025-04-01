@@ -115,7 +115,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
           bottom: 0,
           left: 'auto',
           width: 0,
-          transition: '200ms ease-in-out',
+          transition: 'width 200ms ease-in-out',
           backgroundColor: 'var(--tw-btn-color)',
         },
         '@media (hover)': {
