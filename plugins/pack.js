@@ -11,6 +11,16 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         display: 'block',
         paddingTop: 'var(--tw-pack-size)',
       },
+      '&-image': {
+        transitionProperty: 'transform',
+        transitionDuration: '300ms',
+        transitionTimingFunction: 'linear',
+      },
+      '@media (hover)': {
+        '&:hover &-image': {
+          transform: 'scale(1.1)',
+        },
+      },
     },
   })
   matchComponents(

@@ -34,9 +34,9 @@
     <div class="p-4 -m-4 swiper" data-slider-swiper="gallery">
       <div class="swiper-wrapper">
         <% for (var i = 0; i < 6; i++) { %>
-        <a class="shadow-md swiper-slide pack pack-md bg-grey dark:bg-dark rounded-2xl group" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
+        <a class="shadow-md swiper-slide pack pack-md bg-grey dark:bg-dark rounded-2xl" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image rounded-inherit duration-300 ease-linear group-hover:scale-110', data: null}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'pack-image image rounded-inherit', data: null}) %>
         </a>
         <% } %>
       </div>
@@ -117,13 +117,13 @@
       <div class="swiper-wrapper">
         <% _.forEach((products), (item) => { %>
         <div class="h-auto swiper-slide">
-          <div class="p-1 shadow-md cursor-pointer card hover:shadow-xl group/product dark:bg-black" data-product>
+          <div class="p-1 shadow-md cursor-pointer card transition-shadow hover:shadow-xl group/product dark:bg-black" data-product>
             <div class="pack pack-md bg-grey dark:bg-dark rounded-inherit">
               <%= loader %>
               <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-inherit', data: 'data-product-image="img/pictures/town-grey.jpg"'}) %>
-              <label class="absolute invisible block overflow-hidden duration-200 rounded-full opacity-0 cursor-pointer top-2 right-2 pointer-coarse:visible pointer-coarse:opacity-100 group group-hover/product:opacity-100 group-hover/product:visible has-[:checked]:visible has-[:checked]:opacity-100" data-waved="light">
+              <label class="absolute invisible block overflow-hidden transition-[opacity,_visibility] rounded-full opacity-0 cursor-pointer top-2 right-2 pointer-coarse:visible pointer-coarse:opacity-100 group group-hover/product:opacity-100 group-hover/product:visible has-[:checked]:visible has-[:checked]:opacity-100" data-waved="light">
                 <input class="hidden peer" type="checkbox">
-                <div class="flex items-center justify-center text-2xl text-opacity-50 duration-200 ease-linear rounded-full group-has-[:checked]:text-opacity-100 bg-white/40 text-red stroke-red size-10">
+                <div class="flex items-center justify-center text-2xl text-opacity-50 transition ease-linear rounded-full group-has-[:checked]:text-opacity-100 bg-white/40 text-red stroke-red size-10">
                   <%= icon({id: 'like', className: 'icon', data: null}) %>
                 </div>
               </label>
@@ -178,7 +178,7 @@
     <% for (var i = 0; i < 6; i++) { %>
     <a class="pack pack-xs bg-grey dark:bg-dark rounded-3xl shadow-md shrink-0 w-80 md:w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
-      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image rounded-inherit md:translate-x-[var(--scroll-moving)] md:scale-150 ease-in-out duration-300', data: 'data-scrolling-image'}) %>
+      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image rounded-inherit md:translate-x-[var(--scroll-moving)] md:scale-150 transition-transform ease-in-out duration-300', data: 'data-scrolling-image'}) %>
     </a>
     <% } %>
   </div>
@@ -236,7 +236,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-auto duration-200 opacity-100 group-[[data-quiz-end]]/quiz:invisible group-[[data-quiz-end]]/quiz:opacity-0">
+        <div class="mt-auto transition-[opacity,_visibility] opacity-100 group-[[data-quiz-end]]/quiz:invisible group-[[data-quiz-end]]/quiz:opacity-0">
           <div class="flex items-center mb-5">
             Оставшиеся слайды:
             <div class="w-auto ml-1 swiper-pagination" data-slider-pagination="quiz"></div>
@@ -255,9 +255,9 @@
       </div>
     </form>
     <div class="hidden w-full md:block max-w-80 lg:max-w-sm">
-      <div class="h-full pack pack-xl bg-grey dark:bg-dark rounded-xl group" data-movement="light">
+      <div class="h-full pack pack-xl bg-grey dark:bg-dark rounded-xl" data-movement="light">
         <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-inherit duration-300 ease-linear group-hover:scale-110', data: null}) %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'pack-image image rounded-inherit', data: null}) %>
       </div>
     </div>
   </div>
@@ -284,9 +284,9 @@
         <div class="h-full swiper" data-slider-swiper="description">
           <div class="h-full swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
-            <a class="h-full swiper-slide pack pack-xl group" data-movement="light" data-fancybox="catalog" draggable="false" href="img/pictures/town.jpg">
+            <a class="h-full swiper-slide pack pack-xl" data-movement="light" data-fancybox="catalog" draggable="false" href="img/pictures/town.jpg">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image duration-300 ease-linear group-hover:scale-110', data: null}) %>
+              <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'pack-image image', data: null}) %>
             </a>
             <% } %>
           </div>
@@ -296,9 +296,9 @@
         <div class="swiper" data-slider-swiper="description-bullets">
           <div class="swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
-            <button class="swiper-slide pack pack-xl bg-grey dark:bg-dark rounded-2xl group">
+            <button class="swiper-slide pack pack-xl bg-grey dark:bg-dark rounded-2xl">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-inherit duration-300 ease-linear group-hover:scale-110', data: null}) %>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'pack-image image rounded-inherit', data: null}) %>
             </button>
             <% } %>
           </div>

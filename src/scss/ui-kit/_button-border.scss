@@ -76,6 +76,8 @@
 
       &::before,
       &::after {
+        transition-property: width, height, border-color, top;
+
         @apply content-auto absolute rounded-inherit duration-500;
       }
 

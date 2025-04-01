@@ -31,7 +31,9 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       justifyContent: 'center',
       position: 'relative',
       userSelect: 'none',
-      transition: '200ms ease',
+      transitionProperty: 'color, background-color, border-color, box-shadow, opacity, transform',
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'ease',
       cursor: 'pointer',
       '&:active': {
         boxShadow: `inset 0 4px 4px ${formatColor({

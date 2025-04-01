@@ -49,10 +49,10 @@
   <div class="grid w-full gap-5 mb-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8 md:md-10">
     <% for (var i = 0; i < 3; i++) { %>
     <div class="duration-500 anim anim-up" data-anim>
-      <article class="shadow-md card hover:shadow-xl dark:bg-black">
-        <div class="pack pack-md bg-grey dark:bg-dark rounded-t-inherit group" data-movement="light">
+      <article class="shadow-md card transition-shadow hover:shadow-xl dark:bg-black">
+        <div class="pack pack-md bg-grey dark:bg-dark rounded-t-inherit" data-movement="light">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image rounded-t-inherit duration-300 ease-linear group-hover:scale-110', data: null}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'pack-image image rounded-t-inherit', data: null}) %>
         </div>
         <div class="px-3 py-5 card-content md:px-5">
           <h4 class="mb-4 font-semibold text-2xl/tight font-alt">
@@ -70,7 +70,7 @@
     <div class="hidden duration-500 sm:block anim anim-up" data-anim data-listing-item>
       <article class="h-full inverted">
         <div class="inverted-before">
-          <div class="shadow-md card hover:shadow-xl dark:bg-black">
+          <div class="shadow-md card transition-shadow hover:shadow-xl dark:bg-black">
             <div class="pack pack-xs bg-grey dark:bg-dark rounded-t-inherit">
               <%= loader %>
               <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-t-inherit', data: null}) %>
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="inverted-after">
-          <div class="shadow-md card hover:shadow-xl dark:bg-black">
+          <div class="shadow-md card transition-shadow hover:shadow-xl dark:bg-black">
             <div class="px-3 py-5 card-content md:px-5">
               <h4 class="mb-4 font-semibold text-2xl/tight font-alt">
                 Article <%= i %>
@@ -169,7 +169,7 @@
           Documents - <%= i + 1 %>
         </h4>
         <button class="rounded-full btn btn-primary btn-fill size-9 shrink-0" data-accordion-toggle data-waved="light">
-          <%= icon({id: 'arrow-right', className: 'icon text-sm duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
+          <%= icon({id: 'arrow-right', className: 'icon text-sm transition-transform group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
         </button>
       </div>
       <div data-accordion-content>
@@ -241,7 +241,7 @@
       <% _.forEach((filtering), (item, key) => { %>
       <button class="grow p-4 text-xl md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="filtering" data-filtering-value="<%= item %>"><%= item %></button>
       <% }) %>
-      <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="filtering"></span>
+      <span class="absolute bottom-0 left-0 hidden h-1 transition-[left,_width] ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="filtering"></span>
     </div>
     <div class="text-black duration-500 bg-white shadow-md rounded-3xl p-7 md:p-10 anim anim-fade" data-anim>
       <div data-filtering-card="filtering" data-filtering-value="text-style">
@@ -387,7 +387,7 @@
           <div class="flex flex-row-reverse items-center gap-3 p-3 rounded-full w-max bg-gray/40">
             <% for (var i = 5; i > 0; i--) { %>
             <input class="hidden peer/rating" id="rating-<%= i %>" type="radio" value="<%= i %>" name="rating">
-            <label class="text-2xl text-opacity-50 duration-200 cursor-pointer text-second hover:text-opacity-100 peer/star peer-hover/star:text-opacity-100 peer-checked/rating:text-opacity-100" for="rating-<%= i %>">
+            <label class="text-2xl text-opacity-50 transition cursor-pointer text-second hover:text-opacity-100 peer/star peer-hover/star:text-opacity-100 peer-checked/rating:text-opacity-100" for="rating-<%= i %>">
               <%= icon({id: 'star', className: 'icon', data: null}) %>
             </label>
             <% } %>
@@ -445,7 +445,7 @@
             <input type="hidden" value="Изображение" name="theme">
             <div class="flex flex-col" data-label>
               <div class="relative mb-5">
-                <div class="duration-200 pack pack-xl bg-second rounded-2xl" data-preview-drag>
+                <div class="transition pack pack-xl bg-second rounded-2xl" data-preview-drag>
                   <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-preview-image'}) %>
                 </div>
                 <button class="absolute rounded-lg btn btn-gray btn-fill size-10 top-3 right-3" data-preview-remove data-waved="dark" type="button" disabled>
@@ -465,7 +465,7 @@
           <div class="flex flex-col w-full gap-5">
             <div class="relative" data-copy="http://localhost:9000/index.html#copy">
               <button class="w-full px-10 btn btn-gray btn-lg btn-fill" data-copy-button data-waved="dark">Copy</button>
-              <span class="absolute left-0 right-0 invisible text-sm duration-300 opacity-0 top-full text-primary" data-copy-result>Скопировано</span>
+              <span class="absolute left-0 right-0 invisible text-sm transition-[opacity,_visibility] opacity-0 top-full text-primary" data-copy-result>Скопировано</span>
             </div>
             <button class="btn btn-gray btn-lg btn-fill" data-waved="dark" data-fancybox-calendar data-type="ajax" data-src="dialogs/dialog-calendar.html">Calendar</button>
             <div class="relative" data-rendering="SL-QGLZC-KHQDJ2H">
@@ -506,12 +506,12 @@
   <div class="flex flex-col items-center gap-5 lg:flex-row lg:justify-between md:gap-10">
     <% _.forEach((parallaxes), (parallax) => { %>
     <div class="w-72" data-parallax-hovered="600">
-      <div class="duration-300 ease-linear pack pack-xxl bg-grey dark:bg-dark" data-parallax-item="10">
+      <div class="transition-transform ease-linear pack pack-xxl bg-grey dark:bg-dark" data-parallax-item="10">
         <%= loader %>
         <%= picture({src: parallax.bg, format: 'png', className: 'image', data: null}) %>
-        <div class="absolute duration-300 ease-linear border-8 border-solid inset-5 border-second" data-parallax-item="100"></div>
-        <%= picture({src: parallax.img, format: 'png', className: 'image ease-linear duration-300', data: 'data-parallax-item="80"'}) %>
-        <div class="absolute bottom-0 left-0 right-0 top-auto p-10 text-white duration-300 ease-linear pointer-events-none" data-parallax-item="160">
+        <div class="absolute transition-transform ease-linear border-8 border-solid inset-5 border-second" data-parallax-item="100"></div>
+        <%= picture({src: parallax.img, format: 'png', className: 'image transition-transform ease-linear', data: 'data-parallax-item="80"'}) %>
+        <div class="absolute bottom-0 left-0 right-0 top-auto p-10 text-white transition-transform ease-linear pointer-events-none" data-parallax-item="160">
           <h2 class="mb-3 font-medium text-xl/tight">
             Hover me!
           </h2>

@@ -1,6 +1,6 @@
 @layer components {
   .card {
-    @apply flex flex-col relative bg-white rounded-2xl overflow-hidden h-full duration-200;
+    @apply flex flex-col relative bg-white rounded-2xl overflow-hidden h-full;
 
     &-content {
       @apply flex flex-col grow;

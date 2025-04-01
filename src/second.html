@@ -33,9 +33,9 @@
   <div class="grid w-full grid-flow-row-dense grid-cols-2 gap-3 lg:grid-cols-3 md:gap-5 lg:gap-8">
     <% _.forEach((['lg:row-5', 'lg:row-4', 'lg:row-5', 'lg:row-5', 'lg:row-4', 'lg:row-4']), (item) => { %>
     <div class="<%= item %> duration-1000 anim anim-circle" data-anim>
-      <a class="h-full shadow-md pack pack-xl bg-grey dark:bg-dark rounded-xl group" data-movement="light" data-fancybox="grid" draggable="false" href="img/pictures/town-grey.jpg">
+      <a class="h-full shadow-md pack pack-xl bg-grey dark:bg-dark rounded-xl" data-movement="light" data-fancybox="grid" draggable="false" href="img/pictures/town-grey.jpg">
         <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-inherit duration-300 ease-linear group-hover:scale-110', data: null}) %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'pack-image image rounded-inherit', data: null}) %>
       </a>
     </div>
     <% }) %>
@@ -75,7 +75,7 @@
       <% _.forEach((filtering), (item, key) => { %>
       <button class="grow p-4 text-xl text-center cursor-pointer md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="sorting" data-filtering-value="<%= item %>"><%= item %></button>
       <% }) %>
-      <span class="absolute bottom-0 left-0 hidden h-1 duration-300 ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="sorting"></span>
+      <span class="absolute bottom-0 left-0 hidden h-1 transition-[left,_width] ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="sorting"></span>
     </div>
     <div class="grid grid-cols-2 gap-5 md:grid-cols-3 md:gap-10">
       <% for (var i = 0; i < 3; i++) { %>
@@ -126,7 +126,7 @@
     Timer
   </h2>
   <div class="relative flex flex-col items-center justify-center mx-auto rounded-full bg-primary size-72" data-timer>
-    <div class="flex flex-col items-center absolute top-0 left-0 right-0 text-second origin-bottom pointer-events-none w-0.5 h-1/2 mx-auto ease-in-out duration-100 after:content-auto after:block after:relative after:-top-2 after:bg-current after:rounded-full after:size-4" data-timer-stopwatch></div>
+    <div class="flex flex-col items-center absolute top-0 left-0 right-0 text-second origin-bottom pointer-events-none w-0.5 h-1/2 mx-auto transition-transform duration-100 ease-linear after:content-auto after:block after:relative after:-top-2 after:bg-current after:rounded-full after:size-4" data-timer-stopwatch></div>
     <time class="mb-5 text-2xl font-semibold text-center text-white" data-timer-units></time>
     <div class="flex items-center justify-center gap-4">
       <button class="rounded-full size-10 btn btn-second btn-fade shrink-0" data-timer-turn data-waved="dark">

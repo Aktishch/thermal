@@ -4,12 +4,16 @@ module.exports = plugin(
   ({ addComponents, theme }) => {
     let anim = {
       '.anim': {
-        transition: '300ms ease',
+        transitionProperty: 'transform, opacity',
+        transitionDuration: '300ms',
+        transitionTimingFunction: 'ease',
       },
     }
     let clipPath = {
       '.clip-path': {
-        transition: '300ms ease',
+        transitionProperty: 'clip-path',
+        transitionDuration: '300ms',
+        transitionTimingFunction: 'ease',
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
       },
     }
