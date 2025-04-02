@@ -13,11 +13,10 @@ export type FilterHandler = {
 
 export const filterCardsShowing = ({ condition, item }: FilterCardsShowing): void => {
   if (condition) {
-    item.classList.add('hidden')
+    item.classList.add('hidden', 'translate-y-10', 'opacity-0')
   } else {
     item.classList.remove('hidden')
-    item.classList.add('filtering-card')
-    setTimeout((): void => item.classList.remove('filtering-card'), 300)
+    setTimeout((): void => item.classList.remove('translate-y-10', 'opacity-0'), 50)
   }
 }
 
@@ -53,7 +52,7 @@ export default (): void => {
       let active = categories[0] as HTMLElement
 
       categories.forEach((category: HTMLElement): void => {
-        if (category.classList.contains('filtering-category')) active = category
+        if (category.classList.contains('filtering-active')) active = category
       })
 
       return active
@@ -63,8 +62,8 @@ export default (): void => {
       const active = currentCategory() as HTMLElement
       const name: string = String(category.dataset.filteringValue)
 
-      active.classList.remove('filtering-category')
-      category.classList.add('filtering-category')
+      active.classList.remove('filtering-active')
+      category.classList.add('filtering-active')
 
       if (line) {
         line.style.width = `${category.offsetWidth}px`
@@ -73,6 +72,12 @@ export default (): void => {
 
       filterHandler({ name, cards, plug })
     }
+
+    cards.forEach((card: HTMLDivElement): void => {
+      if (!card) return
+
+      card.classList.add('transition', 'ease-linear')
+    })
 
     currentCard(currentCategory())
 

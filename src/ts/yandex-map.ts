@@ -9,10 +9,12 @@ declare global {
 window.ymaps = ymaps
 
 export default (): void => {
-  const yandexMap = document.querySelector('*[data-yandex-map]') as HTMLDivElement
+  const yandex = document.querySelector('*[data-yandex]') as HTMLElement
 
-  if (!yandexMap) return
+  if (!yandex) return
 
+  const yandexMap = yandex.querySelector('*[data-yandex-map]') as HTMLDivElement
+  const loader = yandex.querySelector('*[data-loader]') as HTMLDivElement
   const coordinates: string[] = String(yandexMap.dataset.yandexMap).split(',')
   const mark: number[] = []
 
@@ -62,6 +64,7 @@ export default (): void => {
       map.controls.remove('rulerControl')
       map.behaviors.disable(['scrollZoom'])
       map.geoObjects.add(placemark)
+      loader.remove()
 
       map.geoObjects.events.add('click', ((event: any): void => {
         const target = event.get('target')

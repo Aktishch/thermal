@@ -20,6 +20,7 @@ import imagePreview from './ts/image-preview'
 import inputs from './ts/inputs'
 import inverted from './ts/inverted'
 import listing from './ts/listing'
+import loadMedia from './ts/load-media'
 import menu from './ts/menu'
 import movement from './ts/movement'
 import outNumber from './ts/out-number'
@@ -81,6 +82,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   inputs()
   inverted()
   listing()
+  loadMedia()
   menu()
   movement()
   outNumber()

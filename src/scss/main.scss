@@ -51,22 +51,6 @@
   animation: in-shop 2000ms ease both;
 }
 
-@keyframes filtering-card {
-  0% {
-    opacity  : 0;
-    translate: 0 50px;
-  }
-
-  100% {
-    opacity  : 1;
-    translate: 0 0;
-  }
-}
-
-.filtering-card {
-  animation: filtering-card 300ms ease both 1;
-}
-
 @keyframes loading {
   100% {
     rotate: z 360deg;

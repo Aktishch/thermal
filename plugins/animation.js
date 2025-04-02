@@ -4,7 +4,7 @@ module.exports = plugin(
   ({ addComponents, theme }) => {
     let anim = {
       '.anim': {
-        transitionProperty: 'transform, opacity',
+        transitionProperty: 'transform, opacity, visibility',
         transitionDuration: '300ms',
         transitionTimingFunction: 'ease',
       },

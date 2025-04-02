@@ -8,7 +8,7 @@
   var picture = _.template(require('./components/picture.html').default)
   var loader = _.template(require('./components/loader.html').default)({icon})
   var preloader = require('./components/preloader.html').default
-  var header = _.template(require('./includes/header.html').default)({data, icon, picture, loader, preloader})
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
   var footer = _.template(require('./includes/footer.html').default)({picture, loader})
 %>
 

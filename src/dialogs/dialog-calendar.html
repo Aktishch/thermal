@@ -1,6 +1,5 @@
 <%
   var icon = _.template(require('../components/icon.html').default)
-  var loader = _.template(require('../components/loader.html').default)({icon})
   var picture = _.template(require('../components/picture.html').default)
   var loader = _.template(require('../components/loader.html').default)({icon})
 %>
@@ -13,9 +12,8 @@
     </div>
     <div class="w-full md:w-1/2">
       <% _.forEach((['date-5-1', 'date-7-1', 'date-10-2']), (item) => { %>
-      <div class="w-full filtering-card pack pack-md bg-gray rounded-2xl" data-filtering-card="calendar" data-filtering-value="<%= item %>">
-        <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'pack-image image rounded-inherit', data: null}) %>
+      <div class="w-full filtering-card pack pack-md bg-gray rounded-2xl" data-load data-filtering-card="calendar" data-filtering-value="<%= item %>">
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'pack-image image rounded-inherit', data: 'data-media'}) %>
       </div>
       <% }) %>
     </div>

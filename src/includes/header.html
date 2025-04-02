@@ -196,7 +196,7 @@
     <!-- Перетаскиваемое социальное меню -->
 
     <nav class="fixed z-20 flex flex-col items-center justify-center rounded-full pointer-events-none select-none bottom-2 -left-12 size-48 touch-none" data-social="0.7" data-draggable>
-      <div class="absolute inset-0 transition-[opacity,_transform] duration-300 ease-in-out rounded-full pointer-events-auto bg-primary bg-opacity-30 [&:not([data-social-round=show])]:scale-0 [&:not([data-social-round=show])]:-rotate-180 [&:not([data-social-round=show])]:opacity-0" data-social-round>
+      <div class="absolute inset-0 transition duration-300 ease-in-out rounded-full pointer-events-auto bg-primary bg-opacity-30 [&:not([data-social-round=show])]:scale-0 [&:not([data-social-round=show])]:-rotate-180 [&:not([data-social-round=show])]:opacity-0" data-social-round>
         <% _.forEach((social), (item) => { %>
         <a class="absolute rounded-full btn btn-second" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
           <%= icon({id: item, className: 'icon text-3xl', data: null}) %>
@@ -236,7 +236,6 @@
       </div>
       <div class="flex items-center mb-4">
         <div class="w-full mr-5 rounded pack pack-xl bg-grey max-w-24 shrink-0">
-          <%= loader %>
           <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image rounded-inherit', data: 'data-shop-image'}) %>
         </div>
         <div class="flex flex-col">
@@ -275,7 +274,7 @@
             <a class="btn btn-primary btn-lg btn-fill btn-bubbles" data-accordion-toggle draggable="false" href="javascript: ;">
               more <span class="ml-1" data-smart-count>0</span>
             </a>
-            <div class="absolute right-0 bg-white rounded-lg shadow-md top-12 dark:bg-opacity-0 w-52" data-accordion-content>
+            <div class="absolute right-0 bg-white rounded-lg shadow-md top-12 dark:bg-opacity-0" data-accordion-content>
               <ul class="flex flex-col gap-3 p-3" data-smart-list></ul>
             </div>
           </div>

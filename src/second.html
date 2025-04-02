@@ -8,10 +8,10 @@
   var picture = _.template(require('./components/picture.html').default)
   var loader = _.template(require('./components/loader.html').default)({icon})
   var preloader = require('./components/preloader.html').default
-  var header = _.template(require('./includes/header.html').default)({data, icon, picture, loader, preloader})
+  var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
   var heading = _.template(require('./includes/heading.html').default)({data})
   var worldMap = require('./includes/world-map.html').default
-  var player = _.template(require('./includes/player.html').default)({icon, picture, loader})
+  var player = _.template(require('./includes/player.html').default)({icon, picture})
   var footer = _.template(require('./includes/footer.html').default)({picture, loader})
 %>
 
@@ -33,9 +33,9 @@
   <div class="grid w-full grid-flow-row-dense grid-cols-2 gap-3 lg:grid-cols-3 md:gap-5 lg:gap-8">
     <% _.forEach((['lg:row-5', 'lg:row-4', 'lg:row-5', 'lg:row-5', 'lg:row-4', 'lg:row-4']), (item) => { %>
     <div class="<%= item %> duration-1000 anim anim-circle" data-anim>
-      <a class="h-full shadow-md pack pack-xl bg-grey dark:bg-dark rounded-xl" data-movement="light" data-fancybox="grid" draggable="false" href="img/pictures/town-grey.jpg">
+      <a class="h-full shadow-md pack pack-xl bg-grey dark:bg-dark rounded-xl" data-load data-movement="light" data-fancybox="grid" draggable="false" href="img/pictures/town-grey.jpg">
         <%= loader %>
-        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'pack-image image rounded-inherit', data: null}) %>
+        <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'pack-image image rounded-inherit', data: 'data-media'}) %>
       </a>
     </div>
     <% }) %>
@@ -48,12 +48,12 @@
   <h2 class="mb-5 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight md:mb-10 anim anim-up" data-anim data-movement="blend">
     Comparison
   </h2>
-  <div class="relative w-full overflow-hidden duration-500 bg-grey dark:bg-dark rounded-2xl anim anim-fade" data-anim data-compare>
+  <div class="relative w-full overflow-hidden duration-500 bg-grey dark:bg-dark rounded-2xl anim anim-fade" data-anim data-compare data-load>
     <%= loader %>
     <div class="absolute z-10 w-1/2 h-full pack pack-xs" data-compare-before>
       <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-compare-image'}) %>
     </div>
-    <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'block relative rounded-inherit w-full h-full', data: null}) %>
+    <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'block relative rounded-inherit w-full h-full', data: 'data-media'}) %>
     <div class="flex items-center justify-center absolute top-0 bottom-0 left-2/4 z-20 bg-white dark:bg-black -translate-x-1/2 w-1 h-[95%] my-auto" data-compare-change>
       <button class="rounded-full btn btn-primary btn-fill cursor-col-resize size-12 shrink-0">
         <%= icon({id: 'arrows', className: 'icon text-xl', data: null}) %>
@@ -73,7 +73,7 @@
   <div class="w-full max-w-xl mx-auto" data-filtering="sorting">
     <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-gray md:mb-10 md:pb-4 anim anim-up" data-anim>
       <% _.forEach((filtering), (item, key) => { %>
-      <button class="grow p-4 text-xl text-center cursor-pointer md:p-0 [&.filtering-category]:text-white [&.filtering-category]:bg-second [&.filtering-category]:pointer-events-none md:[&.filtering-category]:text-primary md:[&.filtering-category]:bg-opacity-0 <%= key === 0 ? 'filtering-category' : null %>" data-filtering-category="sorting" data-filtering-value="<%= item %>"><%= item %></button>
+      <button class="grow p-4 text-xl text-center cursor-pointer md:p-0 [&.filtering-active]:text-white [&.filtering-active]:bg-second [&.filtering-active]:pointer-events-none md:[&.filtering-active]:text-primary md:[&.filtering-active]:bg-opacity-0 <%= key === 0 ? 'filtering-active' : null %>" data-filtering-category="sorting" data-filtering-value="<%= item %>"><%= item %></button>
       <% }) %>
       <span class="absolute bottom-0 left-0 hidden h-1 transition-[left,_width] ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="sorting"></span>
     </div>
