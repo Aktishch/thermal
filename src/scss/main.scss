@@ -2,61 +2,10 @@
 @use "./ui-kit/basic";
 @use "./ui-kit/custom";
 @use "./ui-kit/waved";
-@use "./ui-kit/movement";
-@use "./ui-kit/inverted";
-@use "./ui-kit/postcards";
-@use "./ui-kit/button-glow";
-@use "./ui-kit/button-bubbles";
-@use "./ui-kit/button-border";
-@use "./ui-kit/range";
 @use "./ui-kit/container";
-@use "./ui-kit/card";
 @use "./ui-kit/load";
 @use "./ui-kit/image";
 @use "./ui-kit/icon";
-@use "./ui-kit/switch";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@keyframes snowflake {
-  0% {
-    opacity  : 1;
-    translate: -50% 0;
-    filter   : hue-rotate(0deg);
-  }
-
-  100% {
-    opacity  : 0;
-    translate: -50% 1000%;
-    filter   : hue-rotate(500deg);
-  }
-}
-
-.snowflake {
-  background-image: url("../img/pictures/snow.png");
-  animation       : snowflake 3000ms linear both 1;
-
-  @apply absolute bg-no-repeat bg-center bg-contain;
-}
-
-@keyframes in-shop {
-  100% {
-    top : -100px;
-    left: 100%;
-  }
-}
-
-.in-shop {
-  animation: in-shop 2000ms ease both;
-}
-
-@keyframes loading {
-  100% {
-    rotate: z 360deg;
-  }
-}
-
-.loading {
-  animation: loading 1000ms steps(8) infinite;
-}

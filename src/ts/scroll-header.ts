@@ -5,31 +5,14 @@ export default (): void => {
 
   if (!header) return
 
-  let prevOffsetTop: number = scrolledPage().top
-
   const scrollHeader = (): void => {
     const currentOffsetTop: number = scrolledPage().top
 
-    if (header.offsetHeight < currentOffsetTop) {
-      prevOffsetTop > currentOffsetTop
-        ? header.classList.remove('sm:-translate-y-full')
-        : header.classList.add('sm:-translate-y-full')
-    }
-
-    prevOffsetTop = currentOffsetTop
+    header.offsetHeight / 2 < currentOffsetTop
+      ? header.classList.remove('lg:top-12', 'bg-opacity-0')
+      : header.classList.add('lg:top-12', 'bg-opacity-0')
   }
 
   scrollHeader()
   document.addEventListener('scroll', scrollHeader as EventListener)
-
-  const smoothScroll = document.querySelector('#smooth-scroll') as HTMLDivElement
-
-  if (smoothScroll) {
-    const wrapperResize = (): void => {
-      smoothScroll.style.paddingTop = `${header.offsetHeight}px`
-    }
-
-    wrapperResize()
-    window.addEventListener('resize', wrapperResize as EventListener)
-  }
 }

@@ -6,20 +6,17 @@
   color.channel($hex, "blue");
 }
 
-$colors: ("primary": #af1a4c,
-  "second": #d7a751,
+$colors: ("primary": #FF4B0C,
+  "second": #FEC11B,
   "black": #000,
-  "white": #fff,
+  "white": #FFF,
   "gray": #b2b2b2,
-  "grey": #f6f7f9,
-  "dark": #303030,
-  "red": #be1b1b,
-  "green": #27ae60);
+  "grey": #F5F5F5,
+  "red": #BE1B1B);
 
 @layer base {
   :root {
-    --font-alt : "SF Pro Display", Arial, sans-serif;
-    --font-base: "Inter", Helvetica, sans-serif;
+    --font-base: "Helvetica", Arial, sans-serif;
 
     @each $key,
     $value in $colors {
@@ -43,7 +40,7 @@ $colors: ("primary": #af1a4c,
   }
 
   body {
-    @apply bg-white font-normal font-base text-black text-base;
+    @apply bg-grey font-normal font-base text-black text-base;
   }
 
   main {

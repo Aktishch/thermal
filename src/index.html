@@ -1,7 +1,25 @@
 <%
   var data = {
-    title: 'My library',
-    status: true
+    title: 'Темовизор',
+    status: true,
+    nav: [
+      {
+        href: '#equipment',
+        text: 'Оборудование'
+      },
+      {
+        href: '#advantages',
+        text: 'Преимущества'
+      },
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        href: '#projects',
+        text: 'Проекты'
+      }
+    ]
   }
 
   var icon = _.template(require('./components/icon.html').default)
@@ -10,7 +28,6 @@
   var preloader = require('./components/preloader.html').default
   var error = _.template(require('./components/error.html').default)
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
-  var player = _.template(require('./includes/player.html').default)({icon, picture})
   var footer = _.template(require('./includes/footer.html').default)({picture, loader})
 %>
 
@@ -18,524 +35,37 @@
 
 <!-- <%= data.title %> -->
 
-<section class="container flex flex-col items-center justify-center bg-white dark:bg-black min-h-[500px] xl:min-h-[600px]" id="header">
-  <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block mb-10 duration-1000 anim anim-up', data: 'data-anim'}) %>
-  <h1 class="mb-5 font-bold text-center duration-500 delay-200 text-5xl/tight font-alt lg:text-6xl/tight md:mb-10 anim anim-up" data-anim data-movement="blend">
-    Main block
-  </h1>
-  <div class="w-full duration-500 delay-300 anim anim-up" data-anim>
-    <a class="w-full mx-auto btn btn-primary btn-lg btn-fill btn-glow max-w-48" data-waved="light" data-scroll draggable="false" href="#content">Show more</a>
+<% var primal = ['экономия <br> топлива', 'автоматизация <br> ручного труда', 'снижение аварий <br> и простоев <br class="sm:hidden"> оборудования'] %>
+
+<section class="container flex items-end relative min-h-[700px] lg:min-h-[970px]">
+  <div class="absolute inset-0 bg-gray">
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/primal-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <img class="image" draggable="false" loading="lazy" src="img/pictures/primal-bg-mobile.jpg" alt="">
+    </picture>
   </div>
-</section>
-
-<!-- Статьи -->
-
-<% var articles = [
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repudiandae maxime quia culpa, est voluptatum hic at ipsa error officiis magni dolores molestiae inventore ipsum perferendis reiciendis sunt nesciunt possimus?',
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repudiandae maxime quia culpa, est voluptatum hic at ipsa error officiis magni dolores molestiae inventore ipsum perferendis reiciendis sunt nesciunt possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repudiandae maxime quia culpa, est voluptatum hic at ipsa error officiis magni dolores molestiae inventore ipsum perferendis reiciendis sunt nesciunt possimus?',
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repudiandae maxime quia culpa, est voluptatum hic at ipsa error officiis magni dolores molestiae inventore ipsum perferendis reiciendis sunt nesciunt possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit.'
-] %>
-
-<section class="container flex flex-col items-center justify-center container-xs container-distance bg-grey dark:bg-dark" data-listing="1" id="content">
-  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
-    Cards
-  </h2>
-  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">
-    Construction and effect
-  </h3>
-  <div class="grid w-full gap-5 mb-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8 md:md-10">
-    <% for (var i = 0; i < 3; i++) { %>
-    <div class="duration-500 anim anim-up" data-anim>
-      <article class="shadow-md card transition-shadow hover:shadow-xl dark:bg-black">
-        <div class="pack pack-md bg-grey dark:bg-dark rounded-t-inherit" data-load data-movement="light">
-          <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'pack-image image rounded-t-inherit', data: 'data-media'}) %>
-        </div>
-        <div class="px-3 py-5 card-content md:px-5">
-          <h4 class="mb-4 font-semibold text-2xl/tight font-alt">
-            Article <%= i %>
-          </h4>
-          <p class="mb-5 text-justify text-sm/normal md:text-base/normal"><%= articles[i] %></p>
-          <button class="mt-auto btn btn-primary btn-lg btn-fill" data-waved="light">Button</button>
-        </div>
-      </article>
+  <div class="relative w-full flex flex-col">
+    <h1 class="font-bold text-3xl/tight sm:text-4xl/tight lg:text-5xl/tight xl:text-6xl/tight uppercase mb-10 lg:mb-20 order-1 duration-700 ease-in-out anim anim-up" data-anim>
+      <span class="text-primary">Система</span> автоматизации <br class="hidden sm:block">
+      и <br class="sm:hidden"> диспетчиризации <br class="hidden sm:block">
+      котельных
+    </h1>
+    <div class="flex lg:mb-32 order-3 lg:order-2 duration-700 ease-in-out anim anim-up" data-anim>
+      <button class="btn btn-primary btn-lg sm:btn-xl btn-fill btn-gradient text-lg sm:text-2.5xl px-4 sm:px-10 w-full sm:w-auto" data-waved="dark">Получить расчет стоимости</button>
     </div>
-    <% } %>
-  </div>
-  <div class="grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
-    <% for (var i = 3; i < articles.length; i++) { %>
-    <div class="hidden duration-500 sm:block anim anim-up" data-anim data-listing-item>
-      <article class="h-full inverted">
-        <div class="inverted-before">
-          <div class="shadow-md card transition-shadow hover:shadow-xl dark:bg-black">
-            <div class="pack pack-xs bg-grey dark:bg-dark rounded-t-inherit" data-load>
-              <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image rounded-t-inherit', data: 'data-media'}) %>
-            </div>
-            <div class="px-3 py-5 card-content md:px-5">
-              <h4 class="font-semibold text-2xl/tight font-alt">
-                Article <%= i %>
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="inverted-after">
-          <div class="shadow-md card transition-shadow hover:shadow-xl dark:bg-black">
-            <div class="px-3 py-5 card-content md:px-5">
-              <h4 class="mb-4 font-semibold text-2xl/tight font-alt">
-                Article <%= i %>
-              </h4>
-              <p class="mb-5 text-justify text-sm/normal md:text-base/normal"><%= articles[i] %></p>
-              <button class="mt-auto btn btn-primary btn-lg btn-fill" data-waved="light">Button</button>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-    <% } %>
-  </div>
-  <div class="w-full duration-500 anim anim-up" data-anim>
-    <button class="w-full mx-auto mt-5 btn btn-second btn-lg btn-fade sm:hidden max-w-48" data-listing-show data-waved="dark">Show more</button>
-  </div>
-</section>
-
-<!-- Кнопки -->
-
-<% var buttons = ['', 'btn-contur', 'btn-fade', 'btn-contur btn-fade', 'btn-fill', 'btn-text', 'btn-contur btn-swipe', 'btn-xxl', 'btn-xl', 'btn-lg', 'btn-md', 'btn-sm', 'btn-xs', 'btn-fill btn-glow', 'data-waved="light"', 'data-waved="dark"', 'btn-bubbles', 'btn-rect', 'btn-frame', 'btn-lines'] %>
-
-<section class="container flex flex-col items-center justify-center bg-white container-xs dark:bg-black">
-  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
-    Buttons
-  </h2>
-  <h3 class="mb-5 font-semibold duration-500 text-bas/tighte md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">
-    Buttons standard
-  </h3>
-  <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 0; i < 7; i++) { %>
-    <button class="btn btn-primary btn-lg <%= buttons[i] %>">btn <%= buttons[i] %></button>
-    <% } %>
-  </div>
-  <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">
-    Buttons size
-  </h3>
-  <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 7; i < 13; i++) { %>
-    <button class="btn btn-primary <%= buttons[i] %> btn-fill btn-light">btn-light <%= buttons[i] %></button>
-    <% } %>
-  </div>
-  <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">
-    Buttons effects
-  </h3>
-  <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 13; i < 14; i++) { %>
-    <button class="btn btn-primary btn-lg <%= buttons[i] %>"><%= buttons[i] %></button>
-    <% } %>
-  </div>
-  <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">
-    Buttons waved
-  </h3>
-  <div class="grid w-full gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 md:mb-10">
-    <% for (var i = 14; i < 16; i++) { %>
-    <button class="btn btn-primary btn-lg btn-fill" <%= buttons[i] %> data-waved-reverse><%= buttons[i] %></button>
-    <% } %>
-  </div>
-  <h3 class="mb-5 font-semibold text-lg/tight md:mb-10" data-movement="blend">
-    Buttons click
-  </h3>
-  <div class="grid w-full gap-5 md:grid-cols-2 lg:grid-cols-3">
-    <% for (var i = 16; i < buttons.length; i++) { %>
-    <button class="btn btn-primary btn-lg <%= buttons[i] %>"><%= buttons[i] %></button>
-    <% } %>
-  </div>
-</section>
-
-<!-- Документы -->
-
-<section class="container flex flex-col items-center justify-center container-distance bg-grey dark:bg-dark">
-  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
-    Accordion
-  </h2>
-  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">
-    Drop-down list
-  </h3>
-  <div class="flex flex-col w-full gap-5">
-    <% for (var i = 0; i < 3; i++) { %>
-    <div class="relative px-4 py-4 overflow-hidden duration-500 shadow-md bg-second/10 rounded-2xl md:py-6 anim anim-up group/accordion" data-anim data-accordion="<%= i === 0 ? 'active' : null %>" data-close-click>
-      <div class="flex items-center justify-between gap-4">
-        <h4 class="font-semibold font-alt text-xl/tight">
-          Documents - <%= i + 1 %>
-        </h4>
-        <button class="rounded-full btn btn-primary btn-fill size-9 shrink-0" data-accordion-toggle data-waved="light">
-          <%= icon({id: 'arrow-right', className: 'icon text-sm transition-transform group-[[data-accordion=active]]/accordion:rotate-90', data: null}) %>
-        </button>
+    <div class="lg:flex lg:items-end lg:justify-between lg:gap-5 order-2 lg:order-3 mb-16 lg:mb-0">
+      <div class="hidden lg:block w-36 duration-700 ease-in-out anim anim-up" data-anim>
+        <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
       </div>
-      <div data-accordion-content>
-        <div class="flex flex-col gap-3 pt-4">
-          <% for (var j = 0; j < 4; j++) { %>
-          <a class="relative flex items-center gap-4 p-3 bg-white rounded-lg hover:underline underline-offset-4 dark:bg-black" data-waved="dark" draggable="false" href="javascript: ;">
-            <div class="flex items-center justify-center rounded-lg size-12 bg-primary/10 shrink-0">
-              <%= icon({id: 'file', className: 'icon text-primary text-2xl', data: null}) %>
-            </div>
-            <p class="text-sm/normal md:text-base/normal">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            </p>
-          </a>
-          <% } %>
-        </div>
-      </div>
-    </div>
-    <% } %>
-  </div>
-</section>
-
-<!-- Фильтр -->
-
-<% var filtering = ['text-style', 'form-validate', 'switches', 'file'] %>
-
-<% var numbers = [
-  {
-    text: 'text-4xl',
-    value: '36'
-  },
-  {
-    text: 'text-3xl',
-    value: '30'
-  },
-  {
-    text: 'text-2xl',
-    value: '24'
-  },
-  {
-    text: 'text-xl',
-    value: '20'
-  },
-  {
-    text: 'text-lg',
-    value: '18'
-  },
-  {
-    text: 'text-base',
-    value: '16'
-  },
-  {
-    text: 'text-xs',
-    value: '12'
-  }
-] %>
-
-<section class="container flex flex-col items-center min-h-screen overflow-hidden text-white bg-white bg-center bg-no-repeat bg-cover dark:bg-black" data-smooth-wrapper data-parallax data-section data-bg="img/pictures/town-grey.jpg" data-bg-webp="img/pictures/town-grey.webp">
-  <h2 class="mb-3 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
-    Filter
-  </h2>
-  <h3 class="mb-5 font-semibold duration-500 text-base/tight md:text-lg/tight md:mb-10 anim anim-up" data-anim data-movement="blend">
-    paralax, form and other...
-  </h3>
-  <div class="relative w-full max-w-xl mx-auto" data-filtering="filtering">
-    <%= picture({src: 'img/pictures/circle-grey', format: 'png', className: 'absolute z-10 top-20 -left-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer data-parallax-speed="4" data-parallax-depth="2"'}) %>
-    <%= picture({src: 'img/pictures/circle-white', format: 'png', className: 'absolute z-10 -bottom-8 -right-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="reverse" data-parallax-speed="4" data-parallax-depth="2"'}) %>
-    <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-10 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"'}) %>
-    <div class="relative flex flex-col gap-0 mb-5 overflow-hidden duration-500 md:items-center md:justify-between md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 anim anim-up" data-anim>
-      <% _.forEach((filtering), (item, key) => { %>
-      <button class="grow p-4 text-xl md:p-0 [&.filtering-active]:text-white [&.filtering-active]:bg-second [&.filtering-active]:pointer-events-none md:[&.filtering-active]:text-primary md:[&.filtering-active]:bg-opacity-0 <%= key === 0 ? 'filtering-active' : null %>" data-filtering-category="filtering" data-filtering-value="<%= item %>"><%= item %></button>
-      <% }) %>
-      <span class="absolute bottom-0 left-0 hidden h-1 transition-[left,_width] ease-linear rounded-t-lg md:block bg-primary" data-filtering-line="filtering"></span>
-    </div>
-    <div class="text-black duration-500 bg-white shadow-md rounded-3xl p-7 md:p-10 anim anim-fade" data-anim>
-      <div data-filtering-card="filtering" data-filtering-value="text-style">
-        <ul class="flex flex-col gap-4 list-disc list-inside text-primary">
-          <% _.forEach((numbers), (item) => { %>
-          <li>
-            <span class="text-second <%= item.text %>">
-              --text-<span data-number="<%= item.value %>" data-number-step="1" data-number-time="2" data-number-fixed="0">0</span>
-            </span>
-          </li>
-          <% }) %>
-        </ul>
-        <p class="mt-5 text-primary">
-          <q class="px-3 py-1 font-semibold text-justify shadow-md text-lg/loose bg-grey box-decoration-clone rounded-2xl" data-record="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ex omnis, ut dolorem dolore enim expedita?" data-record-speed="50"></q>
-        </p>
-      </div>
-      <div data-filtering-card="filtering" data-filtering-value="form-validate">
-        <form class="flex flex-col w-full max-w-sm gap-5 mx-auto" data-form="submit" data-datepicker id="data-save">
-          <input type="hidden" value="Главная" name="theme">
-          <label data-label>
-            <h5 class="mb-3 font-medium text-xl/none">Name</h5>
-            <div class="relative">
-              <input class="input input-gray input-lg" data-input="name" type="text" placeholder="Name" name="name">
-              <%= error({text: 'Введите ваше имя'}) %>
-            </div>
-          </label>
-          <label data-label>
-            <h5 class="mb-3 font-medium text-xl/none">Telephone</h5>
-            <div class="relative">
-              <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel">
-              <%= error({text: 'Введите ваш номер'}) %>
-            </div>
-          </label>
-          <label data-label>
-            <h5 class="mb-3 font-medium text-xl/none">Email</h5>
-            <div class="relative">
-              <input class="input input-gray input-lg" data-input="email" type="text" placeholder="_@_._" name="email">
-              <%= error({text: 'Введите корректный адрес'}) %>
-            </div>
-          </label>
-          <div>
-            <h5 class="mb-3 font-medium text-xl/none">Date</h5>
-            <div class="flex items-center justify-between">
-              <div class="relative grow" data-label>
-                <input class="rounded-r-none input input-gray input-lg" data-input="min" data-position="top left" type="text" name="check-in">
-                <%= error({text: 'Укажите дату'}) %>
-              </div>
-              <div class="relative grow" data-label>
-                <input class="rounded-l-none input input-gray input-lg" data-input="max" type="text" name="check-out">
-                <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
-                  <%= icon({id: 'calendar', className: 'icon text-xl', data: null}) %>
-                </div>
-                <%= error({text: 'Укажите дату'}) %>
-              </div>
-            </div>
-          </div>
-          <label data-label>
-            <h5 class="mb-3 font-medium text-xl/none">Number</h5>
-            <div class="relative">
-              <input class="input input-gray input-lg" data-input="float" type="text" placeholder="12345" name="number">
-              <%= error({text: 'Введите число'}) %>
-            </div>
-          </label>
-          <label data-label>
-            <h5 class="mb-3 font-medium text-xl/none">Select</h5>
-            <div class="relative">
-              <select class="input input-gray input-lg" data-input="select" name="select">
-                <option value="empty" disabled hidden selected>Select</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <div class="absolute top-0 bottom-0 right-0 flex items-center justify-center h-full pointer-events-none w-11">
-                <%= icon({id: 'arrow-bottom', className: 'icon text-xs', data: null}) %>
-              </div>
-              <%= error({text: 'Выберите вариант'}) %>
-            </div>
-          </label>
-          <label data-label>
-            <h5 class="mb-3 font-medium text-xl/none">Reviews</h5>
-            <div class="relative">
-              <textarea class="h-48 input input-gray input-lg" data-input="text" type="text" placeholder="Reviews" name="text"></textarea>
-              <%= error({text: 'Заполните это поле'}) %>
-            </div>
-          </label>
-          <div class="flex flex-col gap-5" data-filelist>
-            <div class="relative" data-filelist-label data-label>
-              <label class="btn btn-second btn-lg btn-fade" data-waved="dark">
-                <input class="hidden" data-filelist-input data-input="file" type="file" multiple name="files[]">
-                <span data-filelist-text>Загрузить файлы</span>
-              </label>
-              <%= error({text: 'Загрузите изображение'}) %>
-            </div>
-            <ul class="flex flex-col gap-1 text-xs empty:hidden" data-filelist-items></ul>
-          </div>
-          <div class="relative flex" data-label>
-            <label class="flex flex-row items-center cursor-pointer">
-              <input class="mr-2 switch switch-checkbox" data-input="switch" type="checkbox" checked>
-              <span class="text-xl">Policy</span>
-            </label>
-            <%= error({text: 'Примите соглашение'}) %>
-          </div>
-          <button class="btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Submit</button>
-        </form>
-        <div class="flex items-center justify-center mt-5">
-          <button class="text-lg cursor-pointer hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</button>
-        </div>
-      </div>
-      <div data-filtering-card="filtering" data-filtering-value="switches">
-        <div class="flex flex-col gap-6">
-          <h4 class="text-2xl font-semibold">
-            Checkbox:
-          </h4>
-          <div class="flex items-center gap-5">
-            <input class="switch switch-checkbox" type="checkbox">
-            <input class="switch switch-checkbox text-second" type="checkbox">
-            <input class="switch switch-checkbox" type="checkbox" disabled>
-          </div>
-          <h4 class="text-2xl font-semibold">
-            Radio:
-          </h4>
-          <div class="flex items-center gap-5">
-            <input class="switch switch-radio" type="radio" name="radio">
-            <input class="switch switch-radio text-second" type="radio" name="radio">
-            <input class="switch switch-radio" type="radio" name="radio" disabled>
-          </div>
-          <h4 class="text-2xl font-semibold">
-            Toggle:
-          </h4>
-          <input class="switch switch-toggle" type="checkbox">
-          <h4 class="text-2xl font-semibold">
-            Quantity:
-          </h4>
-          <div class="flex items-center justify-between p-1 border border-solid rounded-full border-gray w-max" data-quantity>
-            <button class="rounded-full size-8 shrink-0 btn btn-gray btn-fill active:translate-y-0" data-quantity-decrease data-waved="light">-</button>
-            <input class="w-10 h-auto text-center bg-transparent shrink-0" data-input="number" type="text" value="1" maxlength="3" name="quantity">
-            <button class="rounded-full size-8 shrink-0 btn btn-gray btn-fill active:translate-y-0" data-quantity-increase data-waved="light">+</button>
-          </div>
-          <h4 class="text-2xl font-semibold">
-            Rating:
-          </h4>
-          <div class="flex flex-row-reverse items-center gap-3 p-3 rounded-full w-max bg-gray/40">
-            <% for (var i = 5; i > 0; i--) { %>
-            <input class="hidden peer/rating" id="rating-<%= i %>" type="radio" value="<%= i %>" name="rating">
-            <label class="text-2xl text-opacity-50 transition cursor-pointer text-second hover:text-opacity-100 peer/star peer-hover/star:text-opacity-100 peer-checked/rating:text-opacity-100" for="rating-<%= i %>">
-              <%= icon({id: 'star', className: 'icon', data: null}) %>
-            </label>
-            <% } %>
-          </div>
-          <h4 class="text-2xl font-semibold">
-            Range:
-          </h4>
-          <div class="w-full max-w-xs range" data-range="28">
-            <div class="flex items-center justify-between mb-4">
-              <span>Value</span>
-              <output class="opacity-60" data-range-output></output>
-            </div>
-            <div class="relative text-white pointer-events-none">
-              <div class="relative h-2 rounded" data-range-wrapper>
-                <input class="range-input bg-gray" data-range-input type="range" step="1" max="10" value="5">
-                <div class="range-progress bg-green" data-range-progress></div>
-                <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
-              </div>
-            </div>
-          </div>
-          <div class="w-full max-w-xs range" data-range>
-            <div class="flex items-center justify-between mb-4">
-              <input class="w-16 text-center input input-gray input-lg" data-range-output data-input="number" type="text" maxlength="3">
-              <input class="w-16 text-center input input-gray input-lg" data-range-output data-input="number" type="text" maxlength="3">
-            </div>
-            <div class="relative text-white pointer-events-none">
-              <div class="relative h-2 rounded last:-mt-2" data-range-wrapper>
-                <input class="range-input bg-green" data-range-input type="range" step="1" max="100" value="30">
-                <div class="range-progress bg-gray" data-range-progress></div>
-                <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
-              </div>
-              <div class="relative h-2 rounded last:-mt-2" data-range-wrapper>
-                <input class="range-input bg-green" data-range-input type="range" step="1" max="100" value="70">
-                <div class="range-progress bg-gray" data-range-progress></div>
-                <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div data-filtering-card="filtering" data-filtering-value="file">
-        <div class="w-full max-w-xs mx-auto" id="copy">
-          <div class="flex items-center w-full gap-3 mb-5">
-            <div class="w-10 rounded-full cursor-pointer shrink-0 pack pack-xl bg-primary/40" data-fancybox-avatar data-type="ajax" data-src="dialogs/dialog-avatar.html">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <%= icon({id: 'user', className: 'icon text-white text-sm', data: null}) %>
-              </div>
-              <%= picture({src: '', format: '', className: 'image rounded-inherit', data: 'data-avatar'}) %>
-            </div>
-            <h4 class="text-2xl font-bold">
-              Name Surname
-            </h4>
-          </div>
-          <form class="mb-5" data-form="submit" data-preview>
-            <input type="hidden" value="Изображение" name="theme">
-            <div class="flex flex-col" data-label>
-              <div class="relative mb-5">
-                <div class="transition pack pack-xl bg-second rounded-2xl" data-preview-drag>
-                  <%= picture({src: '', format: '', className: 'image object-scale-down', data: 'data-preview-image'}) %>
-                </div>
-                <button class="absolute rounded-lg btn btn-gray btn-fill size-10 top-3 right-3" data-preview-remove data-waved="dark" type="button" disabled>
-                  <%= icon({id: 'trash', className: 'icon text-red text-2xl', data: null}) %>
-                </button>
-                <%= error({text: 'Загрузите изображение'}) %>
-              </div>
-              <div class="flex flex-wrap items-center justify-between gap-4">
-                <label class="grow btn btn-primary btn-lg btn-fill" data-preview-label data-waved="light">
-                  <input class="hidden" data-preview-input data-input="file" type="file" name="files[]">
-                  Загрузить
-                </label>
-                <button class="grow btn btn-primary btn-lg btn-contur" data-waved="dark" type="submit">Отправить</button>
-              </div>
-            </div>
-          </form>
-          <div class="flex flex-col w-full gap-5">
-            <div class="relative" data-copy="http://localhost:9000/index.html#copy">
-              <button class="w-full px-10 btn btn-gray btn-lg btn-fill" data-copy-button data-waved="dark">Copy</button>
-              <span class="absolute left-0 right-0 invisible text-sm transition-[opacity,_visibility] opacity-0 top-full text-primary" data-copy-result>Скопировано</span>
-            </div>
-            <button class="btn btn-gray btn-lg btn-fill" data-waved="dark" data-fancybox-calendar data-type="ajax" data-src="dialogs/dialog-calendar.html">Calendar</button>
-            <div class="relative" data-rendering="SL-QGLZC-KHQDJ2H">
-              <canvas class="hidden" data-rendering-canvas="img/pictures/certificate.jpg" width="540" height="750"></canvas>
-              <a class="btn btn-gray btn-lg btn-fill" data-rendering-download data-waved="dark" draggable="false" href="" download="certificate">Download canvas</a>
-            </div>
-            <div data-cookie="/" data-expires="7" id="cookie">
-              <button class="w-full btn btn-gray btn-lg btn-fill" data-cookie-button data-waved="dark">Cookie</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ul class="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-12">
+        <% _.forEach((primal), (item) => { %>
+        <li class="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-12 text-lg lg:text-2xl after:content-auto after:w-20 lg:after:w-1 after:h-1 lg:after:h-20 after:block after:bg-primary last:after:hidden xl:last:after:invisible duration-700 ease-in-out anim anim-up" data-anim><%= item %></li>
+        <% }) %>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- Параллакс -->
-
-<% var parallaxes = [
-  {
-    bg: 'https://i.ibb.co/JpJVJxq/Background',
-    img: 'https://i.ibb.co/Dw3q3tZ/cutout'
-  },
-  {
-    bg: 'https://i.ibb.co/ZdGBm4K/m-background',
-    img: 'https://i.ibb.co/RC70XmC/m-cutout'
-  },
-  {
-    bg: 'https://i.ibb.co/MDBcyMW/b-background',
-    img: 'https://i.ibb.co/bQNgD6y/b-cutout'
-  }
-] %>
-
-<section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" data-parallax>
-  <h2 class="mb-8 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
-    Parallax hovered
-  </h2>
-  <div class="flex flex-col items-center gap-5 lg:flex-row lg:justify-between md:gap-10">
-    <% _.forEach((parallaxes), (parallax) => { %>
-    <div class="w-72" data-parallax-hovered="600">
-      <div class="transition-transform ease-linear pack pack-xxl bg-grey dark:bg-dark" data-parallax-item="10" data-load>
-        <%= loader %>
-        <%= picture({src: parallax.bg, format: 'png', className: 'image', data: 'data-media'}) %>
-        <div class="absolute transition-transform ease-linear border-8 border-solid inset-5 border-second" data-parallax-item="100"></div>
-        <%= picture({src: parallax.img, format: 'png', className: 'image transition-transform ease-linear', data: 'data-parallax-item="80"'}) %>
-        <div class="absolute bottom-0 left-0 right-0 top-auto p-10 text-white transition-transform ease-linear pointer-events-none" data-parallax-item="160">
-          <h2 class="mb-3 font-medium text-xl/tight">
-            Hover me!
-          </h2>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit
-          </p>
-        </div>
-      </div>
-    </div>
-    <% }) %>
-  </div>
-</section>
-
-<!-- Игра -->
-
-<section class="container flex flex-col items-center justify-center bg-grey dark:bg-dark">
-  <h2 class="mb-8 font-bold text-center duration-500 text-4xl/tight font-alt lg:text-5xl/tight anim anim-up" data-anim data-movement="blend">
-    Game
-  </h2>
-  <div class="grid w-full max-w-md grid-cols-3 mx-auto border border-black border-solid" data-game></div>
-</section>
-
-<!-- Плеер -->
-
-<%= player %>
 
 <%= footer %>

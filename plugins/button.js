@@ -24,7 +24,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '--tw-btn-fill': 'color-mix(in srgb, var(--tw-btn-color) 80%, var(--tw-btn-hovered))',
       color: 'var(--tw-btn-color)',
       fontSize: theme('fontSize.base'),
-      fontWeight: theme('fontWeight.semibold'),
+      fontWeight: theme('fontWeight.bold'),
       textAlign: 'center',
       display: 'flex',
       alignItems: 'center',
@@ -103,6 +103,17 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '&-light': {
         '--tw-btn-hovered': theme('colors.white.DEFAULT'),
       },
+      '&-gradient': {
+        backgroundImage: `linear-gradient(303.77deg, ${theme('colors.transparent')} 29.89%, ${theme('colors.second.DEFAULT')} 162.03%)`,
+        border: '1px solid var(--tw-btn-color)',
+
+        '@media (hover)': {
+          '&:hover': {
+            color: 'var(--tw-btn-color)',
+            background: 'var(--tw-btn-accent)',
+          },
+        },
+      },
       '&-swipe': {
         zIndex: 1,
         overflow: 'hidden',
@@ -164,7 +175,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       btn: (constant) => {
         return {
           '--tw-btn-size': `${constant / 16}rem`,
-          borderRadius: theme('borderRadius.md'),
+          borderRadius: theme('borderRadius.2xl'),
           height: 'var(--tw-btn-size)',
           paddingInline: `calc(var(--tw-btn-size) / 2)`,
         }

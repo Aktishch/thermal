@@ -1,7 +1,25 @@
 <%
   var data = {
-    title: 'Icons',
-    status: true
+    title: 'Иконки',
+    status: false,
+    nav: [
+      {
+        href: '#equipment',
+        text: 'Оборудование'
+      },
+      {
+        href: '#advantages',
+        text: 'Преимущества'
+      },
+      {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
+        href: '#projects',
+        text: 'Проекты'
+      }
+    ]
   }
 
   var icon = _.template(require('./components/icon.html').default)
@@ -16,10 +34,10 @@
 
 <!-- <%= data.title %> -->
 
-<% var icons = ['loader', 'burger', 'close', 'success', 'basket', 'search', 'like', 'calendar', 'star', 'arrow-left', 'arrow-right', 'arrows', 'arrow-bottom', 'eye-visible', 'eye-hidden', 'file', 'user', 'ok', 'yt', 'inst', 'fb', 'tw', 'vk', 'play', 'pause', 'arrow-prev', 'arrow-next', 'volume-on', 'volume-off', 'loading', 'trash'] %>
+<% var icons = ['loader', 'telephone', 'email', 'point', 'burger', 'close'] %>
 
-<section class="container grow">
-  <ul class="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+<section class="container flex items-center grow">
+  <ul class="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
     <% _.forEach((icons), (item) => { %>
     <li class="flex items-center">
       <%= icon({id: item, className: 'icon text-base mr-2', data: null}) %>
