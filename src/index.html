@@ -40,11 +40,11 @@
 <% var primal = ['экономия <br> топлива', 'автоматизация <br> ручного труда', 'снижение аварий <br> и простоев <br class="sm:hidden"> оборудования'] %>
 
 <section class="container flex items-end relative min-h-[700px] lg:min-h-[970px]">
-  <div class="absolute inset-0 bg-gray">
+  <div class="absolute inset-0 bg-gray" data-load>
     <%= loader %>
     <picture>
       <source srcset="img/pictures/primal-bg-desktop.jpg" media="(min-width: 767.98px)">
-      <img class="image" draggable="false" loading="lazy" src="img/pictures/primal-bg-mobile.jpg" alt="">
+      <img class="image" data-media draggable="false" loading="lazy" src="img/pictures/primal-bg-mobile.jpg" alt="">
     </picture>
   </div>
   <div class="relative w-full flex flex-col">
@@ -243,5 +243,146 @@
   </div>
 </section>
 <% } %>
+
+<!-- Кастомизированное оборудование -->
+
+<% var custom = [
+  {
+    size: 'xl:max-w-[550px]',
+    img: 'img/pictures/custom-img-1',
+    maxWidth: 'xl:max-w-[400px]',
+    title: 'Шкафы управления под спецзадачи',
+    text: 'Изготавливаем оборудование для управления и диспетчеризации особых процессов, свойственных только вашей котельной – например, система химической подготовки воды или деаэратор.'
+  },
+  {
+    size: 'xl:max-w-[620px]',
+    img: 'img/pictures/custom-img-2',
+    maxWidth: 'xl:max-w-[460px]',
+    title: 'Интеграция действующего оборудования',
+    text: 'Соединяем уже действующие на предприятии системы АСУ ТП в единую экосистему «Термовизор» для бесшовного управления котельной. Как отечественные решения, так  и европейскую автоматику.'
+  },
+] %>
+
+<section class="container relative overflow-hidden bg-primary text-white">
+  <div class="absolute inset-0">
+    <%= blur %>
+    <%= picture({src: 'img/pictures/thermal-1', format: 'svg', className: 'block w-[200px] sm:w-[400px] opacity-15 absolute top-8 sm:top-0 -right-5 sm:right-36', data: null}) %>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Кастомизированное <br> оборудование', className: 'mb-10 sm:mb-16 lg:mb-20 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="flex flex-col xl:flex-row xl:justify-between gap-8 relative">
+      <div class="hidden xl:block absolute -top-2 left-[103px] w-full max-w-[840px] duration-700 ease-in-out anim anim-up" data-anim>
+        <%= picture({src: 'img/pictures/custom', format: 'svg', className: 'block w-full', data: null}) %>
+      </div>
+      <% _.forEach((custom), (item) => { %>
+      <div class="relative w-full h-[450px] sm:h-[500px] duration-700 ease-in-out anim anim-up <%= item.size %>" data-anim>
+        <div class="absolute top-0 -left-16 sm:-left-20 w-full max-w-64 sm:max-w-96">
+          <%= picture({src: item.img, format: 'png', className: 'block w-full', data: null}) %>
+        </div>
+        <div class="absolute right-0 bottom-0 w-full border border-solid border-white bg-primary/70 p-5 sm:p-8 rounded-2xl max-w-64 sm:max-w-[550px] <%= item.maxWidth %>">
+          <h3 class="font-bold text-xl sm:text-2xl lg:text-2.5xl"><%= item.title %></h3>
+          <div class="my-5 sm:my-8 bg-white h-1"></div>
+          <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Программное обеспечение «Термовизор» -->
+
+<section class="container">
+  <div class="flex flex-col lg:flex-row lg:justify-between gap-10 mb-10 sm:mb-16 lg:mb-20">
+    <%= title({text: 'Программное обеспечение <br> <span class="text-primary">«Термовизор»</span>', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="w-full lg:max-w-[460px]">
+      <div class="border border-black border-solid rounded-2xl p-5 sm:p-7 lg:p-10 duration-700 ease-in-out anim anim-up" data-anim>
+        <p class="text-lg sm:text-xl lg:text-2xl">
+          Доступ и управление всеми узлами котельной через ПК или смартфон.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-10">
+    <% for (var i = 0; i < 4; i++) { %>
+    <div class="duration-700 ease-in-out anim anim-up" data-anim>
+      <div class="pack pack-[55] bg-gray mb-8 sm:mb-10" data-load>
+        <%= loader %>
+        <%= picture({src: 'img/pictures/program', format: 'jpg', className: 'image', data: 'data-media'}) %>
+      </div>
+      <div class="w-24 h-1 bg-primary mb-5"></div>
+      <h3 class="font-bold text-lg sm:text-xl lg:text-2xl">
+        Показатели всех котельных в онлайн-режиме
+      </h3>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Получите консультацию инженера -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 bg-gray" data-load>
+    <%= loader %>
+    <%= picture({src: 'img/pictures/feedback-bg', format: 'jpg', className: 'image', data: 'data-media'}) %>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Получите <span class="text-primary">консультацию</span> <br> инженера', className: 'mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="flex justify-between gap-10">
+      <div class="hidden xl:block relative w-full max-w-[620px] duration-700 ease-in-out anim anim-right" data-anim>
+        <div class="pack pack-md h-full">
+          <%= picture({src: 'img/pictures/director-img', format: 'png', className: 'image object-bottom object-scale-down', data: null}) %>
+        </div>
+        <div class="absolute bottom-0 right-0 rounded-2xl py-5 px-8 bg-white/70 text-right">
+          <h4 class="font-bold text-2xl pb-5 border-b border-solid border-black mb-2">
+            Иванов Иван Иванович
+          </h4>
+          <p class="text-xl">
+            Главный инженер
+          </p>
+        </div>
+      </div>
+      <div class="w-full lg:max-w-[680px]">
+        <div class="flex gap-5 sm:gap-8 lg:gap-12 duration-700 ease-in-out anim anim-left mb-10" data-anim>
+          <span class="w-1 shrink-0 bg-primary"></span>
+          <p class="py-2 sm:py-5 text-lg sm:text-xl lg:text-2xl">
+            Ответим на ваши вопросы и рассчитаем эффективность для вашего предприятия
+          </p>
+        </div>
+        <div class="duration-700 ease-in-out anim anim-left" data-anim>
+          <form class="border border-solid border-black rounded-2xl p-8 sm:p-10 lg:p-12" data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 mb-8 sm:mb-10">
+              <label data-label>
+                <div class="relative">
+                  <input class="input input-sm sm:text-xl px-0 placeholder:text-black" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="input input-sm sm:text-xl px-0 placeholder:text-black" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="input input-sm sm:text-xl px-0 placeholder:text-black" data-input="email" type="text" placeholder="Ваш e-mail" name="email">
+                  <%= error({text: 'Введите корректный адрес'}) %>
+                </div>
+              </label>
+            </div>
+            <button class="btn btn-primary btn-lg sm:btn-xl btn-fill btn-gradient text-lg sm:text-2.5xl w-full" data-waved="dark" type="submit">Отправить</button>
+            <div class="flex mt-8 sm:mt-10">
+              <a class="sm:text-lg lg:text-xl underline-offset-4 hover:underline" draggable="false" href="" target="_blank">
+                Отправляя форму, Вы даете согласие на обработку Ваших персональных данных
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <%= footer %>

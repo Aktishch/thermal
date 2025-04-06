@@ -1,5 +1,3 @@
-import { fileHandler } from './file-handler'
-
 export type FormLabel = HTMLLabelElement | HTMLDivElement
 
 export const emailFormat = (value: string): boolean => {
@@ -68,39 +66,6 @@ export const validation = (form: HTMLFormElement): boolean => {
 
       case 'email': {
         if (emailFormat(input.value)) getError()
-        break
-      }
-
-      case 'select': {
-        if (input.value === 'empty') getError()
-        break
-      }
-
-      case 'text': {
-        if (input.value.length > 0 && input.value.length < 10) {
-          error.innerText = 'Введите не менее 10 символов'
-          getError()
-        } else {
-          error.innerText = 'Заполните это поле'
-        }
-
-        break
-      }
-
-      case 'switch': {
-        if (input.checked === false) getError()
-        break
-      }
-
-      case 'file': {
-        const files = input.files as FileList
-        const file = files[0] as File
-
-        if (file && !fileHandler({ error, file })) {
-          getError()
-        } else {
-          error.innerText = 'Загрузите файл'
-        }
         break
       }
     }

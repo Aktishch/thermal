@@ -10,75 +10,32 @@ export const formSubmitHandler = (event: Event): void => {
       break
     }
 
-    default: {
+    case 'submit': {
       event.preventDefault()
 
       if (!validation(form)) return
 
       const formData: FormData = new FormData(form)
-      const searchParams = new URLSearchParams() as URLSearchParams
       const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement
-      let requestUrl: string
+      const requestUrl: string = './ajax/submit-handler.php'
 
-      for (const pair of formData.entries()) searchParams.append(pair[0], String(pair[1]))
+      submitBtn.disabled = true
+      dialog.notClosing('./dialogs/dialog-preloader.php')
 
-      const queryString: string = searchParams.toString()
-
-      switch (form.dataset.form) {
-        case 'submit': {
-          requestUrl = './ajax/submit-handler.php'
-          submitBtn.disabled = true
-          dialog.notClosing('./dialogs/dialog-preloader.html')
-
-          fetch(requestUrl, {
-            method: 'POST',
-            body: formData,
-          })
-            .then((response: Response): Promise<{ status: boolean }> => {
-              return response.json()
-            })
-            .then((response): void => {
-              dialog.close()
-              response.status
-                ? dialog.open('./dialogs/dialog-success.html')
-                : dialog.open('./dialogs/dialog-error.html')
-              form.reset()
-              submitBtn.disabled = false
-
-              if (form.hasAttribute('data-preview')) {
-                const label = form.querySelector('*[data-preview-label]') as HTMLLabelElement
-                const image = form.querySelector('*[data-preview-image]') as HTMLImageElement
-                const remove = form.querySelector('*[data-preview-remove]') as HTMLButtonElement
-
-                image.src = ''
-                remove.disabled = true
-                label.classList.remove('pointer-events-none', 'opacity-50')
-              }
-
-              const filelist = document.querySelector('*[data-filelist]') as HTMLDivElement
-
-              if (filelist) {
-                const label = filelist.querySelector('*[data-filelist-label]') as HTMLLabelElement
-                const text = label.querySelector('*[data-filelist-text]') as HTMLSpanElement
-                const items = filelist.querySelector('*[data-filelist-items]') as HTMLUListElement
-
-                label.classList.remove('pointer-events-none', 'opacity-50')
-                text.textContent = 'Загрузить файлы'
-                items.innerHTML = ''
-              }
-            })
-            .catch((error: string): void => console.log('The form has not been sent', error))
-
-          break
-        }
-
-        case 'params': {
-          requestUrl = `./dialogs/dialog-authorization.html?${queryString}`
+      fetch(requestUrl, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response: Response): Promise<{ status: boolean }> => {
+          return response.json()
+        })
+        .then((response): void => {
           dialog.close()
-          dialog.open(requestUrl)
-          break
-        }
-      }
+          response.status ? dialog.open('./dialogs/dialog-success.php') : dialog.open('./dialogs/dialog-error.php')
+          form.reset()
+          submitBtn.disabled = false
+        })
+        .catch((error: string): void => console.log('The form has not been sent', error))
 
       break
     }

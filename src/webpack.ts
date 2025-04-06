@@ -17,17 +17,17 @@ import currentTab from './ts/current-tab'
 // import game from './ts/game'
 // import horizontalScrolling from './ts/horizontal-scrolling'
 // import imagePreview from './ts/image-preview'
-// import inputs from './ts/inputs'
+import inputs from './ts/inputs'
 // import inverted from './ts/inverted'
 // import listing from './ts/listing'
-// import loadMedia from './ts/load-media'
+import loadMedia from './ts/load-media'
 import menu from './ts/menu'
 // import movement from './ts/movement'
 // import outNumber from './ts/out-number'
 // import pallete from './ts/pallete'
 // import parallax from './ts/parallax'
 // import password from './ts/password'
-// import phoneMask from './ts/phone-mask'
+import phoneMask from './ts/phone-mask'
 // import player from './ts/player'
 import preloader from './ts/preloader'
 // import progressLine from './ts/progress-line'
@@ -44,7 +44,7 @@ import sidebar from './ts/sidebar'
 // import smoothScroll from './ts/smooth-scroll'
 // import snowflakes from './ts/snowflakes'
 // import social from './ts/social'
-// import submitHandler from './ts/submit-handler'
+import submitHandler from './ts/submit-handler'
 // import theme from './ts/theme'
 // import timeCounter from './ts/time-counter'
 // import timer from './ts/timer'
@@ -79,17 +79,17 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   // game()
   // horizontalScrolling()
   // imagePreview()
-  // inputs()
+  inputs()
   // inverted()
   // listing()
-  // loadMedia()
+  loadMedia()
   menu()
   // movement()
   // outNumber()
   // pallete()
   // parallax()
   // password()
-  // phoneMask()
+  phoneMask()
   // player()
   preloader()
   // progressLine()
@@ -106,7 +106,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   // smoothScroll()
   // snowflakes()
   // social()
-  // submitHandler()
+  submitHandler()
   // theme()
   // timeCounter()
   // timer()
