@@ -27,6 +27,8 @@
   var loader = _.template(require('./components/loader.html').default)({icon})
   var preloader = require('./components/preloader.html').default
   var error = _.template(require('./components/error.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var blur = require('./components/blur.html').default
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
   var footer = _.template(require('./includes/footer.html').default)({picture, loader})
 %>
@@ -67,5 +69,179 @@
   </div>
 </section>
 
+<!-- Экосистема термовизор -->
+
+<section class="container bg-primary text-white relative overflow-hidden lg:pb-44">
+  <div class="absolute inset-0">
+    <%= blur %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col lg:flex-row lg:justify-between gap-10 mb-10 lg:mb-32">
+      <%= title({text: 'Экосистема термовизор', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+      <div class="w-full lg:max-w-[680px]">
+        <div class="border border-white border-solid rounded-2xl p-5 sm:p-7 lg:p-10 duration-700 ease-in-out anim anim-up" data-anim>
+          <p class="text-lg sm:text-xl lg:text-2xl">
+            Каждый щит — это индивидуальный продукт, работающий как самостоятельно, так и в связке с другими комплексами. Обеспечивает процесс автоматизации 99% рабочих процессов котельной.
+          </p>
+        </div>
+        <p class="mt-1 sm:mt-2 sm:text-lg lg:text-xl sm:text-right duration-700 ease-in-out anim anim-up" data-anim>
+          *нажмите чтобы узнать подробнее
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-8 relative max-w-[335px] lg:max-w-full lg:w-[490px] mx-auto lg:scale-75 xl:scale-100">
+      <%= picture({src: 'img/pictures/lines', format: 'svg', className: 'hidden lg:block w-full', data: null}) %>
+      <%= picture({src: 'img/pictures/line', format: 'svg', className: 'block lg:hidden pointer-events-none absolute bottom-36 right-40', data: null}) %>
+      <div class="flex lg:flex-col items-center lg:items-start justify-between gap-5 lg:gap-20 lg:absolute lg:top-12 lg:left-1/2 lg:-translate-x-1/2">
+        <a class="btn btn-primary btn-fill btn-light rounded-2xl size-[150px] shadow-btn shrink-0" data-scroll data-waved="light" draggable="false" href="">
+          <%= picture({src: 'img/pictures/thermal-1', format: 'svg', className: 'block w-full', data: null}) %>
+        </a>
+        <p class="lg:text-xl">
+          Центральный щит <br> управления и <br> диспетчеризации
+        </p>
+      </div>
+      <div class="lg:w-[460px] flex items-center justify-between lg:justify-end gap-5 lg:absolute lg:-top-24 lg:-left-96">
+        <p class="lg:text-xl">
+          Щит управления <br> насосами
+        </p>
+        <a class="btn btn-primary btn-fill btn-light rounded-2xl size-[150px] shadow-btn shrink-0" data-scroll data-waved="light" draggable="false" href="">
+          <%= picture({src: 'img/pictures/thermal-2', format: 'svg', className: 'block w-full', data: null}) %>
+        </a>
+      </div>
+      <div class="lg:w-[460px] flex items-center justify-between lg:justify-stretch gap-5 lg:absolute lg:-top-24 lg:-right-96">
+        <p class="lg:text-xl lg:order-2">
+          Щит управления <br> котлом
+        </p>
+        <a class="btn btn-primary btn-fill btn-light rounded-2xl size-[150px] shadow-btn shrink-0 lg:order-1" data-scroll data-waved="light" draggable="false" href="">
+          <%= picture({src: 'img/pictures/thermal-3', format: 'svg', className: 'block w-full', data: null}) %>
+        </a>
+      </div>
+      <div class="lg:w-[460px] flex items-center justify-between lg:justify-end gap-5 lg:absolute lg:-bottom-24 lg:-left-96">
+        <p class="lg:text-xl">
+          Щит управления <br> топливоподачей и <br> золоудалением
+        </p>
+        <a class="btn btn-primary btn-fill btn-light rounded-2xl size-[150px] shadow-btn shrink-0" data-scroll data-waved="light" draggable="false" href="">
+          <%= picture({src: 'img/pictures/thermal-4', format: 'svg', className: 'block w-full', data: null}) %>
+        </a>
+      </div>
+      <div class="lg:w-[460px] flex items-center justify-between lg:justify-stretch gap-5 lg:absolute lg:-bottom-24 lg:-right-96">
+        <p class="lg:text-xl lg:order-2">
+          Вводно-распределительное <br> устройство с автоматическим <br> вводом резерва
+        </p>
+        <a class="btn btn-primary btn-fill btn-light rounded-2xl size-[150px] shadow-btn shrink-0 lg:order-1" data-scroll data-waved="light" draggable="false" href="">
+          <%= picture({src: 'img/pictures/thermal-5', format: 'svg', className: 'block w-full', data: null}) %>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Как это работает? -->
+
+<section class="container">
+  <div class="flex flex-col lg:flex-row lg:justify-between gap-10 mb-5 sm:mb-10">
+    <%= title({text: 'Как это работает?', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="w-full lg:max-w-[460px]">
+      <div class="border border-black border-solid rounded-2xl p-5 sm:p-7 lg:p-10 duration-700 ease-in-out anim anim-up" data-anim>
+        <p class="text-lg sm:text-xl lg:text-2xl">
+          на <span class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-primary">50%</span> снижает необходимость ручного труда
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-5 sm:gap-7 lg:gap-10">
+    <% for (var i = 0; i < 2; i++) { %>
+    <div class="duration-700 ease-in-out anim anim-up" data-anim>
+      <div class="flex flex-col lg:flex-row items-end lg:items-center lg:justify-between mb-7 lg:mb-2">
+        <div class="flex flex-col w-full order-2 lg:order-1">
+          <h3 class="font-bold text-xl sm:text-2xl lg:text-2.5xl">
+            Щит управления
+          </h3>
+          <%= picture({src: 'img/pictures/arrow', format: 'svg', className: 'hidden lg:block w-full', data: null}) %>
+          <div class="bg-primary h-1 mt-5 lg:hidden"></div>
+        </div>
+        <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-[150px] shrink-0 order-1 lg:order-2', data: null}) %>
+      </div>
+      <ul class="flex flex-col gap-4 sm:text-lg lg:text-xl">
+        <% for (var j = 0; j < 5; j++) { %>
+        <li>
+          Управляет оборудованием котельной (котлы, насосы, вентиляторы, система топливоподачи и т.д.);
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<% for (var i = 0; i < 5; i++) { %>
+<!-- Центральный щит -->
+
+<section class="container <%= i === 0 ? 'bg-primary relative text-white overflow-hidden' : null %>">
+  <% if (i === 0) { %>
+  <div class="absolute inset-0">
+    <%= blur %>
+  </div>
+  <% } %>
+  <div class="relative">
+    <div class="flex flex-col xl:flex-row xl:justify-between gap-10 mb-12 sm:mb-10">
+      <%= title({text: 'Центральный щит', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+      <div class="w-full xl:max-w-[680px] xl:shrink-0">
+        <div class="flex gap-5 sm:gap-8 lg:gap-12 duration-700 ease-in-out anim anim-up" data-anim>
+          <span class="w-1 shrink-0 <%= i === 0 ? 'bg-white' : 'bg-primary' %>"></span>
+          <p class="py-2 sm:py-5 text-lg sm:text-xl lg:text-2xl">
+            Щит управления обеспечивает безопасное и эффективное управление процессами котельной
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col xl:flex-row items-center xl:items-stretch xl:justify-between gap-5">
+      <div class="w-full sm:max-w-[500px] duration-700 ease-in-out anim anim-right" data-anim>
+        <%= picture({src: 'img/pictures/test', format: 'png', className: 'block w-full xl:-ml-24', data: null}) %>
+      </div>
+      <div class="w-full xl:max-w-[680px] xl:shrink-0">
+        <div class="flex flex-col gap-3 sm:gap-5 mb-2 sm:mb-4">
+          <div class="border border-current border-solid rounded-2xl py-8 sm:py-10 px-8 sm:px-10 lg:px-12 group/accordion" data-accordion data-close-click>
+            <button class="flex items-center justify-between gap-2 text-left text-xl sm:text-2xl lg:text-2.5xl w-full" data-accordion-toggle>
+              <h3 class="font-bold">
+                Функционал
+              </h3>
+              <span class="transition-transform group-[[data-accordion=active]]/accordion:rotate-45">+</span>
+            </button>
+            <div data-accordion-content>
+              <div class="pt-5">
+                <div class="border-t border-current border-solid pt-5 sm:pt-8">
+                  <ul class="flex flex-col gap-3 sm:gap-5 sm:text-lg lg:text-xl">
+                    <% _.forEach((['lightning', 'shield', 'arrows', 'filter', 'sensor', 'wi-fi', 'screen']), (item) => { %>
+                    <li class="flex">
+                      <%= icon({id: item, className: 'icon mr-3 sm:mr-5', data: null}) %>
+                      Подключение датчиков (температуры, давления, уровня и протока воды и пр.)
+                    </li>
+                    <% }) %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="sm:text-lg lg:text-xl mb-12 sm:mb-0">
+          ТУ 27.12.31-001-98025309-2024
+        </p>
+        <div class="sm:flex sm:items-end sm:justify-between sm:gap-5">
+          <div class="flex flex-col">
+            <div class="font-bold sm:text-lg lg:text-xl mb-5 sm:mb-10">
+              от <span class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">250 000 ₽</span>
+            </div>
+            <button class="btn btn-lg sm:btn-xl btn-fill text-lg sm:text-2.5xl w-full sm:max-w-64 <%= i === 0 ? 'btn-light' : 'btn-primary btn-gradient' %>" data-waved="<%= i === 0 ? 'light' : 'dark' %>">Заказать</button>
+          </div>
+          <div class="hidden sm:block w-full max-w-80 shrink-0">
+            <%= picture({src: `img/pictures/${i === 0 ? 'thermal-1' : 'test'}`, format: 'svg', className: 'block w-full opacity-10', data: null}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% } %>
 
 <%= footer %>

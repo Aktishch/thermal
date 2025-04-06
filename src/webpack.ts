@@ -1,4 +1,4 @@
-// import accordion from './ts/accordion'
+import accordion from './ts/accordion'
 // import airDatepicker from './ts/air-datepicker'
 import animation from './ts/animation'
 // import canvasRendering from './ts/canvas-rendering'
@@ -60,7 +60,7 @@ import waved from './ts/waved'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
-  // accordion()
+  accordion()
   // airDatepicker()
   animation()
   // canvasRendering()
