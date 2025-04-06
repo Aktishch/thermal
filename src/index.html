@@ -385,4 +385,75 @@
   </div>
 </section>
 
+<!-- ИЗТА — создаем будущее ЖКХ -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 bg-gray" data-load>
+    <%= loader %>
+    <picture>
+      <source srcset="img/pictures/future-bg-desktop.jpg" media="(min-width: 767.98px)">
+      <img class="image" data-media draggable="false" loading="lazy" src="img/pictures/future-bg-mobile.jpg" alt="">
+    </picture>
+  </div>
+  <div class="relative">
+    <%= title({text: '<span class="text-primary">ИЗТА</span> — создаем будущее ЖКХ', className: 'mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="flex flex-col lg:flex-row lg:justify-end gap-5 sm:gap-8">
+      <ul class="flex flex-col items-start justify-center gap-5 sm:gap-7 lg:gap-10 text-lg/none sm:text-xl/none lg:text-2xl/none order-2 lg:order-1 duration-700 ease-in-out anim anim-left" data-anim>
+        <li>Документ 1</li>
+        <li>Документ 2</li>
+        <li>Документ 3</li>
+        <li>Документ 4</li>
+      </ul>
+      <div class="flex gap-12 order-1 lg:order-2 duration-700 ease-in-out anim anim-left" data-anim>
+        <div class="h-full bg-primary w-px shrink-0 hidden lg:flex flex-col items-center justify-center gap-10">
+          <% for (var i = 0; i < 4; i++) { %>
+          <span class="size-6 shrink-0 bg-grey rounded-full border border-primary border-solid"></span>
+          <% } %>
+        </div>
+        <div class="text-lg sm:text-xl lg:text-2xl w-full lg:max-w-[680px] lg:py-4">
+          <p>
+            Иркутский завод тепловой автоматики (ИЗТА) — молодой и амбициозный отечественный производитель систем автоматизации и диспетчеризации для котельных, объектов водо- и электроснабжения. Мы объединяем многолетний опыт реализации масштабных проектов в новые технологии.
+          </p>
+          <br>
+          <p>
+            Являемся резидентом «Сколково» с 2024 года. Вошли в «Атлас сервисно-инфраструктурных решений» от Агентства стратегических инициатив.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30 дней от идеи до реализации -->
+
+<section class="container">
+  <div class="flex flex-col xl:flex-row xl:justify-between gap-10 mb-10">
+    <%= title({text: '30 дней от идеи <span class="text-primary"> <br> до реализации</span>', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="w-full xl:max-w-[680px]">
+      <div class="border border-black border-solid rounded-2xl p-5 sm:p-7 lg:p-10 duration-700 ease-in-out anim anim-up" data-anim>
+        <p class="text-lg sm:text-xl lg:text-2xl">
+          ПАК «Термовизор» в <span class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-primary">6 раз</span> быстрее в отличие от аналогичных проектов
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-7 lg:gap-10">
+    <% for (var i = 0; i < 6; i++) { %>
+    <div class="duration-700 ease-in-out anim anim-up" data-anim>
+      <div>
+        <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-[150px]', data: null}) %>
+        <%= picture({src: `img/pictures/${i === 5 ? 'line-circle' : 'arrow'}`, format: 'svg', className: 'hidden md:block w-full', data: null}) %>
+        <div class="bg-primary h-1 my-5 md:hidden"></div>
+        <h3 class="font-bold text-lg sm:text-xl lg:text-2xl">
+          Запчасти и комплектующие (постоянно в наличии)
+        </h3>
+        <% if (i !== 5) { %>
+        <%= icon({id: 'arrows-to', className: 'icon text-primary text-2xl mt-8 md:hidden', data: null}) %>
+        <% } %>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
 <%= footer %>
