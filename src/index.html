@@ -266,7 +266,7 @@
 <section class="container relative overflow-hidden bg-primary text-white">
   <div class="absolute inset-0">
     <%= blur %>
-    <%= picture({src: 'img/pictures/thermal-1', format: 'svg', className: 'block w-[200px] sm:w-[400px] opacity-15 absolute top-8 sm:top-0 -right-5 sm:right-36', data: null}) %>
+    <%= picture({src: 'img/pictures/custom-icon', format: 'svg', className: 'block w-[200px] sm:w-[400px] absolute top-8 sm:top-0 -right-5 sm:right-36', data: null}) %>
   </div>
   <div class="relative">
     <%= title({text: 'Кастомизированное <br> оборудование', className: 'mb-10 sm:mb-16 lg:mb-20 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
@@ -453,6 +453,128 @@
       </div>
     </div>
     <% } %>
+  </div>
+</section>
+
+<!-- 2 вида гарантии -->
+
+<% var guarantees = [
+  {
+    title: '1 год',
+    subtitle: 'Гарантия на оборудование',
+    text: 'На все модели шкафов, датчики и комплектующие действует расширенная гарантия.'
+  },
+  {
+    title: '5 лет',
+    subtitle: 'Гарантия на монтаж',
+    text: 'Несем долгосрочную ответственность за реализуемый проект. <br> Вы не беспокоитесь о том, что система выйдет из строя в самый неподходящий момент'
+  }
+] %>
+
+<section class="container bg-primary relative text-white overflow-hidden">
+  <div class="absolute inset-0">
+    <%= blur %>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col lg:flex-row lg:justify-between gap-10 mb-10 sm:mb-16 lg:mb-20">
+      <%= title({text: '2 вида гарантии', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+      <div class="w-full lg:max-w-[680px]">
+        <div class="border border-white border-solid rounded-2xl p-5 sm:p-7 lg:p-10 duration-700 ease-in-out anim anim-up" data-anim>
+          <p class="text-lg sm:text-xl lg:text-2xl">
+            Термовизор настолько надежен, оптимизирован и налажен, что компания предоставляет гарантии не только на оборудование и монтаж, но и на процесс – стопроцентное соблюдение сроков и бюджетов контракта.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-10">
+      <% _.forEach((guarantees), (item) => { %>
+      <div class="relative duration-700 ease-in-out anim anim-up" data-anim>
+        <div class="absolute bottom-10 lg:bottom-0 -right-10 lg:-right-20 w-[200px] lg:w-[400px]">
+          <%= picture({src: 'img/pictures/shield', format: 'svg', className: 'block w-full', data: null}) %>
+        </div>
+        <div class="relative">
+          <h3 class="font-bold uppercase text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-5 sm:mb-8"><%= item.title %></h3>
+          <h4 class="font-bold text-xl sm:text-2xl lg:text-2.5xl"><%= item.subtitle %></h4>
+          <div class="h-1 w-24 bg-white my-5 sm:my-8"></div>
+          <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Обеспечиваем бесперебойную эксплуатацию -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute top-0 right-36 hidden lg:block">
+      <%= picture({src: 'img/pictures/exploitation', format: 'svg', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Обеспечиваем <span class="text-primary">бесперебойную</span> <br> эксплуатацию', className: 'mb-10 sm:mb-16 lg:mb-20 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="grid lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-10">
+      <% for (var i = 0; i < 3; i++) { %>
+      <div class="flex flex-col duration-700 ease-in-out anim anim-up" data-anim>
+        <%= picture({src: 'img/pictures/test', format: 'svg', className: 'block w-[150px] mb-2 sm:mb-5 lg:mb-8', data: null}) %>
+        <h3 class="font-bold text-xl sm:text-2xl lg:text-2.5xl mt-auto">
+          Запчасти в постоянном наличии
+        </h3>
+        <div class="h-1 bg-primary my-5 sm:my-8"></div>
+        <p class="sm:text-lg lg:text-xl">
+          Благодаря эксклюзивному сотрудничеству с производителем автоматики «ОВЕН», в постоянном наличии все компоненты ПАК «Термовизор».
+          <br><br>
+          Замена детали происходит в течение 2-3 дней.
+        </p>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- 100% отечественное решение -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 items-center justify-center hidden lg:flex">
+    <div class="w-[400px]">
+      <%= picture({src: 'img/pictures/emblem', format: 'svg', className: 'block w-full', data: null}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <div class="flex flex-col xl:flex-row xl:justify-between gap-10 mb-10">
+      <%= title({text: '<span class="text-primary">100%</span> отечественное решение', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+      <div class="w-full xl:max-w-[680px] xl:shrink-0">
+        <div class="flex gap-5 sm:gap-8 lg:gap-12 duration-700 ease-in-out anim anim-up" data-anim>
+          <span class="w-1 shrink-0 bg-primary"></span>
+          <p class="py-2 sm:py-5 text-lg sm:text-xl lg:text-2xl">
+            ПАК «Термовизор» состоит исключительно из отечественных комплектующих промышленной автоматики «Овен».
+            <br>
+            Мы являемся эксклюзивными партнерами и интеграторами, что обеспечивает прямой доступ к новейшим разработкам и глубокую экспертизу.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 xl:-mt-24">
+      <div class="w-full sm:max-w-72 duration-700 ease-in-out anim anim-right" data-anim>
+        <div class="pack pack-[140] rounded-2xl bg-gray border border-solid border-black" data-load>
+          <%= loader %>
+          <%= picture({src: 'img/pictures/certificate', format: 'jpg', className: 'image rounded-inherit', data: 'data-media'}) %>
+        </div>
+      </div>
+      <div class="w-full lg:max-w-[680px] duration-700 ease-in-out anim anim-left" data-anim>
+        <div class="bg-primary text-white rounded-2xl flex items-center justify-between gap-3 py-5 sm:py-7 lg:py-10 px-3 sm:px-7 lg:px-12 xl:px-16">
+          <h4 class="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl uppercase">
+            Без
+          </h4>
+          <p class="font-bold text-lg sm:text-xl lg:text-2xl">
+            дешевых комплектующих <br>
+            сложной логистики <br>
+            сложностей перевода
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
