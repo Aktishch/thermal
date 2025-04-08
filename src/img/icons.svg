@@ -59,5 +59,17 @@
       <path d="M27 2.17188L14.5 14.1719L2 2.17188M27 14.1719L14.5 26.1719L2 14.1719" fill="transparent" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
     </symbol>
 
+    <symbol id="checkbox" width="100%" height="100%" viewBox="0 0 17 14">
+      <path d="M1.23242 7.5L6.23801 12.5L16.2492 2.5" fill="transparent" stroke="currentColor" stroke-miterlimit="10" />
+    </symbol>
+
+    <symbol id="arrow-left" width="100%" height="100%" viewBox="0 0 30 30">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3137 0.596608L0.585787 13.5597C-0.195263 14.3551 -0.195263 15.6449 0.585787 16.4403L13.3137 29.4034C14.0948 30.1989 15.3611 30.1989 16.1421 29.4034C16.9232 28.6079 16.9232 27.3182 16.1421 26.5227L6.82843 17.0369L30 17.0369V12.9631L6.82843 12.9631L16.1421 3.47729C16.9232 2.68181 16.9232 1.39209 16.1421 0.596608C15.3611 -0.198869 14.0948 -0.198869 13.3137 0.596608Z" fill="currentColor" />
+    </symbol>
+
+    <symbol id="arrow-right" width="100%" height="100%" viewBox="0 0 30 30">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6863 0.596608L29.4142 13.5597C30.1953 14.3551 30.1953 15.6449 29.4142 16.4403L16.6863 29.4034C15.9052 30.1989 14.6389 30.1989 13.8579 29.4034C13.0768 28.6079 13.0768 27.3182 13.8579 26.5227L23.1716 17.0369L0 17.0369V12.9631L23.1716 12.9631L13.8579 3.47729C13.0768 2.68181 13.0768 1.39209 13.8579 0.596608C14.6389 -0.198869 15.9052 -0.198869 16.6863 0.596608Z" fill="currentColor" />
+    </symbol>
+
   </defs>
 </svg>

@@ -10,7 +10,7 @@ import currentTab from './ts/current-tab'
 // import currentYear from './ts/current-year'
 // import dataSave from './ts/data-save'
 // import draggable from './ts/draggable'
-// import fancybox from './ts/fancybox'
+import fancybox from './ts/fancybox'
 // import fileList from './ts/file-list'
 // import filtering from './ts/filtering'
 // import formatBg from './ts/format-bg'
@@ -39,7 +39,7 @@ import scrollHeader from './ts/scroll-header'
 // import scrollTo from './ts/scroll-to'
 // import shop from './ts/shop'
 import sidebar from './ts/sidebar'
-// import sliderSwiper from './ts/slider-swiper'
+import sliderSwiper from './ts/slider-swiper'
 // import smartMenu from './ts/smart-menu'
 // import smoothScroll from './ts/smooth-scroll'
 // import snowflakes from './ts/snowflakes'
@@ -54,9 +54,9 @@ import waved from './ts/waved'
 // import writeText from './ts/write-text'
 // import yandexMap from './ts/yandex-map'
 
-// import '@fancyapps/ui/dist/fancybox/fancybox.css'
+import '@fancyapps/ui/dist/fancybox/fancybox.css'
 // import 'air-datepicker/air-datepicker.css'
-// import 'swiper/css/bundle'
+import 'swiper/css/bundle'
 import './scss/main.scss'
 
 window.addEventListener('DOMContentLoaded', ((): void => {
@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   // currentYear()
   // dataSave()
   // draggable()
-  // fancybox()
+  fancybox()
   // fileList()
   // filtering()
   // formatBg()
@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   // scrollTo()
   // shop()
   sidebar()
-  // sliderSwiper()
+  sliderSwiper()
   // smartMenu()
   // smoothScroll()
   // snowflakes()

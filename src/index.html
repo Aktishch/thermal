@@ -578,4 +578,185 @@
   </div>
 </section>
 
+<!-- Поддержка от государства и фондов развития -->
+
+<section class="container relative overflow-hidden">
+  <div class="absolute indent-0 bg-gray" data-load>
+    <%= loader %>
+    <%= picture({src: 'img/pictures/support-bg', format: 'jpg', className: 'image', data: 'data-media'}) %>
+  </div>
+  <div class="relative">
+    <%= title({text: '<span class="text-primary">Поддержка</span> <br class="sm:hidden"> от государства <br class="hidden sm:block"> и фондов развития', className: 'mb-10 sm:mb-16 lg:mb-20 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-10">
+      <% for (var i = 0; i < 4; i++) { %>
+      <div class="duration-700 ease-in-out anim anim-up" data-anim>
+        <div class="h-[70px]">
+          <%= picture({src: 'img/pictures/support-img', format: 'png', className: 'block h-full', data: null}) %>
+        </div>
+        <div class="h-1 bg-primary my-5 sm:my-8"></div>
+        <p class="sm:text-lg lg:text-xl">
+          Положительная оценка технологической экспертизы ФСИ (Фонд содействия инновациям)
+        </p>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Выполненные проекты -->
+
+<section class="container overflow-hidden">
+  <%= title({text: 'Выполненные <span class="text-primary">проекты</span>', className: 'mb-10 sm:mb-16 lg:mb-20 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+  <div class="flex flex-col gap-10 sm:gap-20">
+    <% for (var i = 0; i < 2; i++) { %>
+    <div class="relative">
+      <div class="absolute inset-0">
+        <%= picture({src: 'img/pictures/case-icon', format: 'svg', className: 'hidden md:block w-[400px] absolute -top-28 -right-28', data: null}) %>
+      </div>
+      <div class="flex flex-col xl:flex-row items-center xl:items-stretch xl:justify-between gap-5">
+        <div class="w-full sm:max-w-[500px] duration-700 ease-in-out anim anim-right" data-anim>
+          <div class="relative" data-slider="projects">
+            <div class="swiper" data-slider-swiper="projects">
+              <div class="swiper-wrapper">
+                <% for (var j = 0; j < 3; j++) { %>
+                <div class="swiper-slide">
+                  <a class="pack pack-xxl bg-gray" data-load data-waved="light" data-fancybox="projects-<%= i %>" draggable="false" href="img/pictures/projects.jpg">
+                    <%= loader %>
+                    <%= picture({src: 'img/pictures/projects', format: 'jpg', className: 'image', data: 'data-media'}) %>
+                  </a>
+                </div>
+                <% } %>
+              </div>
+            </div>
+            <button class="absolute rounded-2xl size-12 swiper-button-prev btn btn-primary btn-fade bg-white/70 text-black left-4 top-auto bottom-4" data-slider-prev="projects" data-waved="dark">
+              <%= icon({id: 'arrow-left', className: 'text-3xl', data: null}) %>
+            </button>
+            <button class="absolute rounded-2xl size-12 swiper-button-next btn btn-primary btn-fade bg-white/70 text-black right-4 top-auto bottom-4" data-slider-next="projects" data-waved="dark">
+              <%= icon({id: 'arrow-right', className: 'text-3xl', data: null}) %>
+            </button>
+          </div>
+        </div>
+        <div class="w-full xl:max-w-[680px] xl:shrink-0">
+          <div class="flex gap-5 sm:gap-8 lg:gap-12 mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up" data-anim>
+            <span class="w-1 shrink-0 bg-primary"></span>
+            <p class="py-2 sm:py-5 text-lg sm:text-xl lg:text-2xl">
+              Котельная для торгового центра
+            </p>
+          </div>
+          <div class="flex flex-col gap-5 sm:gap-10">
+            <div class="flex flex-col gap-8 lg:gap-10 border border-current border-solid rounded-2xl py-8 sm:py-10 px-8 sm:px-10 lg:px-12">
+              <% for (var j = 0; j < 3; j++) { %>
+              <div class="group/accordion" data-accordion data-close-click>
+                <button class="flex items-center justify-between gap-2 text-left text-xl sm:text-2xl lg:text-2.5xl w-full" data-accordion-toggle>
+                  <h3 class="font-bold">
+                    Объект
+                  </h3>
+                  <span class="transition-transform group-[[data-accordion=active]]/accordion:rotate-45">+</span>
+                </button>
+                <div data-accordion-content>
+                  <div class="pt-5">
+                    <div class="border-t border-current border-solid pt-5 sm:pt-8">
+                      <p class="sm:text-lg lg:text-xl">
+                        2 автоматических котла на опилках общей мощностью 0,6 мВт, п. Хомутово, Иркутский район, Иркутской области.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% } %>
+            </div>
+            <div class="bg-primary text-white rounded-2xl py-8 sm:py-10 px-8 sm:px-10 lg:px-12 group/accordion" data-accordion data-close-click>
+              <button class="flex items-center justify-between gap-2 text-left text-xl sm:text-2xl lg:text-2.5xl w-full" data-accordion-toggle>
+                <h3 class="font-bold">
+                  Результат
+                </h3>
+                <span class="transition-transform group-[[data-accordion=active]]/accordion:rotate-45">+</span>
+              </button>
+              <div data-accordion-content>
+                <div class="pt-5">
+                  <div class="border-t border-current border-solid pt-5 sm:pt-8">
+                    <ul class="flex flex-col gap-3 sm:gap-5 sm:text-lg lg:text-xl">
+                      <% for (var j = 0; j < 7; j++) { %>
+                      <li class="flex">
+                        <%= icon({id: 'checkbox', className: 'icon mr-3 sm:mr-5', data: null}) %>
+                        Автоматизирована система управления подачи топлива, вентилятором дымососа и поддува, топливного бункера котла;
+                      </li>
+                      <% } %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Получите персональное КП за 60 минут -->
+
+<section class="container bg-primary text-white overflow-hidden relative">
+  <div class="absolute inset-0">
+    <%= blur %>
+  </div>
+  <div class="relative">
+    <%= title({text: 'Получите <br class="sm:hidden"> персональное КП <br> за 60 минут', className: 'mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
+    <div class="flex justify-between gap-10">
+      <div class="w-full lg:max-w-[680px]">
+        <div class="duration-700 ease-in-out anim anim-right" data-anim>
+          <form class="border border-solid border-white rounded-2xl p-8 sm:p-10 lg:p-12" data-form="submit">
+            <input type="hidden" value="Тема" name="theme">
+            <div class="flex flex-col gap-5 mb-8 sm:mb-10">
+              <label data-label>
+                <div class="relative">
+                  <input class="input input-white input-sm sm:text-xl px-0 text-white placeholder:text-white" data-input="name" type="text" placeholder="Ваше имя" name="name">
+                  <%= error({text: 'Введите ваше имя'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="input input-white input-sm sm:text-xl px-0 text-white placeholder:text-white" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+                  <%= error({text: 'Введите ваш номер'}) %>
+                </div>
+              </label>
+              <label data-label>
+                <div class="relative">
+                  <input class="input input-white input-sm sm:text-xl px-0 text-white placeholder:text-white" data-input="email" type="text" placeholder="Ваш e-mail" name="email">
+                  <%= error({text: 'Введите корректный адрес'}) %>
+                </div>
+              </label>
+            </div>
+            <button class="btn btn-lg sm:btn-xl btn-fill btn-light text-lg sm:text-2.5xl w-full" data-waved="light" type="submit">Получить КП</button>
+            <div class="flex mt-8 sm:mt-10">
+              <a class="sm:text-lg lg:text-xl underline-offset-4 hover:underline" draggable="false" href="" target="_blank">
+                Отправляя форму, Вы даете согласие на обработку Ваших персональных данных
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="hidden xl:block relative w-full max-w-[620px] duration-700 ease-in-out anim anim-left" data-anim>
+        <div class="pack pack-md h-full">
+          <%= picture({src: 'img/pictures/director-img', format: 'png', className: 'image object-bottom object-scale-down object-left -scale-x-100', data: null}) %>
+        </div>
+        <div class="absolute right-0 -top-28 bg-primary/70 border border-white border-solid rounded-2xl w-full max-w-[400px] p-8">
+          <p class="text-xl">
+            Подготовим вам персональное предложение с указанием стоимости, сроков и условий
+          </p>
+        </div>
+        <div class="absolute bottom-0 left-0 rounded-2xl py-5 px-8 bg-primary/70">
+          <h4 class="font-bold text-2xl pb-5 border-b border-solid border-white mb-2">
+            Петров Иван Иванович
+          </h4>
+          <p class="text-xl">
+            Руководитель клиентского сервиса
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <%= footer %>

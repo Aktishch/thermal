@@ -1,7 +1,4 @@
 import { Fancybox } from '@fancyapps/ui'
-import { createCalendar } from './air-datepicker'
-import filtering from './filtering'
-import imagePreview from './image-preview'
 
 export type FancyboxDialog = {
   open: (src: string) => void
@@ -61,22 +58,5 @@ export default (): void => {
 
   window.Fancybox.bind('[data-fancybox-dialog]', {
     dragToClose: false,
-  })
-
-  window.Fancybox.bind('[data-fancybox-avatar]', {
-    dragToClose: false,
-    on: {
-      done: (): void => imagePreview(),
-    },
-  })
-
-  window.Fancybox.bind('[data-fancybox-calendar]', {
-    dragToClose: false,
-    on: {
-      done: (): void => {
-        createCalendar()
-        filtering()
-      },
-    },
   })
 }
