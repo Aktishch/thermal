@@ -1,27 +1,38 @@
-<!-- Карта -->
-
-<!-- <section class="container relative overflow-hidden container-distance bg-grey dark:bg-dark h-96" data-yandex>
-  <%= loader %>
-  <div class="absolute inset-0 overflow-hidden" data-yandex-map="45.03191007458623,38.921171499999936"></div>
-</section> -->
-
+<% if (data.status) { %>
 <!-- Подвал -->
 
-<!-- <footer class="container flex flex-col flex-wrap items-center justify-between gap-4 pt-4 pb-10 mt-auto bg-black md:flex-row text-second md:pb-4" id="footer">
-  <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
-    <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: null}) %>
-  </a>
-  <address class="text-center">
-    ​Рождественская набережная, <br> 45/1​5 офис; 3 этаж
-  </address>
-  <span class="p-1 text-lg btn btn-second w-max" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</span>
-  <div>
-    © <span id="year"></span>
+<footer class="container flex flex-col sm:flex-row sm:flex-wrap sm:justify-between gap-12 bg-white mt-auto">
+  <div class="flex items-start flex-col">
+    <a class="w-44 mb-12" draggable="false" href="/">
+      <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block w-full', data: null}) %>
+    </a>
+    <span class="w-28">
+      <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
+    </span>
   </div>
-  <span class="text-lg">
-    Разработка: <a class="underline w-max" draggable="false" href="https://stdkit.ru/" target="_blank">Студия К.И.Т.</a>
-  </span>
-</footer> -->
+  <nav class="flex flex-col items-start gap-3">
+    <% _.forEach((data.nav), (item) => { %>
+    <a class="btn font-normal text-xl hover:bg-transparent after:content-auto after:absolute after:left-0 after:right-0 after:bottom-0 after:w-full after:h-1 after:invisible after:opacity-0 after:transition hover:after:opacity-100 hover:after:visible after:bg-primary py-2" data-scroll data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
+    <% }) %>
+  </nav>
+  <div class="flex flex-col items-start gap-5">
+    <a class="flex items-center justify-center underline-offset-4 hover:underline text-lg sm:text-2xl" draggable="false" href="tel: +7 3952 78 86 36">
+      <%= icon({id: 'telephone', className: 'icon text-2xl text-primary mr-5', data: null}) %>
+      +7 3952 78 86 36
+    </a>
+    <a class="flex items-center justify-center underline-offset-4 hover:underline text-lg sm:text-2xl" draggable="false" href="mailto: sale@izta.ru">
+      <%= icon({id: 'email', className: 'icon text-2xl text-primary mr-5', data: null}) %>
+      sale@izta.ru
+    </a>
+    <div class="flex items-center justify-center text-lg sm:text-2xl">
+      <%= icon({id: 'point', className: 'icon text-2xl text-primary mr-5', data: null}) %>
+      <address>
+        г. Иркутск, ул. Российская, <br> д. 17, 1 этаж, оф. 103
+      </address>
+    </div>
+  </div>
+</footer>
+<% } %>
 
 </main>
 

@@ -1,17 +1,33 @@
-<dialog class="w-full max-w-5xl p-5 text-black bg-white dark:bg-black dark:text-white rounded-xl md:p-10">
-  <h2 class="mb-4 font-bold text-2xl/tight sm:text-3xl/tight font-alt">
-    Соглашение об обработке персональных данных
-  </h2>
-  <p class="text-sm/normal md:text-base/normal">
-    Данное соглашение об обработке персональных данных разработано в соответствии с законодательством Российской Федерации.
-    <br><br>
-    Все лица заполнившие сведения, составляющие персональные данные на данном сайте, а также разместившие иную информацию обозначенными действиями, подтверждают свое согласие на обработку персональных данных и их передачу оператору обработки персональных данных.
-    <br><br>
-    Под персональными данными Гражданина понимается нижеуказанная информация:
-    <br><br>
-    общая информация (Имя, номер телефона и адрес электронной почты); <br>
-    посетители сайта направляют свои персональные данные для получения телефонного звонка или сообщения электронной почты от специалиста компании-исполнителя (владельца сайта) с целью заказа консультации относительно услуг компании-исполнителя; <br>
-    гражданин, принимая настоящее Соглашение, выражает свою заинтересованность и полное согласие, что обработка их персональных данных может включать в себя следующие действия: сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение), использование, уничтожение; <br>
-    гражданин гарантирует: информация, им предоставленная, не нарушает действующее законодательство Российской Федерации, законные права и интересы третьих лиц; вся предоставленная информация заполнена Гражданином в отношении себя лично.
-  </p>
+<% var error = _.template(require('../components/error.html').default) %>
+
+<dialog class="w-full max-w-2xl bg-white text-black rounded-2xl py-12 px-4 sm:px-8 lg:px-12">
+  <form data-form="submit">
+    <input type="hidden" value="Тема" name="theme">
+    <div class="flex flex-col gap-5 mb-8 sm:mb-10">
+      <label data-label>
+        <div class="relative">
+          <input class="input input-sm sm:text-xl px-0 placeholder:text-black" data-input="name" type="text" placeholder="Ваше имя" name="name">
+          <%= error({text: 'Введите ваше имя'}) %>
+        </div>
+      </label>
+      <label data-label>
+        <div class="relative">
+          <input class="input input-sm sm:text-xl px-0 placeholder:text-black" data-input="tel" type="tel" placeholder="Ваш телефон" name="tel">
+          <%= error({text: 'Введите ваш номер'}) %>
+        </div>
+      </label>
+      <label data-label>
+        <div class="relative">
+          <input class="input input-sm sm:text-xl px-0 placeholder:text-black" data-input="email" type="text" placeholder="Ваш e-mail" name="email">
+          <%= error({text: 'Введите корректный адрес'}) %>
+        </div>
+      </label>
+    </div>
+    <button class="btn btn-primary btn-lg sm:btn-xl btn-fill btn-gradient text-lg sm:text-2.5xl w-full" data-waved="dark" type="submit">Отправить</button>
+    <div class="flex mt-8 sm:mt-10">
+      <a class="sm:text-lg lg:text-xl underline-offset-4 hover:underline" draggable="false" href="" target="_blank">
+        Отправляя форму, Вы даете согласие на обработку Ваших персональных данных
+      </a>
+    </div>
+  </form>
 </dialog>

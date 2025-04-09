@@ -13,7 +13,7 @@ export const media: Media = {
   sm: 575.98,
   md: 767.98,
   lg: 991.98,
-  xl: 1365.98,
+  xl: 1429.98,
   xxl: 2499.98,
 }
 

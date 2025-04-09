@@ -1,10 +1,12 @@
-<% var icon = _.template(require('../components/icon.html').default) %>
+<% var picture = _.template(require('../components/picture.html').default) %>
 
-<dialog class="w-full max-w-xs px-5 py-10 text-black bg-white dark:bg-black dark:text-white rounded-xl">
+<dialog class="w-full max-w-md bg-white text-black rounded-2xl py-12 px-4">
   <div class="flex flex-col items-center justify-center">
-    <%= icon({id: 'close', className: 'icon mb-5 text-red text-9xl', data: null}) %>
-    <h2 class="font-semibold text-center text-2xl/tight font-alt">
-      Ошибка!
+    <div class="w-full max-w-40 mb-5">
+      <%= picture({src: 'img/pictures/error', format: 'svg', className: 'block w-full', data: null}) %>
+    </div>
+    <h2 class="font-bold text-2xl text-center">
+      Ошибка отправки формы
     </h2>
   </div>
 </dialog>

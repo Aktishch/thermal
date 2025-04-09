@@ -19,7 +19,7 @@
 
     &-custom &__content {
       &>.f-button.is-close-btn {
-        @apply top-2 right-2 bg-white text-black rounded-full shadow-md;
+        @apply top-2 right-2 text-black;
       }
     }
   }
@@ -50,9 +50,5 @@
         }
       }
     }
-  }
-
-  #air-datepicker-global-container {
-    z-index: 1100;
   }
 }

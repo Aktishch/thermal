@@ -4,16 +4,16 @@
     status: true,
     nav: [
       {
+        href: '#about',
+        text: 'О компании'
+      },
+      {
         href: '#equipment',
         text: 'Оборудование'
       },
       {
         href: '#advantages',
         text: 'Преимущества'
-      },
-      {
-        href: '#about',
-        text: 'О компании'
       },
       {
         href: '#projects',
@@ -30,7 +30,7 @@
   var title = _.template(require('./components/title.html').default)
   var blur = require('./components/blur.html').default
   var header = _.template(require('./includes/header.html').default)({data, icon, picture, preloader})
-  var footer = _.template(require('./includes/footer.html').default)({picture, loader})
+  var footer = _.template(require('./includes/footer.html').default)({data, icon, picture})
 %>
 
 <%= header %>
@@ -54,7 +54,7 @@
       котельных
     </h1>
     <div class="flex lg:mb-32 order-3 lg:order-2 duration-700 ease-in-out anim anim-up" data-anim>
-      <button class="btn btn-primary btn-lg sm:btn-xl btn-fill btn-gradient text-lg sm:text-2.5xl px-4 sm:px-10 w-full sm:w-auto" data-waved="dark">Получить расчет стоимости</button>
+      <button class="btn btn-primary btn-lg sm:btn-xl btn-fill btn-gradient text-lg sm:text-2.5xl px-4 sm:px-10 w-full sm:w-auto" data-waved="dark" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Получить расчет стоимости</button>
     </div>
     <div class="lg:flex lg:items-end lg:justify-between lg:gap-5 order-2 lg:order-3 mb-16 lg:mb-0">
       <div class="hidden lg:block w-36 duration-700 ease-in-out anim anim-up" data-anim>
@@ -71,7 +71,7 @@
 
 <!-- Экосистема термовизор -->
 
-<section class="container bg-primary text-white relative overflow-hidden lg:pb-44">
+<section class="container bg-primary text-white relative overflow-hidden lg:pb-44" id="about">
   <div class="absolute inset-0">
     <%= blur %>
   </div>
@@ -263,7 +263,7 @@
   },
 ] %>
 
-<section class="container relative overflow-hidden bg-primary text-white">
+<section class="container relative overflow-hidden bg-primary text-white" id="equipment">
   <div class="absolute inset-0">
     <%= blur %>
     <%= picture({src: 'img/pictures/custom-icon', format: 'svg', className: 'block w-[200px] sm:w-[400px] absolute top-8 sm:top-0 -right-5 sm:right-36', data: null}) %>
@@ -426,7 +426,7 @@
 
 <!-- 30 дней от идеи до реализации -->
 
-<section class="container">
+<section class="container" id="advantages">
   <div class="flex flex-col xl:flex-row xl:justify-between gap-10 mb-10">
     <%= title({text: '30 дней от идеи <span class="text-primary"> <br> до реализации</span>', className: 'duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
     <div class="w-full xl:max-w-[680px]">
@@ -605,7 +605,7 @@
 
 <!-- Выполненные проекты -->
 
-<section class="container overflow-hidden">
+<section class="container overflow-hidden" id="projects">
   <%= title({text: 'Выполненные <span class="text-primary">проекты</span>', className: 'mb-10 sm:mb-16 lg:mb-20 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
   <div class="flex flex-col gap-10 sm:gap-20">
     <% for (var i = 0; i < 2; i++) { %>
@@ -613,7 +613,7 @@
       <div class="absolute inset-0">
         <%= picture({src: 'img/pictures/case-icon', format: 'svg', className: 'hidden md:block w-[400px] absolute -top-28 -right-28', data: null}) %>
       </div>
-      <div class="flex flex-col xl:flex-row items-center xl:items-stretch xl:justify-between gap-5">
+      <div class="flex flex-col xl:flex-row items-center xl:items-stretch xl:justify-between gap-5 relative">
         <div class="w-full sm:max-w-[500px] duration-700 ease-in-out anim anim-right" data-anim>
           <div class="relative" data-slider="projects">
             <div class="swiper" data-slider-swiper="projects">
