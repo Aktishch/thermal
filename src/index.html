@@ -39,7 +39,7 @@
 
 <% var primal = ['экономия <br> топлива', 'автоматизация <br> ручного труда', 'снижение аварий <br> и простоев <br class="sm:hidden"> оборудования'] %>
 
-<section class="container flex items-end relative min-h-[700px] lg:min-h-[970px]">
+<section class="container flex items-end relative min-h-[700px] lg:min-h-[850px] xl:min-h-[970px]">
   <div class="absolute inset-0 bg-gray" data-load>
     <%= loader %>
     <picture>
@@ -48,15 +48,15 @@
     </picture>
   </div>
   <div class="relative w-full flex flex-col">
-    <h1 class="font-bold text-3xl/tight sm:text-4xl/tight lg:text-5xl/tight xl:text-6xl/tight uppercase mb-10 lg:mb-20 order-1 duration-700 ease-in-out anim anim-up" data-anim>
+    <h1 class="font-bold text-3xl/tight sm:text-4xl/tight lg:text-5xl/tight xl:text-6xl/tight uppercase mb-10 xl:mb-20 order-1 duration-700 ease-in-out anim anim-up" data-anim>
       <span class="text-primary">Система</span> автоматизации <br class="hidden sm:block">
       и <br class="sm:hidden"> диспетчиризации <br class="hidden sm:block">
       котельных
     </h1>
-    <div class="flex lg:mb-32 order-3 lg:order-2 duration-700 ease-in-out anim anim-up" data-anim>
+    <div class="flex lg:mb-20 xl:mb-32 order-3 lg:order-2 duration-700 ease-in-out anim anim-up" data-anim>
       <button class="btn btn-primary btn-lg sm:btn-xl btn-fill btn-gradient text-lg sm:text-2.5xl px-4 sm:px-10 w-full sm:w-auto" data-waved="dark" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Получить расчет стоимости</button>
     </div>
-    <div class="lg:flex lg:items-end lg:justify-between lg:gap-5 order-2 lg:order-3 mb-16 lg:mb-0">
+    <div class="lg:flex flex-col xl:flex-row xl:items-end lg:justify-between lg:gap-10 order-2 lg:order-3 mb-16 lg:mb-0">
       <div class="hidden lg:block w-36 duration-700 ease-in-out anim anim-up" data-anim>
         <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
       </div>
@@ -195,11 +195,11 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col xl:flex-row items-center xl:items-stretch xl:justify-between gap-5">
+    <div class="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-5">
       <div class="w-full sm:max-w-[500px] duration-700 ease-in-out anim anim-right" data-anim>
-        <%= picture({src: 'img/pictures/test', format: 'png', className: 'block w-full xl:-ml-24', data: null}) %>
+        <%= picture({src: 'img/pictures/test', format: 'png', className: 'block w-full lg:-ml-24', data: null}) %>
       </div>
-      <div class="w-full xl:max-w-[680px] xl:shrink-0">
+      <div class="w-full lg:max-w-[500px] xl:max-w-[680px] lg:shrink-0">
         <div class="flex flex-col gap-3 sm:gap-5 mb-2 sm:mb-4">
           <div class="border border-current border-solid rounded-2xl py-8 sm:py-10 px-8 sm:px-10 lg:px-12 group/accordion" data-accordion data-close-click>
             <button class="flex items-center justify-between gap-2 text-left text-xl sm:text-2xl lg:text-2.5xl w-full" data-accordion-toggle>
@@ -228,13 +228,13 @@
           ТУ 27.12.31-001-98025309-2024
         </p>
         <div class="sm:flex sm:items-end sm:justify-between sm:gap-5">
-          <div class="flex flex-col">
+          <div class="flex flex-col lg:shrink-0">
             <div class="font-bold sm:text-lg lg:text-xl mb-5 sm:mb-10">
               от <span class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">250 000 ₽</span>
             </div>
             <button class="btn btn-lg sm:btn-xl btn-fill text-lg sm:text-2.5xl w-full sm:max-w-64 <%= i === 0 ? 'btn-light' : 'btn-primary btn-gradient' %>" data-waved="<%= i === 0 ? 'light' : 'dark' %>">Заказать</button>
           </div>
-          <div class="hidden sm:block w-full max-w-80 shrink-0">
+          <div class="hidden sm:block w-full max-w-80">
             <%= picture({src: `img/pictures/${i === 0 ? 'thermal-1' : 'test'}`, format: 'svg', className: 'block w-full opacity-10', data: null}) %>
           </div>
         </div>
@@ -275,11 +275,11 @@
         <%= picture({src: 'img/pictures/custom', format: 'svg', className: 'block w-full', data: null}) %>
       </div>
       <% _.forEach((custom), (item) => { %>
-      <div class="relative w-full h-[450px] sm:h-[500px] duration-700 ease-in-out anim anim-up <%= item.size %>" data-anim>
+      <div class="relative w-full h-[450px] lg:h-[350px] xl:h-[500px] duration-700 ease-in-out anim anim-up <%= item.size %>" data-anim>
         <div class="absolute top-0 -left-16 sm:-left-20 w-full max-w-64 sm:max-w-96">
           <%= picture({src: item.img, format: 'png', className: 'block w-full', data: null}) %>
         </div>
-        <div class="absolute right-0 bottom-0 w-full border border-solid border-white bg-primary/70 p-5 sm:p-8 rounded-2xl max-w-64 sm:max-w-[550px] <%= item.maxWidth %>">
+        <div class="absolute right-0 bottom-0 lg:bottom-auto xl:bottom-0 lg:top-0 xl:top-auto w-full border border-solid border-white bg-primary/70 p-5 sm:p-8 rounded-2xl max-w-64 sm:max-w-[550px] <%= item.maxWidth %>">
           <h3 class="font-bold text-xl sm:text-2xl lg:text-2.5xl"><%= item.title %></h3>
           <div class="my-5 sm:my-8 bg-white h-1"></div>
           <p class="sm:text-lg lg:text-xl"><%= item.text %></p>
@@ -306,9 +306,9 @@
   <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-10">
     <% for (var i = 0; i < 4; i++) { %>
     <div class="duration-700 ease-in-out anim anim-up" data-anim>
-      <div class="pack pack-[55] bg-gray mb-8 sm:mb-10" data-load>
+      <div class="pack pack-xl bg-gray mb-8 sm:mb-10" data-load>
         <%= loader %>
-        <%= picture({src: 'img/pictures/program', format: 'jpg', className: 'image', data: 'data-media'}) %>
+        <%= picture({src: 'img/pictures/program', format: 'jpg', className: 'image object-left-bottom', data: 'data-media'}) %>
       </div>
       <div class="w-24 h-1 bg-primary mb-5"></div>
       <h3 class="font-bold text-lg sm:text-xl lg:text-2xl">
@@ -329,20 +329,20 @@
   <div class="relative">
     <%= title({text: 'Получите <span class="text-primary">консультацию</span> <br> инженера', className: 'mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
     <div class="flex justify-between gap-10">
-      <div class="hidden xl:block relative w-full max-w-[620px] duration-700 ease-in-out anim anim-right" data-anim>
+      <div class="hidden lg:block relative w-full max-w-[620px] duration-700 ease-in-out anim anim-right" data-anim>
         <div class="pack pack-md h-full">
           <%= picture({src: 'img/pictures/director-img', format: 'png', className: 'image object-bottom object-scale-down', data: null}) %>
         </div>
         <div class="absolute bottom-0 right-0 rounded-2xl py-5 px-8 bg-white/70 text-right">
           <h4 class="font-bold text-2xl pb-5 border-b border-solid border-black mb-2">
-            Иванов Иван Иванович
+            Кривоносенко Дмитрий Вячеславович
           </h4>
           <p class="text-xl">
             Главный инженер
           </p>
         </div>
       </div>
-      <div class="w-full lg:max-w-[680px]">
+      <div class="w-full lg:max-w-[500px] xl:max-w-[640px] lg:shrink-0">
         <div class="flex gap-5 sm:gap-8 lg:gap-12 duration-700 ease-in-out anim anim-left mb-10" data-anim>
           <span class="w-1 shrink-0 bg-primary"></span>
           <p class="py-2 sm:py-5 text-lg sm:text-xl lg:text-2xl">
@@ -397,14 +397,8 @@
   </div>
   <div class="relative">
     <%= title({text: '<span class="text-primary">ИЗТА</span> — создаем будущее ЖКХ', className: 'mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
-    <div class="flex flex-col lg:flex-row lg:justify-end gap-5 sm:gap-8">
-      <ul class="flex flex-col items-start justify-center gap-5 sm:gap-7 lg:gap-10 text-lg/none sm:text-xl/none lg:text-2xl/none order-2 lg:order-1 duration-700 ease-in-out anim anim-left" data-anim>
-        <li>Документ 1</li>
-        <li>Документ 2</li>
-        <li>Документ 3</li>
-        <li>Документ 4</li>
-      </ul>
-      <div class="flex gap-12 order-1 lg:order-2 duration-700 ease-in-out anim anim-left" data-anim>
+    <div class="flex lg:justify-end">
+      <div class="flex gap-12 duration-700 ease-in-out anim anim-left" data-anim>
         <div class="h-full bg-primary w-px shrink-0 hidden lg:flex flex-col items-center justify-center gap-10">
           <% for (var i = 0; i < 4; i++) { %>
           <span class="size-6 shrink-0 bg-grey rounded-full border border-primary border-solid"></span>
@@ -613,7 +607,7 @@
       <div class="absolute inset-0">
         <%= picture({src: 'img/pictures/case-icon', format: 'svg', className: 'hidden md:block w-[400px] absolute -top-28 -right-28', data: null}) %>
       </div>
-      <div class="flex flex-col xl:flex-row items-center xl:items-stretch xl:justify-between gap-5 relative">
+      <div class="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-5 lg:gap-10 relative">
         <div class="w-full sm:max-w-[500px] duration-700 ease-in-out anim anim-right" data-anim>
           <div class="relative" data-slider="projects">
             <div class="swiper" data-slider-swiper="projects">
@@ -636,7 +630,7 @@
             </button>
           </div>
         </div>
-        <div class="w-full xl:max-w-[680px] xl:shrink-0">
+        <div class="w-full lg:max-w-[500px] xl:max-w-[680px] lg:shrink-0">
           <div class="flex gap-5 sm:gap-8 lg:gap-12 mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up" data-anim>
             <span class="w-1 shrink-0 bg-primary"></span>
             <p class="py-2 sm:py-5 text-lg sm:text-xl lg:text-2xl">
@@ -704,7 +698,7 @@
   <div class="relative">
     <%= title({text: 'Получите <br class="sm:hidden"> персональное КП <br> за 60 минут', className: 'mb-10 sm:mb-12 duration-700 ease-in-out anim anim-up', data: 'data-anim'}) %>
     <div class="flex justify-between gap-10">
-      <div class="w-full lg:max-w-[680px]">
+      <div class="w-full lg:max-w-[500px] xl:max-w-[640px] lg:shrink-0">
         <div class="duration-700 ease-in-out anim anim-right" data-anim>
           <form class="border border-solid border-white rounded-2xl p-8 sm:p-10 lg:p-12" data-form="submit">
             <input type="hidden" value="Тема" name="theme">
@@ -737,21 +731,21 @@
           </form>
         </div>
       </div>
-      <div class="hidden xl:block relative w-full max-w-[620px] duration-700 ease-in-out anim anim-left" data-anim>
+      <div class="hidden lg:block relative w-full max-w-[620px] duration-700 ease-in-out anim anim-left" data-anim>
         <div class="pack pack-md h-full">
           <%= picture({src: 'img/pictures/director-img', format: 'png', className: 'image object-bottom object-scale-down object-left -scale-x-100', data: null}) %>
         </div>
-        <div class="absolute right-0 -top-28 bg-primary/70 border border-white border-solid rounded-2xl w-full max-w-[400px] p-8">
+        <div class="absolute right-0 -top-28 bg-primary/70 border border-white border-solid rounded-2xl w-full max-w-[400px] p-8 hidden xl:block">
           <p class="text-xl">
             Подготовим вам персональное предложение с указанием стоимости, сроков и условий
           </p>
         </div>
         <div class="absolute bottom-0 left-0 rounded-2xl py-5 px-8 bg-primary/70">
           <h4 class="font-bold text-2xl pb-5 border-b border-solid border-white mb-2">
-            Петров Иван Иванович
+            Кривоносенко Дмитрий Вячеславович
           </h4>
           <p class="text-xl">
-            Руководитель клиентского сервиса
+            Главный инженер
           </p>
         </div>
       </div>

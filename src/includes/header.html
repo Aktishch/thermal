@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="autor" content="aktishch@gmail.com">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
@@ -27,27 +26,32 @@
     <% if (data.status) { %>
     <!-- Шапка документа -->
 
-    <header class="container fixed top-0 lg:top-12 left-0 right-0 z-30 flex items-center justify-between gap-5 py-4 lg:py-7 duration-300 bg-white bg-opacity-0" data-header>
-      <button class="btn lg:hidden" data-sidebar-open="menu" data-waved="dark">
+    <header class="container fixed top-0 xl:top-12 left-0 right-0 z-30 flex items-center justify-between gap-5 py-4 lg:py-7 duration-300 bg-white bg-opacity-0" data-header>
+      <button class="btn xl:hidden" data-sidebar-open="menu" data-waved="dark">
         <%= icon({id: 'burger', className: 'icon text-2xl', data: null}) %>
       </button>
-      <a class="w-32 lg:w-40 shrink-0" draggable="false" href="/">
-        <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block w-full', data: null}) %>
-      </a>
-      <nav class="hidden lg:flex items-center gap-5">
+      <div class="flex items-center gap-5 sm:gap-10 mr-auto xl:mr-0">
+        <a class="w-24 sm:w-40 shrink-0" draggable="false" href="/">
+          <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block w-full', data: null}) %>
+        </a>
+        <div class="w-20 sm:w-28 shrink-0">
+          <%= picture({src: 'img/pictures/logo', format: 'png', className: 'block w-full', data: null}) %>
+        </div>
+      </div>
+      <nav class="hidden xl:flex items-center gap-5">
         <% _.forEach((data.nav), (item) => { %>
         <a class="btn font-normal hover:bg-transparent after:content-auto after:absolute after:left-0 after:right-0 after:bottom-0 after:w-full after:h-1 after:invisible after:opacity-0 after:transition hover:after:opacity-100 hover:after:visible after:bg-primary py-2" data-scroll data-waved="dark" draggable="false" href="<%= item.href %>"><%= item.text %></a>
         <% }) %>
       </nav>
-      <a class="btn font-normal text-2xl hover:bg-transparent after:content-auto after:absolute after:left-0 after:right-0 after:bottom-0 after:w-full after:h-1 after:invisible after:opacity-0 after:transition hover:after:opacity-100 hover:after:visible after:bg-primary sm:py-2 rounded-full sm:rounded-none" data-waved="dark" draggable="false" href="tel: +7 3952 78 86 36">
+      <a class="btn font-normal text-2xl hover:bg-transparent after:content-auto after:absolute after:left-0 after:right-0 after:bottom-0 after:w-full after:h-1 after:invisible after:opacity-0 after:transition hover:after:opacity-100 hover:after:visible after:bg-primary sm:py-2 rounded-full md:rounded-none" data-waved="dark" draggable="false" href="tel: +7 3952 78 86 36">
         <%= icon({id: 'telephone', className: 'icon text-primary', data: null}) %>
-        <span class="ml-3 hidden sm:block">+7 3952 78 86 36</span>
+        <span class="ml-3 hidden md:block">+7 3952 78 86 36</span>
       </a>
     </header>
 
     <!-- Меню -->
 
-    <div class="fixed inset-0 z-40 bg-black/50 transition-[opacity,_visibility] duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
+    <div class="fixed inset-0 z-40 bg-black/50 transition-[opacity,_visibility] duration-100 group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="xl" id="menu">
       <div class="flex flex-col bg-white overflow-auto w-full max-w-[375px] h-full pt-4 px-4 pb-10 transition-[opacity,_visibility,_transform] duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
         <div class="flex justify-between items-start gap-5 mb-12">
           <button class="btn" data-sidebar-close="menu" data-waved="dark">

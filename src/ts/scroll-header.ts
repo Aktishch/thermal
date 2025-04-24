@@ -9,8 +9,8 @@ export default (): void => {
     const currentOffsetTop: number = scrolledPage().top
 
     header.offsetHeight / 2 < currentOffsetTop
-      ? header.classList.remove('lg:top-12', 'bg-opacity-0')
-      : header.classList.add('lg:top-12', 'bg-opacity-0')
+      ? header.classList.remove('xl:top-12', 'bg-opacity-0')
+      : header.classList.add('xl:top-12', 'bg-opacity-0')
   }
 
   scrollHeader()

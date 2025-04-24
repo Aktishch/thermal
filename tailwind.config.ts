@@ -20,7 +20,7 @@ module.exports = {
       sm: '575.98px',
       md: '767.98px',
       lg: '991.98px',
-      xl: '1429.98px',
+      xl: '1329.98px',
       xxl: '2499.98px',
     },
     constants: {
