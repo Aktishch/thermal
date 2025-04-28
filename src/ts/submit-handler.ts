@@ -26,12 +26,12 @@ export const formSubmitHandler = (event: Event): void => {
         method: 'POST',
         body: formData,
       })
-        .then((response: Response): Promise<{ status: boolean }> => {
-          return response.json()
+        .then((response: Response): void => {
+          response.json()
         })
-        .then((response): void => {
+        .then((): void => {
           dialog.close()
-          response.status ? dialog.open('./dialogs/dialog-success.php') : dialog.open('./dialogs/dialog-error.php')
+          dialog.open('./dialogs/dialog-success.php')
           form.reset()
           submitBtn.disabled = false
         })
